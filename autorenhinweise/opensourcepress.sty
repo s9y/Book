@@ -1,0 +1,221 @@
+%%% Seiten-Layout
+
+%% Papierformat
+\setlength{\paperheight}{240mm}
+\setlength{\paperwidth}{176mm}
+\setlength{\textheight}{18.4cm}
+\setlength{\textwidth}{13cm}
+\setlength{\footskip}{10mm}
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+\setlength{\headsep}{10mm}
+%\setlength{\marginparwidth}{25mm}
+%\setlength{\marginparsep}{5mm}
+
+
+%%% Sprache und Schriften
+%\usepackage[latin1]{inputenc}
+\usepackage[latin1]{inputenc}
+\usepackage{ngerman}
+\usepackage{times}
+
+
+%%% Vacat-Seite
+
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+\newcommand{\ospvacat}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
+
+
+%%% Titelei
+
+% Schmutztitel
+% #1 Autor
+% #2 Kurztitel
+\newcommand{\schmutztitel}[2]{%
+\thispagestyle{empty}
+#1: #2
+\clearemptydoublepage
+}
+
+
+% Haupttitel
+% #1 Autor
+% #2 Haupttitel
+% #3 Untertitel
+
+\newcommand{\haupttitel}[3]{%
+\thispagestyle{empty}
+\begin{center}
+ #1\par
+\vspace*{3cm}
+\textbf{#2}\par
+\vspace{1cm}
+#3
+\end{center}
+\newpage
+}
+
+% IMPRESSUM%% 
+% #1 Jahr
+% #2 Gesamtlektorat
+% #3 Satz
+% #4 Umschlaggestaltung
+% #5 Gesamtherstellung
+% #6 ISBN
+
+\newcommand{\impressum}[6]{%
+\thispagestyle{empty}   
+
+Alle in diesem Buch enthaltenen Programme \ldots
+
+\vspace{\fill}
+
+\textbf{Bibliografische Information Der Deutschen Bibliothek}\\[3mm]
+Die Deutsche Bibliothek verzeichnet diese Publikation in der Deutschen Nationalbibliografie; detaillierte bibliografische Daten sind im Internet über http://dnb.ddb.de abrufbar.
+
+\vspace*{\fill}
+
+{\copyright} #1 Open Source Press, München\\
+Lektorat: #2\\
+Satz: #3\\
+Umschlaggestaltung: #4\\
+Gesamtherstellung: #5\\[5mm]
+ISBN #6\hfill http://www.opensourcepress.de
+\clearemptydoublepage
+}
+
+
+%%% Kopfzeilen
+
+\newcommand{\plainheading}[2]{%
+\markboth{#1}{#2}
+}
+
+%%% Abbildungen
+
+\RequirePackage{epsfig}
+\newcounter{ospfigure}
+\newcommand{\ospfigure}[4]{\refstepcounter{ospfigure}%
+\hspace*{\fill}\epsfig{file=#2,width=#1\textwidth}\label{#4}\hspace*{\fill}\\
+Abbildung~\thechapter.\arabic{ospfigure}: #3
+\vspace{10pt}
+}
+\@addtoreset{ospfigure}{chapter} 
+
+% Referenz auf Abbildungen
+\newcommand{\figref}[1]{\thechapter.\ref{#1}}
+
+
+% Abbildung ohne BU
+\newcommand{\osptabfigure}[2]{
+\epsfig{file=#2,width=#1\textwidth}
+}
+
+%%% Aufzählungen
+
+\newenvironment{osplist}%
+{\begin{itemize}}%
+{\end{itemize}}
+
+\newcommand{\ospitem}[2]{%
+\item[#1]~\\
+#2}
+
+
+\newenvironment{ospdescription}%
+{\begin{list}{}{}}%
+{\end{list}}
+
+
+
+
+%%% Tabellen
+
+\RequirePackage{longtable}
+\newenvironment{osptable}[4]%
+% #1 Tabellenbezeichnung
+% #2 Verweis-Label
+% #3 Tabellenspalten-Definition
+% #4 Tabellenkopf-Definition
+{\begin{longtable}{#3}%
+\caption{#1}\\ 
+%\begin{tabular} 
+#4 \\ 
+\endfirsthead
+{\fontsize{8}{10}\fontshape{it}\selectfont Fortsetzung:}\\
+\hline
+#4\\
+\hline
+\endhead
+\hline
+\label{#2}}%
+% Ende Definition
+{\\ \end{longtable}}%
+
+
+
+%%% Code-Umgebung
+
+\RequirePackage{fancyvrb}
+\newcommand{\codefontsize} {\fontsize{9}{11}}
+\newcommand{\codefontfamily} {courier}
+\DefineVerbatimEnvironment{ospcode}{Verbatim}
+{fontsize=\codefontsize, fontfamily=\codefontfamily, commandchars=\\\{\}}
+
+\newcommand{\uprompt}[1]{user@linux:#1$>$ }
+\newcommand{\rprompt}[1]{linux:#1 \# }
+\newcommand{\myprompt}[2]{#1@linux:#2$>$ }
+\newcommand{\winprompt}[1]{C:\textbackslash>#1 }
+
+
+
+
+%%% Sonstiges
+
+% Code im Fließtext
+\newcommand{\cmd}[1]{\texttt{#1}}
+\newcommand{\cmdvar}[1]{\textsl{#1}}
+
+% Menüs
+\newcommand{\menu}[1]{\textbf{#1}}
+\def\sm{\,$\rightarrow$\,}
+
+% Tastensymbole
+\newcommand{\taste}[1]{\emph{(#1)}}
+\def\hoch{\taste{$\uparrow${}}}
+\def\bildhoch{\taste{Bild$\uparrow${}}}
+\def\runter{\taste{$\downarrow${}}}
+\def\bildrunter{\taste{Bild$\downarrow${}}}
+
+% Menüpfade in GUIs (z.B.: Datei->Speichern)
+\def\ra{$\rightarrow${}}
+
+% Anhang Überschrift
+\newcommand{\appendixchapter}[1]{\chapter{#1}}
+
+% Chapter-Motto
+
+\newcommand{\ospchapmotto}[1]{%
+\begin{quote}
+#1
+\end{quote}
+}
+
+
+% Longpage
+\newcommand{\longpage}{}
+
+
+%%%Einzelne Zeichen
+\newcommand{\Tilde}{\symbol{126}}
+\newcommand{\Caret}{\symbol{94}}
+
+
+%%% Umbrueche
+
+\def\osppagebreak{\pagebreak}
+\def\ospnewpage{\newpage}
+\def\osplinebreak{\linebreak}
+\def\ospnewline{\newline}
+\def\osphyphenbreak{-\linebreak}

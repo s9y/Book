@@ -1,0 +1,1854 @@
+%revised
+\chapter{Einführung}
+\index{Einführung}%
+\index{Self-Publishing}%
+
+Chats und Foren dominierten noch in den 90er Jahren das interaktive
+Internet.  Diskussionen wurden darüber hinaus allenfalls über
+Newsgroups und Mailbox-Systeme geführt. Mit der allgemeinen
+Verfügbarkeit von Internetzugängen wuchs auch das Bedürfnis nach einem
+System, um sich selbst in diesem neuen Medium zu präsentieren: Das
+sogenannte \emph{Self-Publishing} war geboren.
+
+Während der Boom der \emph{Wiki-Communities} aus dem vornehmlich
+akademischen Wunsch nach Wissensaustausch resultierte, entstand auch für
+das Self-Pub\-lish\-ing eine neue Art von Software -- \emph{Weblogs},
+kurz: \emph{Blogs}. Der Name ist Programm, denn die Grundfunktion ist
+ein persönliches Tagebuch (ein Logbuch) im Internet.  Blogsysteme
+zeichnet aus, dass sie Inhalte sehr einfach darstellen und fassbar
+machen, denn schließlich sollen die persönlichen Bemerkungen viele --
+auch zufällige -- Besucher schon auf den ersten Blick ansprechen.
+
+Ganz bewusst setzen sich Blogsysteme von den
+\emph{Content-Management"=Systemen} (CMS) ab, die aus Blogger-Sicht zu
+teuer, vor allem aber zu komplex sind. Mit steigender Popularität
+entstanden zahlreiche Blogsysteme im Open-Source- wie im kommerziellen
+Umfeld: Serendipity, Movable Type, Blogger.com, b2 Evolution,
+WordPress und andere.
+
+Mittlerweile wird Blog-Software nicht nur für persönliche oder
+firmenspezifische Tagebücher eingesetzt, sondern ebenso für kleine,
+stark angepasste und individualisierte Projekt-/Produktseiten,
+Firmenpräsentationen oder redaktionelle Inhalte jeder Art.
+
+\index{Serendipity!Namensursprung}%
+\index{s9y!Namensursprung}%
+\emph{Serendipity} ist eines dieser Systeme. Es entstand aus dem
+Wunsch nach einer freien Software mit größtmöglicher Flexibilität,
+worauf auch der -- für die deutsche Zunge zugegebenermaßen etwas
+gewöhnungsbedürftige -- Name hinweist, der etwa bedeutet: "`eine
+zufällige Entdeckung, die Überraschendes und Großartiges mit sich
+bringt"'. Und da der Name nicht nur schwierig auszusprechen, sondern
+auch umständlich zu schreiben ist, kürzt man ihn in Fachkreisen
+einfach ab: \emph{s9y}. Geeks ersetzen längere Wörter gerne durch deren
+Anfangs- und Endbuchstaben und schreiben die Zahl der ausgelassenen
+Buchstaben einfach dazwischen\,\ldots
+
+Serendipity hat den Anspruch, von Anfängern einfach zu bedienen, aber
+von fortgeschrittenen Anwendern weitestgehend modifizierbar zu sein.
+Um auf möglichst vielen verschiedenen Serversystemen zu laufen, sollte
+es mit mehreren Datenbanksystemen kompatibel sein, die verbreitete
+Skriptsprache PHP einsetzen und einfach auf dem eigenen Webspace
+installierbar sein. Die Wahl der Lizenz für das System fiel auf
+\emph{BSD}, denn diese räumt im Gegensatz zur GNU GPL auch die
+Möglichkeit ein, das Blogsystem in kommerziellem Umfeld sinnvoll zu
+nutzen.
+
+So hob Anfang 2002 ein Kernteam bekannter PHP-Entwickler Serendipity
+aus der Taufe: Jannis Hermanns, Sterling Hughes, George Schlossnagle,
+Wez Furlong, Joyce Park und Joseph Tate (Letzterer ist auch Autor der
+Cracklib\footnote{\cmd{http://www.cracklib.net/}} und von
+\cmd{mod-pubsub}\footnote{\cmd{http://sourceforge.net/projects/mod-pubsub}})
+sowie Sebastian Bergmann vom phpUnit-Projekt.\footnote{Die
+  PHP-Testsuite ist unter \cmd{http://www.phpunit.de/} erhältlich.}
+Mit den Jahren entwickelten wechselnde Programmierer das System stetig
+und konsequent weiter. Seit 2003 ist der Autor dieses Buchs leitender
+Entwickler.
+
+Dieses Buch bezieht sich auf die aktuelle Version 1.3 und möchte einen
+umfassenden Überblick über das System und seine Anpassbarkeit
+vermitteln.  Neben der Bedienung der Software werden Sie darum auch
+lernen, eigene Plugins zu schreiben, Templates anzupassen und
+Konfigurationsänderungen vorzunehmen.
+%GH:TODO:Aktuelle Versionsnummer einsetzen! Screenshots beachten!
+
+\section{Was unterscheidet ein Blog von einem CMS?}
+\index{CMS!vs. Blog|(}% 
+\index{Content-Management|see{CMS}}%
+\index{Blog!vs.\ CMS|(}%
+
+Ein Blogsystem zielt darauf ab, einzelne Artikel möglichst einfach zu
+erfassen und in einem festen Rahmendesign darzustellen. Ein CMS
+hingegen verwaltet ganz unterschiedliche Inhalte in individuellen
+Designs und baut komplexe Navigationsstrukturen auf.
+
+Für Blogsysteme sind alle Artikel grundsätzlich gleichwertig und
+werden nur chronologisch sortiert dargestellt. Ein CMS sollte Seiten
+unterschiedlich gewichten und diese verschlagworten und kategorisieren
+können. Darum bietet es sich für umfangreiche Webseiten an, die nicht
+nur eine "`Seitenansammlung"' darstellen, sondern eine komplexe
+Hierarchie abbilden, was den Umgang mit sog. "`Teasern"', Übersichten,
+Unter- und Parallelseiten erfordert.
+
+Dies ist natürlich eine grobe Vereinfachung, da viele Blogsysteme
+inzwischen auch solch komplexe Anwendungen meistern. Für Serendipity
+gibt es beispielsweise das Plugin \emph{Statische Seiten}, mit dem man
+Inhalte losgelöst von den chronologisch sortierten Artikeln erstellen
+und auch Hierarchien mit Unterseiten abbilden kann (siehe Seite
+\pageref{staticpage}).
+
+Ein weiterer fundamentaler Unterschied ist die Ausrichtung eines CMS
+auf Mehrbenutzerfähigkeit und Workflows, so dass ein Artikel vor
+seiner Veröffentlichung verschiedene Arbeitsphasen möglicherweise verschiedener Redakteure  durchläuft.  Gerade für umfangreiche Webseiten
+ist es wichtig, dass mehrere Artikelversionen nebeneinander existieren
+können: Während man bereits an neuen Fassungen einer Seite arbeitet,
+soll die Online-Version unverändert für Besucher zur Verfügung stehen.
+Solch ausgefeilte Mechanismen sind im Blog-Umfeld meist nur unnötige
+Last.
+
+Somit lässt sich ein Blog grundsätzlich als funktionsreduziertes CMS
+beschreiben.  Das mag negativ klingen, hat aber tatsächlich einen
+großen Vorteil: Ein Blog geht zielgerichtet auf Bedürfnisse des
+Web-Publishings ein. Die Bearbeitungsprozesse sind einfacher, und
+Blog-spezifische Techniken (RSS-Feeds, XML-RPC, Widgets, Web-Services,
+interaktive Funktionalitäten wie Kommentare und
+Trackbacks\footnote{Eine Erklärung dieser Begriffe finden Sie im
+  Kapitel \ref{Terminologie} auf Seite \pageref{Terminologie}.})
+lassen sich meist mit wesentlich geringerem Aufwand einbinden als in
+umfangreichen Content-Management-Systemen.  
+\index{Blog!vs.\ CMS|)}%
+\index{CMS!vs. Blog|)}%
+
+\section{Warum Serendipity?}
+\index{Serendipity!Vorteile|(}%
+
+Serendipity versteht sich als erweiterbares Blog-Framework, dessen
+Kernarchitektur so offen konzipiert ist, dass man individuelle
+Anpassungen vornehmen kann, ohne an den Sourcecode selbst Hand
+anzulegen. Änderungen am Aussehen des Blogs lassen sich durch
+Templates vornehmen, Funktionalitäten durch Seitenleisten- und
+Ereignis-Plugins nachrüsten.
+
+Diese Modularität macht es möglich, eigenen Code vor Updates der
+Serendipity"=Version zu schützen. Seit Erscheinen der ersten Version
+legen die Entwickler sehr viel Wert auf Abwärtskompatibilität. Im
+Gegensatz zu anderen Systemen ließen sich bestehende Plugins bisher
+selbst bei großen Versionssprüngen weiterverwenden.  Dies spricht zum
+einen für eine gesunde Weiterentwicklung des Systems, zum anderen auch
+für die Plugin-Architektur, die sich als sehr stabil erwiesen hat.
+
+Gerade die Auslagerung von Code macht Serendipity auch im
+kommerziellen Umfeld interessant. Aufgrund der BSD-Lizenz kann man
+dieses Blogsystem verwenden, ohne hinzugeschriebenen Code
+veröffentlichen zu müssen.
+
+Der Einsatz dynamischer PHP-Skripte gewährleistet, dass Serendipity im
+Gegensatz zu mit Perl, Ruby oder Python entwickelten Blogsystemen auf
+beinahe jedem Webserver lauf{}fähig ist. Zudem macht die Unterstützung
+mehrerer Datenbank-Management-Systeme die Software portabel, so
+dass sie mit unterschiedlichen Datenbank-Servern einsatzfähig ist.
+
+Darüber hinaus legen die Entwickler viel Wert auf guten
+Programmierstil (mit phpDoc-Funktionskommentaren, einheitlichen
+Einrückungen und einer kleinteiligen Funktions-API) und sicheren Code.
+Im Laufe der Serendipity"=Entwicklung gab es bislang nur wenige
+\index{Sicherheitslücken!Behebungszeitraum}%
+\label{xsrf}%
+Sicherheitslücken, die bei Bekanntwerden innerhalb weniger Stunden
+offiziell behoben wurden. Auch gegen weniger verbreitete
+Angriffsmöglichkeiten auf eine Webanwendung wie XSRF\footnote{XSRF
+  steht \index{Angriff!Robustheit gegen \textasciitilde{}e}%
+  \index{Cross-Site Request Forgery|see{XSRF}}%
+  \index{XSRF}%
+  für \emph{Cross-Site Request Forgery} und beschreibt eine
+  Angriffsmethode, bei der eine fremde Website mit Privilegien eines
+  authentifizierten Benutzers Aktionen (z.\,B.\ das Löschen aller
+  Artikel) durchführt.} \index{Schutz!gegen Angriffe}%
+stellte Serendipity frühzeitig Schutzmechanismen bereit.
+
+Serendipity-Templates werden unter Verwendung des
+Templating"=Frameworks 
+\index{Smarty}%
+\emph{Smarty},\footnote{\cmd{http://smarty.php.net/}} einem
+De-facto-Standard unter PHP, entwickelt. Zahlreiche Entwickler
+schwören auf dessen einfache Syntax, die es selbst Anfängern
+ermöglicht, die HTML-Ausgabe anzupassen, ohne PHP lernen zu müssen.
+
+Das zentrale Plugin- und Template-Archiv namens 
+\index{Spartacus}%
+\index{Plugin-Archiv|see{Spartacus}}%
+\index{Template-Archiv|see{Spartacus}}%
+\emph{Spartacus}\footnote{\cmd{http://spartacus.s9y.org/}} bietet
+derzeit mehr als 160 Plugins und knapp 100 Templates an. Diese können
+Sie direkt aus der Verwaltungsoberfläche Ihrer eigenen
+Blog-Installation heraus installieren oder aktualisieren. Die dort
+aufgeführten Plugins werden großteils offiziell gewartet und
+entsprechen den vom Serendipity-Projekt vorgegebenen Anforderungen an
+Programmierstil und Sicherheit. Plugins mit identischer
+Funktionalität, die den Benutzer vor die Qual der Wahl stellen, findet
+man hier nicht, und auch auf Kompatibilität zu allen verfügbaren
+Serendipity-Versionen wird geachtet.
+
+Da Serendipitys Kernentwickler aus Deutschland kommen, haben gerade
+deutsche Anwender den Vorteil einer stets aktuellen deutschen
+Übersetzung der Benutzeroberfläche. Zudem sorgen eine engagierte
+Community und ein großes Supportforum mit bislang über 65.000
+Beiträgen dafür, dass Fragen zum System oder Rückfragen selten
+unbeantwortet bleiben. Serendipity wird sehr nah an den Wünschen der
+Community entwickelt -- das Feature-Diktat von "`oben herab"' ist
+verpönt.  
+\index{Serendipity!Vorteile|)}%
+
+\index{Serendipity!Nachteile|(}%
+Natürlich kann Serendipity zum jetzigen Zeitpunkt noch nicht alles. Der
+größte Nachteil besteht wohl darin, dass man auf eine einzelne
+Blog-Instanz festgelegt ist. Unter-Blogs (thematisch oder auch pro
+Benutzer) lassen sich zwar hintricksen, aber an ein echtes
+\index{MovableType}%
+Multi-Blogsystem wie Movable Type kommt die Software in dieser Hinsicht
+nicht heran.
+
+Aufgrund der dynamischen Kompilierung jedes Seitenaufrufs verursacht
+Serendipity auch mehr Prozessorlast als solche Systeme, die mit exportiertem
+HTML arbeiten. Serendipity kann auf gut eingerichteten Servern zwar
+mehrere Dutzend Seitenaufrufe parallel verarbeiten, für den Einsatz
+einer Community mit Tausenden parallelen Seitenaufrufen pro Sekunde ist
+das System jedoch nicht konzipiert.  
+\index{Serendipity!Nachteile|)}%
+
+%revised
+\index{Serendipity!Funktionsübersicht}% 
+\index{Serendipity!Vorteile|(}% 
+
+Serendipity hebt sich von der Konkurrenz anderer frei oder
+kommerziell erhältlicher Systeme vor allem in folgenden Punkten ab:
+
+\begin{osplist}
+
+\item Die Browser-basierte Installationsoberfläche erlaubt sowohl eine weitgehend
+automatische Konfiguration, bei der nur essentielle Daten abgefragt werden, als
+auch die Einflussnahme auf nahezu alle Parameter bei der \menu{Fortgeschrittenen
+Installation} (Seite \pageref{webinstaller}). Jede installierte Version lässt
+sich über die integrierte Oberfläche auf die jeweils aktuellste updaten (Seite
+\pageref{s9yupdate}).
+
+\item Texte pflegt man auf Wunsch mit übersichtlichen, einfach verständlichen und
+funktionalen WYSIWYG-Editoren ein (Seite \pageref{wysiwyg}).
+
+\item Die integrierte Mediendatenbank für Bilder, PDFs, MP3s etc.\ gestattet
+Rechtemanagement, Stichwortsuche und automatische Vorschaugrafiken (Seite
+\pageref{Mediendatenbank}). Über einen gesonderten Dialog (Seite
+\pageref{Mediendatenbank-Popup}) bindet man die Dateien aus der Mediendatenbank
+mit wählbaren Layout"=Optionen einfach in Blog-Artikel ein. Die Inhalte dieser
+Mediendatenbank lassen sich dynamisch in einer Verzeichnisansicht darstellen, wie
+Sie es z.\,B. vom Windows Explorer gewöhnt sind.
+
+\item Serendipitys gruppenbasiertes Rollenkonzept erlaubt das Anlegen unbegrenzt
+vieler Autorengruppen und das Vergeben individueller Rechte (Seite
+\pageref{Benutzerverwaltung} und \pageref{Gruppenverwaltung}).
+
+\item Kommentare und Kategorien lassen sich verschachteln, Einträge mehreren
+Kategorien zuordnen. Natürlich implementiert Serendipity alle gängigen
+Blog-Standards (und ist somit vollständig Buzzword-kompatibel): Trackback,
+Pingback, XML-RPC, XHTML 1.1, CSS, RSS, Atom \ldots (siehe Seite
+\pageref{Terminologie}).
+
+\item Eine flexible Plugin-API erlaubt es Ihnen, Seitenleisten- und
+Ereignis-Plugins einzusetzen oder zu entwickeln, die das System ohne Eingriffe in den Serendipity-Code beliebig erweitern (Seite \pageref{pluginapi}).
+
+\item Das bereits erwähnte Online-Plugin-Archiv (Spartacus) erlaubt die
+Ein-Klick-Installation von mehr als 160 Plugins (Seite \pageref{Spartacus}).
+
+\item Dank Plugin-Verwaltung per Drag\&Drop können Sie das Aussehen und die
+Inhalte der Seitenleisten des Blogs nach Ihren Wünschen gestalten, ohne
+Templatedateien manuell ändern zu müssen (Seite \pageref{Plugins verwalten}).
+
+\item Das dynamische, Smarty-basierte Template-Konzept erlaubt die strukturelle
+Änderung sämtlicher Frontend-Elemente über aufeinander aufbauende
+Templatedateien. Smarty-Templates dürfen ohne Einschrän\-kung\osplinebreak{} Kontrollstrukturen
+wie Schleifen, Abfragen und Variablen enthalten und optional mit 
+zusätzlichem PHP-Code versehen werden (Seite \pageref{Smarty-Templates}).
+
+\item Einfache Integration in bestehende Webseiten. Das Konzept der \emph{Shared
+Installation} ermöglicht den Betrieb beliebig vieler Blog-Instanzen mit nur einer
+Code-Basis (Seite \pageref{sharedinstall}).
+
+\item Serendipity kämpft an Ihrer Seite mit umfangreichen, konfigurierbaren
+Anti-Spam-Maßnahmen gegen unerwünschte Kommentare oder Trackbacks. Als
+Schlagworte seien Captcha, automatische Moderation, Akismet und Blacklists
+genannt (Seite \pageref{spamblock}). 
+
+\item Beim Datenbanksystem haben Sie die Wahl zwischen MySQL(i), PostgreSQL und
+SQLite.
+
+\item Serendipity ist nicht nur Open Source, sondern unterliegt sogar der
+BSD-Lizenz. Somit kann das System auch in kommerziellen Programmen seinen Einsatz
+finden.
+
+\item Ob WordPress, MoveableType, b2Evo, blogger oder andere --
+Serendipity importiert auf Wunsch den Inhalt zahlreicher anderer
+Blogsysteme (Seite \pageref{Daten importieren}).
+
+\end{osplist}
+\index{Serendipity!Vorteile|)}%
+
+
+%revised
+\section{Voraussetzungen}
+\label{Voraussetzungen}%
+\index{Serendipity!Voraussetzungen|(}% 
+
+Serendipity als Software wird nicht auf Ihrem persönlichen Computer
+ausgeführt, sondern läuft im Internet auf einem Webserver.
+\index{Provider}% 
+Einen solchen mietet man meistens bei Providern wie
+Manitu\footnote{\cmd{http://www.manitu.de/}},
+1\&1\footnote{\cmd{http://www.einsundeins.de/}},
+Strato\footnote{\cmd{http://www.strato.de/}},
+tiggerswelt\footnote{\cmd{http://www.tiggerswelt.net/}} oder
+anderen\footnote{\cmd{http://www.webhostlist.de/}}; 
+die Dienstleistung, die diese erbringen, nennt man \emph{Webhosting}. 
+\index{Webhosting}%
+
+Für einen gewissen Monatsbeitrag erhalten
+Sie Zugangsdaten zu einem Rechner, auf den Sie HTML-Dateien und
+Software wie Serendipity mittels eines
+\emph{FTP-Programms} hochladen können. So gespeicherte Software 
+können Sie auf dem Webserver als Anwendungen ausführen; darauf greifen
+Sie mittels
+eines Webbrowsers von Ihrem PC aus zu -- ganz so, wie Sie es von Webseiten
+wie eBay oder Amazon kennen. Manche Provider (z.\,B.\
+\cmd{http://www.domainfactory.de/}) bieten Serendipity für ihre
+Kunden sogar vorinstalliert an.
+
+Sollten Sie über keinen eigenen Webspace verfügen, gibt es noch eine
+andere Möglichkeit, Serendipity zu nutzen. Einige kostenlose oder
+kostengünstige Provider haben die Software auf ihren Servern
+vorinstalliert und gewähren externen Nutzern Zugriff darauf. Hier können
+Sie meist nur aus einer Liste vorinstallierter Plugins wählen und auch
+keine Änderungen an Templates vornehmen oder eigene Plugins einspielen.
+Um das System erst einmal nur zu testen oder als einfaches
+Kommunikationsmittel einzusetzen, ist dies sicher eine gute Alternative. Eine Liste
+dieser Provider finden Sie auf der
+Serendipity-Webseite.\footnote{\cmd{http://www.s9y.org/61.html}}
+
+\index{PHP}%
+\index{Terminologie!PHP}%
+\index{Skriptsprache}%
+Die Dateien, die zu Serendipity gehören, enthalten Quellcode, der in der 
+\emph{Skriptsprache} PHP\footnote{PHP ist die Abkürzung von
+\emph{PHP Hypertext Preprocessor}, siehe \cmd{http://www.php.net/}.}
+geschrieben ist.
+Ein PHP-Interpreter macht diesen bei jedem Aufruf auf
+dem Webserver maschinenlesbar. Das Ergebnis
+dieser Aktion liefert der Webserver an den Browser des Zielsystems.
+Laienhaft gesprochen, ließe sich PHP als Betriebssystem für
+Serendipity ansehen.
+
+Dies ist wichtig, um die generelle Funktionsweise von
+Serendipity zu verstehen. Im Gegensatz zu Webbrowsern oder einer
+Office-Anwendung kann Serendipity selbst keine Echtzeit-Eingaben von
+Ihnen annehmen. Serendipity läuft komplett auf dem Webserver und wird
+über Ihren Browser sozusagen ferngesteuert. Dabei sendet Ihr Browser eine
+Anfrage an den Server, Serendipity verarbeitet diese und schickt ein
+Resultat. Danach geht der Vorgang wieder von vorne los.
+
+Dies hat den Vorteil, dass auch die Besucher Ihrer Seite stets aktuelle Daten 
+zu sehen bekommen. Da jeder Aufruf dynamisch die aktuellsten Daten darstellt, 
+kann Serendipity beispielsweise vorbereitete Artikel mit Erreichen eines 
+speziellen Datums automatisch einbinden, ohne dass Sie nochmals tätig werden 
+müssen. Das ist ein fundamentaler Unterschied zu einem statischen Blogsystem 
+wie MovableType. Dort speichert der Server (vereinfacht gesagt) nur 
+HTML-Dateien, in die sich dynamische Komponenten wie die neuesten Kommentare 
+oder die aktuelle Server-Uhrzeit nicht ohne Weiteres einbinden lassen.
+
+Serendipitys Vorgehensweise hat zahlreiche Vorteile: Ein Besucher
+kann, abhängig von seinen Zugriffsrechten, Artikel sehen, die andere nicht
+zu Gesicht bekommen. Ein Besucher kann das Design der Webseite
+selbständig durch Wahl einer Designvorlage verändern. Die Sprache der
+Benutzeroberfläche richtet sich auf Wunsch nach seinen Einstellungen usw.
+
+Diese Dynamik hat zwar auch Nachteile (so verlangt sie nach mehr Speicher
+und macht das System langsamer), ermöglicht Ihnen als Blogbetreiber aber
+auch interessante Möglichkeiten, die wir im Folgenden detailliert
+beschreiben werden.
+
+\index{Voraussetzungen}%
+Um Serendipity einzusetzen, benötigen Sie FTP-Zugriff auf einen Webserver,
+auf dem eine aktuelle PHP-Version (mindestens PHP 4.3.1, PHP5 wird
+unterstützt) installiert ist \emph{und} auf dem der Webhoster Zugriff
+auf eine Datenbank (MySQL, PostgreSQL, SQLite) gewährt.
+Als Webserver-Software eignen sich 
+\emph{Lighthttpd}, \emph{Apache} und \emph{Microsoft IIS}. Das Blogsystem
+lässt sich somit sowohl auf Windows- als auch auf Unix-Derivaten
+einsetzen.
+
+Damit Serendipity auf dem eigenen Webserver laufen kann, muss man einige
+PHP-Einstellungen berücksichtigen. Üblicherweise sind sie passend
+konfiguriert, so dass Sie als unbedarfter Benutzer direkt zum Kapitel
+\ref{Installation} ab Seite \pageref{Installation} springen können, wenn
+Sie Ihren Webserver nicht selbst aufsetzen und dem Techniker bei Ihrem
+Provider keine Hinweise geben müssen.
+
+\subsection{Systemseitige Einstellungen}
+\index{PHPModule@PHP-Module|(}%
+
+Um herauszufinden, welche PHP-Module auf Ihrem Webserver installiert sind, 
+laden Sie folgende kleine Datei namens \cmd{info.php} in das 
+\index{Document Root}% 
+\index{Stammverzeichnis}% 
+Webdaten"=Stammverzeichnis (auch
+\emph{Document Root} genannt)\footnote{Das ist meistens
+\label{DocRoot}%
+das Stammverzeichnis, in dem Sie bei Benutzung Ihres 
+FTP-Zugangs standardmäßig zu Beginn landen. Je nachdem, wie Ihr Provider den 
+Webserver konfiguriert hat, kann es aber auch sein, dass Sie zuerst in ein 
+Verzeichnis wie \cmd{htdocs} oder \cmd{httpdocs} wechseln müssen, um in das 
+Stammverzeichnis des Webservers zu gelangen.} auf den Server (im Buch 
+\cmd{www.example.com} genannt) und rufen diese in einem Browser über 
+\cmd{http://www.example.com/info.php} auf:
+
+\begin{ospcode}
+<?php phpinfo(); ?>
+\end{ospcode}
+
+Der Browser sollte dann eine Übersicht darstellen, aus der Sie Ihre 
+aktuellen Einstellungen herauslesen können. Folgende Module benötigt
+Serendipity:
+
+\index{PHPModule@PHP-Module}%
+\index{PHPKonfiguration@PHP-Konfiguration}%
+\index{Konfiguration!PHP}%
+\begin{osplist}
+\index{session (PHP-Modul)}
+\label{session}%
+\item Das PHP-Modul \cmd{session}
+muss installiert und aktiviert sein sowie Session-Cookies zulassen. Dies
+erreicht man mit der \cmd{php.ini}-Einstellung
+
+\begin{ospcode}
+session.use_cookies = On
+\end{ospcode}
+
+Serendipity verlangt darüber hinaus, dass die PHP-Sessiondateien schreibbar sind.
+Die \cmd{php.ini}-Einstellung \cmd{session.save\_path} muss demnach auf
+ein Verzeichnis zeigen, in dem der Webserver bzw.\ PHP Schreibrechte hat.
+Gerade bei Windows-Servern enthält diese Variable häufig ein nicht
+existierendes oder nicht beschreibbares Verzeichnis.
+
+\index{libxml (PHP-Modul)}%
+\label{xml/libxml}%
+\item Damit Serendipity in anderen Zeichensätzen verfasste
+Texte nach UTF-8 konvertieren und seine XML-Funktionalitäten ausspielen
+kann, muss das (standardmäßig vorhandene) PHP-Modul \cmd{xml/libxml}
+installiert und aktiviert sein.
+
+\index{iconv (PHP-Modul)}% 
+\index{mbstring (PHP-Modul)}%
+\label{iconv/mbstring}%
+\item Für andere Zeichensatzkonvertierungen, die besonders bei Import- und
+Exportvorgängen (z.\,B.\ von RSS-Feeds) nötig werden, kann Serendipity
+sowohl das PHP-Modul \cmd{iconv} als auch \cmd{mbstring} verwenden. Beide
+Module sind in aktuellen PHP5-Versionen standardmäßig aktiviert.
+
+\index{PCRE (PHP-Modul)}%
+\label{PCRE}%
+\item Um Zeichenketten zu finden und zu bearbeiten, setzt Serendipity häufig
+\emph{reguläre Ausdrücke} ein. Diese Funktionalität liefert das
+(standardmäßig installierte) PHP-Modul \cmd{pcre}.
+
+\index{libgd (PHP-Modul)}% 
+\index{ImageMagick}%
+\label{gd/imageMagick}%
+\item Um die Mediendatenbank vernünftig nutzen zu können, benötigen Sie
+entweder das PHP-Modul \cmd{gd} oder das Paket ImageMagick. Sollten Sie
+Letzteres benutzen, müssen die Dateien des Pakets für Ihren Web"=Benutzer
+ausführbar sein.
+
+\index{socket (PHP-Modul)}%
+\index{Firewall}%
+\label{socket}%
+\item Damit Serendipity auf fremde Webseiten zugreifen kann, um z.\,B.\
+Webservices zu integrieren und den Download von Plugins zu ermöglichen,
+benötigt es das (standardmäßig aktivierte) PHP-Modul \cmd{socket},
+das Netzwerkfunktionen bereitstellt. Selbst wenn das Modul
+vorhanden ist, kann es sein, dass Firewall-Einstellungen am Server die
+Verbindung zu fremden Servern auf HTTP-Port 80 (oder anderen) verbieten.
+Je nach Einsatzzweck müssen Sie Verbindungen zu den Servern, die
+Serendipity von sich aus anspricht (z.\,B.\ \cmd{spartacus.s9y.org} und
+\cmd{netmirror.org} für den Download von Plugins), explizit erlauben.
+Sollte dies nicht möglich sein, können Sie Serendipity zwar nutzen,
+müssen aber auf die entsprechende Funktionalität verzichten.
+
+\index{openssl (PHP-Modul)}%
+\label{openssl}%
+\item Damit die Serendipity-Komponenten intern auf \cmd{https}-URLs zugreifen
+können (und beispielsweise Trackbacks zu solchen geschützten URLs senden
+können), wird das PHP-Modul \cmd{openssl} benötigt.
+
+\index{zlib (PHP-Modul)}%
+\label{zlib}%
+\item Soll Serendipity die HTML-Seiten per \cmd{gzip}-Kompression
+bündeln, wird das PHP-Modul \cmd{zlib} benötigt.
+
+\index{sendmail}
+\label{sendmail}%
+\item Um E-Mails zu versenden (z.\,B.\ um auf neue Kommentare
+hinzuweisen), muss PHP mit der \cmd{sendmail}-Option kompiliert worden
+sein.
+
+\index{MySQL}%
+\index{PostgreSQL}%
+\index{SQLite}%
+\label{mysql, pgsql, sqlite}%
+\item Abgesehen von einem
+Datenbanksystem muss auf Ihrem Server auch die Client-Schnittstelle für
+die jeweilige Datenbank (MySQL(i), PostgreSQL, SQLite) als PHP-Modul
+(\cmd{mysql}, \cmd{mysqli}, \cmd{pgsql}, \cmd{sqlite})
+%PJ:Die Namen der Datenbanken nicht in \cmd{}, da das halt nur
+%Projektnamen, keine Binarynamen, Konfigurationsoptionen o.ae. sind.
+%GH:Wir brauchen aber einen hervorgehobenen Teil, damit dieses \item
+%ähnlich wie die anderen ein gehighlightetes Keyword enthält, um
+%querlesen zu ermöglichen.
+eingebunden sein. Standardmäßig wird PHP mit MySQL-Bibliotheken
+eingerichtet; seit PHP 5 ist auch das Datenbanksystem SQLite
+üblicherweise aktiviert.
+
+\index{Cache}%
+\index{APC}%
+\index{ZendCache}%
+\index{ionCube}%
+\label{APC, ZendCache, ionCube}%
+\item Um die Geschwindigkeit zu erhöhen,
+empfiehlt sich der Einsatz von PHP-Bytecode-Caches wie APC (\cmd{apc}),
+ZendCache
+oder ionCube.
+\end{osplist}
+\index{PHPModule@PHP-Module|)}%
+
+\index{PHP!Konfigurationseinstellungen}%
+
+PHP bietet zahlreiche sicherheitsrelevante Parameter, deren aktueller Wert bei 
+der Installation des Blogs angezeigt und auf optimale Einstellung überprüft 
+wird. All diese Einstellungen werden in der \cmd{php.ini}"=Konfigurationsdatei 
+geändert 
+\index{phpini@php.ini}% 
+und bedürfen je nach 
+Serverumgebung eines Neustarts der Webserver-Software. Für Hilfe zur 
+Konfiguration von PHP und des jeweiligen Webservers schlagen Sie bitte in der 
+Anleitung der jeweiligen Software nach, da dies den Rahmen dieses Buchs 
+sprengen würde.
+
+\index{VirtualHost}%
+Kommt Apache zum Einsatz, können die Einstellungen auch pro Domain
+konfiguriert werden. Im jeweiligen \cmd{<{}VirtualHost>}-Abschnitt der
+Konfigurationsdatei (je nach Apache-Version unterschiedlich, meist
+\cmd{httpd.conf}
+\index{httpd.conf}%
+oder auch in Dateien unterhalb des Apache \cmd{conf.d}-Verzeichnisses) 
+muss dazu \cmd{php\_admin\_value
+\cmdvar{option} \cmdvar{wert}} bzw.\ \cmd{php\_value \cmdvar{option}
+\cmdvar{wert}}\osplinebreak{} eingetragen werden. Alle per \cmd{php\_value}
+einstellbaren Optionen lassen sich auch über eine \cmd{.htaccess}-Datei
+\index{htaccess@.htaccess}%
+im Stammverzeichnis des Webauftritts verändern. Einstellungen in
+dieser Datei haben Vorrang vor den globalen Optionen, die in der
+Webserverkonfiguration oder in \cmd{php.ini} definiert wurden. Via
+\cmd{php\_admin\_value} gesetzte Werte lassen sich von
+\cmd{.htaccess}-Dateien nicht mehr verändern.
+
+Serendipity selbst legt bei der Installation eine solche Datei im
+Serendipity-Verzeichnis an.
+Sollte Ihr Webserver deren Auswertung
+unterbinden, können Sie die von Serendipity erstellte Datei gefahrlos
+löschen, verlieren dadurch aber die Möglichkeit, \emph{sprechende
+URLs} zu benutzen sowie den Download einiger interner Dateien zu
+verhindern.
+Daher sollten Sie dies nur dann tun, wenn Ihr Provider auch nach
+Rücksprache die Auswertung der \cmd{.htaccess}-Dateien nicht
+genehmigt.
+
+\index{htaccess@.htaccess}%
+Haben Sie die Möglichkeit, die \cmd{.htaccess}-Nutzung über
+\index{AllowOverride (Apache-Option)}%
+die Option \cmd{Allow\-Override} in der Webserver-Konfigurationsdatei zuzulassen, geschieht dies im
+\cmd{<{}VirtualHost>}-Abschnitt mittels
+
+\begin{ospcode}
+<Directory \cmdvar{/pfad/zum/serendipity-verzeichnis}>
+  AllowOverride All
+</Directory>
+\end{ospcode}
+
+\index{AllowOverride (Apache-Option)}%
+Notfalls reicht auch \cmd{AllowOverride Options
+FileInfo}. Der Wert \cmd{All} erlaubt es Plugins grundsätzlich, weitere
+Webserver-Optionen zu setzen, und gibt Ihnen damit mehr Flexibilität.
+
+Serendipity setzt in seiner \cmd{.htaccess}-Datei (siehe Seite
+\pageref{htaccess}) die
+Optionen \cmd{session.use\_trans\_sid} (Seite
+\pageref{session-trans-sid}) und \cmd{register\_globals} (Seite
+\pageref{register-globals}). Bei der Benutzung des Apache-Moduls
+\cmd{mod\_rewrite} kommen auch die Optionen \cmd{RewriteEngine},
+\cmd{RewriteBase} und \cmd{RewriteRule} zum Einsatz. Die 
+\cmd{.htaccess}-Optionen \cmd{ErrorDocument} und \cmd{DirectoryIndex}
+ermöglichen freie Permalinks (siehe Seite \pageref{urlformung}).
+Damit der Webserver bestimmte Serendipity"=Dateien nicht im Klartext
+darstellt, folgt ein \cmd{Deny from All} als Sicherheitsmaßnahme.
+
+
+\subsubsection{Sprechende URLs}\label{mod-rewrite}%
+\index{mod\_rewrite|(}%
+\index{Error-Handling}%
+\index{URL-Umformung|(}%
+\index{sprechende URLs|(}%
+\index{URL!sprechende|(}%
+\cmd{mod\_rewrite} ist kein PHP-Modul, sondern eine Funktionalität des
+Apache-Webservers. Wenn das Modul in Apache eingebunden wurde, erlaubt
+es einer Web-Anwendung,
+URLs zu benutzen, die nichts mit der tatsächlichen
+Dateistruktur auf dem Server zu tun haben.
+Statt die Nutzer damit zu behelligen, dass sie gerade ein PHP-Skript
+namens \cmd{serendipity\_admin.php} nutzen, lässt man sie besser auf eine
+URL wie \cmd{http://www.example.com/""serendipity/admin/} zugreifen, die
+den Browser auf die tatsächlich existierende Datei \cmd{serendipity\_admin.php} umleitet.
+
+Das \cmd{mod\_rewrite}-Modul ermöglicht es Serendipity, sogenannte \emph{sprechende
+URLs} (auch \emph{URL-Umformung} genannt) einzusetzen, 
+die zum Beispiel Artikeltitel oder
+Kategorienamen enthalten. Für den Benutzer hat das
+den Vorteil, dass er eine URL schon anhand ihres Namens eindeutig
+zuweisen kann. Zudem können Suchroboter wie Google Ihre
+\index{Google!Indizierung durch \textasciitilde}%
+\index{Suchroboter!Indizierung durch \textasciitilde}%
+Artikel aufgrund der Schlagwörter in der URL besser indizieren.
+
+Serendipity kann auch mit sprechenden URLs arbeiten, wenn \cmd{mod\_rewrite} 
+nicht verfügbar ist. Dann leitet der Apache-Webserver den Browser mittels eines 
+Tricks an die echte URL weiter: Kann er eine Seite nicht finden, hängt es vom 
+\emph{Error-Handling} (genau: der \cmd{ErrorDocument}-Anweisung) ab, ob er die 
+Fehlermeldung an den Browser durchreicht oder diesen auf eine andere Seite 
+führt. Diese Methode ist jedoch einen Tick langsamer und unflexibler als 
+\cmd{mod\_rewrite} und klappt leider nicht auf allen Servern, da sie die oben 
+erwähnte \cmd{AllowOverride}-Einstellung \cmd{All} voraussetzt. Andere 
+Webserver wie Microsoft IIS oder lighttpd bieten diese Möglichkeiten leider 
+nicht, daher ist dort keine URL-Umformung möglich\footnote{Mit etwas manuellem
+Aufwand und Kenntnis der Webserver lassen sich die benötigten Umformungsregeln
+jedoch auch nachrüsten, mehr dazu unter \cmd{http://s9y.org/""119.html}}.
+
+Bei der Installation wird Serendipity versuchen, automatisch die
+passendste Methode für Sie herauszufinden. Abhängig
+davon wird die \cmd{.htaccess}-Datei unterschiedlich erstellt, damit sie die
+jeweils erforderlichen Anweisungen enthält. Die gewünschte Methode zur
+URL-Umformung kann später in der Konfiguration natürlich auch umgestellt
+werden.
+
+\index{Probleme!URL-Umformung}%
+Sobald für Serendipity das \cmd{mod\_rewrite}-Modul aktiviert ist, wird
+Serendipity \emph{sämtliche} Aufrufe in seinem Unterverzeichnis umleiten.
+Sollten Sie später also einmal andere Programme unterhalb des
+Serendipity"=Verzeichnisses aufrufen wollen, wird dies womöglich dazu
+führen, dass Sie statt des installierten Programms Serendipity sehen. 
+Dies liegt daran, dass durch die \cmd{.htaccess}-Datei von
+Serendipity die URL-Umformungsregeln auch für alle Unterverzeichnisse
+gelten. Abhilfe können Sie schaffen, indem Sie in jedem Unterverzeichnis
+einer fremden Anwendung eine eigene \cmd{.htaccess}-Datei erstellen, mit
+dem Inhalt:
+
+\begin{ospcode}
+RewriteEngine off
+\end{ospcode}
+
+Diese Anweisung sorgt dafür, dass für das jeweilige Programm die
+URL-Umformung deaktiviert wird.
+\index{mod\_rewrite|)}%
+\index{URL-Umformung|)}%
+\index{sprechende URLs|)}%
+\index{URL!sprechende|)}%
+
+\subsection{Für Serendipity relevante PHP-Konfigurationsoptionen}
+\index{phpini@php.ini|(}%
+\index{httpd.conf|(}%
+
+Folgende Optionen sind für Serendipity maßgeblich:
+
+\begin{ospdescription}
+
+\index{phpini@php.ini!magic\_quotes\_gpc}%
+\index{phpini@php.ini!magic\_quotes\_runtime}%  
+\ospitem{\cmd{php\_value magic\_quotes\_gpc}}
+\ospadditem{\cmd{php\_value magic\_quotes\_runtime}}
+setzbar in \cmd{.htaccess}, \cmd{php.ini} oder in der Webserverkonfiguration;
+
+Diese Variablen bestimmen, ob PHP Sonderzeichen in URL-Variablen (\cmd{GET},
+\cmd{POST}, \cmd{COOKIE}) automatisch in ein sicheres Format
+umwandelt. Serendipity benötigt diesen Service nicht, da es
+die entsprechende Umformung selber vornimmt. Steht eine dieser Optionen auf
+\cmd{true}, macht Serendipity die entsprechende Konvertierung
+rückgängig. Daher empfiehlt es sich aus Performancegründen, die beiden
+Einstellungen auf \cmd{false} zu setzen und damit zu deaktivieren.
+
+
+\index{phpini@php.ini!session.use\_cookies}%
+\ospitem{\cmd{php\_value session.use\_cookies}}
+\cmd{.htaccess}, \cmd{php.ini} oder Webserverkonfiguration;
+
+Serendipity speichert temporäre Dateien in PHP-Sessions. Um eine Session
+eindeutig zu identifizieren, vergibt das System Session-IDs, die
+üblicherweise in einem HTTP-Cookie gespeichert werden. Damit Serendipity
+\index{Cookies}%
+\index{Session-Cookies}%
+PHP-Session-Cookies nutzen kann, muss diese Option aktiviert sein.
+
+
+
+\label{session-trans-sid}%
+\index{phpini@php.ini!session.use\_trans\_sid}%
+\ospitem{\cmd{php\_value session.use\_trans\_sid}}
+wird von Serendipity selbst in der \cmd{.htaccess}-Datei auf \cmd{0}
+gesetzt, kann aber auch in der \cmd{php.ini} oder der
+Webserverkonfiguration geändert werden;
+
+Wenn der Browser keine Cookies akzeptiert, kann die Session-ID auch an
+\index{URL!mit Session-ID}%
+die URL angehängt werden.
+PHP macht dies automatisch, wenn die Option
+\cmd{session.use\_trans\_sid} aktiviert ist. Diese Automatik ist seitens
+Serendipity jedoch aus Sicherheitsgründen unerwünscht.
+Sollte die Option dennoch aktiviert
+sein, können fremde Nutzer ungültige Session-IDs in die URL
+\index{Angriff!auf Session-Dateien}%
+einschleusen und somit möglicherweise Ihre Session-Dateien
+kompromittieren. Ein Serendipity-Blog sollte daher niemals die
+Session-ID in einer URL angeben.
+Gibt Ihnen jemand eine Serendipity-URL wie
+\cmd{http://www.example.com/seren\-dipity/index.php?PHPSESSID=23213123adasd},
+kann es sein, dass diese Person
+\index{Missbrauch!von Session-Daten verhindern}%
+Ihre Daten ausspähen will. Die serverseitige Deaktivierung der PHP-Option
+\cmd{session.use\_trans\_sid} beugt
+solchem Missbrauch vor.
+
+
+\index{phpini@php.ini!allow\_url\_fopen}%
+\ospitem{\cmd{php\_admin\_value allow\_url\_fopen}}
+nur in der \cmd{php.ini} oder in der Webserverkonfiguration
+änderbar;
+
+PHP liest und behandelt URLs wie normale Dateien, wenn diese Option
+aktiviert ist. Gerade in älteren PHP-Versionen öffnet die Aktivierung
+\index{Angriff!auf das System}%
+dieser Option die Tür für Angriffsszenarien, in denen Code von
+fremden Internetseiten bei Ihnen ausgeführt werden kann (und so das
+System kompromittiert).
+
+Damit die Aktivierung dieser sicherheitsrelevanten Option nicht
+erforderlich ist, greifen alle wichtigen Serendipity-Funktionen
+stattdessen über \emph{Sockets} auf
+Netzwerk-Ressourcen zu. Nur veraltete Plugins erfordern
+möglicherweise die Aktivierung dieser Option. Es empfiehlt
+sich, sie zu deaktivieren und nur bei Bedarf zuzuschalten.
+
+
+\label{register-globals}%
+\index{phpini@php.ini!register\_globals}%
+\ospitem{\cmd{php\_value register\_globals}}
+wird von Serendipity selbst in der \cmd{.htaccess}-Datei auf
+\cmd{off} gesetzt, kann aber auch in \cmd{php.ini} oder der
+Webserverkonfiguration festgelegt werden;
+
+Wenn diese Variable aktiviert ist, stellt PHP URL-Variablen im globalen
+Namensraum zur Verfügung. Ältere PHP-Programme benötigen diese Option,
+Serendipity greift jedoch nicht auf dieses Feature zurück. Aus
+Sicherheitsgründen ist es daher sehr zu empfehlen, die Option zu deaktivieren,
+sofern sie nicht für andere auf dem Webserver laufende Anwendungen
+benötigt wird.
+
+\index{phpini@php.ini!safe\_mode}%
+\ospitem{\cmd{php\_admin\_value safe\_mode}}
+\ospadditem{\cmd{php\_admin\_value safe\_mode\_include\_dir}}
+\ospadditem{\cmd{php\_admin\_value safe\_mode\_gid}}
+lediglich via \cmd{php.ini} oder
+Webserverkonfiguration änderbar;
+
+\index{Safe Mode (PHP)}%
+\label{Safe Mode}%
+PHPs \emph{Safe Mode} stellt sicher, dass lokale PHP-Anwendungen wie
+Serendipity nur auf die Daten im eigenen Stammverzeichnis zugreifen und
+keine fremden Dateien einbinden können. Obwohl Serendipity mit dieser
+Einschränkung generell funktioniert, hat die Aktivierung dieses Modus
+folgende Nachteile:
+Die Optionen \cmd{safe\_mode\_include""\_dir} und \cmd{safe\_mode\_gid}
+legen fest, auf welche Verzeichnisse ein PHP-Skript Zugriff hat. Solange
+die Benutzerrechte (\emph{Permissions}) und die Eigentumsverhältnisse
+(\emph{Ownership}) auf dem Webserver für das
+Serendipity-Installationsverzeichnis korrekt gesetzt sind, lassen sich z.\,B.\
+Mediendatenbank-Dateien problemlos hochladen. Ein falsch
+eingerichteter Safe Mode hat zur Folge, dass man mittels FTP oder
+Administrationsoberfläche keine Templates und andere Dateien hochladen und
+keine Bilder im Nachhinein löschen oder bearbeiten kann.
+
+\index{phpini@php.ini!open\_basedir}%
+\ospitem{\cmd{php\_admin\_value open\_basedir}}
+nur via \cmd{php.ini} oder in der Webserverkonfiguration änderbar;
+
+Ähnlich wie der Safe Mode lässt sich der Datei-Zugriffsschutz von PHP auf
+gewisse Verzeichnisse beschränken. Üblicherweise wird diese Option in
+Zusammenhang mit den Safe-Mode-Parametern konfiguriert. Während der
+Safe Mode lediglich den globalen Dateizugriff auf Gruppen- und
+Benutzerebene regelt, schränkt \cmd{open\_basedir} den
+Zugriff auf vordefinierte Verzeichnisse ein.
+
+Verwendet Ihr Webserver diese Option,
+gehört das Serendipity"=Installationsverzeichnis unbedingt in die damit
+konfigurierte Verzeichnisliste. Anderenfalls kann der Webserver
+die Installationsdateien nicht aufrufen. Als Trennzeichen zwischen zwei
+Verzeichnispfaden dient in dieser Option das Semikolon (\cmd{;}).
+
+Bleibt diese Option leer, ist der Zugriff auf alle
+Verzeichnisse möglich. Befindet sich
+bereits der Verzeichniseintrag \cmd{.} in der Auf"|listung, steht
+dieser Punkt synonym für das Verzeichnis, in dem ein PHP-Programm
+ausgeführt wird.
+
+Gerade auf Servern, die viel mit symbolischen Dateisystemlinks arbeiten,
+muss der Administrator sorgfältig auf die korrekte Konfiguration der
+involvierten Verzeichnispfade achten.
+
+\index{phpini@php.ini!session.cookie\_domain}%
+\ospitem{\cmd{php\_value session.cookie\_domain}}
+\cmd{.htaccess}, \cmd{php.ini} oder Webserverkonfiguration;
+
+Wenn Serendipity einen HTTP-Cookie setzt (also z.\,B.\ die Session-ID
+oder Login-Daten), enthalten diese den Namen der Domain, auf dem sich die
+Serendipity-Installation befindet. Falls in der PHP-Variable
+\cmd{session.cookie\_domain} ein Domainname eingetragen ist, nutzt
+Serendipity stattdessen diese Domainangabe. In dem Fall stellen Sie
+sicher, dass sich dieser Wert mit dem Domainnamen des s9y-Servers deckt.
+Wenn ein Webserver für mehrere Domains konfiguriert ist und an dieser
+Stelle einen zentralen Domainnamen setzt, ist dies oft Ursache für
+spätere Probleme.
+
+\index{phpini@php.ini!session.save\_path}%
+\ospitem{\cmd{php\_value session.save\_path}}
+\cmd{.htaccess}, \cmd{php.ini} oder Webserverkonfiguration;
+
+Alle von Serendipity gespeicherten Sessiondaten werden im mit dieser Option
+angegebenen Verzeichnis gespeichert. Der ausführende PHP-Prozess muss
+darauf Schreibrechte besitzen. Stellen Sie bei
+Windows"=Servern sicher, dass hier ein gültiger
+Verzeichnisname (z.\,B.\osplinebreak{} \cmd{C:/Temp}) eingetragen ist. Sollten
+PHP-Sessions nicht schreibbar sein, zeigt Serendipity
+Fehlermeldungen an.
+
+\label{file-uploads}%
+\index{phpini@php.ini!file\_uploads}%
+\index{phpini@php.ini!post\_max\_size}%
+\index{phpini@php.ini!upload\_max\_filesize}%
+\index{phpini@php.ini!max\_input\_time}%
+\ospitem{\cmd{php\_admin\_value file\_uploads}}
+\ospadditem{\cmd{php\_value post\_max\_size}}
+\ospadditem{\cmd{php\_value upload\_max\_filesize}}
+\ospadditem{\cmd{php\_value max\_input\_time}}
+\cmd{.htaccess}, \cmd{php.ini} oder
+Webserverkonfiguration -- \cmd{file\_uploads} nur via \cmd{php.ini} oder
+Webserverkonfiguration änderbar;
+
+Damit man überhaupt Dateien hochladen kann, muss \cmd{file\_uploads} aktiv sein. Die
+maximale Dateigröße einer hochgeladenen Datei legen
+\cmd{post\_max\_size}, das ein Limit für HTTP-Requests mitsamt aller Daten
+definiert, und
+\cmd{upload\_max\_filesize} fest, das seinerseits eine spezielle Obergrenze
+nur für die mittels HTTP-Request
+übermittelten Dateien setzt. Die maximale Zeit für die Verarbeitung
+einer Datei beim Upload legt die Variable \cmd{max\_input\_time} fest.
+
+
+\label{memory-limit}%
+\index{phpini@php.ini!memory\_limit}% 
+\ospitem{\cmd{php\_admin\_value memory\_limit}}
+Einstellung via \cmd{php.ini} oder Webserverkonfiguration;
+
+Serendipity benötigt einiges an Arbeitsspeicher auf dem Webserver. In einer
+Grundkonfiguration reichen meist zwischen drei und vier MB RAM. Der
+Speicherbedarf kann mit der Anzahl und der Komplexität von Plugins jedoch
+zunehmen.
+
+Wie viel verfügbaren Speicher PHP-Anwendungen insgesamt nutzen dürfen,
+legt die Variable \cmd{memory\_limit} fest. Sollte der Arbeitsspeicher
+Fehlermeldungen zufolge nicht mehr ausreichen, müssen Sie entweder dieses
+Limit hochsetzen oder Serendipity-Plugins löschen.
+
+\index{phpini@php.ini!display\_errors}%
+\ospitem{\cmd{php\_value display\_errors}}
+\ospadditem{\cmd{php\_value error\_log}}
+\cmd{.htaccess}, \cmd{php.ini} oder \cmd{httpd.conf};
+
+Einige Server geben PHP-Fehlermeldungen nicht an den Browser weiter, um
+\index{Fehlermeldungen!PHP-Fehlermeldungen nicht an Browser geben}%
+\index{PHPFehlermeldungen@PHP-Fehlermeldungen!nicht an Browser geben}%
+\index{Angriff!Informationen über \textasciitilde{}e}%
+weniger leicht angreifbar zu sein.\footnote{Fehlermeldungen können
+kritische Dateipfade eines Servers offenlegen (\emph{Information
+Disclosure}). Solche Informationen erlauben es Angreifern, bestimmte
+Rückschlüsse auf die Einrichtung eines Server zu ziehen.} Wenn Sie
+allerdings einmal auf Probleme stoßen oder eigene Anpassungen eine leere
+Seite zum Ergebnis haben, empfiehlt es sich ggf., diese beiden Optionen
+temporär zu aktivieren. Die bessere Alternative heißt: häufiger die
+Fehler-Logfiles des Webservers prüfen.
+
+\end{ospdescription}
+
+\index{phpini@php.ini|)}%
+\index{httpd.conf|)}%
+
+\subsection{\label{htaccess}Serendipitys .htaccess-Datei}
+\index{htaccess@.htaccess}%
+
+Befehle, die Serendipity eigenständig in die
+\cmd{.htaccess}-Datei im Stammverzeichnis einträgt, fasst die Software in einen
+Block ein, der mit
+\cmd{\#Begin s9y} beginnt und mit \cmd{\#End s9y} endet. Wenn Sie eigene
+Parameter in diese Datei einfügen, tun Sie dies daher vor
+\cmd{\#Begin s9y} oder nach \cmd{\#End s9y}. Das verhindert, dass
+Serendipity diese Zeilen ändert. Wenn Sie eine von Serendipity gesetzte
+Option überschreiben müssen, fügen Sie die
+Option mit dem von Ihnen gewünschten Wert am besten nach dem \cmd{s9y}-Block nochmals
+ein.
+
+Auf einem Server ohne \cmd{mod\_rewrite} sieht der \cmd{s9y}-Block wie
+folgt aus:
+
+\input{snippets/htaccess}
+
+Der erste Parameter, \cmd{DirectoryIndex}, legt die zentrale Serendipity-Datei
+\cmd{index.php} als Startseite des Blogs fest. Wenn in der Serendipity"=Konfiguration
+bei der \menu{URL-Umformung} (siehe Seite \pageref{urlformung}) die Option
+\menu{Apache ErrorHandling} eingestellt wurde, folgt als nächste Zeile der
+Eintrag \cmd{ErrorDocument 404 /serendipity/index.php}. Die darin genannte Datei
+dient als Weiterleitungsziel für alle virtuellen URLs, auch bei der Verwendung
+von \cmd{mod\_""rewrite}.
+
+Die nächsten beiden Zeilen deaktivieren die PHP-Einstellungen
+\cmd{session.""use\_trans\_sid} und \cmd{register\_globals}.
+
+Zuletzt folgen mehrere Abschnitte, die den Zugriff auf interne
+Serendipity-Dateien (\cmd{*.tpl.php}, \cmd{*.tpl}, \cmd{*.sql},
+\cmd{*.inc.php} und \cmd{*.db}) verbieten.
+
+Wurde \cmd{mod\_rewrite} aktiviert, sieht die
+\cmd{.htaccess} bis auf einen Block genauso aus wie die eben
+gezeigte:
+
+\input{snippets/htaccess-rewrite}
+
+Hinzugekommen ist der Befehl \cmd{RewriteEngine On}, der
+\cmd{mod\_rewrite} aktiviert. \cmd{RewriteBase} legt den Stammpfad für
+alle Operationen fest. Die einzelnen \cmd{RewriteRule}s legen fest,
+wohin der Nutzer weitergeleitet wird, wenn er spezielle URLs aufruft.
+Der erste Teil hinter einer \cmd{RewriteRule} gibt an, welches Muster in
+der URL gesucht wird, der zweite Teil legt fest, welche Datei
+aufgerufen wird, und zuletzt folgen spezielle
+\cmd{mod\_rewrite}-Optionen in eckigen Klammern.
+
+\cmd{L} gibt eine abschließende Regel an: Sobald eine URL auf das
+jeweilige Muster zutrifft, werden die übrigen Muster nicht mehr geprüft.
+\cmd{QSA} bedeutet, dass URL-Parameter (die sogenannten \emph{GET-Variablen}) an
+die Ziel-URL angehängt werden. \cmd{NC} besagt, dass
+Groß- und Kleinschreibung bei einer URL nicht unterschiedlich behandelt
+wird.
+
+Die jeweiligen Regeln werden mittels regulärer Ausdrücke
+formuliert, die bestimmte Muster in Zeichenketten detailliert beschreiben.
+
+\label{PEAR}%
+\subsection{PEAR}
+\index{PEAR}%
+
+Das \emph{PHP Extension and Application Repository} (kurz PEAR) ist eine
+Sammlung von PHP-Skripten und -Modulen, von der zahlreiche
+Web"=Anwendungen Gebrauch machen. Auch Serendipity setzt mehrere
+PEAR"=Komponenten ein: \cmd{Cache::Lite}, \cmd{HTTP::Request}, \cmd{Onyx},
+\cmd{Net::Socket}, \cmd{Text::Wiki} und \cmd{XML::RPC}. Damit diese
+nicht zentral auf dem Webserver installiert sein müssen, liefert
+Serendipity die Komponenten im Unterverzeichnis \cmd{bundled""-libs} mit.
+
+Wenn die entsprechenden PEAR-Komponenten bereits auf dem Webserver
+vorhanden sind, räumt Serendipity diesen standardmäßig den Vorrang ein,
+damit Systemadministratoren bei kritischen Updates nicht auch das
+\cmd{bundled-libs}-Verzeichnis anfassen müssen. Dabei kommt es manchmal
+zu (Versions-)Konflikten.
+
+In diesem Fall kann man in der globalen Serendipity-Konfigurationsdatei
+\cmd{serendipity\_config.inc.php} mit 
+
+\begin{ospcode}
+$serendipity['use_PEAR'] = false;
+\end{ospcode}
+
+ darauf beharren, dass die von s9y mitgelieferten Komponenten zum
+Einsatz kommen.
+\index{Serendipity!Voraussetzungen|)}% 
+
+
+%revised
+\section{Terminologie}
+\index{Terminologie}%
+\label{Terminologie}%
+
+\index{Web 2.0}%
+In Zeiten des \emph{Web 2.0} (siehe Seite \pageref{Webservices}) buhlen 
+zahlreiche allgegenwärtige Marketing- und Technologiebegriffe um
+Aufmerksamkeit. Da diese auch im Zusammenhang mit
+Serendipity wichtig sind, gehen wir darauf im Folgenden gezielt und knapp
+ein. Detaillierte Definitionen liefert z.\,B.\
+die deutsche Wikipedia.\footnote{\cmd{http://de.wikipedia.org/}}
+
+\subsection{XHTML, XML und CSS}
+
+\index{XHTML}% 
+\index{HTML}%
+\index{CSS}%
+\index{XML}%
+HTML stellte ursprünglich eine einfache Syntax zur Formatierung
+von Dokumenten im Web bereit. Während es anfangs nur sehr primitive
+Auszeichnungselemente gab (Überschriften, Fettungen, Tabellen), sorgten
+viele Entwickler"=Gremien
+schnell und leider auch unübersichtlich für Erweiterungen.  
+Parallel zu HTML wurde XML
+(\emph{Extensible Markup Language}) als universelles Dateiformat
+entwickelt, um
+beliebige maschinen- und menschenlesbare Inhalte darzustellen. Im
+Gegensatz zu Binärformaten lassen sich für XML plattformübergreifend Schnittstellen
+bereitstellen und standardisiert eigene Unterformate für alle
+erdenklichen Einsatzzwecke erfinden.
+
+Auch HTML wurde mittels XHTML-Standard mit der XML-Syntax aufgefrischt und
+konsolidiert. Strenge Regeln sorgen nun dafür, dass sich HTML-Dokumente von
+vielerlei Programmen interpretieren und "`validieren"' (also auf syntaktische
+Korrektheit prüfen) lassen. In der Theorie ermöglicht dies weitgehende
+Abstraktion von Layout und Inhalt. Der besseren Interpretation durch Software
+wegen konnte das CSS-Format (\emph{Cascading Style Sheets}) seinen Siegeszug
+antreten. CSS-Dateien lassen sich auf Elemente in XHTML-Dokumenten anwenden und
+legen so die Formatierung der strukturellen Elemente eines Dokuments fest.
+
+Auch wenn viele Webseiten heute noch nicht mit gültigem XHTML entwickelt werden
+und es Bemühungen gibt, die "`dumme Einfachheit"' von HTML mit laxeren Prüfungen
+wieder auf"|leben zu lassen, ist ein Vorteil von XHTML unumstritten:
+Weiterverwendbarkeit.
+
+\index{Webbrowser}%
+\subsection{Browser}
+
+Ein Browser ist eine Software auf Ihrem Computer, mit der Sie Internetadressen
+aufrufen und ansehen können. Bekannte Browser sind der \emph{Microsoft Internet
+Explorer}, \emph{Mozilla Firefox} oder auch \emph{Apple Safari}. Der Begriff
+"`Browser"' steht dabei für das "`Stöbern"' (neudeutsch "`Surfen"') im Internet,
+denn erst durch diese Software wird aus einem speziell formatierten HTML-Dokument
+etwas, das ein Besucher am Bildschirm wirklich ansehen und benutzen kann.
+
+Die am Markt verfügbaren Browser unterscheiden sich in Merkmalen wie Sicherheit,
+Geschwindigkeit, Funktionsumfang und auch Darstellungsqualität. Obwohl HTML und
+CSS festgelegte Standards sind, weicht jeder Browser bei deren Interpretation
+doch geringfügig ab, daher stellen verschiedene Browser ein und dieselbe Webseite
+möglicherweise unterschiedlich dar.
+
+\subsection{Client, Server}
+\index{Client}%
+\index{Server}%
+\label{Client-Server}%
+
+Bei der Kommunikation im Internet sind Millionen von Computern miteinander
+vernetzt. Beim Abrufen von Daten aus dem Internet über Ihren Browser verbindet
+sich Ihr Computer mit einem fremden Computer, auf dem diese Daten liegen.
+
+Ihr Computer stellt dabei einen \emph{Client} dar, also den
+\emph{Empfänger}. Der Rechner, der Daten ausliefert, dient dabei als
+\emph{Server}, also als \emph{Absender}.
+Bei Nutzung fast jedes Internet-Protokolls spielen für die Kommunikation
+zwei Datenkategorien eine Rolle: 
+das, was ein Client sendet und empfängt, und
+das, was ein Server sendet, empfängt und verarbeitet.
+
+\subsection{RSS, Feeds, Syndication und Aggregation}
+\label{RSS}%
+\index{RSS}%
+
+RSS ist die Abkürzung für \emph{Rich Site Summary} oder auch \emph{Really Simple
+Syndication} und der Name eines Datenformats, das gemeinsam mit den Blogs die
+Web-Welt verändert hat.
+
+Eine Datei im RSS-Format ist grundsätzlich erst einmal nur eine XML-Datei, die
+einen speziellen Satz von Elementen enthält. Diese legen die Eigenschaften von
+Blog-Artikeln, wie Titel, Inhalt oder Hyperlinks, fest.
+
+Eine RSS-Datei stellt eine Art Newsticker dar, der meistens die chronologisch neuesten
+Änderungen an News-Artikeln oder
+Blog-Einträgen auf"|führt. Solche Dateien werden 
+kontinuierlich (meist automatisch) aktualisiert und auch
+\index{Feeds}% 
+als \emph{Feed} bezeichnet. Dafür ausgelegte Software kann eine solche
+maschinenlesbare RSS-Datei weiterverarbeiten und mit dem Inhalt 
+\index{Syndication}% 
+\index{Aggregation}%
+anderer Webseiten zusammenführen (hier seien die Schlagworte
+\emph{Aggregation} und \emph{Syndication} genannt).
+
+\index{RSS-Reader}%
+RSS-Reader-Programme ermöglichen es
+Internet-Nutzern, die RSS-Dateien von Webseiten ähnlich wie mit einem E-Mail-Programm regelmäßig
+zu überprüfen, und informieren so leicht und übersichtlich
+über Änderungen.
+
+Manche RSS-Dateien liefern den Inhalt eines neuen
+Artikels mit, so dass der Nutzer ihn sich unabhängig von der Webseite 
+ansehen kann. Diese Einbindungsweise fokussiert auf den eigentlichen Inhalt von
+Webseiten, da sie es erlaubt, Inhalte beinahe
+darstellungsneutral zu beziehen.
+
+Unterschiedliche Gremien haben zahlreiche RSS-Versionen
+erarbeitet, teilweise inkompatibel zueinander und mit jeweils
+anderen Attributen. Das verbreitetste RSS-Format ist Version
+2.0. Serendipity unterstützt auch RSS 0.9, 0.91 und 1.0.
+
+\subsection{Webservices, Web 2.0, Social Web}
+\label{Webservices}%
+\index{Webservices}% 
+\index{Web 2.0}%
+\index{Social Web}%
+
+In dem Maße, wie Webserver in
+Skriptsprachen wie PHP und Perl geschriebene Anwendungen zu interpretieren
+lernten, wurde es immer einfacher und
+interessanter, verschiedene Komponenten miteinander zu verbinden. 
+Dynamische Software eröffnete ganz neue Möglichkeiten, 
+Besuchern einer Webseite Zusatzdienste, sogenannte Webservices, zu
+präsentieren. Als Beispiel seien
+die Anzeige von neuen Terminen, die Darstellung von
+Wetterdaten, spezielle passwortgeschützte Bereiche oder auch die
+Darstellung von Bookmarks genannt.
+
+Auf zahlreichen Webseiten kann man oft kostenlos Community"=Dienste
+in Anspruch nehmen, die sich mittels Webservices an die eigene Webseite
+anbinden lassen -- sei es die Liste aktueller Fotos von der eigenen
+Flickr-Fotoseite, die Darstellung der Lieblingslinks, des aktuellen
+Wetters zuhause oder auch die Einbindung fremder Werbung. Derartige Services
+bezeichnet man auch als \emph{Social Web}, da ein Gedankenaustausch in einer gemeinsamen Community stattfindet.
+
+Der Begriff \emph{Web 2.0} steht gesamtheitlich für die Wandlung des ehemals
+statischen \emph{Web 1.0} hin zu einer Web-Welt mit verflochtenen Diensten
+und großen Interaktionsmöglichkeiten unter Einbeziehung der Web-Nutzer.
+
+\subsection{XML-RPC, SOAP, REST}
+
+Damit ein Webservice angesprochen werden kann, benötigt man eine gemeinsame
+Schnittstelle zwischen Empfänger (Client) und Absender (Server).
+Eine solche lässt sich mittels verschiedener
+Techniken anbieten.
+
+\index{XML-RPC}% 
+Die im PHP-Umfeld verbreitetste Schnittstelle nennt sich XML-RPC.
+RPC steht hierbei für \emph{Remote Procedure Call}, also der Aufruf
+einer Funktion durch ein fremdes Programm. Zur Datenübergabe und -annahme
+wird hierbei XML verwendet. Der Server erhält eine XML-Datei mit
+speziellen Anforderungen.  Die ausführende
+Server-Software interpretiert diese, wertet sie aus und schickt das Ergebnis wieder im
+XML-Format zurück an den Client.
+
+\index{SOAP}%
+Eine dazu konkurrierende Schnittstelle nennt sich SOAP (\emph{Simple
+Object Access Protocol}). Auch SOAP arbeitet mit XML-Datensätzen, hat
+aber eine wesentlich komplexere Datenarchitektur und wird aufgrund dieses
+Overheads im Web eher selten eingesetzt.
+
+\index{REST}%
+Als dritte bekannte Schnittstelle bietet sich REST an:
+\emph{Representational State Transfer}. Diese simpelste der
+Schnittstellen führt Abfragen anhand einfacher URL-Parameter durch und
+gibt üblicherweise auch einfach zu interpretierende XML-Daten zurück.
+
+XML-RPC ist für die Weblog-Welt insofern interessant, als sie es erlaubt, Inhalte
+neutral von der verwendeten Blogsoftware zu erfassen. Die meisten Blogsysteme
+binden eine gemeinsame XML-RPC-Schnittstelle ein, die das Erstellen und
+Bearbeiten von Artikeln mittels "`Fernsteuerung"' ermöglicht. Dadurch kann ein
+Benutzer seine Artikel mit ganz normaler Desktop-Software wie z.\,B.\ ecto,
+marsEdit, WindowsLive Writer oder sogar Microsoft Word schreiben, anstatt
+sie in der Web-Oberfläche seiner Blogsoftware zu verfassen. Gerade für Benutzer,
+die sich nicht mit neuer Schreib-Software auseinandersetzen wollen, ist diese
+Variante sehr interessant.
+
+\subsection{Atom}
+\index{Atom}%
+
+Um die verschiedenen Varianten von RSS wieder zueinanderzuführen,
+entwickelte das W3C-Gremium einen Standard namens Atom. In einem
+vollständig gültigen XML-Format deckt es alle Fähigkeiten von RSS ab,
+wird aber aufgrund der höheren Komplexität heute immer noch als
+Konkurrenz zu RSS 2.0 angesehen. 
+
+Der Begriff Atom steht nicht nur für ein
+Dateiformat, sondern auch für eine Implementation der XML-RPC- oder
+SOAP-Protokollschnittstelle, die es erlaubt, entsprechend ausgerüstete Weblog-Software fernzusteuern.
+
+\subsection{Trackback und Pingback}
+
+Da Blogs letztlich Sprachrohre von Individuen darstellen, ist es für
+einen Blog-Betreiber meist sehr wichtig, sein Blog mit anderen zu
+vernetzen. Ganz im Sinne des interaktiven Webs bestand ein wichtiger
+Gedanke bei der Erfindung des Blogs darin, Beiträge eines Autoren auf dessen
+Seite kommentieren zu können und so in Dialog zu treten.
+
+Leser von Blogs sind häufig selber Blogbetreiber und möchten 
+-- gerade bei abweichender Meinung -- eine Diskussion gern auf der eigenen Seite
+weiterführen, ohne dabei die Verbindung mit dem
+Initiator zu verlieren.
+\index{Trackbacks}% 
+Hierfür wurde die Technik der \emph{Trackbacks} erfunden, die es einem Autor erlaubt,
+seinen Artikel mit einem anderen zu verketten. Die 
+Besonderheit dabei: Die fremde Webseite wird davon automatisch in
+Kenntnis gesetzt. Somit befindet sich nicht nur auf der eigenen Seite ein Link 
+auf den Quellartikel, sondern es gibt auch einen, der vom
+Quellartikel auf die eigene Seite zeigt. Wie das bei Serendipity
+funktioniert, behandelt Kapitel \ref{trackback} ab Seite \pageref{trackback}.
+
+\index{Pingback}%
+Ein \emph{Pingback} ist eine abgeschwächte Form des Trackbacks. Der
+Initiator kann auf diese Weise den Ursprungsautor darauf
+hinweisen, dass er sich auf ihn bezogen hat. Dabei wird auf dessen Blog kein
+(ausführlicher) Verweis für andere Besucher erzeugt.
+
+\subsection{API und Plugin}
+\label{API}%
+\index{API}%
+
+Eine API (\emph{Application Programming Interface}) stellt ein
+Software-Regelwerk (meist eine konkrete Liste an Funktionen oder
+Klassen) zur Verfügung, an das man sich als Programmierer halten kann,
+um auf gewisse Funktionen einer Software zuzugreifen.  Bei Serendipity
+benötigt man ein solches Regelwerk vor allem für Erweiterungen mit
+eigenen Plugins oder den Zugriff von fremder Software.
+
+%PJ:Ist das nicht etwas von hinten durch die Brust ins Auge erklaert? Eine
+%API ist doch nichts anderes als eine Sammlung von Klassen und Funktionen,
+%die man in eigenen Programmen/Plugins benutzen kann. Klassen muss man
+%jetzt fuer Normalnutzer nicht erwaehnen, aber Funktionen verstehen auch die, auch
+%wenn sie sich vielleicht etwas anderes drunter vorstellen als
+%Programmierer. 
+%GH:So?
+
+Serendipity bietet eine funktionsorientierte Kern-API zur Verwaltung von Artikeln
+und Datenbankabfragen. Weiterhin gibt es eine spezielle, objektorientierte
+Plugin-API, die alle notwendigen Methoden abdeckt, die man als Entwickler eigener
+Plugins benötigt.
+
+
+\index{Plugins}%
+Ein \emph{Plugin} ist Software, die sich nahtlos in ein
+Hauptprogramm einbindet (\emph{to plug} bedeutet \emph{einstöpseln}). Es
+hat Vorteile, gewisse Funktionalitäten in Plugins bzw.\
+Programmmodule auszulagern. Dadurch hält man zum einen die Kernsoftware
+schlank, zum anderen kann man losgelöst von der Kernsoftware
+Aktualisierungen durchführen und Funktionalitäten erweitern. Ein Benutzer
+hält sein System schlank und performant, indem er nur die
+Plugins installiert, die er für seine Anwendungsfälle nutzt.
+Auch bei Webservices gibt es zahlreiche APIs, die den Verkehr
+zwischen Client und Server jeweils strukturieren.
+
+\subsection{Mashup}
+\index{Mashup}%
+
+Der Begriff \emph{Mashup} bezeichnet die Verkettung mehrerer Webservices. Dank
+der Offenheit vieler APIs lassen sich die abgefragten Daten beliebig
+miteinander kombinieren, z.\,B.\ die Wetterdaten eines mittels Google Maps
+dargestellten Orts anzeigen.
+Oder man bindet auf der Karte die Bilder ein, die Flickr-Benutzer zu
+diesen Geo-Koordinaten eingestellt haben. Die Verknüpfungsmöglichkeiten sind
+oft nur durch Ihre Phantasie begrenzt.
+
+\subsection{Usability, Barrierefreiheit, Accessibility}
+\index{Usability}%
+
+\emph{Usability} ist ein Forschungsfeld, das sich
+damit beschäftigt, wie man z.\,B.\ eine Webseite am besten \emph{bedienen} kann.
+Es beschäftigt sich u.\,a.\ mit der konzeptionellen Struktur einer Seite, dem Aufbau der
+Navigation, der Gliederung der Inhalte und auch der Einbindung von
+Formularen, Suchen und anderen interaktiven
+Elementen.
+
+Da sich eine Webseite häufig stark von einer normalen Software auf dem
+Computer unterscheidet, lassen sich Software-Usability-Weisheiten nicht
+einfach auf Webseiten übertragen. Wie man dennoch zielgerichtet auf
+Benutzer eingeht und deren Erwartungen erfüllt, ist Aufgabe
+der Web"=Usability.
+
+\index{Barrierefreiheit}%
+\index{Accessibility|see{Barrierefreiheit}}%
+Eine Teilmenge des Oberbegriffs Usability ist die Barrierefreiheit
+(englisch \emph{Accessibility}). Diese beschreibt Techniken und
+Maßnahmen, die auch behinderten Personen die
+Benutzung einer Webseite ermöglichen. Darunter zählen Dinge wie eine
+geschickte Farbwahl, sinnvolle Kontraste, aber auch der gezielte Einsatz
+von Bildern nur an Stellen, wo sie nötig sind. 
+
+\index{XHTML!und Barrierefreiheit}%
+XHTML erlaubt zudem die
+Trennung von Layout und Inhalt, die man der Barrierefreiheit zuliebe
+stets beachten sollte. Gültiger, valider Quellcode ist 
+Voraussetzung dafür, dass jeder Browser (und damit jeder Besucher) Ihre
+Webseite problemlos bedienen kann. Denken Sie auch an blinde Menschen,
+die die Inhalte Ihrer Seite vorgelesen bekommen müssen: Wenn Sie die
+Navigation nicht speziell hervorheben, kann es sein, dass dem Benutzer
+diese beim Vorlesen vorenthalten wird.
+
+Serendipitys Standard-Templates versuchen so barrierefrei wie
+möglich zu sein und bei der Usability auf klare Strukturen zu achten.
+Erfahrungsgemäß ist dies bei einem Open-Source-Projekt recht schwer, da
+meist nur Programmierer und erfahrene Benutzer am Werk sind, die keinen
+Wert auf einfache Zugänglichkeit legen. Serendipity hat hier im Laufe der
+letzten Jahre sehr stark zugelegt und ist daher für eine barrierefreie
+Zukunft bestens gerüstet. Wie Sie diese in Ihrem Blog letztlich selber
+umsetzen, wird ab Seite \pageref{Anpassungen} ausführlich
+besprochen.
+
+\subsection{BBCode, Textile, Markup und Textformatierung}
+\index{Markup}% 
+\index{Textformatierung}%
+
+Üblicherweise werden Blog-Artikel in HTML-Syntax formatiert. Da HTML
+jedoch gerade für Anfänger nicht ganz trivial ist, gibt es mehrere
+Standards, die das Ziel einfacher Textformatierung verfolgen. Solche
+Standards, darunter 
+\index{BBCode}% 
+BBCode\footnote{\cmd{http://www.phpbb.com/community/faq.php?mode=bbcode}}
+\index{Textile}% 
+oder Textile\footnote{\cmd{http://www.textism.com/tools/textile/}} bieten
+\index{Tags}%
+eigene \emph{Tags} (also Formatierungsmarker) an, die ein System wie
+Serendipity später in
+HTML-Format konvertiert.
+
+BBCode basiert auf in Foren üblichen Markierungen:
+\index{Fettung!in BBCode}%
+\index{Textformatierung!fett|see{Fettung}}%
+\index{Formatierung!fett|see{Fettung}}%
+\cmd{[b]\cmdvar{text}[/b]} formatiert z.\,B.\ das Wort \cmd{\cmdvar{text}} fett. Alle Tags 
+werden in eckigen Klammern geschrieben;
+Vereinfachungen wie \cmd{[URL=http://www.google.com]Google""[/url]}
+\index{Links!in BBCode}%
+erlauben es, relativ einfach Links zu setzen.
+
+Serendipity bietet für alle bekannteren Markups Plugins an, so dass auch
+Kommentatoren zu einem Blog-Eintrag auf diese Syntax zugreifen können.
+\index{Kommentare!Formatierung}%
+Die direkte Eingabe von HTML ist bei Kommentaren nicht möglich, daher
+stellen solche Plugins die einzige Möglichkeit der Formatierung
+dar.
+
+\subsection{\label{WYSIWYG}WYSIWYG}
+\index{WYSIWYG}%
+
+Eine weitere Möglichkeit, die Redakteuren die Eingabe von Text 
+erleichtert, ist der sogenannte WYSIWYG-Modus: \emph{What You See
+Is What You Get}.
+\index{JavaScript}%
+JavaScript-Module erstellen im
+Webbrowser ein Texteingabefeld. Dieses enthält
+Formatierungsbuttons ähnlich wie bei OpenOffice bzw.\ Microsoft Word, die
+es erlauben,
+die Farbe oder den Schriftstil zu ändern, per
+Drag\&Drop Texte und eingebundene Bilder zu verschieben oder 
+Tabellen einzufügen.
+
+Ein Nachteil solcher WYSIWYG-Komponenten ist der, dass sie komplett im
+Browser ablaufen und daher stark vom eingesetzten Browser abhängen.
+Gerade zwischen Internet Explorer und Mozilla Firefox gibt es hier öfters
+große Unterschiede, was Kompatibilitätsprobleme nach sich zieht. Da die
+WYSIWYG-Editoren die Umformung in HTML selbständig vornehmen
+müssen, führt dies oft zu Problemen mit unsauberem bzw.\ kaputtem HTML.
+
+Trotz des Fortschritts im Web 2.0 sind solche Probleme immer noch nicht
+Browser-übergreifend gelöst, so dass Benutzer
+von WYSIWYG"=Komponenten oft Einschränkungen hinnehmen müssen. Serendipity selbst
+ermöglicht die Einbindung freier WYSIWYG-Module wie
+tinyMCE\footnote{\cmd{http://tinymce.moxiecode.com/}},
+Xinha\footnote{\cmd{http://xinha.webfactional.com/}} und 
+\index{WYSIWYG!Module}% 
+\index{TinyMCE}%
+\index{Xinha}%
+\index{FCKEditor}%
+FCKEditor\footnote{\cmd{http://www.fckeditor.net/}}.
+
+\subsection{Widgets, Nuggets, Blogroll}
+\index{Widget}%
+\index{Nugget}%
+\index{Klötze}%
+
+Viele Webservices erlauben es, ihre Dienste mit einem
+einfachen Code-Schnipsel auf der eigenen Seite einzubinden. Beliebte
+Beispiele dafür sind z.\,B.\ Google AdSense, das aktuelle Wetter, die
+letzten Flickr-Bilder und vieles mehr. Solche eingebundenen Schnipsel
+bezeichnet man als \emph{Widgets} oder \emph{Nuggets/Klötze}; sie lassen sich
+auch bei Serendipity leicht ins eigene Blog einbauen.
+
+\index{Blogroll}%
+Ein Beispiel für ein Widget ist die sogenannte \emph{Blogroll}. Dies ist
+letztlich nichts anderes als eine Liste von Blogs, die man persönlich
+liest oder als empfehlenswert betrachtet. Sie erlaubt es z.\,B.,
+den eigenen Freundeskreis virtuell zu präsentieren.
+Durch Blogrolls werden die Leser eines Blogs auch auf thematisch ähnliche oder
+sozial verbundene Blogs aufmerksam. Kein unwichtiges Feature, wenn man
+bedenkt, dass sich die Popularität 
+häufig verlinkter Blogs in Suchmaschinen steigert.
+
+\section{Templates, Themes und Styles}
+\label{theme}%
+\index{Template-S@Templates}% 
+\index{Themes}% 
+\index{Styles}% 
+\index{Layout}%
+
+Alles, was der Besucher eines Blogs sieht, entspringt einem
+zentralen Layout. Die Begriffe \emph{Template}, \emph{Theme}, \emph{Style}
+und\emph{Layout} sind im Kontext von Serendipity grundsätzlich synonym und
+bezeichnen lediglich eine Ansammlung von Dateien, die später in HTML-Code
+und Design übersetzt werden. 
+Der HTML-Code eines Templates enthält Platzhalter (sogenannte
+\index{Platzhalter|see{Smarty, Variablen}}%
+\index{Smarty!Variablen}%
+Smarty-Variablen), an deren Stelle später der Artikeltitel, -text oder
+andere dynamische Inhalte erscheinen.
+
+\section{Spam, Bots, Captcha}
+\index{Spam}% 
+\index{Bots}%
+
+Mit zunehmendem kommerziellen Gewicht des Internets ist es attraktiv, für
+Webseiten auf so vielen Partnerseiten wie möglich zu werben. Sobald der
+"`Partner"' aber mit Werbung bombardiert wird oder diese unfreiwillig
+z.\,B.\ in Form von Gästebucheinträgen und Kommentaren zu redaktionellen
+Inhalten erhält, spricht man gemeinhin von \emph{Spam}. Dabei helfen
+automatisierte Systeme (\emph{Bots}) den Spammern, ihre Werbung möglichst
+vielfältig und schnell auf fremde Webseiten zu schleusen. Wie beim
+Medium E-Mail, in dem mehr als zwei Drittel aller weltweit versandten E-Mails
+unerwünschte Werbemails sind, geht man bei Foren und Weblogs davon
+aus, dass eine ähnlich hohe Quote von Beiträgen aus automatisiertem (und teilweise
+abgewehrtem) Spam besteht.
+
+Software kann nur sehr schwer unterscheiden, ob der Textbeitrag
+eines Besuchers "`echt"' ist oder von einem automatischen System stammt.
+Aufgrund der Funktionsweise des Internets ist es nicht möglich
+herauszufinden, ob ein Aufruf einer Webseite von einem Menschen oder von
+einer Maschine stammt. Daher beschäftigen sich die meisten Techniken zur
+Spamabwehr damit, diesen Unterschied herauszuarbeiten.
+
+Schon in den Anfangszeiten der Informatik postulierte der Mathematiker Alan
+Turing, wie sich Mensch und Maschine unterscheiden lassen:
+Bei Tu\-ring-Tests setzt man Abfragetechniken ein, die die Interaktion eines
+\index{Turing-Test}%
+Menschen erfordern: Er soll logische Aufgaben lösen, Farben oder Bilder
+analysieren etc.\ -- alles Dinge, die eine Maschine nach heutigem
+Forschungsstand nicht können sollte.
+
+\label{Captcha}%
+\index{Captchas}%
+Eine gebräuchliche Form dieses Tests nennt sich CAPTCHA (\emph{Completely
+Automated Public Turing Test to tell Computers and Humans Apart}).
+Captchas nutzen Grafiken mit einer Zahlen- oder Buchstabenkombination, die
+häufig noch dazu visuell verfremdet dargestellt wird. Der vor dem Rechner sitzende Mensch soll
+diese identifizieren
+und eingeben. Nur wenn die eingetippten Zeichen mit denen auf dem Bild
+übereinstimmen, gilt eine Nachricht nicht als Spam.
+
+Ein großes Problem dieser Grafiken ist der höhere Performancebedarf 
+sowie die Tatsache, dass sehbehinderte Menschen
+bei der Entzifferung oft Probleme haben. Auch sind Bot-Entwickler nicht
+untätig und haben mittels Schrifterkennung per OCR\footnote{\emph{Optical
+Character Recognition}} große
+Fortschritte gemacht, so dass sie geläufige Captchas doch automatisiert  entziffern 
+können.
+
+\section{RDF, Semantic Web, Mikroformate}
+\index{RDF}%
+\index{Semantic Web}%
+
+Schon heute lässt sich die Datenflut des Internets kaum bewältigen, noch
+ist sie annähernd überschaubar. Volltextsuchmaschinen sind normalerweise
+nicht in der Lage, die im Web publizierten
+Texte anhand der üblichen grammatikalischen Syntax miteinander in Beziehung
+zu bringen. Um
+dieses Problem zu beseitigen, wurde die Initiative des \emph{Semantic
+Web} (Semantisches Internet) gegründet. Diese entwarf eine Syntax namens
+RDF (\emph{Resource Description Framework}) auf Basis der XML-Regeln.
+RDF"=Anweisungen lassen sich in XHTML-Daten einbetten und
+repräsentieren \emph{Metadaten} (etwa Bildunterschriften, thematische
+Eingrenzungen, Querverbindungen \ldots) zu einem gegebenen Dokument.
+
+Anhand der Metadaten können Suchroboter und andere Webservices Seiten leichter
+analysieren und gewichten. Je mehr Metadaten verfügbar sind,
+desto engmaschiger lassen sich alle Informationen des Internets
+miteinander verknüpfen -- und das nun auch nicht mehr nur einseitig.
+
+Zum heutigen Zeitpunkt ist die Erfassung von Metadaten eine recht
+aufwändige Sache und obliegt dem Redakteur eines Textes. Daher sind
+brauchbare RDF-Metadaten noch recht wenig verbreitet und
+\index{Mikroformate}%
+beschränken sich auf sogenannte \emph{Mikroformate}.
+Darunter versteht man Abwandlungen des RDF-Standards oder einfacher:
+XML-Attribute, die ein Dokument um spezialisierte Metadaten ergänzen,
+z.\,B.\ um Visitenkarten, Kalenderdaten oder Produktbewertungen.
+
+\section{Tagging}
+\index{Tagging}%
+\index{Tagwolken@Tag-Wolken}%
+
+Häufig handelt es sich bei Blogs um lose Artikelsammlungen, die der Autor mal mehr
+und mal weniger miteinander in Bezug gesetzt hat. Klassischerweise
+wurden Artikel thematisch ausschließlich festen Kategorien 
+zugeordnet. Damit stand der Redakteur vor dem Problem, sich bereits von
+vornherein Gedanken über eine hierarchische Struktur seiner zukünftigen
+Texte machen zu müssen.
+
+Aus dieser Not heraus wurde das \emph{Tagging} erfunden: Einem Artikel
+lässt sich so dynamisch eine beliebige Menge an Stichwörtern zuordnen.
+Mit deren Hilfe kann sich ein Benutzer zu Artikeln
+weiterführen lassen, die dasselbe Stichwort tragen. Das geht z.\,B.\ über
+\emph{Tagwolken}, also 
+Übersichten der meistgebrauchten Tags,
+die häufig durch unterschiedliche Schriftgrößen gewichtet werden.
+
+Gerade im Kontext von Foto-Providern wie Flickr ist Tagging sehr
+sinnvoll. Ein Bild einer starren Hierarchie zuzuordnen bedeutete viel
+Arbeit, ohne zwingend für mehr Übersicht zu sorgen.
+Anhand der Stichwörter jedoch kann man
+zügig auch andere Bilder mit ähnlichem Kontext auf"|finden, z.\,B.\ weitere
+Fotos, die mit dem Begriff
+"`Hochzeit"' verkettet sind.
+
+\section{Wiki}
+\index{Wiki}%
+
+Der Begriff \emph{Wiki} steht für eine offene Webseite, auf der sich
+Informationen von vielen Benutzern gleichzeitig zusammentragen lassen. 
+Mittels Versionierung und Protokollierung werden unterschiedliche Bearbeitungen
+hervorgehoben und miteinander kombiniert.
+
+Zum großen Erfolg der Wikis trug ihre einfache Syntax bei. Anstelle
+komplizierter HTML-Regeln beschränken sich
+Wiki-Anwendungen auf einfache Auszeichnungen (die je nach Software jedoch
+variieren können). Beispielsweise lässt sich ein Wort durch Einschließen in
+Sternchen (\cmd{*}) fetten.
+
+Das zentrale Problem von Wikis ist der Vandalismus ihrer Benutzer -- 
+die Freiheit in einer kollaborativen Umgebung können Einzelne 
+ausnutzen, indem sie destruktive Änderungen vornehmen, was zu hohem
+Moderationsaufwand führt.
+Gerade im Bereich des freien Wissensmanagements (Stichwort
+\emph{Wikipedia}) hat sich 
+eine solche Form der technisch lockeren Zusammenarbeit jedoch 
+bewährt.
+
+\section{\label{AJAX}AJAX}
+\index{AJAX}%
+
+Eine Technologiekomponente, die das Web 2.0 nachhaltig verändert hat,
+wird unter dem Schlagwort AJAX (\emph{Asynchronous Javascript and XML})
+geführt. Letztlich handelt es sich dabei
+um eine einfache Form von Java\-Script, die XML als Basis für Variablen
+und Daten verwendet. Innerhalb des Browsers können in dieser Sprache geschriebene Skripte mit
+Webservices kommunizieren und so Webseiten weiter dynamisieren. Setzte
+früher jede Aktion auf einer Webseite das Ausfüllen und Absenden von Formularen 
+voraus, können nun auch Aktionen ausgeführt werden, ohne dass
+der Benutzer merkt, dass neue Komponenten nachgeladen werden.
+
+Dies bringt Web-Anwendungen den gewohnten Desktop-Anwendungen um einiges
+näher, stellt jedoch auch höhere Anforderungen an Programmierer und
+Clients und führt zu neuen Arten von Sicherheitslücken.
+
+\section{Pod- und Vodcast}
+\index{Podcast}%
+\index{Vodcast}%
+
+Dass Internet-Surfer über ständig höhere Bandbreiten verfügen, schafft den
+wachsenden Bedarf an Multimedia-Inhalten. Webseiten (und damit auch Blogs)
+lassen sich um Videos oder Audio-Dateien ergänzen, die im Browser
+automatisch abgespielt werden. Da Videos und
+Audio-Dateien auch in die RSS-Feeds der Blogs eingebunden werden können, die 
+MP3-Player wie Apples iPod automatisch importieren,
+spricht man hier von \emph{Podcast} (Audio) oder \emph{Vodcast} (Video).
+
+\section{Moblogging}
+\index{Moblog}%
+
+Das mobile Bloggen via Handy oder PDA bezeichnet man als \emph{Moblogging}.
+Auf Reisen hat man meist keinen Zugriff auf einen normalen Webbrowser. Um
+dennoch Inhalte in einem Blog publizieren zu können, gibt es die
+Möglichkeit, eine E-Mail an das eigene Blog zu schicken, die 
+automatisch als Beitrag veröffentlicht wird. Auch gibt es inzwischen
+mobile XML-RPC-Anwendungen, die über eine GPRS/UMTS-Verbindung direkt auf
+das Blog zugreifen.
+
+\section{(Hyper-)Links, URLs und Permalinks}
+\index{Link}%
+\index{Hyperlink|see{Link}}%
+\index{Verknüpfung|see{Link}}%
+\index{Verweis|see{Link}}%
+
+Ein \emph{Hyperlink} (Kurzform: \emph{Link}), umgangssprachlich auch \emph{Verknüpfung} oder
+\emph{Verweis} genannt, gibt die Fundstelle eines Dokuments im Internet an
+und erlaubt es so, verschiedene Dateien miteinander zu vernetzen. 
+%PJ:Etwa so? 
+Das Konzept ähnelt Querverweisen oder
+Fußnoten bei einem Buch: Zeigt Ihnen Ihr Browser einen speziell markierten
+Begriff in einer HTML-Seite, können Sie
+durch dessen Anwahl zur referenzierten Internetseite springen. Erst durch
+diese Verweise werden die Dateien unterschiedlicher Webserver miteinander 
+in Verbindung gesetzt und stellen dadurch das
+ursprüngliche Kernkonzept der HTML-Auszeichnungssprache dar.
+%GH: Mir fehlte noch etwas der Aspekt, dass ohne Links das Internet
+%eigentlich nur ein Datenmüll ist, den niemand quervernetzen kann?
+
+Den Begriff \emph{Link} benutzt man oft als Synonym für den Fachbegriff
+URL (\emph{Uniform Resource Locator}).
+\label{URL}%
+Was sich so kompliziert anhört, ist das, was Sie üblicherweise unter dem 
+\index{Internetadresse|see{URL}}%
+\index{URL}%
+Namen \emph{Internetadresse} bereits kennen. Diese beschreibt, auf welche
+Art und Weise (das heißt: über welches Protokoll, siehe Seite
+\pageref{Protokolle}) und von welchem Rechner sich das Dokument beziehen lässt 
+(\cmd{http://www.ebay.de}, \cmd{http://www.example.com}). Oft enthält sie 
+zudem Pfadangaben/Dateinamen wie in \cmd{http://www.s9y.org/12.html}.
+
+Außer den URLs gibt es noch die URIs (\emph{Uniform Resource
+\index{URI}%
+Identificators}).
+Deren Definition geht über die der URLs hinaus. Eine URI kann sogenannte
+\emph{URL-Variablen}
+enthalten, die nicht Bestandteil einer URL sind. Sie werden
+üblicherweise von einem \cmd{?}-Zeichen eingeleitet und sind mittels
+\cmd{\&} voneinander getrennt. In vielen Fällen ist der Unterschied
+zwischen URL und URI für Sie als Leser unerheblich, und oft wird von einer
+URL gesprochen, wenn man fachlich eigentlich URI sagen
+müsste. Als Merksatz gilt: Sobald an eine URL Variablen
+angehängt sind, muss man von einer URI sprechen.
+
+\label{terminologie-permalinks}
+\index{Permalinks}%
+\index{Links!Perma-\textasciitilde|see{Permalinks}}%
+Ein Permalink ist eine spezielle URL, die den Inhalt eigentlich dynamischer
+Webseiten permanent "`eingefroren"' zugänglich macht.
+Bei deren Aufruf erhält
+ein Besucher immer dieselbe Seite, egal, wann er sie aufruft. Obwohl sich
+Übersichtsseiten aufgrund des chronologischen Bezugs bei jedem neuen
+Blogeintrag ändern, erlaubt es ein Permalink, 
+Artikel eindeutig zu identifizieren und immer wieder aufrufen zu können.
+
+Permalinks können in Serendipity nach Benutzervorgabe formatiert werden
+und unterschiedliche Prä-/Postfixe aufweisen (siehe Seite
+\pageref{Permalinks-Frontend}).
+
+\section{Suchmaschinenoptimierung}
+\index{SEO}%
+\label{seo}%
+
+Der Bereich der \emph{Suchmaschinenoptimierung} (kurz SEO für \emph{Search Engine
+Optimization}) ist ein sehr weites Feld. Um Ihre Webseite möglichst weit
+oben in den
+Suchergebnissen von Google und Co.\ erscheinen zu lassen (ihnen also ein
+\index{Ranking}%
+hohes \emph{Ranking} zu verschaffen), gibt es einige
+Tricks und Kniffe und vor allem auch Konzeptionelles zu beachten.
+
+Webseiten werden heutzutage fast automatisch von allen Suchrobotern
+gefunden. Jeder Link, der auf Ihre Seite führt, gibt dieser mehr
+\index{Page Rank}%
+Gewicht bei der Berechnung des \emph{Page Rank} bei Google\footnote{Andere
+Suchmaschinen wie Yahoo benutzen vergleichbare Algorithmen, die ähnlich wie die
+Rezeptur eines schwarzen Zuckergetränkes als Firmengeheimnis gelten und
+Grund vieler Spekulationen sind.}. Die Begriffe, die Sie auf
+Ihren Unterseiten angeben, werden jeweils verschlagwortet und erscheinen in
+Abhängigkeit von der Gewichtung 
+an oberer oder unterer Stelle in der Liste entsprechender Suchmaschinenergebnisse.
+
+Serendipity kann Ihnen teilweise bei der Suchmaschinenoptimierung
+helfen. Durch sprechende URLs (siehe Seite
+\pageref{mod-rewrite}) lassen sich Artikeltitel mit in die URL aufnehmen,
+was die Gewichtung erhöht. Die Verwendung korrekt
+verschachtelter Überschriften innerhalb der HTML-Seite und eine gültige
+HTLM-Syntax steigern die Effektivität eines Suchroboters. Weiterhin gibt
+es Plugins, mit denen Sie Kreuzverkettungen zu ähnlichen Artikeln in Ihrem
+\index{Google Sitemap}%
+Blog erstellen können (siehe Seite \pageref{freetag}) oder auch eine spezielle
+\emph{Google-Sitemap}-Datei (siehe Seite \pageref{googlesitemap}) anlegen.
+
+Letzten Endes zählt aber auch die Strukturierung Ihrer Artikeltexte sehr
+viel. Die Verteilung der (Schlüssel-)Wörter
+ist ebenso wichtig wie die Benutzung von Wörtern, die Ihre Besucher
+womöglich zu einem Thema erwarten. Nicht unwichtig kann der Aufbau
+eines Partner-Netzwerks sein, da Verlinkungen auf Ihre Seite den
+Page Rank erhöhen. Hier wird jedoch auch viel unseriöse
+Geschäftemacherei betrieben. Hüten Sie sich also vor Tricks, die womöglich
+ins Gegenteil umschlagen können.
+
+Letztlich erhalten Sie gute Suchmaschinenergebnisse nur dann, wenn Sie
+für Ihre Besucher interessante Texte oder Services anbieten. Alle
+anderen technischen Kniffe nutzen Ihnen nichts, wenn die Besucher
+herausfinden, dass Ihre Webseite nicht das hält, was sie durch eine
+Suchmaschine verspricht.
+
+\section{\label{Protokolle}Protokolle: HTTP, FTP, SSH}
+\index{Protokolle}%
+
+Im Internet gibt es eine beinahe unendliche Zahl verschiedener
+Protokolle, die Regeln
+definieren, nach denen Rechner, Anwendungen und Server miteinander
+kommunizieren. Im Zusammenhang mit Serendipity sind folgende 
+Protokolle von Belang:
+
+\begin{osplist}
+\index{HTTP}%
+\index{HTTPS}%
+\label{https}%
+\item HTTP, das \emph{Hypertext Transfer Protocol},
+ist sicherlich das geläufigste, denn Sie
+verwenden es bei jedem Abruf einer Internetseite. Erkennbar ist dies
+daran, dass die meisten URLs, die Ihr Webbrowser anzeigt, ein vorgestelltes
+\cmd{http://} enthalten. Über dieses Protokoll überträgt der
+Webserver ein Dokument an den eigenen Computer, wobei der Webbrowser als
+Empfänger dient.
+
+Die Sonderform \cmd{https} tritt auf, wenn ein Webserver eine sichere,
+verschlüsselte Verbindung zur Datenübertragung nutzt. Dabei kommt das
+Protokoll \cmd{SSL} (\cmd{Secure Socket Layer}) zum Einsatz, so dass die
+übertragenen Daten durch den Einsatz von Zertifikaten ausschließlich vom Server
+und vom Client entschlüsselt werden können. Bei \cmd{http} ist es grundsätzlich
+möglich, dass auch andere Benutzer oder Proxies die Übertragung
+belauschen können.
+
+\index{FTP}%
+\item Obwohl auch HTTP als Protokoll zum Dateitransfer dient und mittlerweile oft
+dafür eingesetzt wird, gibt es ein noch spezielleres (und älteres)
+Protokoll für den 
+Dateiaustausch: das \emph{File Transfer Protocol} FTP. Dieses Protokoll ermöglicht nicht nur den
+\index{Download}%
+Empfang (\emph{Download}), sondern auch ein Senden von Dateien
+\index{Upload}%
+(\emph{Upload}).
+
+\item Im Gegensatz zu grafischen Betriebssystemen wie Windows kann Unix
+komplett mit textbasierten Befehlen gesteuert werden, was sich
+\index{SSH}%
+\index{Secure Shell|see{SSH}}%
+gerade im Einsatz als Webserver als große Erleichterung herausgestellt
+hat. Das geht auch ferngesteuert übers Netz, am besten über einen
+abgesicherten SSH-Zugang.\footnote{SSH steht für \emph{Secure Shell}; mit
+\emph{Shell} bezeichnet man ein Programm, das die interaktive Steuerung
+über Textbefehle ermöglicht.}
+
+Diese Zugriffsmöglichkeit auf einen Server bezeichnen viele Leute irrtümlicherweise auch
+\index{root-Zugang}%
+als \cmd{root}-Zugang. Den hat man aber nur, wenn man über das Login 
+(meist als User \cmd{root}) volle Zugriffsrechte für den Server bekommt. 
+SSH-Zugang ist aber auch mit reduzierten
+Zugriffsrechten (als unprivilegierter Nutzer) möglich.
+
+Web-Provider bieten selten SSH-Zugang an.
+Häufig steht ausschließlich FTP und HTTP zum Zugriff auf
+einen Server zur Verfügung. Die Bedienung einer SSH-Konsole setzt zudem
+einiges an Fachkenntnissen voraus, die wir in diesem Buch nicht
+vermitteln können. Dennoch wird an Stellen, wo SSH-Zugriff die Arbeit
+erleichtert, auf diesen eingegangen.
+\end{osplist}
+
+\section{Frontend, Backend, Admin-Oberfläche}
+\index{Frontend}%
+\index{Backend}%
+
+Bei vielen Web-Anwendungen unterscheidet man zwischen
+\emph{Frontend} und \emph{Backend}. Vereinfacht ausgedrückt ist ein
+Frontend all das, was der Besucher einer Webseite sieht. Als Backend oder
+\emph{Admin-Oberfläche}
+bezeichnet man das, was ein Redakteur oder Administrator nach einem Login in
+den geschützten Bereich sehen kann.
+%PJ:Oh, das war mir neu. Normalerweise ist doch das Backend die
+%(unsichtbare) Logik, und die Admin-Oberfläche auch nur ein Frontend,
+%selbst wenn es sich an einen anderen Nutzerkreis richtet.
+%GH:Frontend und Backend sind beides sehr schwammige Begriffe. Manchmal
+% wird sogar eine API als Backend bezeichnet. Im Serendipity-Kontext
+% wird jedoch überall von Frontend (Blog) und Backend (Admin-Oberfläche)
+% gesprochen. Um das hier nicht auch zu verschleiern, würde ich von der
+% problematischen Begrifflichkeit nicht noch tiefer greifen wollen?
+
+\section{Cookies und Sessions}
+\label{sessioncookies}%
+\index{Session}%
+\index{Sitzung|see{Session}}%
+
+Da HTTP ein \emph{verbindungsloses} Protokoll ist, "`vergisst"' der
+Webserver nach jedem Zugriff, was der Benutzer beim
+vorigen Aufruf getan hat.
+Das ist besonders bei dynamischen Web-Anwendungen ärgerlich, da man 
+sich normalerweise bei jeder Aktion erneut einloggen müsste. Als
+rettenden Kniff gibt es
+das Konzept der \emph{Sessions} oder Sitzungen.
+
+\index{Cookies}%
+\label{Cookie}%
+Webbrowser besitzen einen kleinen Datenspeicher. Dort kann ein Webserver
+den Browser anweisen, eine kleine Datenmenge auf der eigenen Festplatte
+zu speichern. Diesen kleinen Datensatz nennt man \emph{Cookie}. Er
+wird meistens dazu eingesetzt, einen Besucher eindeutig
+zu identifizieren, so dass er autorisierte Aktionen
+ausführen kann. Cookies haben einen schlechten Ruf erworben, da viele
+Werbetreibende sie dazu benutz(t)en, ihre Werbe-Zielgruppe
+eindeutig wiederzuerkennen und Statistiken über deren Nutzerverhalten zu
+sammeln. Auch besteht oft die Angst, dass ein Webserver so auf die eigene
+Festplatte zugreifen könnte.
+
+Diese Furcht ist normalerweise unbegründet. Fast alle Browser ermöglichen
+es Ihnen, Cookies nur von vertrauenswürdigen Quellen und nur
+im Bedarfsfall anzunehmen oder abzuweisen. Serendipity
+benötigt solche Cookies ebenfalls für das Frontend und das Backend, daher
+muss der Webbrowser so eingestellt werden, dass er Cookies annimmt.
+
+Um Nutzeraktionen als zusammengehörige Session zu
+erkennen, speichert Serendipity eine einfache
+\index{Session-ID}%
+Zufallskombination aus Buchstaben und Zahlen, die \emph{Session-ID}, als
+Cookie im Browser des Besuchers. 
+Bei jedem Folgeaufruf überträgt dieser die ID zurück an den Server, der
+damit den
+Besucher identifizieren und zuvor gesetzte
+\index{Session-Daten@Sessiondaten}%
+Variablen (die \emph{Sessiondaten}) wiederherstellen kann. Sessiondaten werden
+auf dem Server gespeichert und nicht in Cookies, so dass der Nutzer sie
+nicht beliebig verändern kann.
+
+Eine Sitzung ist zeitlich begrenzt. Das heißt, dass nach einem gewissen
+\emph{Time\-out} die Sessiondaten auf dem Server (automatisch) gelöscht
+werden und keinen unnötigen Speicherplatz beanspruchen.
+
+
+\section{Parsen und Kompilieren}
+\index{Parsing}%
+\index{Kompilieren}%
+
+Der englische Begriff \emph{to parse} beschreibt das maschinelle, automatisierte
+Auslesen einer Datei. Bei diesem Vorgang interpretiert ein \emph{Parser} etwaige Platzhalter und
+Instruktionen (Schleifen, Bedingungen \ldots).
+
+Die Smarty-Templatedateien enthalten allesamt Anweisungen, die erst nach diesem
+Vorgang des Parsens gültige HTML-Ausgaben enthalten.
+
+Alternativ bezeichnet man diesen Vorgang auch als \emph{Kompilierung} (von englisch: \emph{to
+compile}). PHP selbst stellt eine interpretierende
+Skriptsprache dar, die erst nach der Interpretation der
+PHP-Funktionen und -Anweisungen einen maschinenausführbaren Code zurückliefert.
+
+\ospvacat
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "serendipity"
+%%% End:

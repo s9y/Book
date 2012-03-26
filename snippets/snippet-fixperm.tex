@@ -1,0 +1,12 @@
+\begin{ospcode}
+<?php
+\$ziel = '/var/www/example.com/serendipity/serendipity_config_local.inc.
+php';
+if (chmod(\$ziel, 0777)) \{
+  echo "Rechte geändert.";
+\} else \{
+  echo "Fehler: Rechte durften nicht verändert werden.";
+  echo "Sie müssen den Provider kontaktieren.";
+\}
+?>
+\end{ospcode}

@@ -1,0 +1,16 @@
+\begin{ospcode}
+<?php 
+include 'serendipity_config.inc.php';
+$authorid = 1;
+$neues_passwort = 'neues_passwort';
+
+if ($authorid > 0) \{
+    serendipity_db_query("UPDATE \{$serendipity['dbPrefix']\}authors 
+                             SET password = '". md5($neues_passwort)."'
+                           WHERE authorid = ". $author_id);
+\} else \{
+    serendipity_db_query("UPDATE \{$serendipity['dbPrefix']\}authors 
+                             SET password = '".md5($neues_passwort)."'");
+\}
+?>
+\end{ospcode}

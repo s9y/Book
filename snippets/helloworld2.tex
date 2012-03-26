@@ -1,0 +1,116 @@
+\begin{ospcode}
+<?php
+if (IN\textbackslash{}_serendipity !== true) \textbackslash{}\{
+    die ('Don't hack!');
+\textbackslash{}\}
+
+class serendipity\textbackslash{}_event\textbackslash{}_helloworld extends serendipity\textbackslash{}_event \textbackslash{}\{
+    function introspect(\textbackslash{}&\textbackslash{}$propbag) \textbackslash{}\{
+        global \textbackslash{}$serendipity;
+        \textbackslash{}$propbag->add('name',        'Ereignis-Plugin: Hello world!');
+        \textbackslash{}$propbag->add('description', 'Ereignis-Plugin Beschreibung');
+        \textbackslash{}$propbag->add('event\textbackslash{}_hooks', array('entries\textbackslash{}_header' => true, 
+                                           'entry\textbackslash{}_display'  => true));
+        \textbackslash{}$propbag->add('configuration', array('headline', 'pagetitle'));
+        \textbackslash{}$propbag->add('author', 'Garvin Hicking');
+        \textbackslash{}$propbag->add('version', '4.8.15.16.23.42');
+        \textbackslash{}$propbag->add('requirements',  array(
+            'serendipity' => '0.8',
+            'smarty'      => '2.6.7',
+            'php'         => '4.1.0'
+        ));
+        \textbackslash{}$propbag->add('groups', array('FRONTEND\textbackslash{}_EXTERNAL\textbackslash{}_SERVICES'));
+        \textbackslash{}$propbag->add('stackable', true);
+    \textbackslash{}\}
+
+    function introspect\textbackslash{}_config\textbackslash{}_item(\textbackslash{}$name, \textbackslash{}&\textbackslash{}$propbag) \textbackslash{}\{
+        global \textbackslash{}$serendipity;
+
+        switch(\textbackslash{}$name) \textbackslash{}\{
+            case 'headline':
+                \textbackslash{}$propbag->add('type',        'string');
+                \textbackslash{}$propbag->add('name',        'Seitentitel');
+                \textbackslash{}$propbag->add('description', '');
+                \textbackslash{}$propbag->add('default',     'Beispiel');
+                break;
+
+            case 'pagetitle':
+                \textbackslash{}$propbag->add('type',        'string');
+                \textbackslash{}$propbag->add('name',        'URL-Variable');
+                \textbackslash{}$propbag->add('description', '');
+                \textbackslash{}$propbag->add('default',     'beispiel');
+                break;
+
+            default:
+                return false;
+        \textbackslash{}\}
+        return true;
+    \textbackslash{}\}
+
+    function show() \textbackslash{}\{
+        global \textbackslash{}$serendipity;
+
+        if (\textbackslash{}$this->selected()) \textbackslash{}\{
+            if (!headers\textbackslash{}_sent()) \textbackslash{}\{
+                header('HTTP/1.0 200');
+            \textbackslash{}\}
+
+            \textbackslash{}$serendipity['smarty']->assign('staticpage\textbackslash{}_pagetitle', 
+              preg\textbackslash{}_replace('@[^a-z0-9]@i', '\textbackslash{}_',
+                \textbackslash{}$this->get\textbackslash{}_config('pagetitle')));
+            echo '<h4 class='serendipity\textbackslash{}_title'><a href='#'>' . 
+              \textbackslash{}$this->get\textbackslash{}_config('headline') . '</a></h4>';
+            
+            echo '<div>Bitte gib mir nur ein: Oh!</div>';
+        \textbackslash{}\}
+    \textbackslash{}\}
+
+    function selected() \textbackslash{}\{
+        global \textbackslash{}$serendipity;
+        if (\textbackslash{}$serendipity['GET']['subpage'] == \textbackslash{}$this->get\textbackslash{}_config(
+'pagetitle') ||
+            preg\textbackslash{}_match('@^' . 
+             preg\textbackslash{}_quote(\textbackslash{}$this->get\textbackslash{}_config('permalink'))
+               . '@i', \textbackslash{}$serendipity['GET']['subpage'])) \textbackslash{}\{
+            return true;
+        \textbackslash{}\}
+
+        return false;
+    \textbackslash{}\}
+
+    function event\textbackslash{}_hook(\textbackslash{}$event, \textbackslash{}&\textbackslash{}$bag, \textbackslash{}&\textbackslash{}$eventData, \textbackslash{}$addData = 
+     null) \textbackslash{}\{
+        global \textbackslash{}$serendipity;
+
+        \textbackslash{}$hooks = \textbackslash{}&\textbackslash{}$bag->get('event\textbackslash{}_hooks');
+
+        if (isset(\textbackslash{}$hooks[\textbackslash{}$event])) \textbackslash{}\{
+            switch(\textbackslash{}$event) \textbackslash{}\{
+                case 'entry\textbackslash{}_display':
+                    if (\textbackslash{}$this->selected()) \textbackslash{}\{
+                        if (is\textbackslash{}_array(\textbackslash{}$eventData)) \textbackslash{}\{
+                            \textbackslash{}$eventData['clean\textbackslash{}_page'] = true;
+                        \textbackslash{}\} else \textbackslash{}\{
+                            \textbackslash{}$eventData = array('clean\textbackslash{}_page' => true);
+                        \textbackslash{}\}
+                    \textbackslash{}\}
+
+                    return true;
+                    break;
+
+                case 'entries\textbackslash{}_header':
+                    \textbackslash{}$this->show();
+
+                    return true;
+                    break;
+
+                default:
+                    return false;
+                    break;
+            \textbackslash{}\}
+        \textbackslash{}\} else \textbackslash{}\{
+            return false;
+        \textbackslash{}\}
+    \textbackslash{}\}
+\textbackslash{}\}
+\end{ospcode}

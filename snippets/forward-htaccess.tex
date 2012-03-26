@@ -1,0 +1,6 @@
+\begin{ospcode}
+RewriteEngine On
+RewriteCond \%\{HTTP_HOST\} ^\cmdvar{example.com} [NC]
+RewriteRule ^\cmdvar{serendipity}/(.*)\$ \cmdvar{http://serendipity.
+example.com/}\$1 [QSA]
+\end{ospcode}

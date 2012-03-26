@@ -1,0 +1,975 @@
+%revised
+\chapter{Einrichtung}
+\index{Einrichtung|(}%
+\index{Serendipity!Einrichtung|see{Einrichtung}}%
+\index{Installation|see{Einrichtung}}%
+
+Die folgenden Installationsanweisungen sind bewusst sehr ausführlich
+gehalten, um auch Anfängern den Einstieg zu ermöglichen. Fortgeschrittene
+Anwender finden eine Zusammenfassung 
+im Abschnitt \ref{Schnelle Installation} auf Seite
+\pageref{Schnelle Installation}.
+
+\section{Wahl der Waffen}
+\index{Serendipity!benötigte Programme|(}%
+\index{FTP}%
+Um Serendipity voll auszunutzen, benötigt
+man einiges an Zusatz\-soft\-ware, als Erstes
+ein Programm, um Dateien (und auch
+Serendipity selbst) auf den eigenen Server hochzuladen. Üblicherweise
+geschieht dies mittels eines FTP-Programmes, in manchen Fällen aber auch
+per SSH bzw.\ SFTP\footnote{siehe Abschnitt \ref{Protokolle} auf Seite
+\pageref{Protokolle}}. Sollten Sie FTP einsetzen, empfiehlt sich ein
+Programm, das mit \emph{Threads}\footnote{\emph{Threading}
+\index{Threading (FTP)}%
+wird von FTP-Programmen benutzt, um mehrere gleichzeitige Verbindungen zu
+einem Server aufzubauen.} umgehen kann, was den Upload vieler
+kleiner Dateien beschleunigt. Für Windows ist
+\index{SmartFTP}%
+SmartFTP\footnote{\cmd{http://www.smartftp.com/}} für solche Zwecke
+empfehlenswert. Weiterhin sollte das FTP-Programm auch ermöglichen,
+Dateirechte mit dem Befehl \cmd{chmod} zu ändern.
+
+Zum Entpacken von Serendipity benötigen Sie ein Programm wie 7-Zip oder
+Winzip oder entsprechende Kommandozeilen-Tools in einer
+Linux-Umgebung.
+
+Um das Blogsystem zu bedienen, benötigen Sie selbstverständlich einen
+Webbrowser. Serendipity läuft mit allen gängigen Webbrowsern (Mozilla
+\index{Webbrowser!Anforderungen}%
+\index{Browser|see{Webbrowser}}%
+Firefox, Internet Explorer, Opera, Safari) auch älterer Generation, da
+Java\-Script/Ajax nur im Bedarfsfall verwendet (aber nicht benötigt) wird.
+Um später leicht Änderungen an Ihrem Layout durchzuführen, empfiehlt der
+Autor 
+den Einsatz von Mozilla Firefox und die Installation der Extensions
+"`Firebug"'\footnote{\cmd{http://www.getfirebug.com/}} und
+"`Web-Developer"'\footnote{\cmd{https://addons.mozilla.org/de/firefox/addon/60}}.
+Mittels dieser beiden Erweiterungen können Sie Designänderungen direkt in der
+Browser-Ansicht testen. Dies erleichtert die
+Template-Erstellung ungemein.
+
+Zur Verwaltung von Datenbanken und Tabellen gibt es zahlreiche
+SQL-Anwendungen. Bei der Benutzung von MySQL ist das Web-basierte
+\index{MySQL}%
+\index{phpMyAdmin}%
+phpMyAdmin\footnote{\cmd{http://www.phpmyadmin.net/}} sehr zu empfehlen,
+\index{PostgreSQL}%
+für PostgreSQL gibt es analog
+\index{phpPgAdmin}%
+phpPgAdmin\footnote{\cmd{http://phppgadmin.sourceforge.net/}} und für
+SQLite 
+\index{SQLite}%
+\index{phpSQLiteAdmin}%
+phpSQLiteAdmin.\footnote{\cmd{http://www.phpguru.org/static/phpSQLiteAdmin.html}}
+Die Installationsanleitung für diese Web-Anwendungen schlagen Sie bitte auf den
+jeweiligen Projekt-Webseiten nach.
+\index{Serendipity!benötigte Programme|)}%
+
+\section{\label{Installation}Installation}
+
+Im Folgenden gehen wir davon aus, dass Sie entweder
+selbständig einen Webserver mit PHP und Datenbanken eingerichtet haben
+oder von einem Dienstleister einen entsprechend aufgesetzten Webserver
+bereitgestellt bekommen.
+
+Dort müssen Sie Serendipity unterhalb des 
+\index{Document Root}%
+\index{example.com}%
+Document Root (siehe Seite \pageref{DocRoot}) ablegen. 
+Im Folgenden nennen wir dieses Verzeichnis exemplarisch 
+\cmd{/var/www/example.com}.
+Alle Angaben, die diesen Pfad enthalten, müssen Sie auf Ihre
+individuellen Gegebenheiten anpassen.
+
+\index{Verzeichnisbenennung}%
+\index{Fehler!Verzeichnisbenennung}%
+Sie werden Serendipity in einem Unterverzeichnis dieses Stammpfads
+installieren, so dass Sie das Blogsystem später über die URL
+\cmd{http://www.""example.com/serendipity/} aufrufen können. Ob Sie dieses
+Unterverzeichnis ebenfalls \cmd{serendipity} nennen, bleibt Ihnen
+überlassen -- es darf auch
+\cmd{blog}, \cmd{tagebuch} o.\,ä.\ heißen. Sie sollten jedoch Sonderzeichen
+wie den Unterstrich (\cmd{\_}) sowie Zahlen am Anfang oder Ende des
+Verzeichnisnamens vermeiden, da dies zu Problemen mit 
+Serendipitys dynamisch generierten URLs führen kann.
+
+Sie können Serendipity natürlich auch direkt ins Stammverzeichnis selbst
+installieren. Beachten Sie jedoch dabei, dass dadurch
+die Installation anderer Software, etwa eines Forums oder eines
+Statistikprogramms, 
+schwieriger werden könnte, wenn die URL-Umformung aktiviert wurde und
+Serendipity direkte Zugriffe auf Unterverzeichnisse möglicherweise als eigene
+Seitenausgabe auffasst.
+
+\subsection{Upload der Dateien}
+
+\index{Download}%
+\index{Serendipity!Download}%
+Das Serendipity-Paket bekommen Sie entweder von der
+Projekt-Webseite \cmd{http://www.s9y.org/} im Bereich
+\menu{Downloads} oder direkt von der Source\-Forge-Projektseite.\footnote{\cmd{http://sourceforge.net/project/showfiles.php?group\_id=75065}}
+
+\index{Nightlies}%
+\index{Snapshots}%
+\index{Lite Release}%
+\index{Tarball}%
+Auf beiden Seiten finden Sie sowohl die aktuellste Ausgabe 
+als auch Beta- und ältere
+Versionen und die täglichen \emph{Snapshots}. Obwohl es sich bei Letzteren
+um die tagesaktuellen Entwicklerversionen handelt, sind diese bei Serendipity 
+gewöhnlich sehr stabil. Neben den vollständigen
+Installationspaketen gibt es zu einigen Releases auch sogenannte
+\emph{LITE Releases}. Diese enthalten nur das Standard-Template
+und sind mit etwa 3\,MB etwas kleiner als die anderen Pakete, die ca.\ 5\,MB
+umfassen.
+
+Außerdem können Sie die Pakete in mehreren Archivformaten
+herunterladen: als \cmd{zip}-Datei sowie als \cmd{bzip2}
+(Dateinamensendung \cmd{tar.bz2}) oder
+\cmd{gzip} (Dateinamensendung \cmd{tar.gz}) gepackten
+\emph{Tarball}. Alle drei Varianten enthalten die gepackten
+PHP-Dateien, die Sie auf Ihren Webserver hochladen müssen. Für
+Windows-Benutzer ist das \cmd{zip}-Archiv am einfachsten zu handhaben,
+unter Unix empfiehlt sich der Tarball.
+
+Falls Sie via \cmd{ssh} direkten Shellzugriff auf Ihren Webserver haben,
+laden Sie das Paket mittels \cmd{wget} ohne Umwege direkt auf den Server
+und entpacken es
+mit einem Kommandozeilen-Programm:
+
+\begin{ospcode}
+\uprompt{}\textbf{cd /var/www/example.com/}
+\uprompt{}\textbf{wget "http://downloads.sourceforge.net/php-blog/serendipity}
+\textbf{-1.3.tar.gz?use\_mirror=mesh"} 
+[...]
+\uprompt{}\textbf{tar -xvzf serendipity-1.3.tar.gz}
+[...]
+\end{ospcode}
+%GH:TODO:Versionen aktualisieren
+
+Anderenfalls laden Sie das Paket auf Ihren
+eigenen Rechner und entpacken es dort mit einem geeigneten Programm
+in ein temporäres
+Verzeichnis. Aus diesem Ordner heraus laden Sie alle Dateien und
+Unterverzeichnisse des entpackten
+\cmd{serendipity}-Unterverzeichnisses mit allen Dateien mittels
+FTP-Programm auf Ihren Webserver.
+%PJ:Korrekt?
+%GH:Grundsätzlich ja, nur sollte nicht das ganze Verzeichnis hoch-
+%geladen werden, sondern nur die Dateien darin. Sonst hätte man
+%später auf dem Server ja gedoppelte Inhalte.
+
+\index{Fehler!beim Upload}%
+Achten Sie beim Aufspielen der Dateien unbedingt darauf,
+dass der Transfer nicht an einer Stelle abbricht oder fehlschlägt.
+Teilweise hochgeladene Dateien können Serendipity
+unbenutzbar machen. Da insgesamt mehrere hundert kleine Dateien
+hochgeladen werden, empfiehlt es sich, im FTP-Programm die Benutzung
+sogenannter Threads zu aktivieren. Damit öffnet es mehrere
+parallele FTP-Verbindungen und lädt die Dateien so schneller hoch.
+In jedem Fall sollten Sie sorgfältig auf etwaige Fehlermeldungen achten.
+
+\subsection{Einrichten der Verzeichnisse}
+Nach dem Upload finden Sie auf Ihrem Webserver
+im Verzeichnis \cmd{serendi\-pity} 
+einige Dateien mit \cmd{.php}-Endung (\cmd{index.php},
+\cmd{comment.php}, \cmd{seren\-dipity\_admin.php} \ldots) sowie einige
+Unterverzeichnisse (\cmd{bundled-libs}, \cmd{docs}, \cmd{htmlarea},
+\cmd{include}, \cmd{lang} \ldots).
+
+Um Zugriffsrechte auf einem Server zu verwalten, bedienen sich sowohl
+Windows- als auch Linux-Systeme sogenannter Eigentümer- und
+Gruppenrechte. Jeder Benutzer des Systems kann Dateieigentümer 
+und jeder Eigentümer kann Mitglied einer oder mehrerer
+Benutzergruppen sein.
+
+\index{Schreibrechte}%
+\index{Zugriffsrechte}%
+\index{Benutzergruppen!Rechte}% 
+\label{Zugriffsrechte}%
+Jede Datei (und jedes Verzeichnis) auf einem Server ist einem Eigentümer
+und einer Gruppe zugewiesen. Für beide wird der Zugriff auf eine Datei
+über ein Zugriffs- (oder Ausführbarkeits-), Lese- und Schreibrecht geregelt. Meist hat ein
+Eigentümer die vollen Rechte an einer Datei: Er kann sie ansehen, ändern
+und löschen. Die anderen Mitglieder derselben Benutzergruppe können 
+jedoch abweichende Rechte haben, so dass sie die Datei nur
+ansehen, aber nicht verändern dürfen. Zudem muss noch
+geregelt werden, welche Zugriffsrechte Benutzer haben, die weder
+Eigentümer noch Gruppenmitglieder sind. Auch für diese 
+"`anderen Benutzer"', also den "`Rest der Welt"', werden 
+Zugriffs-, Lese und Schreibrecht aufgeteilt.
+
+Wenn Sie eine Datei mittels FTP auf einen Webserver laden, tun Sie dies 
+(zwangsläufig) mit dem Benutzeraccount, der für den FTP-Zugriff eingerichtet 
+wurde. Hochgeladene Dateien werden diesem Benutzeraccount und standardmäßig 
+einer Gruppe zugewiesen, der Ihrem Benutzerkonto angehört. Dieses Vorgehen 
+stellt sicher, dass andere Benutzer, die auf demselben Server tätig sind, nicht 
+einfach Ihre Dateien lesen oder verändern können. Optimalerweise haben diese 
+keine Möglichkeit, auf von Ihnen hochgeladene Dateien zuzugreifen.
+
+Die Webserver-Software, die die von Ihnen hochgeladenen Dateien interpretiert 
+und als Webseite ausliefert, läuft ebenfalls mit den Rechten eines bestimmten 
+Benutzers. Dieser heißt häufig \cmd{www-data}, \cmd{wwwrun} oder auch 
+\cmd{nobody}. Damit dieser Systembenutzer Software wie Serendipity ausführen 
+kann, muss er bestimmte Rechte an den von Ihnen hochgeladenen Dateien haben. Das 
+müssen Sie sicherstellen. In üblichen Konfigurationen ist Ihr Benutzeraccount 
+Mitglied derselben Gruppe wie der Webserver-Nutzer, die Lesezugriff auf alle 
+hochgeladenen Dateien hat.
+
+Beim Hochladen von Dateien mittels FTP können Sie in diese Rechte
+eingreifen. Dazu bieten viele Programme bei Rechtsklick auf eine Datei
+oder ein Verzeichnis ein Menü namens \menu{Permission} oder \menu{CHMOD}
+an (Abbildung \figref{fig:img/chmod.eps}).
+
+\ospfigure{0.5}{img/chmod.eps}{\menu{CHMOD}-Maske des FTP-Programmes SmartFTP}{fig:img/chmod.eps}%
+
+Dort trägt man, Unix-Konventionen entsprechend, die Zugriffsrechte für 
+Eigentümer/Benutzer (\emph{Owner}), Gruppe (\emph{Group}) und Rest
+(\emph{Other}) ein: für jede dieser drei Nutzerkategorien eine Zahl.
+%FM im Bild heißt es 'Benutzer' statt 'Eigentümer'. Und was bitte ist 'klebrig' im Bild??
+%GH 'Klebrig' ist eine ganz konfuse Sache. Damit ist das Permission StickyBit
+%gemeint, dass einige Sonderfälle für Zugriffsrechte definiert. Das zu erklären
+%würde hier aber leider arg über die Stränge schlagen.
+Eine \cmd{0} bedeutet "`kein Zugriff"', eine \cmd{1} "`Ausführen
+möglich"', eine \cmd{2} "`Schreiben erlaubt"' und eine \cmd{4}
+"`Lesen erlaubt"'. Diese Zahlen lassen sich addieren, so dass
+ein Lese- und Schreibzugriff durch die Zahl \cmd{6} angegeben wird. Für
+Verzeichnisse gilt dabei, dass diese nur \emph{betreten} werden
+dürfen, wenn das Recht mit der Zahl \cmd{1} in der Summe enthalten ist, etwa beim
+Vollzugriff mit \cmd{7}.
+
+Mit der Zugriffsmaske \cmd{777} erhält jeder Nutzer volle Zugriffsrechte auf 
+die betroffene Datei. Damit stellt man einfach sicher, dass sowohl der eigene 
+Benutzeraccount als auch der des Webservers volle Zugriffsrechte haben -- 
+allerdings auch andere Benutzer auf demselben Server. Daher ist es besser, die 
+Zugriffsrechte von Dateien und Verzeichnissen so strikt wie möglich zu setzen. 
+Wie dies konkret bei Ihnen aussieht, klären Sie am besten mit Ihrem Provider.
+
+Damit der Webserver Serendipity ausführen kann, benötigt er Leserechte für 
+\emph{alle} Dateien und Verzeichnisse. Um Serendipity zu installieren, braucht 
+er zudem anfangs Schreibzugriff auf das Stammverzeichnis, damit er die Dateien 
+\cmd{serendipity\_config\_local.inc.php} und \cmd{.htaccess} erstellen kann. 
+Darüber hinaus wird das Installationsprogramm die Unterverzeichnisse 
+\cmd{templates\_c}, \cmd{archives} und \cmd{uploads} zu erstellen versuchen. 
+Sollte es diese schon geben, müssen Schreibrechte für den Webserver-Benutzer 
+dafür vergeben werden. Nach der Installation benötigt der Webserver nur noch 
+Schreibrechte auf die genannten drei Unterverzeichnisse und zwei Dateien, den 
+globalen Schreibzugriff auf das Stammverzeichnis können Sie also wieder 
+entfernen.
+
+Wenn Sie darüber hinaus das Spartacus-Plugin zum Download von Templates
+und Plugins nutzen wollen (siehe Kapitel \ref{Spartacus} ab
+Seite \pageref{Spartacus}), müssen auch die Verzeichnisse \cmd{plugins}
+und \cmd{templates} beschreibbar sein (und bleiben).
+
+\subsection{Einrichten der Datenbank}
+\label{DBeinrichten}%
+\index{Datenbank!einrichten|(}%
+
+Nachdem nun also alle notwendigen Dateien hochgeladen wurden und Sie die
+Zugriffsrechte konfiguriert haben, müssen Sie eine Datenbank für
+Serendipity einrichten.
+
+Je nachdem, welche Datenbanksoftware auf Ihrem Webserver zur Verfügung
+steht, kann dieser Vorgang unterschiedlich ausfallen. 
+
+Verwendet Ihr Webserver PHP5, ist die
+\index{SQLite!einrichten}%
+Datenbank SQLite automatisch verfügbar. Dieses Datenbanksystem
+speichert alle seine Datenbanken und Tabellen in einer einzigen Datei.
+Diese wird im Serendipity-Verzeichnis abgelegt und während der
+Installation ohne Ihr Zutun automatisch erstellt, es sind
+daher keine vorbereitenden Eingriffe notwendig.
+
+Beim Einsatz von MySQL und PostgreSQL geht Serendipity davon aus, einen 
+Datenbankbenutzer und eine leere Datenbank vorzufinden. Üblicherweise
+erhält man die Zugangsdaten von seinem Provider,
+da der Benutzeraccount bereits besteht. Manche Provider gestehen
+Ihnen nur eine einzelne Datenbank zu, so dass Sie keine neuen erstellen
+können. Das ist nicht weiter tragisch, da sich Serendipity problemlos mit anderen
+Anwendungen innerhalb derselben Datenbank betreiben lässt. Viele
+Provider bieten zudem eigene Oberflächen zur Erstellung einer Datenbank an.
+
+%GH:Auch folgender Absatz wurde gelöscht, ist aber wichtig zu erwähnen:
+Serendipity benötigt lediglich irgendeine Datenbank für seine Tabellen --
+man kann also problemlos eine bereits bestehende Datenbank für die
+Installation benutzen.
+
+\index{Datenbank!Rechte}%
+\index{Privileges}%
+Sollte noch kein Datenbankbenutzeraccount bestehen, müssen Sie ihn anlegen.
+Dabei ist wichtig, dass der Benutzer über alle Rechte verfügt,
+die Serendipity später im Betrieb benötigt. Konkret heißt das, dass er 
+Tabellen anlegen (\cmd{CREATE}), aktualisieren (\cmd{ALTER}) und
+indizieren (\cmd{INDEX}) sowie Datensätze anlegen (\cmd{INSERT}), 
+aktualisieren (\cmd{UPDATE}), lesen (\cmd{SELECT}) und löschen
+(\cmd{DELETE}) darf.
+
+Um für MySQL einen solchen Benutzer anzulegen, benutzt man (in einem Programm 
+wie phpMyAdmin, welches die meisten 
+\index{MySQL!einrichten}% 
+\index{phpMyAdmin!Nutzer anlegen}% 
+Provider anbieten) folgende SQL-Syntax:
+
+\begin{ospcode}
+CREATE DATABASE serendipity;
+GRANT SELECT, CREATE, INSERT, UPDATE, DELETE, ALTER, INDEX ON serendipity 
+TO 'serendipity'@'\%' IDENTIFIED BY PASSWORD '\cmdvar{passwort}';
+\end{ospcode}
+
+Diese beiden Befehle erstellen die leere Datenbank namens \cmd{serendipity}
+und den gleichnamigen Benutzer, der die notwendigen Zugriffsrechte
+erhält und sich über das Passwort \cmd{\cmdvar{passwort}} ausweisen muss.
+Bei PostgreSQL benutzt man folgende Syntax:
+\index{PostgreSQL!einrichten}%
+
+\begin{ospcode}
+CREATE USER serendipity WITH PASSWORD '\cmdvar{passwort}';
+CREATE DATABASE serendipity WITH OWNER = serendipity;
+GRANT SELECT, CREATE, INSERT, UPDATE, DELETE, ALTER ON DATABASE 
+serendipity TO 'serendipity'
+\end{ospcode}
+
+Um die Serendipity-Installation erfolgreich durchzuführen, benötigen Sie den
+Benutzernamen des Datenbanknutzers (hier \cmd{serendipity}), dessen\osplinebreak{}
+Passwort, den Namen einer leeren Datenbank und den
+Namen (oder die IP-Adresse) des Datenbankservers.
+\index{Datenbank!einrichten|)}%
+
+\subsection{Die grafische Installationsroutine}
+\index{Installation!aufrufen}%
+\index{Fehler!Installation}
+\label{webinstaller}%
+
+Nach diesen Vorarbeiten rufen
+Sie die URL Ihrer Serendipity-Installation im Browser auf, hier also \cmd{http://www.example.com/serendipity/}.
+Versuchen Sie nicht, eine Datei Ihrer lokalen Festplatte aufzurufen oder
+eine Datei mittels FTP-Zugriff zu \emph{öffnen} (z.\,B. via Doppelklick). Dies
+würde Ihnen lediglich den Quellcode der PHP-Anwendung anzeigen.
+Stattdessen müssen Sie den Webbrowser einsetzen, damit Ihr Webserver die
+PHP-Anwendung ausführt.
+
+Bei korrekter Einrichtung des Webservers sehen Sie nun eine Kurzübersicht
+wie in Abbildung \figref{fig:img/install.eps}, die 
+aufführt, welche Voraussetzungen der Server erfüllen muss, ehe Sie
+fortfahren können. 
+Sollte sich diese entgegen Ihren Wünschen in englischer Sprache präsentieren, 
+konfigurieren Sie Ihren Browser so um, dass Deutsch die
+bevorzugte Sprache darstellt.
+
+\osppagebreak
+
+\ospfigure{0.97}{img/install.eps}{Installations\-bildschirm}{fig:img/install.eps}%
+
+\index{Fehler!bei der Installation}%
+Weist Sie die Übersicht auf einen Fehler bei den Schreibrechten oder den 
+Server-Einstellungen hin, beheben Sie ihn und rufen Sie 
+die Installations\-oberfläche erneut auf. Warnungen werden mit
+roter Schriftfarbe dargestellt, eingeschränkte Funktionen oder Hinweise
+in Gelb; korrekte Einstellungen sind grün
+hervorgehoben. Für Personen mit Farbschwächen folgt jedem gelben
+Hinweis ein \cmd{[?]}, jeder Warnung ein \cmd{[!]}.
+
+Hinweise der Installationsoberfläche zeigen dabei einen Unterschied
+zwischen dem von Serendipity empfohlenen Wert und der Einstellung auf Ihrem
+Webserver an. Im Gegensatz zu Fehlern können Sie Serendipity bei solchen Hinweisen aber
+trotzdem betreiben, jedoch entweder mit Einbußen bei der Performance oder
+Funktionalität.
+
+Stimmen die systemseitigen Voraussetzungen, starten Sie die
+Installationsoberfläche über einen der beiden
+Links am Ende der Seite: \menu{Einfache Installation} oder
+\menu{Fortgeschrittene Installation}.
+
+Die \menu{Einfache Installation} verlangt von Ihnen nur die absolut
+notwendigen Angaben. Dagegen bietet die
+\menu{Fortgeschrittene Installation} sämtliche Konfigurationsoptionen an,
+die sich auch später im laufenden Betrieb ändern lassen. Da wir in
+Kapitel \ref{Konfiguration} ab Seite \pageref{Konfiguration}
+detailliert auf alle Optionen eingehen, klicken Sie
+an dieser Stelle am besten auf \menu{Einfache Installation}.
+
+\ospfigure{0.99}{img/install2.eps}{Initiale Konfiguration}{fig:img/install2.eps}%
+
+Die Folgeseite (Abbildung \figref{fig:img/install2.eps}) stellt alle 
+Installationsoptionen in Gruppen unterteilt dar.
+
+\subsubsection{Der Abschnitt \menu{Datenbankeinstellungen}}
+\label{Datenbankeinstellungen}%
+\index{Datenbank!Einstellungen|(}%
+
+In diesem Bereich stellen Sie die Zugangsdaten für die gewünschte
+Datenbank ein. Im Feld \menu{Datenbanktyp} können Sie zwischen allen im
+PHP-Kern verfügbaren Datenbanktypen wählen. Beim Einsatz
+\index{SQLite}%
+von PHP4 wird der Datenbanktyp \menu{SQLite} also gar nicht
+erst angezeigt.
+
+Den \menu{Servernamen} (meist \cmd{localhost} oder ein Name wie
+\cmd{db1231231.pure\-tec.de}) tragen Sie genauso wie den Namen und das
+Passwort des Datenbankbenutzers in die zugehörigen Felder ein. Beim
+Datenbanktyp \menu{SQLite} spielen diese Einstellungen
+keine Rolle und dürfen leer bleiben.
+
+Als Datenbankname tragen Sie den Namen der, entsprechend der Beschreibung auf 
+Seite \pageref{DBeinrichten},
+erstellten Datenbank ein. Darin erstellt Serendipity 
+Tabellen, deren Namen es das Präfix \cmd{serendipity\_} voranstellt.
+Diese Vorsilbe ermöglicht die Installation 
+in eine Datenbank, in der bereits andere Tabellen liegen.
+Wählen Sie in der \menu{Fortgeschrittenen Installation} ein anderes Präfix,
+können Sie auch mehrere
+Serendipity-Instanzen auf einem Server installieren. 
+%PJ:Hier kann gerne noch ein pageref auf die entsprechende Seite hin
+\index{Datenbank!Einstellungen|)}%
+
+\subsubsection{Der Abschnitt \menu{Generelle Einstellungen}}
+\label{Generelle Einstellungen}%
+
+Die Optionen im Abschnitt \menu{Generelle Einstellungen} legen den
+Standard-Benutzer für das zu installierende Blog fest. Tragen Sie als 
+\index{Nutzer!Admin-\textasciitilde{} festlegen}%
+\index{User|see{Nutzer}}%
+\index{Adminnutzer!festlegen}%
+\index{Passwort!des Adminnutzers setzen}%
+\menu{Admin"=Benutzername} also den Namen ein, den Sie später beim Login
+verwenden wollen. Er sollte möglichst keine Sonderzeichen
+oder Umlaute enthalten, da dies zu Problemen bei unterschiedlichen
+Zeichensätzen führen kann. Das Gleiche gilt für das \menu{Admin-Passwort}; 
+lediglich im Feld \menu{Voller Name} können Sie auch auf
+Sonderzeichen zurückgreifen.
+
+\index{E-Mail-Adresse!des Adminnutzers setzen}%
+Die Angabe der \menu{Admin-E-Mail}-Adresse benötigt Serendipity beim
+Verschicken von
+Hinweisen über neu eingegangene Kommentare und Trackbacks.
+
+\index{Blog!Titel festlegen}%
+\index{Titel!des Blogs festlegen}%
+\index{Blog!Beschreibung festlegen}%
+\index{Beschreibung!des Blogs festlegen}%
+Den \menu{Blog-Titel} und die \menu{Blog-Beschreibung} zeigt das Frontend
+im Kopfbereich an und verwendet beides auch für die Titelzeile im Browser.
+
+\index{Sprache!konfigurieren}%
+Die \menu{Sprache} des Blogs gibt die Standardsprache vor, in der
+Serendipity Nachrichten und Meldungen darstellt. Später lässt sich
+für Besucher der Webseite und für jeden Redakteur individuell eine Sprache
+einstellen (siehe Seite \pageref{eigeneeinstellungen-sprache}).
+
+\subsubsection{Der Abschnitt \menu{Design und Optionen}}
+\label{Design und Optionen}%
+
+Der letzte Einstellungsblock legt bei der einfachen Installation lediglich
+fest, ob der Standard-Redakteur den WYSIWYG-Editor zur Erstellung von
+Einträgen benutzen möchte.
+
+\subsubsection{Abschluss der Installation}
+
+Sind alle Optionen eingetragen (keine Angst, Sie können sie später 
+allesamt wieder verändern), schließen Sie den Installationsvorgang durch
+einen Klick auf \menu{Vollständige Installation} ab.
+
+Die letzte Seite der Installationsroutine (Abbildung
+\figref{fig:img/install3.eps}) informiert Sie über die von
+Serendipity durchgeführten Aktionen. Dazu gehört das Anlegen der notwendigen
+Tabellen und des Standardbenutzers und die Einrichtung der
+Standard-Plugins. Sollten Sie an dieser Stelle noch nicht über eine
+passende Datenbank verfügen oder andere Fehler auftreten, informiert Sie 
+Serendipity auch darüber. Dann
+heißt es zurück zu Abschnitt \ref{DBeinrichten} ab Seite
+\pageref{DBeinrichten}.
+
+\ospfigure{1.0}{img/install3.eps}{Einrichtung abgeschlossen}{fig:img/install3.eps}%
+
+Bei fehlerfreier Installation können Sie über die URL \cmd{http://www.example.""com/serendipity/} das
+Frontend aufrufen und unter
+\cmd{http://www.exam\-ple.com/serendipity/serendipity\_admin.php} mit den
+gewählten\osplinebreak{} Login-Daten auf das Backend zugreifen.
+
+
+\subsection{Die Konfigurationsdatei\newline
+serendipity\_config\_local.inc.php}
+\index{serendipity-configlocalincphp@serendipity\_config\_local.inc.php}% 
+Alle grundlegenden
+Konfigurationsvariablen wie die Daten für den Datenbankzugang und die aktuelle
+Versionsnummer speichert Serendipity in der Datei
+\cmd{serendipity\_config\_local.inc.php} im Stammverzeichnis.
+Diese Datei sieht
+ungefähr wie folgt aus:
+
+\input{snippets/config-local}
+
+Ähnlich wie bei der \cmd{.htaccess}-Datei (siehe Seite
+\pageref{htaccess}) können Sie in dieser Datei später auch eigene
+Konfigurationsparameter nachtragen. Fügen Sie diese \emph{nach}
+der Zeile \cmd{You can place your own special variables after here:} ein,
+so dass Serendipity sie bei einer Konfigurationsänderung nicht
+versehentlich überschreibt. Je nach Konfiguration des Webservers kann es
+sein, dass Sie keine Schreibrechte für diese Datei besitzen. Dies
+\index{fixperm.php}%
+lässt sich mit dem \cmd{fixperm.php}-Skript (siehe Seite
+\pageref{fixperm}) ändern.
+
+\subsection{Fehler bei der Installation}
+\label{installationsfehler}%
+\index{Installationsfehler|see{Fehler}}%
+\index{Fehler!bei der Installation}%
+
+Die zahlreichen Konfigurationsmöglichkeiten von Webservern geben
+Spielraum für hinterlistige Fehler.
+
+\subsubsection{Nur eine leere Seite erscheint}\label{Nur eine leere Seite
+erscheint}% 
+\index{display\_errors}% 
+\index{leere Seite}% 
+\index{weiße Seite|see{leere Seite}}%
+\index{Fehler!leere oder weiße Seite}%
+\index{Fatal Error (PHP-Fehlermeldung)}%
+
+Wenn an einer Stelle der Installation lediglich eine weiße Seite
+erscheint, liegt dies meist an sogenannten \emph{PHP Fatal Errors}.
+Normalerweise sieht man diese direkt auf der Webseite, aber einige
+Webserver sind so eingestellt, dass sie PHP-Fehlermeldungen unterdrücken.
+Wenn das Installationsskript endet, ohne vollständig
+ausgeführt worden zu sein, führt dies dann zu den weißen/leeren
+Seiten.
+
+Um die Fehlermeldung dennoch zu sehen, versuchen Sie, in den
+PHP-Fehlerlogfiles Ihres Webservers nachzuschauen. Diese liegen meist in
+einem \cmd{logs}-Unterverzeichnis. Den genauen Speicherort solcher
+Dateien teilt Ihnen der Provider mit.
+
+Man kann aber auch versuchen, im
+\index{htaccess@.htaccess}%
+Serendipity-Stammverzeichnis eine Datei namens \cmd{.htaccess}
+anzulegen und mit folgender Zeile zu füllen:
+
+\begin{ospcode}
+php_value display_errors on
+\end{ospcode}
+
+Beim Speichern der Datei achten Sie bitte unbedingt
+darauf, dass PHP dafür Schreibrechte erhalten muss, da es diese
+Datei während der Installation automatisch verändert.
+\index{Versteckte Dateien}%
+Achten Sie auch darauf, dass einige FTP-Programme Dateien, die mit
+einem Punkt anfangen, verstecken, so dass Sie diese erst nach Umkonfiguration
+des Programms sehen.
+
+Die Fehlermeldungen geben 
+meist Aufschluss über die Ursache. Oft sind dies fehlende oder defekte
+Dateien. Enthält eine Datei \cmd{Parse Errors}\footnote{PHP meldet einen
+Parse Error, wenn eine Datei
+\index{Parse Error (PHP-Fehlermeldung)}%
+fehlerhafte Zeichen oder eine ungültige Syntax enthält.}, ist dies meist auf
+fehlerhafte FTP-Uploads zurückzuführen. Auch fehlende Leserechte kommen als Ursache in Frage.
+
+Am häufigsten kann der Ordner
+\index{Template-Sc@templates\_c}%
+\cmd{templates\_c} nicht beschrieben werden. Dieser ist für 
+von Smarty kompilierte Dateien gedacht, die für die Darstellung des
+Frontends verwendet werden.
+
+
+\subsubsection{HTTP/500 Fehlermeldung} \label{HTTP/500 Fehlermeldung}
+\index{HTTP/500-Fehlermeldung}%
+\index{Fehler!HTTP/500-Fehlermeldung}%
+\index{Fehler!htaccess@.htaccess}%
+\index{htaccess@.htaccess}
+
+Serendipity setzt einige Standardoptionen über die Datei
+\cmd{.htaccess}. Von einigen Webservern wird dieser Mechanismus jedoch
+nicht unterstützt und kann gar zu einem Abbruch des Skripts führen.
+Sollte sich Serendipity nach der Installation nicht aufrufen
+lassen, löschen Sie die \cmd{.htaccess}-Datei einfach. Sie ist für den
+Betrieb nicht zwingend notwendig. Ohne diese Datei können Sie jedoch
+keine URL-Umformung benutzen, die für Serendipity "`sprechende URLs"'
+ermöglicht (siehe Seite \pageref{urlformung}). 
+
+\subsubsection{Seiten werden nicht gefunden} 
+\label{Seiten werden nicht gefunden} 
+\index{mod\_rewrite}%
+\index{Unterseiten funktionieren nicht}%
+\index{Fehler!Unterseiten funktionieren nicht}%
+
+Um "`sprechende URLs"' wie 
+\cmd{http://www.example.com/serendipity/\osplinebreak{}archives/1-Mein-erster-Artikel.html}
+zu unterstützen, kann Serendipity zwei Arten der URL-Umformung
+unterstützen. Da Pfade und Dateien wie oben genannt nur virtuell erstellt
+werden und nicht wirklich auf dem Server liegen, muss Serendipity über
+Umleitungen auf seine zentrale Datei \cmd{index.php} geleitet werden.
+
+\index{URL-Umformung}%
+Diese Umleitung konfiguriert Serendipity anhand der Datei
+\cmd{.htaccess}. Dort gibt es zwei Varianten der URL-Umformung:
+\emph{mod\_rewrite} und \emph{Apache Errorhandling}.
+
+\emph{mod\_rewrite} ist die komfortabelste Variante der Umformung,
+benötigt aber ein zusätzliches Webserver-Modul, welches nicht immer
+verfügbar ist. \emph{Apache Errorhandling} setzt einen Trick ein, der
+eigentlich nicht gefundene Seiten (\emph{HTTP/404 Not Found}) virtuell
+auf eine zentrale Seite umleitet, die dann den eigentlichen Inhalt
+ausgibt.
+
+Serendipity versucht bei der Installation die beste Art für Sie
+automatisch zu erkennen. Auf manchen Servern gelingt dies jedoch nicht,
+und es kann sein, dass Serendipity die URL-Umformung fälschlicherweise
+aktiviert. Wenn diese Umformung nicht klappt, gehen alle Links von
+Serendipity somit "`ins Leere"'. Dazu zählen auch Links zum Stylesheet
+des Frontends, die das Layout beeinflussen.
+
+Löschen Sie die \cmd{.htaccess}, um dieses Problem zu lösen.
+Danach suchen Sie die Serendipity-Administrationsoberfläche via
+\cmd{http://www.example.""com/serendipity/serendipity\_admin.php} auf,
+loggen sich ein und gehen über den Menüpunkt \menu{Konfiguration} zu der
+Unterebene \menu{Design und Optionen}. Dort findet sich die Option
+\menu{URL-Formung}. Diese Option stellen Sie auf \emph{None} und
+speichern die Konfiguration. Daraufhin wird die \cmd{.htaccess}-Datei
+neu erstellt.
+
+Nun sollten Sie Serendipity-Unterseiten wieder problemlos öffnen können.
+
+\subsubsection{Installation erneut ausführen} \label{Installation erneut
+ausfuehren} \index{Erneute Installation}
+\index{serendipity-configlocalincphp@serendipity\_config\_local.inc.php} \index{fixperm.php}
+\index{Fehler!Installation erneut ausführen}
+
+Wenn die Installation aus irgendwelchen Gründen fehlgeschlagen ist,
+möchten Sie Serendipity vielleicht von Grund auf neu installieren. Dazu
+muss Serendipity in den Ursprungszustand zurückversetzt werden. Löschen
+Sie dafür die Datei \cmd{serendipity\_config\_local.inc.php}. Diese Datei
+enthält die Basis-Konfigurationsparameter des Blogs, und sobald diese
+Datei nicht mehr vorhanden ist, erkennt Serendipity nicht mehr, dass es
+installiert ist.
+
+Auch die Datei \cmd{.htaccess} sollte vor einer neuen Installation
+gelöscht werden. Bei beiden Dateien ist zu beachten, dass sie von PHP
+erstellt wurden und von Serendipity mit minimalen Rechten versehen werden,
+um diese Daten zu schützen. Daher kann es unter Umständen sein, dass Sie
+mit Ihrem FTP-Zugang keinen Zugriff mehr auf diese Datei haben!
+
+Um dies zu beheben, bedienen Sie sich eines kleinen PHP-Skripts.
+Speichern Sie eine Datei namens \cmd{fixperm.php} im
+Serendipity"=Stammverzeichnis mit folgendem Inhalt:
+
+\label{fixperm} \index{fixperm.php}
+\input{snippets/snippet-fixperm}
+
+Rufen Sie danach die Datei mittels
+\cmd{http://www.example.com/serendi\-pity/fixperm.php} im Browser auf. Nach
+dem Aufruf sollten Sie die Ausgabe "`Rechte geändert"' sehen, und die
+Dateirechte sollten nun so verändert worden sein, dass Sie wieder vollen
+Zugriff auf die Datei haben.
+
+Übrigens können Sie dieses kleine Skript auch später benutzen, um andere
+Dateien im Serendipity-Verzeichnis wieder mit Zugriffsrechten für Sie
+auszustatten. Dabei müssen Sie lediglich die Code-Zeile verändern, die
+den Namen der zu ändernden Datei enthält.
+
+Zuletzt müssen Sie noch die von Serendipity angelegten Datenbanktabellen
+wieder löschen. Wenn diese Tabellen nicht gelöscht werden, würde
+Serendipity diese bei einer Neuinstallation schützen wollen. Nur wenn
+alle Tabellen von Serendipity vorher mittels phpMyAdmin oder Ähnlichem
+gelöscht werden, wird eine vollständige Neuinstallation möglich sein.
+
+\subsubsection{Fehler beim Login}%
+\label{Fehler beim Login}%
+\index{Session-Fehler}%
+\index{Fehler!Session}%
+\index{Fehler!Login}%
+
+Wenn Sie Fehlermeldungen am Anfang der Seite erhalten, die aussehen wie
+diese:
+
+\begin{ospcode}
+Warning: session_write_close() [function.session-write-close]:
+open(/var/lib/php/session/sess_h5a8jerb22q54pkqcjb4qtnqr1, O_RDWR)
+failed: Permission denied
+\end{ospcode}
+
+dann bedeutet dies, dass Ihr Webserver keinen gültigen Speicherpfad für
+die PHP-Sessiondateien eingetragen hat. Entweder können Sie den Fehler
+beheben, indem Sie korrekte Schreibrechte zu dem in der Fehlermeldung
+genannten Pfad einrichten. Oder Sie müssen einen gültigen Pfad in der
+Datei \cmd{php.ini} in der Variable \cmd{session.save\_path} eintragen.
+
+Ein weiteres Problem, das bei falsch eingerichteten PHP-Sessions
+auftreten kann, ist, wenn Sie sich nach jedem Klick im Serendipity-Backend
+erneut einloggen müssen. Dies bedeutet, dass der Webserver Ihre
+Logindaten nicht in einer Session speichern und Sie somit nicht
+eindeutig wiedererkennen kann.
+
+Ein ähnliches Problem kann auch dann auftreten, wenn Ihr Browser keine
+Cookies annimmt, weil sie z.\,B.\ von einem Werbefilter oder
+Anti-Virus-Programm gefiltert werden. Auch kann es passieren, dass, wenn
+Sie die Serendipity-Oberfläche mit einer URL wie
+\cmd{http://localhost/seren\-di\-pity/} aufrufen, die Cookies für eine solche
+URL nicht angenommen werden. In einem solchen Fall müssten Sie
+Serendipity über die IP-Adresse wie \cmd{http://127.0.0.1/serendipity/}
+aufrufen.
+
+\index{Weiterleitung}%
+\subsubsection{\label{Weiterleitung}Weiterleitung auf verschiedene URLs}
+
+Wenn Sie Serendipity installieren, möchten Sie Ihr Blog möglicherweise
+unter mehreren URLs aufrufen können.
+
+Ein klassischer Fall dieser unterschiedlichen URLs ist, wenn Ihr Blog
+sowohl unter \cmd{http://example.com/serendipity/} als auch
+\cmd{http://www.exam\-ple.com/serendipity/} verfügbar sein soll.
+Damit Serendipity die jeweils genutzte URL als Standard für Folgeseiten
+übernimmt, müssen Sie lediglich in der Konfiguration Serendipitys die
+Option \menu{HTTP-Hostname} (siehe Kapitel \ref{HTTP-Hostname} ab Seite
+\pageref{HTTP-Hostname}) aktivieren.
+
+Diese Funktion hilft Ihnen jedoch nur dann, wenn der benutzte Pfad (in
+diesem Fall \cmd{/serendipity/}) in allen Fällen gleich bleibt. Sollten
+Sie Ihr Blog aber sowohl unter der URL
+\cmd{http://example.com/serendipity/} als auch
+\cmd{http://serendipity.ex\-ample.com/} darstellen wollen, dann würden Sie
+diese Vorbedingung nicht erfüllen können. Serendipity kann mit einer
+derartigen Einstellung nicht umgehen.
+
+Der Grund dafür ist, dass bei einer abweichenden Pfadkomponente die
+relativen Links nicht mehr korrekt funktionieren. Bei der einen URL
+müsste Serendipity für den HTTP-Pfad immer \cmd{/serendipity/} nutzen,
+während bei der anderen URL immer \cmd{/} genutzt werden müsste. Die
+Links würden daher nicht übereinstimmen und zu zahlreichen Problemen bei
+der Darstellung von Grafiken und Verweisen führen.
+
+Das bessere Vorgehen in diesem Fall wäre also die Einrichtung einer
+Weiterleitung. Dabei sollten Sie sich eine endgültige URL aussuchen und
+alle weiteren optionalen URLs zu dieser Zielseite weiterleiten.
+
+Weiterleitungen können Sie auf unterschiedliche Weisen realisieren. In
+unserem Beispiel gehen wir davon aus, dass
+\cmd{http://serendipity.example"".com/} die Zielseite und
+\cmd{http://example.com/serendipity/} die Quellseite darstellt.
+
+Bei vielen Standardinstallationen für mehrere verfügbare URLs würden beide
+URLs bereits auf dasselbe Verzeichnis verweisen.
+\cmd{http://serendipity"".example.com/index.php} als auch
+\cmd{http://example.com/serendipity""/index.php} würden physikalisch auf
+dieselbe Datei zeigen, man spricht daher von einem \cmd{Alias}. Sollte
+dies bei Ihnen der Fall sein, haben Sie zwei Möglichkeiten der
+Weiterleitung:
+
+\begin{osplist}
+
+\index{mod\_rewrite}%
+\item Weiterleitung via \cmd{.htaccess} bei identischen Serendipity-Verzeichnissen
+
+Wenn auf Ihrem Server mod\_rewrite zur Verfügung steht, können Sie an
+den Anfang Ihrer \cmd{.htaccess}-Datei des Serendipity-Verzeichnisses vor dem
+Blog \cmd{\#Begin s9y} folgende Zeilen einfügen:
+
+\input{snippets/forward-htaccess}
+
+Diese Regel weist den Webserver an, dass sämtliche Zugriffe zu
+\cmd{http://""example.com/} auf die Zielseite
+\cmd{http://serendipity.example.com/} weitergeleitet werden. Sie müssen
+also jeweils den Quellservernamen, das Quellverzeichnis auf dem
+Quellserver und den Zielserver in den obigen Zeilen an Ihre
+Gegebenheiten anpassen.
+
+\item Weiterleitung mittels PHP bei identischen Serendipity-Verzeichnissen
+
+Ohne mod\_rewrite müssen Sie die Weiterleitung innerhalb der Datei
+\cmd{se\-rendipity\_config\_local.inc.php} einprogrammieren. Öffnen Sie
+diese Datei in einem Editor (bei fehlendem Schreibzugriff schauen Sie
+sich bitte \cmd{fixperm.php} auf Seite \pageref{fixperm} an) und
+fügen Sie in die Zeile vor dem letzten \cmd{?>} Folgendes ein:
+
+\input{snippets/forward-local}
+
+Dieser Code sorgt dafür, dass, wenn Serendipity auf dem Quellserver
+aufgerufen wird, der Besucher automatisch auf die Zielseite
+weitergeleitet wird.
+
+\end{osplist}
+
+Sollten durch die Art der Einrichtung jedoch beide URLs
+(Weiterleitungsquelle und Weiterleitungsziel) auf unterschiedliche
+Verzeichnisse Ihrer Domain zugreifen, dann können Sie die einfachste
+Form der Weiterleitung nutzen:
+
+\begin{osplist}
+
+\item Weiterleitung mittels \cmd{index.html} bei unterschiedlichen 
+Serendipity"=Verzeichnissen
+
+Erstellen Sie die Datei \cmd{index.html} in dem Verzeichnis der
+Quell-URL (in unserem Beispiel \cmd{/serendipity/}):
+
+\input{snippets/forward-html}
+
+Beim Aufruf der Quell-URL wird dann unkompliziert auf die Ziel-URL
+weitergeleitet.
+
+\item Weiterleitung mittels \cmd{index.php} bei unterschiedlichen
+Serendipity"=Verzeichnissen
+
+Etwas schneller geht die Weiterleitung mittels PHP, da die Weiterleitung
+dann intern im Browser ausgeführt wird und Sie nicht vorher kurz eine
+weiße Seite im Browser aufflackern sehen. Speichern
+Sie im Quellverzeichnis folgende \cmd{index.php}-Datei:
+
+\input{snippets/forward-php}
+
+\end{osplist}
+
+Einen Sonderfall dieser Weiterleitung stellt das Beispiel dar, wenn Sie
+Serendipity zwar in einem Unterverzeichnis Ihres Webservers installiert
+haben (\cmd{http://example.com/blog/}), aber gerne möchten, dass
+Serendipity beim Aufruf der Haupt-Domain (\cmd{http://example.com/})
+direkt aufgerufen wird. Die einfachste Variante hier wäre natürlich,
+dass Sie Serendipity in das Stammverzeichnis Ihrer Webseite
+installieren, da dies problemlos möglich ist. Sollten Sie dies aus
+irgendwelchen Gründen nicht bevorzugen, können Sie ebenfalls die
+oben genannte Methode der Weiterleitung mittels \cmd{index.php} oder
+\cmd{index.html} nutzen.
+
+\subsubsection{Falsche Anzeige von Datumsangaben oder Sonderzeichen}
+\label{Falsche Anzeige von Datumsangaben oder Sonderzeichen}%
+\index{Locales}%
+\index{Datumsangaben}%
+\index{ISO-8859-1}%
+\index{UTF-8}%
+\index{Fehler!Sonderzeichen}%
+\index{Fehler!Umlaute}%
+\index{Fehler!Datumsanzeige}%
+
+Serendipity benutzt zur Darstellung von Datumsangaben für Artikel und im 
+Kalender ein serverseitiges System namens \emph{locales}. Diese locales sind, 
+grob gesagt, eine Sammlung von nationalen Sprachbesonderheiten und geben an, 
+wie in beinahe allen gesprochenen Sprachen die Währungs- und Datumsangaben 
+formatiert und geschrieben werden. Damit Serendipity auf möglichst vielen 
+Sprachumgebungen ohne viel Aufwand lauffähig ist, verlässt es sich auf diesen 
+De-facto-Standard.
+
+Ebenfalls zur weitreichenden Unterstützung verschiedener Sprachen
+unterstützt Serendipity mehrere Zeichensätze. Ein Zeichensatz regelt, mit
+welchem Binärsystem Buchstaben für den Computer abgespeichert werden --
+denn je nach Zeichensatz ist für einen Computer "`ä"' nicht gleich "`ä"'.
+Für die deutsche Sprache ist der standardisierte \emph{ISO-8859-1}-Zeichensatz 
+üblich. Um jedoch auch mit anderen Sprachen benutzbar zu
+sein, hat sich der Zeichensatz \emph{UTF-8} etabliert, da dieser beinahe
+alle Sonderzeichen jeder Sprache enthält. Ein arabischer Artikel könnte
+so also direkt neben einem deutschen Artikel stehen, ohne dass
+Sonderzeichen falsch dargestellt würden.
+
+Sobald die Zeichensätze vermischt werden, kann es zu Fehldarstellungen im
+Browser kommen -- Mozilla Firefox zeigt statt des korrekten Zeichens dann
+ein Karo-Symbol mit einem Fragezeichen an. Wenn Sie dies einmal in Ihren
+Artikeln beobachten, liegt ein solcher Zeichensatzkonflikt vor.
+
+In der Serendipity-Konfiguration können Sie einstellen, ob Serendipity
+mit nationalem Zeichensatz oder UTF-8 betrieben wird. Standardmäßig wird
+dies bei der Installation für größtmögliche Kompatibilität direkt auf
+UTF-8 gesetzt. Sie sollten daher bei einer frischen Installation
+keinerlei Probleme mit Zeichensätzen erwarten -- erst bei späteren
+Änderungen am System könnten möglicherweise einmal Probleme auftreten.
+
+Die Behandlung von Sonderzeichen zur Speicherung in Datenbanken ist recht
+komplex und kann mehrere Fehlerursachen haben.
+
+Die erste Fehlerursache kann Ihr Browser sein. Stellen Sie sicher, dass
+dieser den UTF-8-Zeichensatz darstellen kann. Wenn Sie beim Besuch der
+Seite \cmd{http://www.columbia.edu/kermit/utf8.html} falsche
+Sonderzeichen sehen, ist dies ein Indiz für eine fehlerhafte
+Browserkonfiguration, die Sie mithilfe der Dokumentation Ihres Webbrowser
+lösen müssen.
+
+Die zweite Fehlerursache kann der Webserver sein, der Zeichensätze
+selbständig verändert. Apache bietet eine Option an, ein sogenanntes
+\emph{DefaultCharset} zu setzen, das die Ausgabe von Sonderzeichen
+eventuell verändern könnte. Wenn der Webserver nicht die von Serendipity
+bestimmten \emph{Content-Type}-HTTP-Kopfzeilen an den Browser sendet,
+kann es sein, dass der Webserver durch seine Standardeinstellung die
+Umbelegung durch Serendipity verhindert. Sprechen Sie daher mit ihrem
+Provider und bitten Sie ihn, diese HTTP-Kopfzeilen zu überprüfen.
+
+Zu guter Letzt gibt es nun noch die Datenbank, die Artikel mit
+unterschiedlicher Kodierung speichern kann. Gerade zwischen MySQL 4.0
+und 4.1 gab es weitreichende Änderungen in der Behandlung von
+Zeichensätzen, die sich bei einem MySQL-Update darin äußern konnten,
+dass Serendipity die Sonderzeichen falsch anzeigte. Um dies zu
+korrigieren, müssen Sie sicherstellen, dass alle MySQL-Tabellen und
+-Spalten als \emph{Collation} den übereinstimmenden Zeichensatz
+benutzen (also \cmd{de\_latin} beim ISO-Zeichensatz und \cmd{utf8} für
+UTF-8). Sobald dies korrekt übereinstimmt, kann in der
+Serendipity"=Konfiguration die Option
+\menu{Datenbank-Zeichensatzkonvertierung\osplinebreak{} aktivieren}
+gewählt werden, was dann wieder zu einer korrekten Darstellung der
+Sonderzeichen führen sollte.
+
+In einigen Fällen ist es möglicherweise notwendig, einen vollständigen
+SQL-Export der Datenbank vorzunehmen und die Datei mittels eines Editors
+vom ISO-8859-1- ins UTF-8-Format zu überführen, neu zu importieren und
+danach Serendipity zentral auf UTF-8-Zeichensätze umzustellen. Alternativ
+können Sie das mit folgendem PHP-Skript erreichen, das einen Datenbankdump
+namens \cmd{dump-iso.sql} in \cmd{dump-utf8.sql} vom ISO-8859-1-Zeichensatz
+in den UTF-8-Zeichensatz verwandelt. Etwaige SQL-Befehle (\cmd{COLLATION}), die
+MySQL-Zeichensätze bestimmen, müssen Sie jedoch manuell in der Datei
+umwandeln, um sie später als vollständiges UTF-8 importieren zu können:
+
+\osppagebreak
+
+\input{snippets/utf8conv}
+
+Zurück aber zu dem Problem mit falsch angezeigten Datumsangaben. Damit
+der Wochentag "`Freitag"' nicht als "`Friday"' oder Ähnliches ausgegeben
+wird, muss eine deutsche Sprachdatei für das locales-System auf dem
+Server hinterlegt werden. Locales sind auf allen Betriebssystemen
+verfügbar und in fast allen Fällen vorinstalliert. Je nach System können
+sie auch nachinstalliert werden (bei Linux z.\,B.\ mittels
+\index{locale-gen}%
+\cmd{locale-gen}). Für jede Sprache gibt es abhängig vom Zeichensatz eine
+Sprachdatei. Für Deutsch ist es üblicherweise \cmd{de\_DE.UTF8}
+(UTF-8-Zeichensatz) oder \cmd{de\_DE.ISO88591} (nationaler Zeichensatz).
+Manchmal ist auf Servern nur das ISO-Locale installiert, und deshalb wird
+der Monat "`März"' mit einem falschen Sonderzeichen dargestellt. Abhilfe
+schafft hier die Installation der passenden UTF8-Locale-Datei.
+
+Die Installation der Locales kann nur vom Serverbetreiber vorgenommen
+werden, im Problemfall müssen Sie sich also an diesen wenden. Die
+Locales, die Serendipity anwendet, finden Sie im Übrigen in der Datei
+\cmd{lang/""serendipity\_lang\_de.inc.php} bzw.
+\cmd{lang/UTF-8/serendipity\_lang\_""de.inc.php} in einer Zeile wie:
+
+\begin{ospcode}
+@define('DATE\_LOCALES', 'de\_DE.ISO-8859-1, de\_DE.ISO8859-1, german,
+de\_DE, de\_DE@euro, de');
+\end{ospcode}
+
+\section{Schnelle Installation}
+\label{Schnelle Installation}%
+
+\begin{osplist}
+\item Serendipity-Release-Paket von der Homepage herunterladen und via
+    FTP auf den Webserver hochladen.
+
+\item Zugriffsrechte überprüfen: Stammverzeichnis und Unterverzeichnis
+    \cmd{ar\-chives, templates\_c, uploads} müssen Schreibrechte für PHP
+    besitzen, alle anderen Dateien und Verzeichnisse Leserechte.
+
+\item Eine leere Datenbank erstellen, falls noch nicht vorhanden.
+    Sicherstellen, dass der Datenbankbenutzer die Rechte \cmd{CREATE},
+    \cmd{INSERT}, \cmd{UPDATE}, \cmd{DELETE}, \cmd{ALTER}, \cmd{INDEX},
+    \cmd{SELECT}
+    besitzt.
+
+\item Via HTTP die Installationsroutine aufrufen:
+    \cmd{http://www.example.com/""serendipity/}
+
+\item Der Installationsroutine folgen und Anfangskonfiguration vornehmen.
+\end{osplist}
+\index{Einrichtung|)}%
+
+\ospvacat
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "serendipity"
+%%% End:

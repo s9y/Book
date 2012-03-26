@@ -1,0 +1,18 @@
+\begin{ospcode}
+<div class="serendipity\_entry\_body">
+  {$entry.body}
+
+  {if $entry.properties.ep\_Podcast}
+  <p>MP3-Podcast:
+    <object width="300" height="42">
+    <param name="src" value="{$entry.properties.ep\_Podcast}">
+    <param name="autoplay" value="true">
+    <param name="controller" value="true">
+    <embed src="{$entry.properties.ep\_Podcast}" autostart="true" 
+           loop="false"  width="300" height="42" controller="true">
+    </embed>
+    </object>  
+  </p>
+  {/if}
+</div>
+\end{ospcode}

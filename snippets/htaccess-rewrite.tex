@@ -1,0 +1,23 @@
+\begin{ospcode}
+# BEGIN s9y
+ErrorDocument 404 /serendipity/index.php
+DirectoryIndex /serendipity/index.php
+php_value session.use_trans_sid 0
+php_value register_globals off
+
+RewriteEngine On
+RewriteBase /serendipity/
+RewriteRule ^((id/([0-9]+))/?) index.php?/\$1 [NC,L,QSA]
+RewriteRule ^(authors/([0-9]+)-[0-9a-z{\textbackslash}.{\textbackslash}_!;,{\textbackslash}+{\textbackslash}-{\textbackslash}\%]+) 
+  index.php?/\$1 [NC,L,QSA]
+[\ldots]
+RewriteRule ^htmlarea/(.*) htmlarea/\$1 [L,QSA]
+RewriteRule (.*\.html?) index.php?url=/\$1 [L,QSA]
+
+<Files *.tpl.php>
+    deny from all
+</Files>
+[\ldots]
+
+# END s9y
+\end{ospcode}

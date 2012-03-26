@@ -1,0 +1,323 @@
+%revised
+\chapter{Die Community}
+\label{community}
+\index{Community}%
+\index{Helfen}%
+\index{Serendipity!Community}%
+
+Wenn Sie an an diesem Punkt des Buches angelangt sind, sollten Sie eine Menge
+über Serendipity gelernt haben.
+
+Sicher wird dieses Buch nicht alle individuellen Fragen klären können.
+Mit diesen Fragen sollen Sie sich nicht alleingelassen fühlen; Sie sind
+herzlich eingeladen, der Serendipity-Community einen Besuch abzustatten. Am
+leichtesten finden Sie uns über das Forum unter \cmd{http://board.s9y.org/}.
+
+Dort gibt es einen englisch- und einen deutschsprachigen Teil. Fachlich
+zielgerichteter geht es meist im englischen Teil zu, während man im deutschen
+Bereich gut generellere Diskussionen führen kann und mit Anfängerfragen leichter 
+auf Gehör stößt.
+
+Das Grundprinzip einer funktionierenden Community ist, dass Sie nicht nur Fragen
+stellen, sondern sich auch in andere Diskussionsstränge einbinden. Versuchen
+Sie, mit Ihrem bereits angeeigneten Wissen anderen zu helfen -- denn so, wie Sie
+nach Hilfe suchen, tun dies auch andere.
+
+Bevor Sie jedoch eine Frage im Forum stellen, sollten Sie Ihre
+\emph{Hausaufgaben} gemacht haben. Durchsuchen Sie erst das Forum und die
+Serendipity-Webseite, ob Sie dort nicht schon eine Antwort auf Ihre Frage
+finden. Ist dies nicht der Fall, sollten Sie Ihr Problem präzise schildern und
+einen aussagekräftigen Betreff wählen. Versetzen Sie sich in die Lage der
+Personen, die Ihnen helfen sollen -- was würden Sie an Informationen benötigen?
+
+Für die potenziellen Helfer ist meist Folgendes sehr wichtig: Welche 
+Serendipity"=Version setzen Sie ein, wie lautet die URL Ihres Blogs, welchen Browser
+verwenden Sie, was für einen Server (mit PHP- und Datenbankversion) und welche
+Ereignis-Plugnis setzen Sie ein? Je detaillierter Ihre Auskunft, desto eher
+können andere Hilfesuchende später Ihren Beitrag nachvollziehen und ihr eigenes
+Problem lösen.
+
+\section{Neue Features}
+\index{Features}%
+\index{Weiterentwicklung}%
+
+Die Entwicklung Serendipitys läuft sehr transparent ab, Beiträge neuer
+Entwickler werden gerne gesehen. Dabei ist es ganz egal, wobei Sie helfen wollen
+-- Hauptsache, Sie haben Spaß daran und sind motiviert. Sie müssen also kein
+PHP-Profi sein und können schon mit einfachen Dingen Serendipity verbessern:
+Sie können anderen über das System erzählen, oder Sie helfen bei der Dokumentation
+und dem Ausbau des Wiki auf \cmd{http://www.s9y.""org/}. Auch Template-Entwickler
+und Designer sind jederzeit sehr willkommen.
+
+Folgende Features stehen auf der Wunschliste der Serendipity-Entwickler -- wer
+bei deren Verwirklichung helfen möchte, ist herzlich eingeladen:
+
+
+\subsubsection{Unit Tests}
+
+Mittels PHPUnit\footnote{\cmd{http://www.phpunit.de/}} können die einzelnen 
+Methoden der Serendipity-Plugin-API und auch einzelne Funktionen des 
+Serendipity-Frameworks durch sogenannte Test-Cases auf Funktionstüchtigkeit 
+geprüft werden.
+
+Test-Cases sollten dabei sämtliche gültigen und ungültigen Wertebereiche jeder
+einzelnen Funktion beinhalten. Die Tests dienen in erster Linie dazu, dass
+sich nicht unbemerkt Fehler in zukünftige Serendipity-Versionen einschleichen
+können. 
+
+Leicht kann es passieren, dass ein neues Feature ungewollte Begleiterscheinungen
+auf andere Stellen des Codes hat. Mithilfe von Unit-Tests kann diese
+Beeinflussung regelmäßig getestet und notfalls behoben werden. Leider ist die
+Erstellung dieser Test-Cases eine harte und langwierige Arbeit und erfordert
+einige Kenntnis der internen Funktionen des Blog-Systems.
+
+\subsubsection{Export}
+
+Obwohl Serendipity eine recht offene und leicht exportierbare Datenbank\-struktur
+besitzt, ist es wünschenswert, die komplette Datenbasis eines Se\-rendipity-Blogs
+auf Knopfdruck zu exportieren. Mithilfe dieses Exports sollte man eine
+Serendipity-Installation leicht auf einen anderen Server und nofalls auf ein
+anderes System portieren können.
+
+Wünschenswert wäre ein Exportformat, das auch andere Blog-Systeme unterstützen.
+Der MoveableType-Export beinhaltet gemeinsame Grundfunktionen, geht aber für die
+erweiterten Features von Serendipity nicht weit genug.
+
+\subsubsection{Dokumentation, Übersetzung}
+
+Das Buch in Ihren Händen stellt einen großen Fortschritt bei der Dokumentation
+Serendipitys dar. Jedoch ist dies erst der Anfang, eine detaillierte
+und aktuelle Dokumentation jedes einzelnen Plugins sollte online zur Verfügung stehen.
+
+Darüber hinaus hat auch die Übersetzung der Plugins von und ins Deutsche eine hohe Priorität. 
+
+\subsubsection{Multi-Blogs}
+
+Obwohl Serendipity  mehrere Autoren mit unterschiedlichen Rechtestufen
+unterstützt und mittels erweiterter Plugins auch Unter-Kategorien als
+eigenständig formatiertes Blog darstellen kann, geht die
+Multi-Blog"=Unterstützung noch nicht weit genug.
+
+Gewünscht ist eine zentrale Oberfläche, mittels derer beliebig viele Unter-Blogs
+erstellt werden können, die allesamt unterschiedliche Plugins, Templates und
+Benutzergruppen definieren können.
+
+Dies setzt einige zentrale Datenbankveränderungen voraus sowie eine generelle
+weitere Abstraktion des Sourcecodes.
+
+\subsubsection{Performance-Tuning, Caching}
+
+Serendipity achtet bereits (wo es sinnvoll ist) auf bestmögliche Performance. Dennoch ist
+für die Zukunft ein neuartiges Caching-Konzept vonnöten, ebenso wie die Möglichkeit,
+komplett statische Seiten erstellen zu können.
+
+\subsubsection{PEAR-Integration, Spartacus Mirroring}
+
+Das bereits gut funktionierende Spartacus-System zur Verteilung von Plugins und
+Templates soll noch weiter ausgebaut und möglichst an die
+PEAR-Channel-Verwaltung angelehnt werden. Dadurch wäre großflächigeres Mirroring
+möglich, und die Festlegung auf zentrale vertrauenswürdige Server wäre nicht mehr
+notwendig. 
+
+\subsubsection{Workflow-Integration}
+
+Blog-Artikel folgen in Serendipity derzeit nur einem zweistufigen Konzept:
+Veröffentlichung und Entwurf. Wünschenswert wäre die Integration eines offenen
+Workflow-Systems, mit dem ein Artikel diverse selbst definierte Prüfungsstufen
+durchläuft und Checkpoints mit bestimmten Bedingungen passieren muss.
+
+\subsubsection{Statische Seiten, Benutzerrechte}
+
+Das Plugin \emph{Statische Seiten} soll neu entwickelt und stärker an
+die neuen Bedürfnisse der Redakteure angepasst werden. Eine
+Mehrbenutzer-Fähigkeit mit individuellen Benutzerrechten soll möglich sein, wie
+auch eine überarbeitete Oberfläche zur einfacheren (lies: hübscheren) Erstellung
+einer statischen Seite.
+
+
+
+Wenn Sie bereits Programmteile von Serendipity angepasst haben, sollten Sie 
+darüber nachdenken, diese der Serendipity-Gemeinschaft zur Verfügung zu 
+stellen. Dies hat mehrere Vorteile: Zum einen sind Ihnen andere Benutzer auf 
+Lebzeiten dankbar,
+zum anderen stellen Sie so sicher, dass Ihre Änderungen in zukünftigen Versionen 
+von Serendipity enthalten sind und Sie sie nicht bei jedem Update mühsam 
+neu einpflegen müssen. Auch könnte es sein, dass andere Benutzer Feedback 
+zu Ihren Änderungen geben, gemeinsam mit Ihnen Fehler beheben und Ihren Code
+um neue Funktionen erweitern. So lernen auch Sie dazu und helfen zugleich bei
+der Verbreitung Serendipitys.
+
+Auch wenn Sie ein Plugin entwickelt haben, würden sich die Entwickler freuen,
+wenn Sie Ihren Code offenlegen. Je mehr Benutzer Ihr Plugin einsetzen, desto
+eher werden Sie über Fehler oder denkbare neue Features benachrichtigt. Das gilt
+auch für Designer von Templates, denn je verbreiteter Ihr Name in einer
+Open-Source-Community ist, desto eher gelten Sie als Autorität in dem Bereich.
+Ein hoher Bekanntheitsgrad hat den Vorteil, dass Sie dadurch leichter
+auf kommerzielle Projekte angesprochen werden und dass man Sie um
+Entwicklungsarbeiten bitten könnte. 
+
+Auch wenn Sie als Privatentwickler tätig sind, macht es sich bei der Bewerbung 
+um eine Programmiererstelle immer sehr gut, wenn man Einsatz in einem 
+Open-Source-Projekt vorweisen kann. Die Erfahrung in der Zusammenarbeit mit 
+einem internationalen Team, gemeinsame Standards und eine öffentlich 
+einsehbare Programmierqualität sind für potenzielle Arbeitgeber von 
+zunehmender Wichtigkeit.
+
+\index{Programmiertipps}%
+\index{Programmierung, sichere}%
+\section{Tipps für die Programmierung}
+
+
+Grundsätzlich sollten Sie bei der Entwicklung von Code für Serendipity folgende
+Dinge beachten:
+
+
+\subsubsection{Sourcecode-Verwaltung nutzen}
+
+Serendipity wird über öffentlich zugängliche Server gewartet. Der
+Hauptteil des Quellcodes liegt auf 
+\cmd{http://developer.berlios.de/projects/se\-rendipity}  und wird  mittels
+Subversion\footnote{\cmd{http://subversion.tigris.org/}}
+gepflegt. Die zusätzlichen Plugins und Templates werden mittels CVS über den
+Server \cmd{http://www.sf.net/""projects/php-blog} gewartet
+(siehe Seite \pageref{sourcecodeverwaltung}).
+
+Wenn Sie Code-Änderungen veröffentlichen wollen, sollten Sie Ihre Änderungen
+immer anhand der aktuellsten Sourcecode-Version aus der jeweiligen Quelle
+durchführen. Anstatt alle geänderten Dateien an die Entwickler zu schicken,
+sollten Sie nur Ihre geänderten Codezeilen mitschicken; dies erledigt man
+mittels eines sogenannten \cmd{diff}-Formates, das gängige SVN- und CVS-Programme
+erstellen können.
+
+Wenn Sie erst einmal einige kleine Patches an die Entwickler geschickt haben, 
+können Sie auch nach direktem Dateizugriff zum Serendipity-Code fragen. Um 
+eine gewisse Qualität des Codes sicherzustellen, wird dies jedoch erst dann 
+genehmigt, wenn man Ihre Vertrauenswürdigkeit garantieren kann. Dass dies etwas 
+strenger kontrolliert wird, kommt Ihnen letztlich nur zugute.
+
+\subsubsection{Nur ändern, was man ändern muss}
+
+Wenn Sie den Entwicklern einen Patch schicken, mit dem ein Redakteur 
+z.\,B. neue Kategorien direkt vom Beitragseditor aus erstellen kann, 
+sollte Ihr Patch ausschließlich diese Änderungen beinhalten. Wenn Sie auch noch 
+ein, zwei weitere Änderungen vorgenommen haben, sollten Sie dies nicht in einem 
+einzelnen großen Patch abliefern, sondern lieber zwei oder drei kleinere Patches an die 
+Entwickler weiterleiten. So kann man die einzelnen Dinge gezielter 
+überprüfen und überstrapaziert die Zeit der Tester nicht.
+
+Nur das Notwendigste zu ändern gilt ganz besonders, wenn Sie ein neues Template
+entwickelt haben. Es wäre nicht gut, wenn in diesem Template Dateien enthalten
+sind, die im Vergleich zum Standard-Template unverändert sind. Besser wäre es,
+nur die absolut notwendigen veränderten Dateien zu bündeln.
+
+\index{Codestyle}%
+\index{Richtlinien!Codestyle}%
+\subsubsection{Coding Style}
+
+Alle Dateien sollten stets im Unix-Format (Zeilenumbrüche mit \cmd{\textbackslash{}n})
+gespeichert werden. Einrückungen sollten mit vier Leerzeichen (nicht mit
+Tabulatoren) vorgenommen werden.
+
+Optionale Einrückungen für IF-Abfragen und Schleifen sollten immer genutzt
+werden. Grundsätzlich sollten Sie sich bei der Programmierung an die 
+PEAR-Coding-Standards\footnote{\cmd{http://www.go-pear.org/manual/en/standards.php}}
+halten. 
+
+Versuchen Sie Ihren Code schlank zu halten. Redundante Codeteile sollten Sie
+durch Auslagerung in eigenständige Funktionen oder Methoden vermeiden. Unnötige
+Schleifen oder Datenbankabfragen sollten vermieden werden, wenn möglich sollten
+Sie performance-intensive Dinge über eigenständiges Caching beschleunigen.
+
+\subsubsection{Besonderheiten für Templates}
+
+Wenn Ihr Template eine \cmd{config.inc.php}-Datei beinhaltet, achten Sie darauf,
+dass diese so wenig wie möglich PHP-Code ausführt. Je größer und komplexer die
+Datei wird, desto länger dauert der Serendipity-Seitenaufruf.
+
+HTML-Code sollte nach XHTML-1.1-Standard entwickelt werden. Zudem sollte ein
+Template in allen gängigen Browsern funktionieren, zumindest in Mozilla Firefox
+und Microsoft Internet Explorer.
+
+Wenn Ihr Template eigene Sprachkonstanten verwendet, lagern Sie diese bitte in
+\cmd{lang\_XX.inc.php}-Dateien aus und liefern auch jeweils die
+korrespondierende Version der Datei im UTF-8-Zeichensatz mit.
+
+\subsubsection{Besonderheiten für Plugins}
+
+Plugins sollten möglichst objektorientiert (wie es die API vorgibt) entwickelt
+werden. PHP4-Syntax, wo möglich, ist bevorzugt. Wenn gute Gründe dafür sprechen,
+sind PHP5-Plugins selbstverständlich auch kein Problem.
+
+Plugins sollten nur die Ereignis-Hooks benutzen, die auch absolut notwendig
+sind. Je weniger Hooks benutzt werden, desto performanter ist ein Plugin.
+
+Wenn ein Plugin externe URLs öffnet, sollten deren Ergebnisse vom Plugin 
+möglichst für einen konfigurierbaren Zeitraum gecached werden. Behalten Sie stets
+Netzwerkprobleme im Hinterkopf, die nicht dazu führen sollten, dass ein Plugin
+inoperabel wird.
+
+Setzen Sie referenzierte Variablen ein, wo möglich.
+
+Wenn Sie ein bestehendes Plugin überarbeiten, fügen Sie bitte in dessen Datei
+\cmd{ChangeLog}  eine Information über die vorgenommene
+Änderung hinzu. Dokumentationen für ein Plugin speichern Sie (mit
+HTML-Syntax) in einer Datei namens \cmd{documentation\_XX.html}, wobei das
+\cmd{XX} mit dem jeweiligen Sprachkürzel wie \cmd{de} zu ersetzen ist.
+
+Falls Ihr Plugin HTML-Code für Buttons und Links im Backend ausgibt, benutzen
+Sie bitte die \cmd{serendipityPrettyButton}-CSS-Klasse. Bei Eingabeboxen nutzen
+Sie Klassen wie \cmd{input\_radio, input\_checkbox} oder \cmd{input\_button}. 
+
+Falls Ihr Plugin eigene Menüpunkte im Backend ausgibt, geben Sie dies im
+Ereignis-Hook mit einem Code wie 
+
+\begin{ospcode}
+<li class="serendipitySideBarMenuLink">
+\end{ospcode}
+
+aus. Sollte Ihr Plugin auf fremde Code-Bibliotheken zurückgreifen, prüfen Sie bitte,
+ob dieser kompatibel mit der gewählten Lizenz Ihres Plugins ist. Standardmäßig
+werden Serendipity-Plugins unter die BSD-Lizenz gestellt. Wenn Ihr Plugin auf 
+eine externe Bibliothek angewiesen ist, prüfen Sie im Code, ob diese existiert.
+Das Plugin sollte das Blog nicht unbenutzbar machen, wenn der entsprechende Code
+fehlt.
+
+Wenn möglich, sollte Ihr Plugin auf viele kleine Dateien verzichten. Kleine
+Dateien können die Verteilung über das Spartacus-System spürbar verlangsamen.
+
+Plugins sollten nur SQL-Anweisungen benutzen, die von \emph{MySQL},
+\emph{SQLite} und \emph{PostgreSQL} interpretiert werden können. Fügen Sie
+unterschiedliche Varianten der SQL-Abfrage ein, wenn diese auf unterschiedlichen
+Systemen voneinander abweichen. Wenn das Plugin eine eigene Datenbanktabelle
+benötigt, sollte diese vom Plugin automatisch mithilfe der Funktion
+\cmd{serendipity\_db\_schema\_import} erstellt werden.
+
+\subsubsection{Sicherheit}
+\index{Sicherheit}%
+\index{Sichere Programmierung}%
+
+Achten Sie stets auf die Sicherheit Ihres Codes. Er sollte keine SQL-
+oder XSS-Injections zulassen oder gar beliebigen PHP-Code von fremden Servern
+ausführen. Achten Sie darauf, Werte aus GET/POST-Variablen vor dem
+Einfügen in die Datenbank mit \cmd{serendipity\_db\_escape""\_string()} zu
+behandeln und bei der Ausgabe mit \cmd{htmlspecialchars()} zu umgeben.
+
+Wenn ein Plugin administrative Aktionen im Backend ausführt, sollten die
+HTML-Formulare zum Ausführen der Funktion mittels \cmd{serendipityForm\-Token()}
+vor XSRF-Angriffen gesichert werden.
+
+\subsubsection{Aus anderen Quellen lernen}
+
+Wenn Sie Code beisteuern wollen, ist es am einfachsten, sich anzuschauen, was
+frühere Serendipity-Entwickler geschrieben haben. Schauen Sie sich bestehende
+Plugins an, nehmen Sie Anleihen an deren Struktur. Und wann immer etwas unklar
+ist: Fragen Sie ruhig. Niemand beißt die Hand, die uns füttern soll!
+
+
+
+\ospvacat
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "serendipity"
+%%% End:

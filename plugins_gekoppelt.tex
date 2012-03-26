@@ -1,0 +1,2720 @@
+
+%revised
+\index{Plugins!gekoppelt}%
+\index{Plugins!Paired}%
+\index{Gekoppelte Plugins}%
+\label{Gekoppelte Plugins}%
+\chapter{Gekoppelte Plugins}
+
+Gekoppelte Plugins bestehen sowohl aus einem Seitenleisten-Plugin als
+auch aus einem Ereignis-Plugin. Beide Plugins können dabei auch im selben
+Verzeichnis liegen. Wenn ein Plugin ein anderes bedingt, kann bei der
+Installation des einen Plugins auch automatisch ein anderes zugehöriges
+Plugin installiert werden. Generell sieht Serendipity dabei das
+Ereignis-Plugin als das wichtigere an -- wird dieses entfernt, wird auch
+das zugehörige Seitenleisten-Plugin (falls Sie es installiert haben)
+entfernt. Umgekehrt wird ein benötigtes Ereignis-Plugin automatisch
+installiert, wenn Sie ein zugehöriges Seitenleisten-Plugin installieren.
+
+\section{Standardmäßig verfügbare Plugins}
+
+In der folgenden Liste sind alle miteinander verkoppelten Plugins
+aufgeführt, die in der Serendipity-Distribution mitgeliefert werden. Keine
+dieser Plugins sind standardmäßig installiert, daher müssen Sie diese
+gezielt installieren.
+
+\index{Creative Commons}%
+\index{Plugins!Creative Commons Lizenz}%
+\index{Plugins!serendipity\_event\_creativecommons}%
+\index{Urheberrecht}%
+\index{Lizenzen}%
+\index{Plugins!serendipity\_plugin\_creativecommons}%
+\subsection{Creative Commons, Creative Commons-Lizenz\newline
+serendipity\_plugin\_creativecommons,\newline
+serendipity\_event\_creativecommons}
+
+Wenn Sie in Ihrem Blog einen Artikel der Allgemeinheit zugänglich machen,
+liegen die Urheberrechte meist bei dem Redakteur des jeweiligen Artikels.
+In kommerziellen Blogs gehen die Nutzungsrechte dafür üblicherweise in
+Firmenbesitz über.
+
+Die Thematik der Eigentums- und Nutzungsrechte von Blogs wird vielerorts
+ausgiebig diskutiert -- als Fazit kann man sagen, dass Sie sich auch als
+privater Blogger Gedanken über die Verwertungsrechte Ihrer Artikel machen
+sollten.
+
+Wenn Sie beispielsweise eine ausführliche Dokumentation zu einem
+Open-Source"=Programm schreiben, könnte an diesem Artikel großes Interesse
+der Allgemeinheit bestehen. Nun haben Sie als Verfasser zwei
+Möglichkeiten: Entweder Sie verbieten Fremden, Ihren Artikel 
+weiterzuverbreiten, oder Sie erlauben die Verbreitung Ihres Textes in beliebigen
+Medien.
+
+Die erste Variante hat für Sie den Vorteil, dass Sie Herr über Ihren
+Artikel bleiben und möglicherweise auch durch Werbeschaltung etwas Geld
+verdienen können. Auf der anderen Seite werden erfahrungsgemäß trotzdem
+viele Benutzer Ihren Artikel einfach weiterverbreiten, und Sie müssen
+Rechtsmittel gegen diese Nutzung einlegen.
+
+Die zweite Variante, die Offenlegung Ihres Artikels, hilft der Verbreitung
+Ihres Textes. Wenn Sie hauptsächlich aus ideologischen Gründen daran interessiert sind,
+Informationen zu verbreiten ("`\emph{Das Internet ist frei}"'), ist dies
+sicher die beste Maßnahme, damit Ihr Text Gehör (oder \emph{Geles})
+findet. Andererseits könnten böswillige Nutzer Ihren Artikel auf kommerziellen 
+Webseiten als Eigenleistung darstellen. Da Sie den Text
+aber zur freien Vervielfältigung freigegeben haben, sind Ihre
+Rechtsmittel bei derartiger Nutzung recht eingeschränkt.
+
+Beide Varianten haben eines gemeinsam: Sie stellen eine Lizenzierung dar.
+Sie sollten sich stets für irgendeine Lizenz Ihrer Blog-Inhalte
+entscheiden, um klare Verhältnisse zu schaffen.
+
+Es gibt zahlreiche Lizenzen im Internet: Die GPL, BSD, 
+Mozilla-Lizenz und viele weitere sind grundsätzlich zwar eher für Software
+gedacht, können aber durchaus auch auf eigene Werke wie Blog-Artikel
+ausgeweitet werden.
+
+Weil Artikel sich aber auch im deutschen Recht von Software
+unterscheiden, gibt es spezielle Lizenzen, die sich auf Texte und eigene
+Bilder spezialisiert haben. Die wohl verbreitetste und bekannteste ist
+die sogenannte \emph{Creative
+Commons}-Lizenz\footnote{\cmd{http://de.creativecommons.org/}}. Diese
+bietet ein bausatzartiges Modell, bei dem Sie sich Ihre Lizenz aus
+einigen Komponenten zusammenstellen können. Sie können auswählen, ob Ihr
+Text kommerziell eingesetzt werden darf, ob Ihr Urheberrecht jederzeit
+mit angegeben werden muss und ob auf Ihrem Artikel aufbauende Texte
+erstellt werden dürfen.
+
+Sie können sowohl das gesamte Blog unter eine derartige Lizenz stellen,
+als auch ausgewählte Bereiche des Blogs. Um diese Kennzeichnung zu
+erleichtern, bietet Serendipity das \emph{Creative Commons}-Plugin an.
+
+In dem Ereignis-Plugin stellen Sie ein, für welche Lizenz Sie sich
+entschieden haben. In dem RSS-Feed Ihres Blogs und in den HTML-Metatags
+wird das Plugin daraufhin Lizenzhinweise einbinden, die der gewählten
+Lizenz entsprechen.
+
+Das Seitenleisten-Plugin können Sie einbinden, um in der Seitenleiste
+für Besucher sichtbar anzuzeigen, welcher Lizenz ihr Blog unterliegt.
+
+Grundsätzlich können Sie für Ihr Blog auch jede andere beliebige Lizenz
+einbinden. Dazu können Sie einen HTML-Klotz als Seitenleisten-Plugin
+einbinden und dort auf Ihre gewählte Lizenz hinweisen. Die
+HTML/RSS"=Metadaten können Sie über die Template-Dateien \cmd{feed*.tpl}
+sowie die \cmd{index.""tpl} ebenfalls manuell einpflegen.
+
+\index{Plugins!Template dropdown}%
+\index{Plugins!Template-Auswahl}%
+\index{Frontend!Layout}%
+\index{Plugins!serendipity\_event\_templatechooser}%
+\index{Plugins!serendipity\_plugin\_templatedropdown}%
+\subsection{Template dropdown,
+Template-Auswahl\newline
+ serendipity\_plugin\_templatedropdown,\newline
+serendipity\_event\_templatechooser}
+
+Als Eigentümer des Blogs legen Sie üblicherweise fest, wie es auszusehen
+hat. Manchen Betreibern ist das aber relativ egal; sie legen eher Wert
+darauf, dass sich der Besucher mit dem Design identifizieren kann. Daher
+ist es in manchen Fällen angebracht, dem Besucher eine Wahl des Designs
+(\emph{Template}) zu überlassen -- besonders, wenn Sie Wert auf
+\index{Barrierefreiheit}%
+Barrierefreiheit legen.
+
+Über das Seitenleisten-Plugin \emph{Template dropdown} können Sie ein
+Ausklappfeld einbinden, das alle in Ihrem Blog verfügbaren Templates
+enthält. Der Besucher kann ein Template auswählen und danach
+das Blog im gewünschten Layout ansehen.
+
+Das Seitenleisten-Plugin dient lediglich der Darstellung der verfügbaren
+Templates. Damit das Template erfolgreich aktiviert werden kann, muss das
+gekoppelte Ereignis-Plugin \emph{Templateauswahl} installiert werden.
+
+Das Ereignis-Plugin setzt einen Browser-Cookie, um die Template-Auswahl
+des Besuchers auch beim nächsten Besuch wiederherzustellen. Darüber hinaus
+können Sie, sobald das Ereignis-Plugin installiert ist, Ihr Blog mittels
+\cmd{http://www.example.com/index.php?user\_template=\cmdvar{default}}
+aufrufen. Der Option \cmd{user\_template} können Sie dabei den Namen des
+gewünschten Template-Verzeichnisses zuweisen.
+
+Bitte beachten Sie: Wenn Sie eigenständige Anpassungen an einem
+Template vornehmen, um beispielsweise spezielle erweiterte Eigenschaften
+einzubinden, sind diese nur in dem jeweils von Ihnen modifizierten Template
+sichtbar. Wenn ein Besucher ein davon abweichendes Template gewählt
+hat, werden möglicherweise wichtige Änderungen bei ihm nicht
+korrekt dargestellt. Auch wenn Sie das Plugin
+\emph{Eigenschaften/Templates von Kategorien} verwenden, sollten Sie eine
+freie Template-Auswahl nur in Sonderfällen zulassen.
+
+\label{statistics}%
+\index{Plugins!Statistiken}%
+\index{Plugins!serendipity\_event\_statistics}%
+\index{Plugins!serendipity\_plugin\_statistics}%
+\index{Statistik}%
+\subsection{Statistiken\newline
+serendipity\_plugin\_statistics,\newline serendipity\_event\_statistics}
+
+Einen sehr wichtigen Haushaltsgegenstand eines jeden Profi-Bloggers stellt
+der Bauchpinsel dar. Mit diesem Instrument lässt sich das Ego eines
+Bloggers vorzüglich bürsten, was letztlich die beruhigende
+Selbstbestätigung für den Betrieb eines Blogs gibt.
+
+Trotz dieser etwas ironischen einleitenden Worte ist es für viele Blogger
+tatsächlich sehr wichtig, Statistikwerte über ihr Blog zu sammeln. Ob dies
+später als persönlicher Ansporn dient oder als Marketinginstrument der
+Geschäftsführung, ist dem Einzelnen überlassen.
+
+Serendipity liefert ein Statistik-Plugin mit. Das Seitenleisten-Plugin
+kann für Besucher wertvolle Informationen darstellen, wie beispielsweise
+die aktuelle Anzahl an Artikeln, das Datum des aktuellsten Artikels, die
+Anzahl der Kommentare und die Anzahl der Besucher im Monat und aktuell
+auf der Seite.
+
+Das Ereignis-Plugin bindet eine ausführliche Statistik für Redakteure im
+Backend unter \menu{Einträge\sm Statistiken} ein.
+
+\index{awStats}%
+\index{modlogan}%
+\index{webalizer}%
+\index{Google Analytics}%
+Abgesehen von diesem internen Plugin macht es durchaus Sinn, weitere
+Möglichkeiten der Statistikerhebung auf dem Webserver zu benutzen, allen
+voran die Analyse von Webserver-Logfiles mittels Programmen wie
+awStats\footnote{\cmd{http://awstats.sourceforge.net/}},
+webalizer\footnote{\cmd{http://www.mrunix.net/webalizer/}} oder
+Modlogan\footnote{\cmd{http://modlogan.org/}}. Auch das Google
+Analytics\footnote{\cmd{http://www.google.com/analytics/}} Widget hat
+sich als extrem detailreich erwiesen (und es lässt sich einfach via
+JavaScript oder eigenständigem Serendipity-Plugin einbinden).
+
+In der Konfiguration des Seitenleisten-Plugins können Sie gezielt
+einstellen, welche statistischen Daten Sie Ihren Besuchern darstellen
+wollen. Die Bezeichnung dafür können Sie frei vergeben. Als
+Platzhalter für die später dargestellte Zahl verwenden Sie \cmd{\%s}.
+Damit das Plugin nicht jedes Mal erneut die Statistiken abfragen muss,
+werden die Ergebnisse temporär zwischengespeichert (\cmd{Caching}). Über
+die Option \menu{Cache-Zeitlimit} können Sie einstellen, wie viel Zeit
+vergehen darf, bevor der Cache neu erstellt wird.
+
+Die Anzahl der monatlichen und der aktuellen Besucher stellt das Plugin nur
+dar, wenn Sie im Ereignis-Plugin die Option \menu{Erweiterte
+Besucherstatistiken} aktiviert haben. Als \emph{aktueller Besucher} zählt
+in diesem Fall jeder Besucher, der in den letzten 15 Minuten auf das Blog
+zugegriffen hat.
+
+Die Konfiguration des Ereignis-Plugins bietet folgende Optionen:
+
+\begin{ospdescription}
+\ospitem{\menu{Anzahl Einträge}}
+Standardmäßig zeigt das Plugin im Menüpunkt \menu{Einträge\sm
+Statistiken} immer 20 Datensätze pro statistischem Wert an. Wenn Sie mehr
+oder weniger Einträge sehen wollen, können Sie dies mit der Option
+\menu{Anzahl Einträge} festlegen.
+
+\ospitem{\menu{Erweiterte Besucherstatistiken}}
+Wenn Sie diese Option aktivieren, kann das Plugin jeden Zugriff eines
+Besuchers auf das Blog nachverfolgen (\emph{visitor tracking}). Ein
+Besucher wird mittels eines Cookies eindeutig identifiziert, alle
+Folgezugriffe aktualisieren dann einen bestehenden Datensatz.
+
+Im Gegensatz zu den Statistikfunktionen des \menu{Karma}-Plugins werden
+so globale Besucher erfasst, und \emph{nicht} die Klicks bei
+individuellen Artikeln. Daher schließen sich beide Plugins gegenseitig
+nicht aus, sondern können ergänzend eingesetzt werden.
+
+Ob Sie diese Option auf \menu{Ja, am unteren Ende der Seite} oder
+\menu{Ja, oben auf der Seite} stellen, ist nur für die Darstellung der
+Statistik erheblich und gibt an, wo die Besucherstatistiken eingebunden
+werden sollen.
+
+\index{Datenbank-Tabellen!serendipity\_visitors}%
+\index{Datenbank-Tabellen!serendipity\_visitors\_count}%
+Wenn die Benutzerzählung aktiviert ist, sollten Sie von Zeit zu Zeit 
+manuell die Datenbanktabellen \cmd{serendipity\_visitors} und
+\cmd{seren\-dipity\_visitors\_count} prüfen, da diese sehr groß werden
+können. Schlagen Sie auf Seite \pageref{wartung-visitors} nach, um zu erfahren,
+wie Sie derartige Prüfungen gezielt durchführen.
+
+\ospitem{\menu{Alles zeigen}}
+Über die Option \menu{Alles zeigen} können Sie festlegen, ob das
+Statistik-Plugin sämtliche Daten anzeigt (Einstellung \menu{Ja, alle
+Statistiken anzeigen}) oder ob nur die erweiterten Besucherstatistiken
+(falls aktiviert) eingebunden werden sollen.
+
+\ospitem{\menu{Robot-Zählung verhindern}}
+Nur wenn Sie diese Option aktivieren, kann Serendipity bekannte
+Suchmaschinen von der Besucherzählung ausnehmen. Meist macht es für
+Sie keinen Sinn, Suchmaschinen in dieser Zählung aufzuführen, daher ist
+es selten zu empfehlen, die Option auf \menu{Nein, Robots bitte
+mitzählen} zu setzen.
+
+\end{ospdescription}
+
+Die Darstellung des Statistik-Plugins umfasst folgende Daten:
+\begin{osplist}
+\item Anzahl der Besucher (monatsbezogen, tagesbezogen)
+\item Letzte Besucher
+\item Top-Referrer\footnote{Referrer sind Webseiten, von denen aus
+    Besucher zu Ihrem Blog gelangt sind.}
+\item Datum des ersten und letzten Blog-Artikels
+\item Anzahl insgesamt verfasster Artikel (veröffentlicht, Entwürfe)
+\item Anzahl der Artikel vereilt auf einzelne Redakteure
+\item Anzahl vorhandener Kategorien
+\item Verteilung der Artikel auf die vorhandenen Kategorien
+\item Anzahl der Dateien in der Mediendatenbank, Aufteilung nach
+    Dateityp
+\item Anzahl der Kommentare, Verteilung der Kommentare zu den
+    populärsten Artikeln, Namen der häufigsten Kommentatoren
+\item Anzahl der Abonennten von Blog-Artikeln, Verteilung der
+    Abonnenten auf populäre Artikel. Als \index{Abonnement} Abonnent wird ein
+    Kommentator bezeichnet, der beim Kommentieren die Option
+    \menu{Bei Aktualisierung dieser Kommentare benachrichtigen}
+    aktiviert hat.
+\item Anzahl und Verteilung der Trackbacks auf populäre Artikel,
+    Namen der am häufigsten Trackbacks sendenden Blogs
+\item Durchschnittliche Kommentare, Trackbacks pro Artikel
+\item Durchschnittliche Artikel pro Tag, Woche und Monat
+\item Menge der insgesamt geschriebenen Zeichen, durchschnittliche
+    Zeichenzahl pro Artikel, Nennung der längsten Blog-Artikel
+\item Top-Referrer und Top Exits (siehe zugehörige Plugins auf den
+    Seiten \pageref{trackexits} und \pageref{trackreferrer})
+
+\end{osplist}
+
+Weiterhin können etwaige weitere Plugins auf dieser Seite ihre eigenen
+Statistiken einbinden, wie beispielsweise das Karma-Plugin.
+
+
+\subsubsection{Datenbanktabellen}
+
+
+\index{Datenbank-Tabellen!serendipity\_visitors}% 
+Die Tabelle \cmd{serendipity\_visitors} enthält für jeden 
+Besucher der Seite einen Eintrag:
+
+\begin{ospdescription}
+\ospitem{\cmd{counter\_id}} enthält eine fortlaufende ID.
+\ospitem{\cmd{sessID}} enthält die Session-ID des Besuchers, damit nur der erste
+seiner Aufrufe gezählt werden muss.
+\ospitem{\cmd{day}} enthält das Datum des Besuchs im Textformat.
+\ospitem{\cmd{time}} enthält das Datum des Besuchs im UNIX-Zeitstempel-Format.
+\ospitem{\cmd{ref}} enthält den HTTP-Referrer (Verweisende Seite).
+\ospitem{\cmd{browser}} enthält den Browser-Typ des Besuchers.
+\ospitem{\cmd{ip}} enthält die IP des Besuchers.
+\end{ospdescription}
+
+\index{Datenbank-Tabellen!serendipity\_visitors\_count}% 
+Die Datenbanktabelle \cmd{serendipity\_visitors\_count} enthält eine
+Zusammenfassung der Besucher an einem einzelnen Tag:
+
+\begin{ospdescription}
+\ospitem{\cmd{year}} enthält das Datum (Jahr) der Zugriffe.
+\ospitem{\cmd{month}} enthält das Datum (Monat) der Zugriffe.
+\ospitem{\cmd{day}} enthält das Datum (Tag) der Zugriffe.
+\ospitem{\cmd{visits}} enthält die Anzahl der Besucher an diesem Tag.
+\ospitem{\cmd{hits}} enthält die Gesamtzahl an aufgerufenen Seiten an diesem Tag.
+\end{ospdescription}
+
+\index{Datenbank-Tabellen!serendipity\_refs}%
+Die Referrer werden in der Tabelle
+\cmd{serendipity\_refs} gespeichert. Neben dem fortlaufenden 
+Primärschlüssel \cmd{id} enthält die Spalte \cmd{refs} die URL der
+Webseite und \cmd{count} die Anzahl der Besucher von dieser Seite.
+
+Diese Tabellen können auf großen Blogs sehr umfangreich
+werden. Warten Sie diese daher regelmäßig. 
+
+\section{Auswahl externer Plugins}
+
+Abgesehen von den mitgelieferten gekoppelten Plugins finden Sie auch eine
+große Zahl an Plugins über \cmd{http://spartacus.s9y.org/}. Eine
+Auswahl an häufig gekoppelten Ereignis-Plugins finden Sie auf den
+folgenden Seiten.
+
+\index{Plugins!Geotag Google Map}%
+\index{Plugins!Geotag}
+\index{Plugins!serendipity\_plugin\_geotag}%
+\index{Plugins!serendipity\_event\_geotag}%
+\index{Geotagging}%
+\index{Meta-Informationen}%
+\subsection{Geotag Google Map, Geotag\newline 
+serendipity\_plugin\_geotag,
+serendipity\_event\_geotag}
+
+Als \emph{Geotagging} bezeichnet man den Vorgang, zu einem Artikel (oder
+auch einem Bild) einen geographischen Bezug (\emph{Meta-Informationen})
+zuzuordnen.
+
+\index{Semantic Web}%
+Diese Meta-Informationen sind oft für Besucher gar nicht offensichtlich, da sie im
+XHTML-Code versteckt sind und nur von Schnittstellen oder Browser-Plugins
+ausgewertet werden. Meta-Informationen (oder auch \emph{Microformats}) sind die
+Grundidee der nächsten Evolutionsstufe des Internets, genannt
+\emph{Semantic Web}. Anhand klar strukturierter, maschinenlesbarer
+Informationen können Suchmaschinen Details auswerten und miteinander verknüpfen.
+
+Konkret kann dies bedeuten, dass man mit einer Suchmaschine alle
+Blog-Artikel suchen kann, die im Starbucks-Cafe am Kölner Hauptbahnhof
+verfasst wurden; oder alle Blog-Einträge, die sich auf die Semperoper
+beziehen. Der sinnvolle Umgang mit den Metadaten eröffnet zahlreiche
+Möglichkeiten und Verkettungen von Daten, die ein eigenes Buch zu diesem Thema
+rechtfertigen würden.
+
+Alle diese Such- und Verkettungsmöglichkeiten werden aber erst dann nutzbar,
+wenn die Informationen überhaupt von Autoren zur Verfügung gestellt werden. Diese
+redaktionelle Leistung kann Ihnen derzeit noch keine Maschine abnehmen.
+
+\index{Google Map}%
+Aber die Eingabe kann Ihnen erleichtert werden, und aus diesem Grund
+wurde das Serendipity-Plugin \cmd{Geotag} erfunden. Wenn Sie dieses
+Plugin installieren, können Sie in den \emph{Erweiterten Optionen} jeden
+Blog-Artikels mittels einer
+Google-Map\footnote{\cmd{http://maps.google.com/}} einem
+Punkt auf der Welt zuordnen. Die geographischen Daten bindet das Plugin daraufhin in
+Ihrem RSS-Feed und auf der Webseite ein, von wo sie von Suchmaschinen
+indiziert werden können.
+
+Ein zugehöriges Seitenleisten-Plugin kann in einer Google-Map außerdem
+die aktuellsten Einträge geographisch zugeordnet darstellen.
+
+Für beide Einsatzzwecke (Seitenleisten- und Ereignis-Plugin) benötigen Sie
+einen Google API-Schlüssel. Diesen erhalten Sie bei
+\cmd{http://www.google.""com/apis/maps/signup.html}, nachdem Sie den
+Lizenzbedingungen zugestimmt und die URL Ihres Blogs mitgeteilt
+haben. Ohne den API-Schlüssel kann das Plugin keine geographische Karte
+darstellen, und Sie müssten die Längen- und Breitengrade zu einem Eintrag
+per Hand festlegen.
+
+Das Ereignis-Plugin bindet lediglich diese eingegebenen Längen- und
+Breitengrade in die Metadaten des RSS-Feeds ein (\cmd{<geo:long>,
+<geo:lat>}). Um sichtbare Informationen für Ihre Besucher zu verketten,
+bietet das Ereignis"=Plugin auch die Möglichkeit an, eine Karte zu dem
+jeweiligen verbundenen Ort anzuzeigen. Hier wird standardmäßig 
+Google Maps eingebunden, aber Sie können auch einen anderen Kartendienst
+benutzen. In dem Eingabefeld \menu{Karten URL} der Konfiguration des
+Ereignis-Plugins können Sie die Platzhalter \cmd{\%GEO\_LAT\%} und
+\cmd{\%GEO\_LONG\%} für die Längen- und Breitengrade innerhalb der URL
+einsetzen, und \cmd{\%TITLE\%} wird mit dem Titel des zugehörigen
+Blog-Eintrages mit den Geodaten ersetzt.
+
+Anschließend erfolgt die Darstellung dieses Links unterhalb jedes
+Blog-Eintrags im Fuß der Seite, innerhalb eines HTML-Containers mit der
+CSS-Klasse \cmd{div.serendipity\_geotag}.
+
+In der Konfiguration des Seitenleisten-Plugins können Sie einige
+Darstellungsoptionen der Google Map festlegen (Breite, Höhe, Zoomlevel).
+Das Google Map JavaScript kann die Darstellung einer Karte mit
+geographischen Punkten anreichern. Als Datenbasis dazu dient der RSS-Feed
+Ihres (oder auch eines anderen!) Blogs. Diese RSS-URL müssen Sie in der
+Konfiguration des Plugins festlegen, standardmäßig zeigt die Einstellung
+bereits auf Ihren RSS-Feed. Als weitere Alternative kann das Plugin auch direkt
+auf Ihre Datenbank zugreifen und spart so den Umweg über einen RSS-Feed.
+
+\index{Plugins!Sprachauswahl}%
+\index{Plugins!serendipity\_event\_multilingual}%
+\index{Plugins!Multilinguale Einträge}%
+\index{Plugins!serendipity\_plugin\_multilingual}%
+\index{Mehrsprachigkeit}%
+\subsection{Sprachauswahl, Multilinguale Einträge\newline
+serendipity\_plugin\_multilingual,\newline  serendipity\_event\_multilingual}
+
+Wenn Sie in einem Blog Einträge in unterschiedlichen Sprachen verfassen
+wollen, können Sie dafür beispielsweise eigenständige Blog-Kategorien
+einrichten und die Einträge dort entsprechend einordnen. Dabei entstünde
+jedoch pro Übersetzung eines Artikels ein neuer, eigenständiger Artikel.
+
+Zwar hat dies auch möglicherweise Vorteile, da die Einträge so
+unabhängig voneinander sind (z.\,B. für
+Kommentare), aber schöner wäre es doch, wenn ein Artikel in mehreren
+Sprachversionen verwaltet werden könnte.
+
+Dies ermöglicht das Ereignis-Plugin \emph{Multilinguale Einträge}.
+Für mehrsprachige Einträge empfiehlt es sich, dass Sie Ihr
+Blog mit UTF-8-Zeichensatz konfiguriert haben. Mit nationalen
+Zeichensätzen könnte es später Darstellungsprobleme bei Sonderzeichen
+unterschiedlicher Sprachen geben. Beim UTF-8-Zeichensatz können jedoch
+sowohl chinesische Sprachzeichen als auch deutsche Umlaute parallel auf
+derselben Seite angezeigt werden.
+
+Sobald Sie das Ereignis-Plugin installiert haben, bindet es sich in die
+bekannte Oberfläche zur Erstellung eines Artikels ein. Im Bereich
+\emph{Erweiterte Optionen} im Abschnitt \emph{Multilinguale Einträge}
+erscheint bei einem neuen Eintrag ein Hinweistext. Dieser erklärt
+Ihnen, dass Sie einen Beitrag erst einmal abspeichern müssen, bevor Sie
+den Artikel in weitere Sprachen übersetzen können.
+
+Erstellen Sie also beispielhaft einen Artikel mit Titel und Inhaltstext.
+Diesen speichern Sie als \emph{Entwurf} ab (damit er nicht direkt im
+Frontend erscheint). Sobald Sie diesen Artikel erstmalig gespeichert
+haben, finden Sie im Abschnitt \emph{Multilinguale Einträge} ein
+Ausklappfeld und den Button \menu{Sprache wechseln}. Im Ausklappfeld ist
+anfangs \emph{Standard} ausgewählt.
+
+Intern verhält es sich so, dass Serendipity einen normalen
+Datenbankeintrag mit den Stammdaten des Artikels sichert. Zu den
+Stammdaten gehören die Felder \cmd{Titel}, \cmd{Eintrag},
+\cmd{Erweiterter Eintrag} sowie weitere Daten wie Artikelzeit und Autor.
+Diese Stammdaten werden niemals durch das Plugin \emph{Multilinguale
+Einträge} verändert. Wenn Sie später einen Artikel bearbeiten, wird Ihnen
+standardmäßig immer der Stammartikel angezeigt.
+
+Als \emph{Standardsprache} gilt die Sprache, die der jeweilige Redakteur
+in seinen \emph{Eigenen Einstellungen} (also \emph{nicht} die in der
+globalen Konfiguration eingestellte Blog-Sprache!) festgelegt hat. Dies
+führt oft zur Verwirrung bei Benutzern des Plugins, daher sollten Sie
+sich diese Besonderheit gut einprägen. Wenn Sie als Redakteur
+\emph{Deutsch} als Sprache gewählt haben, so entspricht dies der
+Standardsprache. Sie können daher im Ausklappfeld die Sprache
+\emph{Deutsch} nicht auswählen.
+
+Um nun eine Übersetzung des Artikels einzupflegen, müssen Sie erst die
+gewünschte Zielsprache im Abschnitt \emph{Multilinguale Einträge} eines
+bestehenden Artikels auswählen und auf den Button \emph{Sprache wechseln}
+klicken.
+
+Daraufhin speichert das Plugin die aktuelle Version des Artikels und tauscht im
+Hintergrund die Eingabemaske des Artikels aus. In der Datenbank wird in einer
+eigenständigen Tabelle (\cmd{serendipity\_entryproperties}) nun der Datensatz für
+die Übersetzung des Artikels angelegt.
+
+Damit Sie als Redakteur wissen, was für einen Text Sie übersetzen müssen,
+wird der Artikeltext des Ursprungsartikels in der Artikeloberfläche
+angezeigt. Nun können Sie nach Belieben den Titel, den Eintrag und den
+erweiterten Eintrag überarbeiten. Alle anderen Felder und erweiterten
+Eigenschaften beziehen sich nach wie vor auf den Stammartikel -- Sie
+können also einen übersetzten Artikel nicht einer anderen Kategorie
+zuordnen. Hierfür müssten Sie einen eigenständigen Artikel erstellen.
+
+Sobald Sie nach der Übersetzung einen Eintrag speichern, schließt das Plugin
+die Ergänzung des Stammdatensatzes ab. Sie können daraufhin weitere
+Sprachübersetzungen ausfüllen, indem Sie weitere Sprachversionen im
+Ausklappfeld anwählen.
+
+Wenn Sie später einen übersetzten Artikel bearbeiten wollen, sehen Sie
+wie erwähnt anfangs nur den Stammartikel. Sie müssen daher zur
+Bearbeitung einer Sprachversion stets mittels des Ausklappfeldes die
+gewünschte Bearbeitungssprache wählen und auf den Button \menu{Sprache
+wechseln} klicken. Eine Übersetzung können Sie löschen, indem Sie den
+Titel, den Eintrag und den erweiterten Eintrag leeren und den Artikel
+speichern.
+
+Beachten Sie, dass das Plugin nur dann optimal funktionieren kann,
+wenn Ihre Redakteure alle dieselbe Standardsprache verwenden. Sollten
+andere Redakteure andere Spracheinstellungen verwenden, kann dies die
+Verkettung der \emph{Standardsprache} mit einem Artikel durcheinander
+bringen.
+
+Nachdem Sie nun erfolgreich einen mehrsprachigen Artikel angelegt haben,
+sollten Sie einen Blick auf die Artikeldarstellung im Frontend werfen.
+Dort sehen Sie Ihren Artikel in der Standarddarstellung. In der Fußzeile
+des Artikels ist eine Sprachwahl neu hinzugekommen. Dort können Sie
+gezielt eine der vorhandenen Sprachen anklicken, damit der Artikel in der
+gewählten Sprache dargestellt wird. Genauso können Ihre Blog-Besucher
+später mehrere Sprachversionen des Artikels lesen. Bei der Umstellung auf
+die Zielsprache wechselt das Frontend zudem seine Sprache, damit der
+Besucher beispielsweise die Kommentarhinweise in dieser Sprache lesen
+kann.
+
+Da der Artikel immer über dieselben Stammdaten angesprochen wird, werden
+auch Kommentare nur diesem Beitrag zugewiesen. Wenn also ein
+Teil Ihrer Besucher auf Englisch kommentiert und andere auf Deutsch, so
+werden alle Kommentare später in allen Sprachversionen stets gleichzeitig
+erscheinen. Wenn Sie dies vermeiden wollen, müssen Sie separate
+Einträge ohne Verwendung des multilingualen Plugins erstellen.
+
+Ein gekoppeltes Seitenleisten-Plugin ermöglicht es Ihren Besuchern, ihre
+bevorzugte Sprache auszuwählen. Die Besucher sehen daraufhin alle
+Einträge in dieser gewählten Sprache, und auch die restlichen Ausgaben
+Serendipitys erscheinen in dieser Sprache. Sie können in der
+Konfiguration des Seitenleisten-Plugins gezielt festlegen, welche Sprachen
+Sie zur Auswahl anbieten wollen.
+
+Die Volltextsuche wird vom Plugin ebenfalls aufgerüstet, so dass bei der
+Sprachänderung auch jeweils der Artikeltext in der gewählten Sprache
+anstelle der Standardsprache berücksichtigt wird.
+
+Zwei URL-Variablen bestimmen, wie die Artikelsprachen dargestellt werden.
+Über die Variable \cmd{serendipity[lang\_display]=\cmdvar{en}} können Sie
+das Plugin anweisen, in Artikelübersichten ausschließlich Artikel in der
+übermittelten Sprache (hier \cmd{en} = Englisch) darzustellen. Existiert
+ein Artikel nicht in der gewünschten Übersetzung, wird der Artikel nicht
+dargestellt. Die URL-Variablen
+
+\begin{ospcode}
+serendipity[lang\_selected]=\cmdvar{en}
+serendipity[serendipityLanguage]=\cmdvar{en}
+user\_language=\cmdvar{en}  
+\end{ospcode}
+
+ werden synonym verwendet. Es ist daher
+egal, welche dieser drei URL-Variablen Sie benutzen\footnote{Aus
+Kompatibilitätsgründen zu älteren Versionen des Plugins und der
+Serendipity-Kernversion ist dieselbe Variable mit drei verschiedenen
+Namen vorhanden.}. Im Unterschied zur Variable
+\cmd{serendipity[lang\_""display]} legen diese drei lediglich eine
+Präferenz des Besuchers fest -- wenn ein Artikel in der Zielsprache nicht
+vorhanden ist, sehen Sie die Standardsprache. Auch legt diese letzte
+Variable die Ausgabe von Sprachvariablen des Serendipity-Frontends fest.
+
+Alle URL-Variablen können Sie auch für RSS-Feeds benutzen, um
+beispielsweise nur englische Artikel zu erhalten:
+\cmd{http://www.example.com/se\-rendipity/rss.php?serendipity[lang\_display]=en}.
+
+Das Ereignis-Plugin verfügt über zwei Konfigurationsoptionen.
+\menu{Behalten Sie vorhergehenden Spracheninhalt bei} legt fest, ob beim
+Wechsel der Sprache zur Eingabe eines Artikels der Stammartikel als
+Vorlage eingetragen werden soll. Bei deaktivierter Option starten Sie
+eine Artikelübersetzung mit einem leeren Artikel. Einigen Autoren hilft
+das, den Durchblick über noch nicht übersetzte Sprachversionen nicht zu
+verlieren.
+
+Mit der Option \menu{Where to place entry links} legen Sie fest, wo im
+Frontend die Links für den Besucher angezeigt werden, mit denen er zu
+Übersetzungen des Artikels wechseln kann. Die Einstellung \menu{Footer of
+an entry} platziert diese Links im Fußbereich des Artikels. Wenn Sie die
+Einstellung \menu{multilingual\_footer for custom Smarty output}
+aktivieren, können Sie in Ihrem Smarty-Template \cmd{entries.tpl}
+selbst bestimmen, wo die Links erscheinen sollen. Verwenden Sie
+dafür die Variable
+\index{Template-Variablen!\$entry.multilingual\_footer}%
+\cmd{\{\$entry.multilingual\_footer\}}.
+
+\label{adduser}%
+\index{Plugins!Registrierung neuer User}%
+\index{Plugins!serendipity\_event\_adduser}%
+\index{Plugins!serendipity\_plugin\_adduser}%
+\index{Community}%
+\index{Redakteure!neue}%
+\subsection{Registrierung neuer User\newline 
+serendipity\_plugin\_adduser,\newline
+serendipity\_event\_adduser}
+
+Technisch gesehen gibt es keinen Grund, dass Sie Ihr Blog in einsamem
+Schattendasein mit Inhalten füllen. Gruppen-Blogs mit mehreren
+Redakteuren könenn den Reiz für Ihre Leser erhöhen, Ihr Blog regelmäßig
+zu verfolgen. Mehr Redakteure schreiben mehr Artikel, können Themen
+unterschiedlich beleuchten oder durch einen eigenen Schreibstil
+verschiedene Gruppen von Lesern anziehen.
+
+Neue Redakteure können Sie relativ leicht über das Serendipity-Backend im
+Menüpunkt \menu{Administration\sm Benutzerverwaltung} hinzufügen. Dennoch
+entsteht dadurch ein nicht zu unterschätzender Verwaltungsaufwand: Sie
+müssen dem Autor Passwort und Benutzernamen zuweisen, ihn einer
+Gruppe zuordnen und ihm den Link zum Backend mitteilen.
+
+Einfacher geht das alles mithilfe des Plugins \menu{Registrierung neuer
+User}. Ein Seitenleisten-Plugin bietet ein einfaches
+Registrierungsformular für Ihren Besucher an, über das er sich selbständig
+als Autor anmelden kann. Das zugehörige Ereignis-Plugin kümmert sich um
+die weitere Verarbeitung und sendet eine automatische
+Registrierungs-E-Mail an den Benutzer. Nach dessen Bestätigung kann der
+Benutzer sich sofort als neuer Redakteur einloggen und mit den ihm
+zugeordneten Rechten Artikel erstellen. Und schon ist aus dem einsamen,
+egozentrischen Blogger ein gemütliches Herdentier geworden.
+
+Ein Besucher, der sich als Redakteur melden will, kann sich in Ihrem Blog
+auf zwei Arten registrieren. Zum einen können Sie das Seitenleisten-Plugin
+\emph{Registrierung neuer User} installieren, das in der Seitenleiste ein
+kleines Eingabeformular einbindet. Dort trägt der Besucher seinen
+gewünschten Benutzernamen, das Passwort und seine E-Mail-Adresse ein.
+
+Als zweite Möglichkeit bietet das Ereignis-Plugin eine selbständige Seite
+an, die man unter
+\cmd{http://www.example.com/serendipity/index.php?se\-rendipity[subpage]=adduser}
+aufrufen kann. Auch hier werden dieselben Eingabefelder angezeigt.
+
+Ob Sie beide oder nur eine Variante der Registrierungsformulare in Ihr
+Blog einbinden, bleibt Ihren Layout-Vorstellungen überlassen. Sie könnten
+auch eine eigene statische Seite mit freiem Eingabeformular entwerfen.
+Dabei muss das HTML-Formularziel lediglich auf die Datei
+\cmd{http://www.example"".com/serendipity/index.php} zeigen, und Sie müssen
+die GET- oder\osplinebreak{} POST-Variable \cmd{serendipity[adduser\_user]}
+(Benutzername), \cmd{serendi\-pity[adduser\_pass]} (Passwort),
+\cmd{serendipity[adduser\_email]} (Mail"=Adresse) abfragen. Weiterhin
+müssen die \emph{hidden}-Variablen \cmd{serendipity""[subpage]=adduser} und
+\cmd{serendipity[adduser\_action]=true} übertragen werden.
+
+Die Konfiguration der Verwaltungsmöglichkeiten verteilt sich auf das
+Seitenleisten"= und das Ereignis-Plugin. Ohne das Ereignis-Plugin kann die
+Registrierung neuer Redakteure nicht durchgeführt werden. Auch das
+Seitenleisten"=Plugin muss vorhanden sein, da Sie dort zentrale
+Konfigurationsoptionen festlegen. Jedoch können Sie dieses Seitenleisten-Plugin
+später im Layout auch durchaus verstecken (siehe Konfigurationsoption
+\menu{Seitenleisten"=Plugin anzeigen} des Seitenleisten-Plugins auf Seite
+\pageref{sidebarhider} oder über die zentrale Plugin-Verwaltung, siehe Seite
+\pageref{Plugins verwalten}).
+
+Die Hauptkonfiguration des Seitenleisten-Plugins bietet die Optionen:
+
+\begin{ospdescription}
+\ospitem{\menu{Eigene Hinweise}}
+Im Eingabefeld \menu{Eigene Hinweise} können Sie einen beliebigen Text
+eintragen, der Ihren Besuchern vor dem Registrierungsformular angezeigt
+wird. Hier können Sie Bedingungen für die Redakteursaufnahme
+eintragen oder auch redaktionelle Richtlinien festlegen.
+
+
+\ospitem{\menu{Standard Benutzerlevel, Gruppenzugehörigkeit}}
+Wenn ein Besucher sich als Redakteur anmeldet, wird für diesen ein
+eigener Blog-Account erstellt. Seine Zugriffsrechte richten sich nach dem
+Login danach, welchen Benutzerlevel und welche Benutzergruppe Sie derartigen
+neuen Redakteuren über die Konfigurationsoptionen \menu{Standard
+Benutzerlevel} und \menu{Gruppenzugehörigkeit} zuweisen.
+
+Sie sollten möglichst eine eigene Benutzergruppe für solche
+\emph{freiwilligen Redakteure} erstellen, damit Sie dieser Gruppe nur die
+Rechte geben, die sie benötigt (siehe Seite \pageref{Gruppenverwaltung}).
+
+Bitte achten Sie darauf, dass Sie von neuen freiwilligen Redakteuren
+immer \emph{das Beste hoffen und das Schlimmste erwarten} müssen. Nicht
+jeder Freiwillige ist wohlgesinnt: Wenn Sie jedem neuen Redakteur erlauben,
+neue Artikel zu veröffentlichen, könnten Sie ganz schnell Vandalen
+anlocken, die Ihr Blog verunstalten.
+
+\ospitem{\menu{Benutzer deaktivieren/Rechte entziehen}}
+Jeder Benutzeraccount in Serendipity kann über die Option \menu{Benutzer
+deaktivieren/Rechte entziehen} vorübergehend deaktiviert werden. Wenn
+bei einem Account dieser Parameter aktiviert ist, kann ein Benutzer sich
+nur noch in das Backend einloggen und sonst nichts Weiteres mehr tun
+(siehe Seite \pageref{no-create}).
+
+Über die Plugin-Option \menu{Benutzer deaktivieren/Rechte entziehen}
+können Sie einstellen, ob automatisch hinzugefügte Redakteure
+standardmäßig \emph{inaktiv} sind.
+
+Diese Option hat zwei Vorteile: Zum einen können Sie so eine manuelle
+Benutzerkontrolle erreichen. Ein Administrator müsste einen
+Benutzeraccount dann erst gezielt aktivieren, um ihm redaktionelle Rechte
+(gemäßig seiner Benutzergruppe) zu geben.
+Der andere Vorteil ist, dass Sie durch diese Option Benutzeraccounts
+anlegen können, die nichts anderes dürfen, als sich einzuloggen. Eine
+solche Benutzergruppe (\emph{registrierter Gast}) kann bei Blogs
+hilfreich sein, die nur registrierten Autoren Kommentare erlauben oder
+spezielle Artikel nur registrierten Autoren anzeigen. So können sich
+Besucher einfach in Ihrem Blog anmelden, und Sie können Spam-Roboter und
+Suchroboter relativ leicht aus Ihrem Blog verbannen. Einige weitere
+Optionen des \emph{Registrierung neuer User}-Plugins zielen auf exakt
+einen solchen Einsatzzweck ab.
+
+\ospitem{\menu{Seitenleisten-Plugin anzeigen}}
+Das Seitenleisten-Plugin ist zwar grundsätzlich durch das 
+Registrierungsformular unter
+\cmd{http://www.example.com/serendipity/in\-dex.php?serendipity[subpage]=adduser}
+nicht erforderlich, aber ohne das Seitenleisten-Plugin könnten die wichtigen
+Konfigurationsoptionen des Registrierungsvorganges nicht festgelegt werden.
+
+Löschen Sie also das Seitenleisten-Plugin nicht, wenn Sie dessen
+Darstellung nicht sehen wollen, sondern setzen Sie die Option
+\menu{Seitenleisten"=Plugin anzeigen} auf \menu{Nein}.
+
+\ospitem{\menu{Straight insert}}
+Standardmäßig erhält ein Redakteur eine E-Mail mit einem Link, mit dem er
+den Registrierungsvorgang bestätigen muss. Ohne diese Bestätigung, die
+nur der jeweilige Benutzer anhand eines zufällig erzeugten Schlüssels
+aufrufen kann, ist sein Account nicht zu benutzen.
+
+Da dieser Vorgang jedoch etwas Zeit und einen Medienbruch erfordert,
+können Sie auch die Option \menu{Straight insert} aktivieren. Dann wird
+ein Redakteursaccount sofort aktiv.
+
+Beachten Sie, dass bei aktivierter Option die freie Registrierung
+wesentlich leichter durch böswillige Benutzer oder Spam-Roboter
+missbraucht werden kann. Nur in dem Fall, dass Ihr Webserver keine
+Aktivierungs-E-Mails verschicken kann oder Ihr Blog nur im Intranet läuft, wäre
+diese Option tatsächlich sinnvoll.
+\end{ospdescription}
+
+Das gekoppelte Ereignis-Plugin bietet weitere Konfigurationsoptionen:
+
+\begin{ospdescription}
+\ospitem{\menu{Eigene Hinweise}}
+Ähnlich wie die Anweisungen für Redakteure im Seitenleisten-Plugin können
+Sie separate (ausführlichere) Informationen angeben, die das Plugin
+anzeigt, wenn Sie die URL
+\cmd{http://www.example.com/seren\-dipity/index.php?serendipity[subpage]=adduser}
+aufrufen.
+
+\index{Kommentare!nur für registrierte Nutzer}%
+\ospitem{\menu{Nur registrierte Nutzer dürfen Kommentare schicken}}
+Wenn Sie diese Option aktivieren, ist es nur noch eingeloggten Besuchern
+erlaubt, einen Kommentar zu hinterlassen.
+
+Mittels dieser Plugin-Option können Sie das Spam-Aufkommen für Kommentare
+deutlich reduzieren. Sie erhöhen jedoch auch deutlich die Barriere, die ein
+neuer Besucher überwinden muss, um erstmals einen Kommentar zu hinterlassen.
+
+Zusätzlich muss der Kommentator sich einen neuen Benutzernamen und ein
+eigenes Passwort für Ihr Blog merken. Man kann also mit an Sicherheit
+grenzender Wahrscheinlichkeit behaupten, dass die Aktivierung dieser
+Option nicht nur Spam-Kommentare reduziert, sondern auch weniger gültige
+Kommentare zur Folge hat. Blogs mit einem hohen
+\emph{Troll-Faktor}\footnote{\cmd{http://de.wikipedia.org/wiki/Troll\_\%28Netzkultur\%29}}
+wissen es jedoch sicher zu schätzen, nur noch wirklich ernsthafte
+Kommentare zu erhalten.
+
+\index{OpenID}%
+Etwas einfacher wird die Registrierung durch den neuen Webservice
+\cmd{OpenID} (\cmd{http://openid.net/}). OpenID ist eine technische
+Schnittstelle, die zentrale Benutzeraccounts verwaltet, auf die
+andere Webseiten zugreifen können. Ein Benutzer muss nur einmal einen
+Account für die Schnittstelle erzeugen und kann sich dann auf allen
+Webseiten authentifizieren, die OpenID unterstützen.
+
+Serendipity kann diese \cmd{OpenID}-Schnittstelle unterstützen, wenn Sie
+das Plugin \emph{OpenID Authentication} installieren. Dieses Plugin ist
+derzeit noch im Beta-Stadium und kann sich noch stark verändern;
+es wird daher in diesem Buch nicht weiter vertieft. Zudem ist
+OpenID als Web-Schnittstelle leider noch nicht sehr weit verbreitet.
+Sollten Sie sich für dieses Thema interessieren, sei Ihnen das Plugin
+jedoch wärmstens ans Herz gelegt.
+
+\index{Identitätsdiebstahl}%
+\ospitem{\menu{Autoren-Identitäten schützen}}
+Wenn ein Benutzer oder ein Redakteur einen Kommentar zu einem Artikel
+schreibt, kann er seinen Namen frei ausfüllen. Daher kann grundsätzlich
+jeder Besucher sich mit einem beliebigen Namen eintragen und unter
+anderem auch den Namen des Redakteurs \emph{klauen}.
+
+Die einzige Methode, um Benutzernamen einmalig und eindeutig zu verwenden, ist,
+Kommentare nur von registrierten Autoren zuzulassen und den Namen
+automatisch anhand des Benutzeraccounts auszufüllen.
+
+Da eine solche Methode aber, wie eingangs erwähnt, auch die
+Hürde zum Schreiben von Kommentaren höher legen würde, geht das
+Ereignis-Plugin mit der Option \menu{Autoren-Identitäten schützen} einen
+Mittelweg.
+
+Wenn Sie diese Option aktivieren, können Namen von bereits vorhandenen
+Redakteuren nur durch diese Redakteure verwendet werden. Ein anonymer
+Besucher kann daher nach wie vor kommentieren und sich einen Namen
+ausdenken -- aber er darf keine bestehenden Namen mehr verwenden.
+
+Wenn ein Kommentator einen geschützten Namen verwenden will, teilt das
+Plugin im Kommentarformular mit, dass er sich vorher mit diesem Namen
+einloggen muss. Dazu wird ihm ein Link angeboten, mit dem er ein Popup
+zum Login öffnen kann. Das Popup ist insofern hilfreich, als er dann
+seinen möglicherweise bereits geschriebenen Kommentar im
+Browser-Hintergrundfenster offen lassen und nach dem Login 
+erneut abschicken kann.
+
+Das Layout des Login-Fensters können Sie über die Smarty-Template-Datei
+\index{Template-Dateien!loginbox.tpl}%
+\cmd{plugins/serendipity\_plugin\_adduser/loginbox.tpl}
+anpassen. Die verfügbaren Template-Variablen in dieser Datei sind:
+
+\begin{ospdescription}
+\index{Template-Variablen!\$loginform\_add}%
+\ospitem{\cmd{\{\$loginform\_add\}}} enthält etwaige Zusatzvariablen für
+    das Login-Formular, z.\,B. die Ausgaben des Plugins
+    \emph{Passwort vergessen}.
+\index{Template-Variablen!\$loginform\_url}%
+\ospitem{\cmd{\{\$loginform\_url\}}} enthält die URL zum Login.
+\index{Template-Variablen!\$loginform\_user}%
+\ospitem{\cmd{\{\$loginform\_user\}}} enthält den vom Besucher
+    eingetragenen Benutzernamen (falls eingeloggt).
+\index{Template-Variablen!\$loginform\_mail}%
+\ospitem{\cmd{\{\$loginform\_mail\}}} enthält die vom Besucher
+    eingetragene E-Mail-Adresse (falls eingeloggt).
+\index{Template-Variablen!\$close\_window}%
+\ospitem{\cmd{\{\$close\_window\}}} ist auf \cmd{true} gesetzt, wenn der
+    Login erfolgreich war und das Popup-Fenster geschlossen werden
+    soll.
+\index{Template-Variablen!\$is\_logged\_in}%
+\ospitem{\cmd{\{\$is\_logged\_in\}}} ist auf \cmd{true} gesetzt, wenn der
+    Benutzer eingeloggt ist.
+\index{Template-Variablen!\$is\_error}%
+\ospitem{\cmd{\{\$is\_error\}}} enthält etwaige Fehlermeldungen beim
+    Login.
+\end{ospdescription}
+\end{ospdescription}
+
+Das Plugin erstellt eine Datenbanktabelle namens
+\index{Datenbank-Tabellen!serendipity\_pending\_authors}%
+\cmd{serendipity\_pending\_""authors}, in der die neu angemeldeten, aber
+noch nicht freigeschalteten Benutzer zwischengespeichert werden. Die
+Datenbanktabelle verfügt weitestgehend über dieselben Tabellenfelder wie die
+zentrale Tabelle \cmd{serendi\-pity\_authors}. Anstelle einer zentralen, primären
+ID bietet diese Tabelle jedoch das Datenbankfeld \cmd{hash}, mit dem der
+zukünftige Redakteur eindeutig identifiziert wird. Dieser Hash dient auch der
+Freischaltung via E-Mail.
+
+\label{freetag}%
+\index{Plugins!getaggte Artikel}%
+\index{Plugins!serendipity\_event\_freetag}%
+\index{Plugins!freie Artikel-Tags}%
+\index{Plugins!serendipity\_plugin\_freetag}%
+\index{Tags}
+\index{Plugins!Tagging}%
+\index{Schlagworte}%
+\index{Verschlagwortung}%
+\subsection{Getaggte Artikel, Freie Artikel-Tags\newline
+serendipity\_plugin\_freetag, serendipity\_event\_freetag}
+
+Das \emph{Tagging} (\emph{Tag}, englischer Begriff für \emph{Markierung,
+Auszeichnung}) ist eine sehr verbreitete und komfortable Möglichkeit,
+Blog-Artikel zu verschlagworten.
+
+Ein Blog besitzt in seinem Kerngedanken keine Struktur, wie es
+Content-Management-Systeme vorgeben. In einem Blog sind grundsätzlich
+erst einmal alle Artikel gleichrangig und werden alle auf einer einzigen
+Übersichtsseite angezeigt. Das macht es sehr einfach, bei einer sich
+regelmäßig ändernden Webseite (Tagebücher, News, neue Fachthemen) als
+Leser auf dem Laufenden zu bleiben. Man muss nur eine Seite (die
+Übersichtsseite) aufrufen und sieht chronologisch sortiert alle neuen
+Artikel. Da jeder Artikel eine Detailseite besitzt (der
+\emph{Permalink}), kann man sich solche Artikel auch gut als
+Browser-Lesezeichen speichern.
+
+Diese Struktur ist solange hervorragend geeignet, bis man als Leser
+einmal einen speziellen älteren Artikel sucht. Meist hat man nur eine
+vage Erinnerung, zu welchem Zeitpunkt der Artikel geschrieben wurde -- die
+chronologische Suche über den Kalender bzw. die Archive fällt also aus.
+Auch eine Suche nach Stichworten kann kompliziert werden, wenn man sich
+nicht gerade ein besonderes Wort im Artikel gemerkt hat.
+
+Hier kommen die hierarchischen Sortierungsmöglichkeiten von Serendipity
+ins Spiel: Mit etwas Glück hat der Redakteur seinen Artikel einer
+Kategorie zugeordnet, und der Leser kann seinen gewünschten Artikel über
+eine thematische Zuordnung wiederfinden.
+
+Leider haben solche Hierarchien für Redakteure einen Nachteil: Sie sind
+starr und unflexibel. Man muss sich Gedanken darum machen, über welche
+Themen man schreiben möchte, und entsprechende Kategorien, möglicherweise
+mit Unterkategorien, anlegen. Nachdem man sich als Redakteur Nächte um die
+Ohren geschlagen hat, wie man seine Artikel kategorisiert, findet man 
+nach einigen Monaten des Schreibens heraus, dass eine Kategorie mit einer
+Fülle an Artikeln überschwemmt wird und andere, liebevoll angelegte
+Kategorien nur mit einem oder gar keinem Artikel aufwarten können. Nun
+begint für den Redakteur also das Ausmisten: Kategorien vereinen oder
+aufteilen und danach alle Artikel neu kategorisieren.
+
+Verständlicherweise kann dies Redakteure zum Verzweifeln bringen. Nicht
+jedes Blog ist nunmal klar zu klassifizieren.
+
+Dieses Problems hat sich das Konzept des \emph{Tagging} angenommen. Ein
+Artikel wird nicht starr kategorisiert, sondern ihm werden einfach
+beliebige Schlagworte zugeordnet. Wenn ein Redakteur also einen Artikel
+über die \emph{Geschichte der Weblogs unter besonderer Berücksichtigung
+der Katzenbilder} geschrieben hat, muss er sich nicht lange den Kopf über
+eine sinnvolle Kategorisierung zerbrechen, sondern weist einfach die 
+Schlagwörter \emph{Geschichte, Weblogs, Katzenbilder} zu.
+
+Diese Schlagwörter sieht der Besucher unterhalb des Artikels. Ein Klick
+auf ein Schlagwort zeigt ihm dann alle weiteren Artikel, die das
+Schlagwort ebenfalls enthalten. Nachträglich kann der Redakteur jederzeit
+ein neues Schlagwort zu bestehenden Artikeln hinzufügen oder bestehende
+Schlagwörter löschen. Zusätzlich ist natürlich auch eine beliebig feine
+Zuordnung in feste Kategorien möglich.
+
+Zusammenfassend lässt sich sagen, dass \emph{Tags} unheimlich
+komfortabel und selbsterklärend sind und eine leichte Verkettung (die
+Grundidee des Internets!) ermöglichen. Dennoch sollte man erwähnen, dass
+auch die sinnvolle Verwendung von Tags den Redakteuren obliegt. Da der
+Redakteur sich Stichwörter jedesmal neu ausdenken muss, kann es
+passieren, dass er für dieselbe Sache einmal \emph{TV} und
+einmal \emph{Fernsehen} benutzt. Gerade in Blogs mit mehreren Redakteuren
+ist eine gemeinsame Harmonisierung der Schlüsselwörter daher unabdingbar.
+
+\index{Tagwolken@Tag-Wolken}%
+\index{Tag Clouds|see{Tag-Wolken}}%
+Sogenannte \emph{Tag-Wolken} (\emph{Tag Clouds}) können zudem Ihre
+Blog-Artikel grafisch repräsentieren: In einer Auflistung sehen Sie alle
+Schlagwörter, die Sie benutzt haben. Diese sind abhängig von ihrer
+Einsatzhäufigkeit unterschiedlich stark hervorgehoben -- das 
+meistverwendete Tag ist groß geschrieben, selten verwendete Tags erscheinen
+klein am Rande.
+
+\osppagebreak
+
+Berühmt gemacht hat diese Tag-Wolke der Bilderdienst Flickr, der mit
+diesem Tagging-Konzept ein wahres Novum in die komplexe Bildersuche im
+Internet gebracht hat. Zu kaum einen Stichwort findet man heutzutage auf
+\cmd{http://flickr.com} nicht bereits mehrere Bilder, die zudem mit
+\emph{verwandten Tags} kreuz-referenziert sind.
+
+Das Ereignis-Plugin \emph{Freie Artikel-Tags} kümmert sich um die
+Verwaltung und Eingabe von Tags. Es bindet eine Tagging-Maske in die
+Artikeloberfläche ein, und eine Verwaltungsoberfläche im Menüpunkt
+\menu{Einträge\sm Tags verwalten}.
+
+Bei der Erstellung eines Artikels sehen Sie im Bereich \menu{Erweiterte
+Optionen} ein einfaches Eingabefeld namens \menu{Freie Artikel-Tags}. In
+dieses Eingabefeld können Sie kommasepariert beliebige Tags eingeben.
+Oberhalb des Eingabefelds sehen Sie eine Liste von Tags, die bereits früher
+eingegeben wurden. Diese können Sie automatisch in das Eingabefeld
+übernehmen, indem Sie auf den jeweiligen Tag klicken. Die Tags, die Sie
+einem Artikel zugewiesen haben, zeigt das Plugin darauf im Frontend im
+Fußbereich des Artikels an. Durch einen Klick auf das entsprechende Tag
+sehen Sie eine Übersichtsseite mit weiteren Artikeln, denen das Tag
+zugeordnet wurde.
+
+Die Verwaltungsoberfläche, die Sie über den Menüpunkt \menu{Einträge\sm Tags
+verwalten} erreichen, bietet folgende Möglichkeiten:
+
+\begin{ospdescription}
+\ospitem{\menu{Alle Tags verwalten}}
+Ein Klick auf den Menüpunkt \menu{Alle Tags verwalten} ruft eine
+Übersicht auf, in der Sie alle vorhandenen Tags einsehen
+können. Diese werden tabellarisch mit alphabetischer Sortierung
+dargestellt. Der Zahlenwert in der Spalte \menu{Häufigkeit} gibt an, wie oft
+Sie das entsprechende Tag bereits zugeordnet haben.
+
+Jedes Tag können Sie \menu{Löschen}. Dies löscht nur die Zuordnung des
+Tags, ein Artikel wird also nicht gelöscht. Ein bestehendes Tag können 
+Sie zudem \menu{Umbenennen}. Dies benennt das Tag auch in den Artikeln um,
+denen Sie es bereits zugeordnet haben.
+
+Wenn Sie ein pauschales Tag wie \emph{Medien} vergeben haben, können Sie
+es über den Button \menu{Aufteilen} auch in mehrere Tags zerkleinern.
+Dabei tragen Sie eine kommaseparierte Liste in das erscheinende
+Eingabefeld ein, beispielsweise \emph{Kino,Fernsehen,Radio}. Nach der
+Aufteilung werden nun jedem Artikel, dem bisher das Tag \emph{Medien}
+zugewiesen war, die neuen Tags \emph{Kino, Fernsehen} und \emph{Radio}
+zugeordnet. In der Zukunft können Sie dann die feineren Tags gezielt
+verteilen und bei bestehenden Einträgen auch ggf. einzelne der feineren
+Tags entfernen.
+
+\index{Verwaiste Tags}%
+\ospitem{\menu{Verwaiste Tags verwalten, Einträge mit verwaisten Tags anzeigen}}
+Verwaiste Tags sind Schlüsselwörter, die Sie bisher nur einmal einem
+Artikel zugewiesen haben. Solche verwaisten Tags sind meist weder für
+Besucher noch für Redakteure besonders hilfreich. Daher sollten Sie darüber
+nachdenken, solche Tags möglicherweise zu löschen oder umzubenennen.
+
+Über den Menüpunkt \menu{Einträge mit verwaisten Tags anzeigen} können
+Sie eine Liste von Blog-Artikeln einsehen, denen solche verwaisten Tags
+zugeordnet sind. Von dort aus können Sie komfortabel diese Einträge
+überarbeiten.
+
+\ospitem{\menu{Einträge ohne Tags anzeigen}}
+Analog zu Artikeln mit verwaisten Tags können Sie auch eine Liste
+einsehen, in der alle Artikel aufgeführt sind, die noch keine Tags
+erhalten haben.
+
+\index{Automatische Schlüsselwörter}
+\ospitem{\menu{Automatische Schlüsselwörter}}
+Die Zuordnung von Schlüsselwörtern in Einträgen kann oft zu einer
+Fleißarbeit werden. Daher können Sie mit dem Plugin eine Wortliste
+einpflegen, die beim Auftreten von bestimmten Zeichenketten im Text Ihres
+Artikels automatisch ein zugeordnetes Tag zuweist.
+
+Ein einfaches Beispiel kann dies am besten erläutern. Gegeben ist
+folgender Artikeltext:
+
+\begin{ospcode}
+Das beste Blog der Welt ist in einer neuen Version erschienen:
+Serendipity 19.0 ist ab sofort verfügbar. Bugfixes sind bereits 
+seit Version 3.0 nicht mehr nötig, und da sämtliche Features schon
+mit Version 4.0 das Ende der erdenkbaren Fahnenstange erreicht 
+haben, ist die einzige Neuerung diesmal die neue Versionsnummer. 
+An einigen Stellen wurden zudem Leerzeichen miteinander vertauscht, 
+um das Shakra der Bits und Bytes mal etwas in Schwingung zu 
+versetzen.
+\end{ospcode}
+
+Folgende Tags ließen sich dem Artikel sinnvollerweise zuordnen:
+\emph{Serendipity, Blog, Release, Spiritualität, Security}. Diese
+Zuordnung könnte man relativ einfach automatisieren: Die Tags
+\emph{Serendipity} und \emph{Blog} können immer dann eingebunden werden,
+wenn genau diese Wörter im Artikeltext vorkommen. Das Tag \emph{Release}
+kann vergeben werden, wenn die Zeichenkette \emph{neue Version} oder
+\emph{neuen Version} vorkommt. Und das Tag \emph{Spiritualität} könnte
+man aufgrund des Artikeltextes \emph{Shakra} vergeben.
+
+Genau diese Zuordnung können Sie über den Verwaltungspunkt \menu{Einträge
+\sm Tags verwalten\sm Automatische Schlüsselwörter} festlegen. Dort
+werden alle vorhandenen Tags aufgelistet. Klicken Sie auf den zugehörigen
+Link \menu{Bearbeiten}, so öffnet sich eine Eingabebox. Dort tragen Sie
+die Zeichenketten ein, bei deren Auftreten im Artikeltext das jeweilige
+Tag automatisch zugewiesen wird. Für das Tag \menu{Release} müssten Sie
+also hier \emph{neue Version,neuen Version} eintragen. Beachten Sie
+dabei, dass Sie automatische Schlüsselwörter nur für Tags eintragen
+können, die Sie bereits einmal verwendet haben. Eventuell müssen Sie also
+erst einen Eintrag mit dem gewünschten Tag erstellen, bevor Sie
+automatisch Schlüsselwörter dafür vergeben können. Durch die Trennung
+mehrerer möglicher Zeichenketten mit einem Komma können beliebig viele
+Zeichenketten eine Tag-Zuweisung automatisch auslösen -- diese Zeichenketten
+können auch Leer- und Sonderzeichen enthalten, sie werden später unabhängig von
+Groß- und Kleinschreibung durchsucht.
+
+Die Tags weist das Plugin immer beim Speichern eines Artikels automatisch
+zu. Wenn in Ihrem Blog-Artikel ein automatisches Schlüsselwort gefunden
+wurde, gibt das Plugin einen Hinweistext über die durchgeführte Zuordnung
+aus:
+
+\begin{ospcode}
+Schlüsselwort \emph{neue Version} gefunden, Tag \emph{Release}
+automatisch zugewiesen.
+\end{ospcode}
+
+\ospitem{\menu{Automatische Schlüsselwörter neu parsen}}
+Nachdem Sie die Liste automatischer Schlüsselwörter eingepflegt haben,
+sollten alle bereits bestehenden Artikel daraufhin geprüft werden, so dass eventuell fehlende Tags hinzugefügt werden können. Dabei
+können keine doppelten Tag-Zuordnungen entstehen.
+
+Der Vorgang ruft intern automatisch jeden einzelnen Artikel zur
+Bearbeitung auf, analysiert den Artikeltext und weist die neuen Tags
+anhand der Schlüsselwörter zu. Da hierbei die zentrale
+Serendipity-Funktion zum Speichern eines Artikels aufgerufen wird, kann
+dies bei einem größeren Artikelbestand zu Performanceproblemen
+führen. Daher werden jeweils nur 25 Artikel pro Aufruf analysiert und
+neu gespeichert, und danach ruft das Plugin die nächste Seite mit den
+nächsten 25 Artikeln auf.
+
+Durch die Verwendung der zentralen Speicherungsfunktion werden zudem
+alle mittlerweile neu installierten Plugins neu angewendet. Je nachdem,
+wie alt Ihre Artikel sind und welche Plugins Sie seither installiert
+haben, könnte dies zu problematischen Änderungen Ihrer Artikel führen. 
+Wenn Sie beispielsweise das Plugin zum Ersetzen von
+Zeichenketten erst später installiert haben, würden nun auch in älteren 
+Artikeln Wortersetzungen durchgeführt, die Sie bisher nur bei
+neuen Artikeln erhielten.
+
+Sicherer ist es daher, wenn Sie vor der Ausführung dieser Funktion ein
+Backup erstellen (siehe Seite \pageref{backups}).
+
+\index{Kategorien!zu Tags konvertieren}%
+\label{freetag-existing}%
+\ospitem{\menu{Alle zugewiesenen Kategorien bestehender Artikel zu Tags
+konvertieren}}
+Wenn Sie Kategorien und Tags parallel nutzen, kann es unter Umständen
+sinnvoll sein, sämtliche Kategorien (wie \menu{TV}) auch automatisch als
+identisch benanntes Tag einem Artikel zuzuweisen. Diese Doppelung kann
+Besuchern später helfen, verwandte Themen zu finden.
+
+Auch wenn Sie das Tagging-Plugin erst installiert haben, nachdem Sie
+bereits eine Reihe von Artikeln in Kategorien zugeordnet haben, kann es
+Sinn machen, sämtliche bestehenden Kategorien als Tags zuzuordnen. Um
+diesen Vorgang einmalig auszuführen, können Sie in der Tag-Verwaltung den
+Menüpunkt \menu{Alle zugewiesenen Kategorien bestehender Artikel zu Tags
+konvertieren} benutzen. Daraufhin holt das Plugin eine Liste aller
+vorhandenen Artikel, geht deren Zuordnung zu Kategorien durch und
+weist diese Kategorien jeweils den neu erstellten, gleichnamigen Tags zu.
+
+Bei einem großen Artikelbestand kann dieser Vorgang eine Weile dauern.
+Während der Bearbeitung gibt Ihnen das Plugin eine Meldung aus, welche
+Kategorien es umgewandelt hat.
+
+Nach dem Vorgang können Sie entweder die bestehenden Kategorien löschen
+(dabei werden die bestehenden Artikel beibehalten) oder Sie auch nach wie
+vor behalten, um Ihren Besuchern beide Darstellungsweisen zu
+ermöglichen.
+
+\end{ospdescription}
+
+\index{TagURLs@Tag-URL}%
+Die von Ihnen zugewiesenen Schlüsselwörter eines Artikels bindet das
+Plugin in der Übersichtsseite ein. Dort kann der Besucher auf ein
+Schlüsselwort klicken, um weitere Einträge zu sehen, die diesem Tag
+entsprechen. Die URL für derartige Ansichten entspricht dem Format
+\cmd{http://www.example"".com/serendipity/plugin/tag/\cmdvar{Schluesselwort}}.
+Alternativ kann auch jede Serendipity-URL mit einem Parameter wie
+\cmd{http://www.example.com""/serendipity/rss.php?serendipity[tag]=\cmdvar{Schluesselwort}}
+aufgerufen werden und so beispielsweise einen RSS-Feed ausliefern, der
+nur Artikel mit dem gewünschten Tag anzeigt.
+
+\index{Verwandte Tags}%
+Wenn Sie eine solche Tag-Übersichtsseite aufrufen, stellt das Plugin
+oberhalb der Einträge die erwähnte Tag-Wolke dar, anhand der ein Besucher
+weitere Artikel aufrufen kann, die mit ähnlichen Tags versehen wurden.
+
+Die Darstellung der Tag-Listen und Tag-Wolken können Sie über die
+CSS-Klassen \cmd{.serendipity\_freeTag} (unterhalb des Artikels) und
+\cmd{.serendi\-pity\_freetag\_taglist} (für die Tag-Wolke) anpassen.
+
+In den Smarty-Templates (\cmd{entries.tpl}) bindet das Plugin folgende
+Variablen ein:
+
+\begin{ospdescription}
+\index{Template-Variablen!\$entry.properties.freetag\_tagList}%
+\ospitem{\cmd{\{\$entry.properties.freetag\_tagList\}}} enthält eine
+    kommaseparierte Liste aller Tags eines Artikels.
+
+\index{Template-Variablen!\$entry.properties.freetag\_tags}%
+\ospitem{\cmd{\{\$entry.properties.freetag\_tags\}}} enthält ein
+    nummeriertes Array mit den Tags eines Artikels.
+
+\index{Template-Variablen!\$CONST.PLUGIN\_VARS\_TAG}%
+\ospitem{\cmd{\{\$CONST.PLUGIN\_VARS\_TAG\}}} enthalten den Namen eines
+    Tags, wenn die Eintragsübersicht durch den Besucher auf alle
+    Artikel mit einem speziellen Tag eingeschränkt wurde. Da dieser
+    Wert als Konstante vom Plugin gesetzt wird (wie auch das Array
+    \cmd{\$serendipity['plugin\_vars']['tag']}), können Sie auch innerhalb
+    anderer Plugins (mit PHP-Code) auf die Ansicht des Tagging-Plugins
+    zugreifen.
+
+\end{ospdescription}
+
+Das Tagging-Plugin bindet die zugewiesenen Schlüsselwörter selbständig in
+Ihre RSS-Feeds ein. Dort werden sie über die Elemente \cmd{<category>}
+(RSS 2.0, 0.91) bzw. \cmd{<dc:subject>} (RSS 1.0, Atom) integriert, die
+übliche Feed\-reader problemlos auslesen können. Wenn Sie diese Tags im
+Feed gerne speziell (ähnlich wie der FeedBurner-Service, siehe Seite
+\pageref{syndication-feedburner}) formatieren möchten, können Sie dazu die
+\cmd{feed\_*.tpl}-Template-Dateien bearbeiten und die oben aufgeführten
+Variablen auslesen (siehe Seite \pageref{customfeeds}).
+
+Wenn Sie das XML-RPC Plugin nutzen (siehe Seite \pageref{xmlrpc}), 
+kann das Tagging-Plugin etwaige Tags aus Ihrem XML-RPC Client
+interpretieren, wenn diese als \emph{mt\_keywords} gesendet werden.
+
+Das Ereignis-Plugin bietet Ihnen folgende Konfigurationsoptionen:
+
+\begin{ospdescription}
+\ospitem{\menu{Erstelle Tags für zugewiesene Kategorien}}
+Wenn Sie diese Option aktivieren, kann das Plugin beim Speichern eines
+Artikels, der einer Kategorie zugeordnet wird, den Namen dieser Kategorie
+zusätzlich als Tag zuweisen. Dies kann sehr nützlich sein, wenn Sie sich
+Tipparbeit beim Erstellen von Tags sparen und eine
+Kategorisierung von Artikeln abseits der Schlüsselwörter weiterhin nutzen
+wollen. Weitere Erklärungen hierzu finden Sie auf Seite
+\pageref{freetag-existing}.
+
+\label{Taglink}%
+\ospitem{\menu{Taglink}}
+Wenn Ihre Besucher auf den Link eines Tags klicken, führt dieser
+standardmäßig zu einer URL wie
+\cmd{http://www.example.com/seren\-dipity/plugin/tag/\cmdvar{tagname}}.
+Dieser virtuelle Verzeichnisname\osplinebreak{} wird vom Tagging-Plugin ausgewertet.
+Dank der globalen URL"=Umformung können alle Pfadverweise zu
+\cmd{/plugin/} zu einem beliebigen Plugin führen.
+
+Wenn Sie gerne stattdessen eine eigene URL verwenden wollen, müssen Sie
+eigenständig für eine korrekte \cmd{mod\_rewrite}-Regel sorgen, die
+Zugriffe beispielsweise von
+\cmd{http://www.example.com/serendipi\-ty/schluesselwoerter/\cmdvar{tagname}/}
+auf
+\cmd{http://www.example.com""/serendipity/index.php?serendipity[tag]=\cmdvar{tagname}}
+umleitet. Dies könnte beispielsweise über folgenden
+\cmd{.htaccess}-Eintrag erreicht werden:
+
+\begin{ospcode}
+RewriteRule ^schluesselwoerter/(.*)/\$ index.php?serendipity[tag]=\$1
+[L,QSA]
+\end{ospcode}
+
+Damit das Tagging-Plugin danach Ihre konfigurierte URL verwenden kann,
+müssen Sie den Pfad im Feld \menu{Taglink} einfügen.
+
+Bitte ändern Sie den Wert dieses Feldes nur dann, wenn Sie manuelle
+Vorkehrungen für die korrekte Umleitung getroffen haben! Wenn Sie hier
+einfach einen Fantasiewert eintragen, kann das Plugin die
+Tag-Übersichtsseiten nicht mehr übernehmen.
+
+\ospitem{\menu{Zeige die Tags in der Fußzeile an}}
+Das Plugin zeigt die einem Artikel zugewiesenen
+Schlüsselwörter in der Fußzeile jedes Eintrages an. Dies hat den Vorteil,
+dass es losgelöst vom Artikeltext formatiert werden kann und unabhängig
+vom Artikeltext ist.
+
+Wenn Sie die Option \menu{Zeige die Tags in der Fußzeile an}
+deaktivieren, kann das Plugin die Tag-Listen direkt in den Artikeltext
+einfügen. Dann werden Tag-Zuweisungen auch direkt im Artikeltext
+sichtbar, wenn dieser beispielsweise in einem RSS-Reader betrachtet wird.
+Sie verlieren dadurch jedoch Flexibilität in der Positionierung der
+Tag-Liste.
+
+\ospitem{\menu{Zeige Wolke mit verwandten Tags an}}
+Diese standardmäßig aktivierte Option sorgt dafür, dass Ihre Besucher
+beim Aufrufen einer Tag-Übersichtsseite eine Information darüber
+erhalten, welche weiteren Tags den Artikeln zugewiesen wurden, die dem aktuell
+gewählten Tag entsprechen.
+
+\ospitem{\menu{Minimale/Maximale Schriftgröße eines Tags in der Wolke}}
+Das Plugin kann die Größe der Tags innerhalb der Tag-Wolke abhängig von
+deren Verwendungshäufigkeit skalieren. Oft verwendete Tags erscheinen
+größer, selten benutzte Tags etwas kleiner. Das Plugin kann dies mittels
+relativer Schriftgrößenänderungen umsetzen. Sie können über entsprechende
+Prozentwerte kontrollieren, wie stark die Varianz der Schriftgröße sein
+darf.
+
+\index{Keywords}%
+\index{Meta-Tags}%
+\index{SEO}%
+\ospitem{\menu{Anzahl der Stichwörter, die in die Meta-Angaben des HTML-Codes}}
+\ospadditem{\menu{eingesetzt werden sollen}}
+Das Tagging-Plugin kann beim Aufrufen einer Artikeldetailseite die
+zugewiesenen Tags innerhalb eines HTML \cmd{<meta>}-Tags einbinden.
+Solche \cmd{<meta>}-Tags können von Suchmaschinen ausgewertet werden, um
+die Schlüsselwörter automatisiert auszuwerten.
+
+Aufgrund des hohen Missbrauchs durch Spammer werden diese Keywords
+heutzutage von Suchmaschinen jedoch sehr, sehr gering gewichtet. Dennoch
+macht es aus semantischer Sicht durchaus Sinn, dass Sie auf Ihren
+Artikel-Einzelseiten die von Ihnen eingetragenen Schlüsselwörter in
+dieser Meta-Angabe einbinden.
+
+In dem Optionsfeld können Sie eine beliebige Zahl eintragen, mit der Sie
+bestimmen, wie viele Ihrer eingegebenen Schlüsselwörter als Meta-Tag
+eingebunden werden sollen. Suchmaschinen können meist nur zwischen 10 und
+15 Meta-Keywords auslesen. Wenn Sie Ihren Artikeln also sehr viele Tags
+zuweisen, ist es sinnvoll, die Liste der maschinenlesbaren Keywords an
+dieser Stelle zu begrenzen. Im täglichen Einsatz dürfte es jedoch recht
+selten sein, dass Sie einmal zu viele Tags benutzen -- stellen Sie diese
+Option daher ruhig auf einen Wert wie 15 oder 20.
+
+Die Zahl \cmd{0} deaktiviert die Verwendung von Meta-Tags. Beachten Sie,
+dass das automatische Ausfüllen von Meta-Keyword-Tags des Plugins mit
+dem speziellen Plugin namens \emph{Meta-Keywords} kollidieren
+kann. Mithilfe dieses Plugins können Sie die Meta-Felder der
+Detailseiten Ihrer Artikel gezielt befüllen und auch Kurzbeschreibungen
+eintragen.
+
+\ospitem{\menu{Zeige Artikel mit ähnlichen Themen an, Wieviele Artikel mit
+ähnlichen}}
+\ospadditem{\menu{Themen sollen angezeigt werden}}
+Unterhalb der Liste der zugewiesenen Tags eines Artikels kann das Plugin
+eine weitere Artikelliste einblenden. In dieser werden Links zu den
+aktuellsten Artikeln (konfigurierbare Anzahl) ausgegeben, die ähnliche
+Tags verwenden wie der aktuelle Artikel.
+
+Dies kann für Besucher besonders hilfreich sein, wenn sie Ihren Artikel
+über eine Suchmaschine gefunden haben. Mit weiterführenden Artikeln in
+Ihrem Blog können Sie so den Besucher an Ihre Seite binden und ihn dort
+mit weiteren Informationen oder Texten dazu verlocken, sich noch etwas
+umzusehen.
+
+\ospitem{\menu{Tags in Kleinbuchstaben umwandeln}}
+Üblicherweise werden Tags allesamt klein geschrieben, um bei mehreren
+Redakteuren zu vermeiden, dass dieselben Tags unterschiedlich geschrieben
+werden.
+
+Wenn Sie jedoch redaktionell sicherstellen, dass identische Tags nicht in
+unterschiedlicher Klein- oder Großschreibung auftreten, dann können Sie
+das Plugin anweisen, keine automatische Umwandlung vorzunehmen.
+
+\index{Sicherheit}%
+\ospitem{\menu{Sende X-FreeTag-HTTP-Header}}
+Wenn das Plugin eine Übersichtsseite von Artikeln zu einem gewissen Tag
+ausliefert, kann das verwendete Tag als HTTP-Kopfzeile (\emph{Header})
+ausgegeben werden. Diese Information wird im Hintergrund an den Browser
+übermittelt und dient nur dem Zweck, dass Entwickler leichter feststellen
+können, welches Tag vom Plugin verwendet wird. Da das Plugin mehrere
+technische Möglichkeiten zur Bestimmung des Tags bietet, kann es hier
+theoretisch zu nicht nachvollziehbaren Problemen kommen, die sich
+mithilfe der HTTP-Kopfzeile besser analysieren lassen.
+
+Diese Option kann gefahrlos deaktiviert werden, jedoch hat deren
+Aktivierung auch keine spürbaren Auswirkungen. Paranoiker
+werden diese Option ggf. deaktivieren wollen, da man anhand dieser
+Ausgabe feststellen kann, ob ein Blog mit Serendipity betrieben wird.
+
+\ospitem{\menu{Klickbare Liste aller schon vorhandenen Tags beim Schreiben
+eines Eintrags}}
+\ospadditem{\menu{anzeigen, Zeige Tag-Vorschläge bei der Eingabe}}
+Beim Verfassen eines Artikels kann das Plugin alle bereits vergebenen
+Tags in einer Liste anzeigen. Dort können Sie jedes vorhandene Tag
+anklicken, um es komfortabel dem Eintrag zuzuweisen.
+
+Bei sehr vielen vorhandenen Tags kann diese Liste sehr umfangreich
+werden. Daher können Sie diese klickbare Liste gezielt deaktivieren, um
+den Bildschirm übersichtlicher zu machen.
+
+Weiterhin kann das Plugin beim Aktivieren der Option \menu{Zeige
+Tag-Vorschläge bei der Eingabe} mit einem dynamischen JavaScript dafür
+sorgen, dass, sobald Sie einen Buchstaben im Eingabefeld der Tags
+eintippen, eine Liste der mit diesem Buchstaben beginnenden vorhandenen
+Tags eingeblendet wird. So könnten Sie also bereits bei Eingabe von
+\cmd{Se} die Auswahl \cmd{Serendipity, Sepsis,
+Sekundärna\-vigation} sehen und aus dieser Liste das gewünschte Tag
+auswählen. Dies spart sowohl Tipparbeit als auch die umfangreiche Liste
+aller vorhandenen Tags, benötigt jedoch einen JavaScript-fähigen Browser.
+
+\index{Technorati}%
+\ospitem{\menu{Technorati Tag Link, Technorati Tag image}}
+Falls das Plugin Links zum Technorati-Webserver einbinden
+soll, können Sie dies über die Option \menu{Technorati Tag Link} aktivieren.
+Standardmäßig wird ein Bild von den Technorati-Servern als Symbol dargestellt,
+Sie können jedoch auch eine eigene URL für die Grafik eintragen.
+
+\end{ospdescription}
+
+Weiterhin steht ein gekoppeltes Seitenleisten-Plugin zur Verfügung. Darüber können Sie eine Übersicht aller verwendeten Tags in der
+Seitenleiste\footnote{Die Ausgabe eines Seitenleisten-Plugins können Sie
+auch an jeder anderen beliebigen Stelle in einem Template einbinden,
+schlagen Sie dazu in Kapitel \ref{serendipity-showPlugin} auf Seite
+\pageref{serendipity-showPlugin} nach.}
+einbinden. Die Konfigurationsoptionen dieses Seitenleisten-Plugins sind:
+
+\begin{ospdescription}
+\ospitem{\menu{XML-Icons anzeigen, XML-Icon URL}}
+Zu jedem Tag kann in der Seitenleiste ein Link zu dem jeweiligen RSS-Feed
+eingebunden werden.
+
+\ospitem{\menu{Zeilenumbruch nach jedem Tag}}
+Standarmäßig stellt das Plugin alle Tags hintereinander dar, so dass die
+volle Breite der Seitenleiste für die Tag-Auflistung benutzt werden kann.
+Bei unterschiedlichen Schriftgrößen kann dies je nach Menge Ihrer Tags
+möglicherweise zu unübersichtlich aussehen, daher können Sie die Option
+\menu{Zeilenumbruch nach jedem Tag} aktivieren, um pro Zeile nur ein
+einzelnes Tag auszugeben.
+
+\ospitem{\menu{Taglink}}
+Analog zu der gleichnamigen Konfigurationsoption des Ereignis"=Plugins
+können Sie hier festlegen, zu welcher URL der Klick auf ein Schlüsselwort
+führt (siehe Seite \pageref{Taglink}).
+
+\ospitem{\menu{Schriftgröße des Font-Tags je nach Popularität vergrößern}}
+Das Seitenleisten-Plugin kann die Schriftgröße der Tags je nach
+Einsatzhäufigkeit verändern. Häufig verwendete Tags erscheinen groß, 
+selten eingesetzte kleiner. Dies erleichtert es dem Besucher, einen
+thematischen Überblick zu Ihrem Blog zu erhalten.
+
+\ospitem{\menu{Minimale/Maximale Schriftgröße eines Tags}}
+Legt fest, wie klein oder groß ein Tag in der Darstellung (in absoluten
+Prozentwerten) sein darf. Das Plugin skaliert die Größen daraufhin automatisch
+in dem festgelegten Von/Bis-Bereich.
+
+\ospitem{\menu{Wieviele Tags sollen angezeigt werden}}
+Mit dieser Option legen Sie fest, auf wie viele Schlüsselwörter die
+Ausgabeliste begrenzt werden soll.
+
+\ospitem{\menu{Wie oft muss ein Tag vorkommen, damit er angezeigt wird}}
+Wenn Sie sehr viele Tags in Ihrem Blog einsetzen, macht es wenig Sinn,
+jedes einzelne in der Seitenleiste aufzuführen. Daher können Sie diese
+Ausgabe auf populäre Tags beschränken und mithilfe der Option \menu{Wie
+oft muss ein Tag vorkommen\ldots} eine Mindestanzahl festlegen.
+
+\ospitem{\menu{Sortierung}}
+Hier können Sie festlegen, ob die Tags in der Seitenleiste alphabetisch
+nach Name oder nach Einsatzhäufigkeit sortiert werden sollen.
+
+Wenn Sie die Anzahl der Tags einschränken, bestimmt die
+Sortierungsreihenfolge auch, welche Tags am Ende der Liste entfernt
+werden. Wenn Sie die Liste alphabetisch sortieren und auf 20 Tags
+beschränken, aber Ihre populärsten Tags mit dem Buchstaben \emph{Z}
+anfangen, könnte es sein, dass diese Schlüsselwörter nicht ausgegeben
+werden, da bereits 20 Tags dargestellt wurden, die in der 
+alphabetischen Sortierung weiter vorn liegen.
+
+\end{ospdescription}
+
+\index{Datenbank-Tabellen!serendipity\_event\_entrytags}%
+\subsubsection{Datenbanktabelle}
+
+Die Datenbanktabelle \cmd{serendipity\_event\_entrytags} enthält jeweils ein
+zugeordnetes Tag (\cmd{tag}) zu einer Artikel-ID (\cmd{entryid}).
+
+\index{Datenbank-Tabellen!serendipity\_event\_tagkeywords}%
+Die freien Schlüsselwörter, die für ein Tag zugeordnet werden können, werden in
+der Tabelle \cmd{serendipity\_event\_tagkeywords} gespeichert. Dort wird
+ebenfalls jedem Tag (\cmd{tag}) eine Liste an kommaseparierten Schlüsselwörtern
+(\cmd{keywords}) zugeordnet.
+
+In älteren Versionen des Plugins wurden Tags in der Tabelle
+\cmd{serendipity\_""entryproperties} gespeichert. Dies hat sich
+performancetechnisch nicht günstig ausgewirkt, und die Tags liegen nun in einer eigenen Tabelle.
+
+
+%revised
+\index{Plugins!Liste der statischen Seiten}%
+\index{Plugins!serendipity\_event\_staticpage}%
+\index{Plugins!Statische Seiten}%
+\index{Plugins!serendipity\_event\_staticpage}%
+\index{Statische Seiten}%
+\subsection{Liste der statischen Seiten, Statische Seiten\newline
+serendipity\_plugin\_staticpage,\newline serendipity\_event\_staticpage}
+\label{staticpage}%
+%#2.637.003 
+\index{CMS}%
+Das Plugin \menu{Statische Seiten} ist das wohl wichtigste Plugin, wenn
+Sie Serendipity als \emph{Content-Management-System} (CMS) einsetzen wollen.
+
+Die Grenzen zwischen einem Blog und einem CMS sind relativ
+fließend. Letztlich ist ein Blog nur eine Unterform eines CMS, denn ein
+CMS dient (per definitionem) lediglich der Erfassung und Darstellung
+redaktioneller Inhalte.
+
+\index{CMS!vs. Blog}%
+Die allgemeine Auffassung zum Unterschied zwischen Blog und CMS
+betrifft die spezielle chronologische Aufteilung von Blog-Artikeln. Ein
+Blog stellt üblicherweise nur zeitlich sortierte Archive dar und arbeitet
+immer mit chronologisch sortierten Artikelübersichten. Ein CMS hingegen
+kann Inhalte unterschiedlich gewichten, in Hierarchien einordnen und
+Artikel meist separiert darstellen.
+
+Glücklicherweise kann man solche isolierten Ansichten mithilfe des
+Serendipity"=Plugins \emph{Statische Seiten} recht gut lösen. Sie können
+eigenständige \emph{Seiten} erstellen, die sich parallel (und unabhängig)
+von Blog-Artikeln einbinden lassen.
+
+\index{Impressum}%
+Klassischer Anwendungsfall einer statischen Seite ist das (in
+Deutschland obligatorische) Impressum, eine \emph{Über
+mich}-Seite oder auch beliebige andere Informationsseiten, die Sie nicht mit dem
+chronologischen Fluss der Blog-Artikel vermischen möchten.
+\index{Permalinks}%
+
+Jede statische Seite lässt sich über eine eigene URL aufrufen, den
+\emph{Permalink}. Dieser kann beliebig formatiert werden und
+muss nicht dem üblichen Blog-Artikel-Link wie
+\cmd{http://www.""example.com/serendpity/archives""/1-Mein-Impressum.htm}
+entsprechen, sondern könnte auch
+\cmd{http://www.""example.com/serendipity/seiten/Impressum.htm} lauten.
+
+Ein Vorteil einer statischen Seite ist, dass Sie dort beliebigen
+HTML-Code einbinden können und dabei die Seitenleisten-Plugins und das
+zentrale Layout Ihres Blogs beibehalten. So müssen Sie also
+Zusatzseiten nicht kompliziert über FTP-Uploads realisieren, sondern
+können diese menü- und datenbankgestützt einpflegen.
+
+\index{Performance}%
+Die statischen Seiten werden stets aus der Datenbank ausgelesen und
+dargestellt, das Plugin erstellt \emph{keine} physikalischen Dateien auf
+dem Server. Sollte bei Ihrem Blog Performance eine große
+Rolle spielen, kann es daher möglicherweise sinnvoller sein, zusätzliche Seiten manuell
+über HTML-Dateien anzulegen, anstatt dieses Plugin zu benutzen. In
+Zukunft könnte das Plugin jedoch möglicherweise erweitert werden, um
+statische Seiten vollständig \emph{statisch} auf dem Server
+abzuspeichern.
+
+Statische Seiten können auch über individuelle Templates eingepflegt
+werden, so dass Sie sämtliche Möglichkeiten der Smarty-Programmierung für
+individuelle Gestaltung anwenden können.
+
+Ein gekoppeltes Seitenleisten-Plugin kümmert sich um die Darstellung der
+vorhandenen statischen Seiten über ein Menü in der Seitenleiste des Frontends
+und ist auch in der Lage, die von Ihnen angelegten Hierarchien darzustellen.
+
+Nachdem Sie das Plugin \emph{Statische Seiten} installiert haben, können
+Sie Inhalte über den Menüpunkt \menu{Einträge\sm Statische Seiten}
+einpflegen. Diese Oberfläche des Plugins stellt sozusagen einen separaten
+CMS-Bereich dar. Dort können Sie neue Seiten anlegen und bearbeiten, die
+Reihenfolge von Seiten verändern sowie Seitentypen (Vorlagen) verwalten.
+
+\subsubsection{Seiten bearbeiten}
+
+Nachdem Sie diese Oberfläche aufrufen, sehen Sie ein Ausklappfeld, in dem
+alle vorhandenen statischen Seiten aufgeführt werden. Um eine neue Seite
+anzulegen, wählen Sie in diesem Ausklappfeld den Punkt \menu{Neuer
+Eintrag} und klicken auf \emph{Los!}.
+
+Bestehende Seiten können Sie in dem Ausklappfeld auswählen und über einen
+Klick auf \emph{Los!} bearbeiten oder über einen Klick auf
+\menu{Löschen} aus der Datenbank (unwiderruflich) entfernen.
+
+In der Liste der statischen Seiten sieht der jeweilige Redakteur nur die
+Seiten, zu denen er als Eigentümer eingetragen ist. Weiterhin sieht auch
+jeder Redakteur alle Seiten von Benutzern, die einen niedrigeren
+Benutzerrang haben. Administratoren sehen daher alle Seiten,
+Chefredakteure sehen Seiten von normalen Redakteuren. Eine weitergehende
+Kontrolle der Zugriffsrechte bietet das Plugin in seiner jetzigen
+Version noch nicht, für die Zukunft denkt der fleißige Entwickler des
+Plugins (Falk Döring) jedoch daran, eine Rechteverwaltung mit individuellen
+Zugriffsrechten für Benutzergruppen (anstelle von Benutzerrängen) einzubinden.
+Wenn bestimmte Benutzergruppen keinen Zugriff auf statische Seiten haben
+sollen, so können Sie das Plugin global für diese Gruppe(n) deaktivieren
+(siehe Seite \pageref{verboteneplugins}).
+
+Die Maske zum Erstellen oder Bearbeiten eines Artikels ist identisch und
+wird beim Bearbeiten lediglich mit den vorhandenen Daten vorausgefüllt.
+Lassen Sie sich von der Fülle der Eingabeoptionen der Maske nicht
+abschrecken! Alle Felder werden in diesem Kapitel näher besprochen, und
+Sie werden feststellen, dass Sie meist nur einen kleinen Teil dieser
+Felder ausfüllen müssen.
+
+\begin{ospdescription}
+\ospitem{\menu{Kopfzeile}}
+Die \emph{Kopfzeile} bestimmt bei einer statischen Seite die Überschrift.
+Tragen Sie also hier eine eindeutige Bezeichnung der statischen Seite an,
+wie die Besucher sie später sehen sollen. Sie können hier Leerzeichen und
+Sonderzeichen eintragen, achten Sie jedoch darauf, dass zu lange
+Kopfzeilen möglicherweise das Layout sprengen könnten.
+
+\ospitem{\menu{Permalink}}
+Der Permalink gibt an, unter welcher URL die statische Seite aufgerufen
+werden kann (weitere Details siehe Seite
+\pageref{Standardpluginkonfiguration-Permalink}). Ein Permalink muss für
+jede statische Seite eindeutig sein.
+
+\ospitem{\menu{URL-Titel der Seite}}
+Der URL-Titel einer statischen Seite ist sehr wichtig für interne
+Vorgänge. Er legt eine Alternativ-Syntax fest, die eine statische Seite
+zusätzlich zum Permalink eindeutig beschreibt. Weitere Informationen zu
+dieser Option finden Sie auf Seite
+\pageref{Standardpluginkonfiguration-Pagetitle}.
+
+\ospitem{\menu{Artikeltyp/Seitentyp}}
+Die Formatierung einer statischen Seite geschieht anhand einer Vorlage,
+die über \emph{Seitentypen} verwaltet wird. Seitentypen können Sie
+selbständig über die Oberfläche \menu{Seitentypen bearbeiten} einpflegen
+(siehe Seite \pageref{staticpage-Seitentypen}).
+
+Jeder statischen Seite muss ein Seitentyp zugeordnet werden. An einigen Stellen
+des Plugins wird der Begriff \emph{Artikeltyp} verwendet, dieser ist jedoch
+gleichbedeutend mit \emph{Seitentyp}.
+
+\ospitem{\menu{Artikelstatus}}
+Statische Seiten können ähnlich wie Blog-Artikel entweder veröffentlicht
+oder noch als Entwurf gespeichert werden. Nur veröffentlichte
+Artikel sind für Besucher im Frontend sichtbar.
+
+\ospitem{\menu{Sprache}}
+Wenn Sie Ihr Blog mithilfe des Plugins \emph{Multilinguale Einträge} mit
+mehrsprachigen Inhalten führen, können Sie auch die statischen Seiten
+jeweils in unterschiedlichen Sprachen anlegen.
+
+Multilinguale Blog-Artikel fügen die in andere Sprachen übersetzten Texte
+demselben Datenbank-Eintrag hinzu, statische Seiten jedoch müssen pro
+Übersetzung eine eigenständige Seite erhalten. Einer statischen Seite
+kann daher immer nur genau eine Sprache zugeordnet werden.
+
+Sobald Sie einer statischen Seite eine Sprache zuordnen, kann der
+Besucher einer Webseite diese nur aufrufen, wenn er das Blog mit der
+übereinstimmenden Spracheinstellung besucht. Jemand, der also das Blog
+in englischer Sprache aufruft, kann eine deutsche statische Seite nicht
+lesen.
+
+\ospitem{\menu{Inhalt}}
+Der Inhalt ist glücklicherweise ein selbsterklärender Eingabebereich:
+Hier tragen Sie den HTML-Text ein, der später auf der statischen Seite
+erscheinen soll.
+
+Wenn Sie den WYSIWYG-Editor (siehe Seite \pageref{wysiwyg})
+aktiviert haben, können Sie an dieser Stelle dessen Fähigkeiten
+einsetzen. Sämtliche Buttons oberhalb dieses Eingabefelds entsprechen
+denen bei der Erstellung eines Blog-Artikels.
+
+\ospitem{\menu{Textformatierung(en) durchführen}}
+Wenn Sie die Option aktivieren,
+wird der Inhalt einer statischen Seite an alle installierten
+Textformatierungs-Plugins weitergereicht. Diese Plugins können dann die
+eingestellten Formatierungen (beispielsweise Wandlung von Text-Smileys zu
+Grafiken oder Umwandlung von BBCode in HTML) durchführen.
+
+Wenn Sie eigenen HTML-Code in den \menu{Inhalt} einer statischen Seite
+eingefügt haben, könnten Textformatierungs-Plugins Ihren Code
+möglicherweise ungewollt umformatieren, daher können Sie diese Funktion
+gezielt deaktivieren.
+
+Weitere Hinweise zu Textformatierungs-Plugins finden Sie auf Seite
+\pageref{Textformatierungs-Plugins}.
+
+\ospitem{\menu{Als Artikel formatieren}}
+Standardmäßig wird eine statische Seite in das Layout Ihres Blogs
+eingefügt. Die Stellen, an denen Serendipity üblicherweise
+Datumsformatierungen und Überschriften ausgibt, werden dann mit den Daten
+der statischen Seite gefüllt.
+
+Wenn Sie jedoch eigenen HTML-Code in den \menu{Inhalt} der statischen
+Seite eingefügt haben, kann eine solche Formatierung für Sie zu eng
+gefasst sein. Daher können Sie die Option \menu{Als Artikel formatieren}
+deaktivieren, damit Ihre statische Seite sozusagen in das rohe
+Layout der Seite eingefügt wird.
+
+Weitere Details dieser Option finden Sie auf Seite
+\pageref{Standardpluginkonfiguration-Articleformat}.
+
+\ospitem{\menu{Seitentitel für "`Als Artikel formatieren"'-Ansicht}}
+Wenn Sie die Option \menu{Als Artikel formatieren} gewählt haben, muss
+eine Seitenüberschrift im Inhaltsbereich ausgefüllt werden, in der
+Serendipity üblicherweise das Datum eines Blog-Artikels darstellt. Da
+eine statische Seite jedoch keine chronologische Relevanz hat, können Sie
+hier beispielsweise die Überschrift der statischen Seite einbetten.
+
+\ospitem{\menu{Name des Autors}}
+Der Name des Autors der statischen Seite legt zugleich fest, wer der
+Eigentümer dieser Seite ist. Abhängig davon können später nur
+der Eigentümer und alle höherrangigen Redakteure diese statische Seite
+bearbeiten. Zudem wird der Eigentümer einer statischen Seite 
+standardmäßig im Layout der Seite angezeigt.
+
+\index{Statische Seiten!Elternseiten}%
+\ospitem{\menu{Elternseite}}
+Statische Seiten können in beliebige Hierarchien eingeordnet werden. Die
+Hierarchien richten sich dabei nach bereits angelegten statischen Seiten.
+
+Standardmäßig wird jede statische Seite als \menu{Ist Elternseite}
+eingetragen, also auf der ersten Ebene der Seiten. Über das Ausklappfeld
+\menu{Elternseite} können Sie aber auch jede bereits angelegte statische
+Seite auswählen, um festzulegen, dass die aktuelle statische Seite dieser
+Seite untergeordnet ist.
+
+Die Hierarchie der statischen Seiten kann später von Besuchern über das
+Seitenleisten-Plugin wie auch über die Quernavigation der statischen
+Seiten eingesehen werden.
+
+\index{Statische Seiten!Blog-Kategorien}%
+\ospitem{\menu{Zugeordnete Kategorie}}
+Grundsätzlich besteht zwischen statischen Seiten und Blog"=Kategorien
+keine Zuordnung. Das Serendipity-System kann daher statische Seiten nicht
+einfach innerhalb einer Kategorie-Übersicht ausgeben.
+
+Jedoch bietet das Plugin eine Möglichkeit, um einer statischen Seite eine
+Kategorie zuzuweisen. Ruft der Besucher später eine so zugewiesene
+statische Seite auf, kann er direkt zu der hinterlegten Kategorie
+wechseln. Auch ist es möglich, innerhalb einer solchen statischen Seite
+die Einträge der hinterlegten Kategorie anzuzeigen.
+Umgekehrt besteht die Möglichkeit, dass der Besucher bei der Ansicht
+einer Kategorie-Übersichtsseite auf die zugeordnete statische Seite springt.
+
+Dies funktioniert nur, wenn Sie den \menu{Artikeltyp} der jeweiligen
+statischen Seite auf den Eintrag \menu{Staticpage with related category}
+gesetzt haben. Nur diese Seitentypen besitzen ein Template, bei dem die
+Kategoriezuordnung berücksichtigt wird, alle anderen Seitentypen
+ignorieren dies. Sie können auch eigene Seitentypen anlegen, die die
+Kategoriezuordnung individuell regeln, dies ist auf Seite
+\pageref{staticpage-Kategorie} näher beschrieben.
+
+Sie können nur eine statische Seite pro Kategorie zuordnen.
+
+\index{Statische Seiten!Kinderseiten}%
+\ospitem{\menu{Kinderseiten anzeigen}}
+Wenn Sie eine statische Seite anlegen oder bearbeiten, der andere
+statische Seiten über das Ausklappfeld \menu{Elternseite} zugeordnet
+sind, können Sie bei der Ansicht der Elternseite eine
+Navigation einbinden, die sämtliche zugeordneten Kinderseiten darstellt.
+
+Stellen Sie sich vor, Sie haben eine statische Seite namens \emph{Meine
+Familie} angelegt. Bei dieser Seite stellen Sie die \menu{Elternseite}
+auf \menu{Ist Elternseite} und \menu{Kinderseiten anzeigen} auf den Wert
+\menu{Ja}. Zusätzlich legen Sie drei weitere statische Seiten namens
+\emph{Wolfram}, \emph{Sabine} und \emph{Horst} an. Bei diesen drei Seiten
+legen Sie als \menu{Elternseite} jeweils die statische Seite \menu{Meine
+Familie} fest. Wenn Sie nun die statische Seite \emph{Meine Familie} ansehen, 
+werden Sie Navigationsmöglichkeiten zu den Unterseiten \emph{Wolfram, Horst} und
+\emph{Sabine} sehen.
+
+\index{Statische Seiten!Einleitung}%
+\ospitem{\menu{Einleitung}}
+Die \menu{Einleitung} gilt für statische Elternseiten. Beim obigen
+Beispiel der Familienseite könnten Sie in der statischen Seite
+\emph{Meine Familie} einen beschreibenden Text einfügen.
+
+Dieser Text wird daraufhin in einer Übersichtsseite vor der Auflistung
+der vorhandenen Kinderseiten angezeigt, was es Ihnen erspart,
+gleichlautende Texte in alle Unterseiten einzubinden.
+
+Standardmäßig wird die Einleitung oberhalb des \menu{Inhalts} einer
+statischen Seite eingebunden. Dies können Sie jedoch über die
+Smarty-Templates auch beliebig verändern.
+
+\index{Statische Seiten!Passwortschutz}%
+\ospitem{\menu{Passwort}}
+Statische Seiten können mit einem Passwortschutz versehen werden. Ein
+Besucher kann den Inhalt einer statischen Seite dann erst einsehen, wenn
+er in einem Formular vorher das korrekte Passwort hinterlegt hat.
+
+\index{Statische Seiten!Startseite}%
+\index{Startseiten}%
+\index{Frontend!Startseite}%
+\ospitem{\menu{Diese Seite als Startseite definieren}}
+Eine statische Seite kann die Blog-Startseite (die Artikelübersicht der
+letzten Einträge aller Kategorien) ersetzen. So können Sie dem Besucher
+auf der ersten Seite des Blogs einen Hinweistext oder Disclaimer
+darstellen.
+Die ursprüngliche Startseite des Blogs können Sie danach via 
+\cmd{http://www.example.com/serendipity/index.php?/front\-page} aufrufen.
+
+Damit diese Funktion korrekt arbeiten kann, müssen Sie sicherstellen,
+dass Sie (pro Sprache) nur eine einzige statische Startseite angelegt
+haben.
+\index{Plugins!Reihenfolge}%
+Zudem können andere Plugins, die eigene Inhalte
+darstellen, mit der statischen Startseite kollidieren. Dazu zählt
+beispielsweise das Kontaktformular oder das Gästebuch. Damit eine
+statische Startseite korrekt angezeigt werden kann, muss sie in der
+Reihenfolge der Ereignis-Plugins (siehe Seite \pageref{Plugins verwalten})
+\emph{vor} den kollidierenden Ereignis-Plugins erscheinen. Generell ist
+es empfehlenswert, das Plugin \emph{Statische Seiten} als eines der
+ersten Ereignis-Plugins einzusortieren.
+
+\index{Statische Seiten!Navigation}%
+\ospitem{\menu{Navigation anzeigen}}
+Die \menu{Navigation} einer statischen Seite dient dazu, von einer zur
+nächsten statischen Seite (oder Unterseite) zu wechseln. In
+manchen statischen Seiten ist so eine Navigation nicht erwünscht, daher
+können Sie diese pro statischer Seite gezielt deaktivieren.
+
+\ospitem{\menu{In der Navigation der Seitenleiste einbinden}}
+Mittels des gekoppelten Seitenleisten-Plugins \emph{Liste der statischen
+Seiten} können Sie in der Seitenleiste eine Liste aller verfügbaren
+statischen Seiten einbinden. Dort erscheinen jedoch nur diejenigen
+statischen Seiten, bei denen Sie die Option \menu{In der Navigation der
+Seitenleiste einbinden} aktiviert haben.
+
+Versteckte oder unwichtige statische Seiten können Sie aus dieser Liste
+daher durch Deaktivieren der Option ausschließen.
+\end{ospdescription}
+
+\index{Statische Seiten!Reihenfolge}%
+\label{staticpage-Seitenreihenfolge}%
+\subsubsection{Seitenreihenfolge}
+
+Die Seitenreihenfolge der statischen Seiten können Sie über den Menüpunkt
+\menu{Einträge\sm Statische Seiten\sm Seitenreihenfolge} verwalten.
+Diese Reihenfolge ist für die Erstellung der Navigation und die Ausgabe
+des Seitenleisten-Plugins von Interesse.
+
+In der Oberfläche sehen Sie alle statischen Seiten untereinander und
+hierarchisch eingerückt aufgelistet. Über einen Klick auf den Pfeil nach
+oben sortieren Sie eine Seite weiter oben ein, der Pfeil nach unten
+schiebt eine Seite einen Schritt zurück.
+
+Sie können die Reihenfolge nur innerhalb der jeweiligen Hierarchieebene
+verändern, ein Verschieben eines Untermenüpunkts in eine andere
+Haupt\-ebene ist nicht möglich. Dies können Sie erreichen, indem Sie die
+jeweilige zu verschiebende statische Seite bearbeiten und eine andere
+\menu{Elternseite} auswählen.
+
+\label{staticpage-Seitentypen}%
+\index{Statische Seiten!Seitentypen}%
+\subsubsection{Seitentypen bearbeiten}
+
+Seitentypen (oder auch \emph{Artikeltypen}) entsprechen einer Vorlage für
+eine Gruppe von statischen Seiten.
+
+\index{Statische Seiten!Overview}%
+\index{Statische Seiten!Article}%
+Standardmäßig gibt es zwei Arten von statischen Seiten: eine
+Übersichtsseite (\menu{Overview}) und eine Artikelseite (\menu{Article}).
+
+Übersichtsseiten können gut als Elternseiten einer statischen Seite
+eingesetzt werden, da hier gezielt auf die Navigation der Unterseiten
+eingegangen wird.
+Der Seitentyp \menu{Article} hingegen konzentriert sich auf die
+Darstellung von Einzelseiten.
+
+\index{Statische Seiten!Templates}%
+Jedem Seitentyp können Sie eine eigene Smarty-Template-Datei zuweisen,
+über die Sie die Formatierung gezielt beeinflussen können. Beispielsweise
+könnten Sie einen Seitentyp erstellen, der den Inhalt grafisch wie
+einen Zeitungsartikel formatiert, ein anderer Seitentyp könnte
+Inhalte wie auf einer Postkarte darstellen.
+
+Einen Sonderfall stellt der Seitentyp \menu{Staticpage with related
+category} dar. In dieser Vorlage bindet das Plugin Inhalte einer
+zugeordneten Kategorie ein, um eine Verbindung von Blog-Artikeln und
+statischen Seiten zu ermöglichen.
+
+Die einzelnen Seitentypen können Sie über ein Ausklappfeld bearbeiten
+oder erstellen, analog zu dem Vorgang bei statischen Seiten. Ein
+Seitentyp hat lediglich folgende Eingabefelder:
+
+\begin{ospdescription}
+\ospitem{\menu{Beschreibung}}
+Die Beschreibung eines Seitentyps gibt an, wie dieser in dem Ausklappfeld
+\menu{Artikeltyp} einer statischen Seite eingebunden wird. Sie können
+ihre Artikelvorlagen so individuell benennen, Sonder- und Leerzeichen
+sind erlaubt.
+
+\ospitem{\menu{Templatename}}
+Der \menu{Templatename} gibt den Dateinamen des Smarty-Templates an, das für
+den jeweiligen Seitentypen gültig sein soll.
+
+\index{Template-Dateien!plugin\_staticpage.tpl}%
+\index{Template-Dateien!plugin\_staticpage\_aboutpage.tpl}%
+\index{Template-Dateien!plugin\_staticpagerelated\_category.tpl}%
+Das Plugin wird mit drei Standard-Templates ausgeliefert:
+\cmd{plugin\_""staticpage.tpl} (\menu{Article}),
+\cmd{plugin\_staticpage\_aboutpage.tpl}\osplinebreak{} (\menu{Overview}),
+\cmd{plugin\_staticpage\_related\_category.tpl} (\menu{Staticpa\-ge with related category}).
+
+Sie können die Dateien entweder im Plugin-Verzeichnis
+(\cmd{plugins/""serendipity\_event\_staticpage}) bearbeiten oder auch in
+Ihr eigenes Template-Verzeichnis wie \cmd{templates/default/} kopieren,
+um sie dort anzupassen. Neue Dateien können Sie ebenfalls in beiden
+Verzeichnissen anlegen.
+Im Eingabefeld \menu{Templatename} tragen Sie keine Verzeichnisnamen,
+sondern lediglich den Dateinamen der Datei ein (mit Endung \cmd{.tpl}).
+
+\label{staticpage-bildpfad}%
+\ospitem{\menu{Bildpfad}}
+Das Standard-Template \menu{plugin\_staticpage\_aboutpage.tpl} ermöglicht
+es, in der Navigation der Unterseiten für eine Elternseite Bilder
+einzubinden. Die Bilder der Unterseiten richten sich dabei nach Ihrer
+Eingabe im Feld \menu{Bildpfad} des zugehörigen Seitentyps. Dieses Vorgehen
+ähnelt dem bei Kategoriebildern, die Sie in Blog-Artikeln einbinden können.
+
+Für das Beispiel des Familienstammbaums \emph{Meine Familie} könnten Sie
+die Seitentypen \cmd{Eltern} und \cmd{Geschwister} anlegen. Für beide
+Seitentypen können Sie denselben Template-Namen
+\menu{plugin\_staticpage.""tpl} angeben. Für den Seitentyp \menu{Eltern}
+vergeben Sie ein Bild wie
+\cmd{http:""//www.example.com/serendipity/uploads/Eltern.gif}, für
+\menu{Geschwister} z.\,B.
+\cmd{http://www.example.com/serendipity/uploads/""Geschwister.gif}.
+
+Nun müssen Sie die Seite \emph{Wolfram} bearbeiten und das Ausklappfeld
+\menu{Artikeltyp} auf \menu{Geschwister} stellen, die Seiten
+\emph{Horst} und \emph{Sabine} auf den \menu{Artikeltyp} \menu{Eltern}.
+
+Zuletzt stellen Sie den \menu{Artikeltyp} der Stammseite \menu{Meine
+Familie} auf \menu{Overview}, damit es die Template-Datei
+\cmd{plugin\_staticpage\_about\-page.tpl} auslesen kann. Diese
+Template-Datei wertet die im Seitentyp hinterlegten Bilder aus und wird
+in der Navigation nun das Bild \menu{Eltern.gif} sowohl für den Link zu
+\emph{Horst} als auch zu \emph{Sabine} anzeigen. Für die Unterseite
+\emph{Wolfram} wird die Grafik \menu{Geschwister.gif} eingebunden.
+
+Dieses Vorgehen ist zwar mit mehreren Schritten und Eingabefeldern
+verbunden, ermöglicht Ihnen aber, beliebige Layoutvorhaben umzusetzen.
+
+Da das Eingabefeld \emph{Bildpfad} ein freies Textfeld darstellt, könnten
+Sie theoretisch auch andere Eigenschaften als eine Bild-URL einbinden.
+Wie Sie diese Variable einsetzen, obliegt einzig der Gestaltung Ihres
+Templates und dem Einsatz der Smarty-Variable
+\cmd{\{\$staticpage\_ext\-childpages.\cmdvar{X}.image\}}.
+
+\end{ospdescription}
+
+\index{Fehler!doppelte Seitentypen für statische Seiten}%
+Es kann vorkommen, wenn Sie das Plugin \menu{Statische Seiten} mehr als
+einmal installiert haben, dass Sie einige Seitentypen mehrfach in der
+Liste sehen. Überflüssige, doppelte Seitentypen können Sie 
+entweder manuell löschen oder einfach beibehalten, da dadurch keine
+Probleme entstehen.
+
+Diese Doppelung kann entstehen, weil bei jeder Einrichtung des
+Ereignis-Plugins die Installationsroutine die Standard-Seitentypen
+erneut in der Datenbank einträgt.
+
+\subsubsection{Andere Plugins}
+
+Das gekoppelte Seitenleisten Plugin \emph{Liste der Statischen Seiten}
+kann abseits von den angelegten statischen Seiten auch die Ausgabeseiten
+einiger Plugins mit einbinden.
+Zu diesen Plugins zählen der \emph{Downloadmanager}, das \emph{Gästebuch},
+\emph{Kontaktformular}, \emph{Forum}, die \emph{FAQs} sowie die
+\emph{Bildgallerie}.
+
+Links zu derartigen Plugins müssten Sie andernfalls immer manuell über
+HTML-Klötze oder Template-Änderungen einbinden.
+
+Über den Menüpunkt \menu{Einträge\sm Statische Seiten\sm Andere
+Plugins} können Sie die Liste der unterstützten Plugins einsehen. Alle
+Plugins, die unterstützt und installiert sind, werden als
+\menu{Plugin ist installiert} aufgeführt. Plugins, die Sie
+heruntergeladen, aber noch nicht über die Plugin-Verwaltung aktiviert
+haben, sind mit \menu{Plugin ist verfügbar, aber nicht installiert}
+ausgezeichnet.
+
+Alle unterstützen und installierten Plugins werden auf der Seite mit einer
+vorangestellten Ankreuzbox dargestellt. Kreuzen Sie die gewünschten
+Plugins zur Einbindung in der Seitenleiste an und klicken Sie auf
+\menu{Los!}, damit das Seitenleisten-Plugin sich Ihren Wünschen anpassen
+kann.
+
+\index{Statische Seiten!Konfigurationsoptionen des Plugins}%
+\subsubsection{Konfigurationsoptionen}
+
+In dem Ereignis-Plugin können Sie über die Konfigurationsoptionen
+festlegen, wie einige der Felder bei der Erstellung einer neuen
+statischen Seite belegt sind. Folgende Felder können dabei in ihrer
+Voreinstellung beim Anlegen neuer Seiten verändert werden:
+
+\begin{osplist}
+\item Textformatierung(en) durchführen
+\item Als Artikel formatieren
+\item Kinderseiten anzeigen
+\item Navigation anzeigen
+\item In der Navigation der Seitenleiste einbinden
+\end{osplist}
+
+Zusätzlich gibt es zwei weitere Konfigurationsoptionen:
+\begin{ospdescription}
+\ospitem{\menu{Überschriften oder Vor/Zurück-Navigation anzeigen}}
+Die Standard-Templates der statischen Seiten können eine Navigation
+innerhalb der angelegten Seiten einbinden, so dass Sie zwischen
+mehreren statischen Seiten vor- und zurückblättern können. Dabei wird jeweils
+ein Link zur vorigen und zur nächsten Seite eingebunden. Der Titel dieses
+Links richtet sich nach der Einstellung der Option \menu{Überschriften
+oder Vor/Zurück-Navigation anzeigen}. Wenn Sie hier die Option
+\menu{Text: Vor/Zurück} auswählen, erscheint der feste Text \emph{Vor}
+für die nächste Seite und \emph{Zurück} für die vorhergehende Seite.
+Alternativ können Sie die Option \menu{Überschrift} auswählen, dann
+werden die Überschriften der vorhergehenden und folgenden statischen Seiten
+dargestellt und bieten dem Besucher so möglicherweise eine bessere
+Übersicht.
+
+\ospitem{\menu{Suche}}
+Die Volltextsuche des Blogs über das Plugin \menu{Suche} durchsucht
+per Default lediglich Blog-Artikel. Wenn Sie auch statische Seiten
+durchsuchen möchten, müssen Sie diese Option aktivieren. Details zur Suche
+finden Sie auf Seite \pageref{staticpage-suche}.
+\end{ospdescription}
+
+Das gekoppelte Seitenleisten-Plugin verfügt über diese
+Konfigurationsoptionen:
+
+\begin{ospdescription}
+\ospitem{\menu{Seitenanzahl}}
+Standardmäßig stellt das Seitenleisten-Plugin alle vorhandenen statischen
+Seiten dar. Wenn Sie die Anzahl auf eine gewisse Menge beschränken
+wollen, können Sie dies über die Option \menu{Seitenanzahl} tun. In
+den meisten Fällen ist es jedoch sinnvoller, eher gezielt statische
+Seiten von der Ausgabe auszunehmen, indem Sie bei einer statischen Seite
+die Option \menu{In der Navigation der Seitenleiste einbinden}
+deaktivieren.
+
+\ospitem{\menu{Startseitenlink anzeigen}}
+Wenn Sie die Option \menu{Startseitenlink anzeigen} aktivieren, bindet
+das Plugin auch einen Link zur Blog-Startseite ein. So kann ein Besucher
+leicht zur Startseite zurückfinden.
+
+\ospitem{\menu{Nur Eltern-Seiten darstellen}}
+Bei aktivierter Option \menu{Nur Eltern-Seiten darstellen} werden in der
+Seitenleiste nur die statischen Seiten angezeigt, die als \menu{Ist
+Elternseite} festgelegt sind. Etwaige Unterseiten werden dann nicht
+dargestellt.
+
+\ospitem{\menu{Icons bzw. Klartext}}
+Wenn Sie die Option \menu{Baumstruktur} aktivieren, stellt das Plugin die
+Hierarchie der statischen Seite mittels eines dynamischen JavaScripts
+ein. Dies kann, ähnlich wie der Windows Explorer, aufklappbare
+Verzeichnisstrukturen einblenden.
+
+Die Option \menu{Klartext} gibt gewöhnliche HTML-Links aus. Nur diese
+können von Suchrobotern problemlos interpretiert werden, sehen aber nicht
+so hübsch aus wie die \menu{Baumstruktur} und belegen möglicherweise mehr
+Sichtfläche.
+
+\ospitem{\menu{Grafiken für Baumstruktur aktivieren}}
+Bei aktivierter \menu{Baumstruktur} können Sie die grafischen Symbole zu
+jeder statischen Seite optional deaktivieren.
+
+\index{Fehler!statische Seiten ohne Grafiken}%
+\ospitem{\menu{Verzeichnis für Bilder dieses Plugins}}
+Die grafischen Symbole des JavaScripts zur Darstellung einer
+\menu{Baumstruktur} bezieht das Plugin über eine URL Ihres Blogs. Sie
+müssen Siese Option nur verändern, wenn Sie Ihr Plugin-Unterverzeichnis
+umbenannt oder unterschiedlich verschachtelt haben und Ihnen daher sonst
+keine Grafiken angezeigt werden könnten.
+
+\end{ospdescription}
+
+\index{Statische Seiten!Templates}%
+\index{Statische Seiten!Templatevariablen@Template-Variablen}%
+\index{Template-Variablen!\$statische Seiten@statische Seiten}%
+\subsubsection{Template-Integration}
+
+Jeder Seitentyp einer statischen Seite kann einer eigenen
+Smarty-Template-Datei zugeordnet werden. Standardmäßig stehen die Dateien
+\cmd{plugin\_sta\-ticpage.tpl} und \cmd{plugin\_staticpage\_aboutpage.tpl}
+zur Verfügung.
+
+Innerhalb dieser Datei kann eine Vielzahl von Smarty-Variablen und
+"=Funktionen eingesetzt werden:
+
+\begin{ospdescription}
+\index{Template-Funktionen!\$getCategoryLinkByID@getCategoryLinkByID}%
+\ospitem{Funktion \cmd{\{getCategoryLinkByID\}}}
+Die Smarty-Funktion \cmd{\{getCategoryLinkByID\}} wird innerhalb der
+Plugin-Datei \cmd{smarty.inc.php} definiert und kann in jeder beliebigen
+Smarty-Template-Datei (auch in den zentralen Serendipity-Dateien!) dazu
+benutzt werden, die URL (den \emph{Permalink}) zu einer gewissen
+Blog-Kategorie zu erhalten.
+
+Als Parameter der Smarty-Funktion kann \cmd{cid=\cmdvar{ID der
+Kategorie}} übergeben werden. Als Rückgabewert liefert die Funktion eine
+URL.
+
+Wenn Sie in einer Template-Datei einen Code wie:
+
+\begin{ospcode}
+<a href="{getCategoryLinkByID cid=4}">Link</a>
+\end{ospcode}
+
+eintragen, erhalten Sie eine HTML-Ausgabe wie:
+
+\begin{ospcode}
+<a href="/serendipity/categories/4-Kategoriename.html">Link</a>
+\end{ospcode}
+
+Diese Funktion ist vor allem dann hilfreich, wenn Sie die Kategoriezuordnung für
+statische Seiten (siehe Seite \pageref{staticpage-Kategorie}) verwenden möchten.
+
+\index{Template-Funktionen!\$staticpage@staticpage\_display}%
+\ospitem{Funktion \cmd{\{staticpage\_display\}}}
+Mit der Funktion \cmd{\{staticpage\_display\}} können Sie innerhalb einer
+beliebigen Smarty-Template-Datei die Ausgabe einer statischen Seite
+auslösen.
+
+Hilfreich ist dies, wenn Sie innerhalb einer Template-Datei einer statischen Seite
+eine weitere statische Seite einbetten wollen, oder wenn Sie in der Blog-Übersicht
+den Inhalt einer statischen Seite anzeigen wollen. Wenn Sie das Plugin
+\emph{Textformatierung: Smarty} (siehe Seite \pageref{smartymarkup}) verwenden,
+können Sie statische Seiten auch einfach in Blog-Artikeln einbinden.
+
+Stellen Sie sich nun folgendes Szenario vor: Sie legen zwei statische
+Seiten an. Eine hat den Titel \cmd{Impressum}, die andere den Titel
+\cmd{Über mich}. Die statische Seite \cmd{Impressum} soll den Seitentyp
+\cmd{Article} benutzen, um mittels der Template-Datei
+\cmd{plugin\_staticpage.tpl}\osplinebreak{} ausgegeben zu werden.
+
+Als fauler Blogger möchten Sie nun gerne, dass der Inhalt der Seite
+\cmd{Impressum} auf der Seite \cmd{Über mich} erscheint, denn Sie
+wollen den Text ja nicht doppelt ändern müssen, wenn Sie einmal umziehen.
+
+Um dies zu erreichen, müssen Sie einen neuen Seitentyp anlegen. Nennen
+Sie diesen z.\,B.\ \cmd{Kombiseite}. Als Vorlage für das Template übernehmen
+Sie die Datei \cmd{plugin\_staticpage.tpl} und kopieren sie als neue
+Datei \cmd{kombiseite.tpl} entweder in Ihr Plugin"=Verzeichnis oder Ihr
+eigenes Template-Verzeichnis. Den Namen der kopierten Template-Datei tragen
+Sie für den Seitentyp ein und weisen nun die Seite \cmd{Über mich} diesem Seitentyp zu.
+
+Nun erfolgt der eigentliche Schritt, mit dem Sie den Inhalt der Seite
+\cmd{Impressum} übernehmen können. Sie öffnen die Datei
+\cmd{kombiseite.""tpl} und suchen nach der Stelle, wo der Text einer
+statischen Seite mit der Variable \cmd{\{\$staticpage\_content\}}
+ausgegeben wird. Da Sie das Impressum danach ausgeben wollen, ändern Sie
+die Zeile
+
+\begin{ospcode}
+<div class="staticpage\_content">\{\$staticpage\_content\}</div>
+\end{ospcode}
+
+um in:
+
+\begin{ospcode}
+<div class="staticpage\_content">
+  \{\$staticpage\_content\}
+  \{staticpage\_display pagetitle="Impressum" 
+    template="plugin\_staticpage.tpl"\}
+</div>
+\end{ospcode}
+
+Nun wird der Inhalt der statischen Seite mit dem Seitentitel
+\cmd{Impres\-sum} vollständig ausgegeben. Als Template-Datei wird die Datei
+\cmd{plug\-in\_staticpage.tpl}\footnote{Hätten Sie als Template
+\cmd{kombiseite.tpl} eingetragen, würde dies zu einer Endlosschleife
+führen!} verwendet.
+
+Wenn Sie anstelle eines vollständigen Inhalts der statischen Seite nur
+Teile des Textes (beispielsweise nur \cmd{\{\$staticpage\_content\}})
+ausgeben wollen, können Sie dafür ein eigenes Template anlegen, das nur
+diese Smarty-Variable verwendet. Diese Template-Datei können Sie dann der
+Smarty-Funktion \cmd{\{staticpage\_display\}} übergeben.
+
+Die Funktion kann mit mehreren Parametern aufgerufen werden:
+
+\begin{ospcode}
+\{staticpage\_display
+  pagevar='\ldots'
+  template='\ldots'
+  id='\ldots'
+  permalink='\ldots'
+  pagetitle='\ldots'
+  authorid='\ldots'
+  query='\ldots'\}
+\end{ospcode}
+
+\begin{ospdescription}
+\ospitem{\cmd{pagevar} (optional)}
+Mit dieser Option legen Sie ein Variablen-Präfix fest. Standardmäßig
+verwendet jede Template-Datei der statischen Seiten Variablen mit
+einem Vorzeichen wie \cmd{\{\$\cmdvar{staticpage}\_pagetitle\}}. Wenn
+Sie ein anderes Präfix verwenden wollen, um Kollisionen in den
+Variablennamen zu vermeiden, können Sie dieses mit dem Parameter
+\cmd{pagevar} festlegen.
+
+\ospitem{\cmd{template} (optional)}
+Standardmäßig benutzt die Smarty-Funktion zur Darstellung der statischen
+Seite das Template, das für die jeweilige Seite im \menu{Artikeltyp}
+eingetragen wurde.
+
+Wenn Sie eine individuelle Template-Datei verwenden wollen, können Sie
+den Dateinamen über diesen Parameter angeben. Die Template-Datei können
+Sie entweder im Plugin-Verzeichnis
+\cmd{plugins/serendipity\_event\_staticpage} oder im jeweiligen eigenen
+Template-Verzeichnis speichern.
+
+\ospitem{\cmd{id, permalink, pagetitle}}
+Die Smarty-Funktion \cmd{\{staticpage\_display\}} kann nur eine
+eindeutige statische Seite darstellen. Daher müssen Sie als Parameter
+unbedingt entweder \cmd{id}, \cmd{permalink} oder \cmd{pagetitle}
+angeben.
+
+Am sichersten ist die Übermittlung der ID einer statischen Seite, jedoch
+ist diese ID auch nur anhand der Datenbank herauszufinden. Leichter ist
+es, eine statische Seite über den konfigurierten \menu{Permalink} oder
+den \menu{URL-Titel} der Seite aufzurufen, da dieser auch eindeutig für
+jede statische Seite sein muss.
+
+\ospitem{\cmd{authorid}}
+Zusätzlich zur Einschränkung via \cmd{id, permalink} und \cmd{pageti\-tle}
+können Sie eine statische Seite auch auf einen Autor einschränken.
+Geben Sie dafür die ID des Autors als Wert des Parameters an.
+
+\ospitem{\cmd{query}}
+Letztlich führen die Parameter \cmd{id}, \cmd{permalink},
+\cmd{pagetitle} und \cmd{authorid} lediglich dazu, eine Datenbank-Abfrage
+zusammenzustellen. Jeder der genannten Parameter wird für das
+Bedingungsfeld der SQL-Abfrage (\cmd{WHERE}) ausgewertet und bildet am
+Ende eine Abfrage wie:
+
+\begin{ospcode}
+SELECT *
+  FROM serendipity\_staticpages
+ WHERE pagetitle = 'Impressum'
+ LIMIT 1
+\end{ospcode}
+
+Wenn Sie eine komplexere Datenbankabfrage benötigen, können Sie über den
+Parameter \cmd{query} der Smarty-Funktion eine eigene SQL-Abfrage
+übergeben. Diese Abfrage darf maximal einen Datensatz liefern.
+
+Wenn Sie diesen Parameter verwenden, müssen Sie trotzdem mindestens einen
+der Parameter \cmd{id, permalink, pagetitle} angeben, obwohl diese in
+Ihrer eigenen SQL-Abfrage möglicherweise nicht ausgewertet werden. Sie
+können daher auch einen Fantasiewert wie \cmd{id=42} übermitteln, wenn
+Sie eine \cmd{query} übergeben.
+
+Beispielsweise könnten Sie folgenden Aufruf verwenden, um eine als
+Startseite definierte Seite einzubinden:
+
+\begin{ospcode}
+\{staticpage\_display id=42 query="{}SELECT * FROM
+serendipity\_staticpages WHERE is\_startpage = 1 LIMIT 1"{}\}
+\end{ospcode}
+
+\end{ospdescription}
+\end{ospdescription}
+
+Folgende Smarty-Variablen stehen in allen Template-Dateien der statischen
+Seiten bzw. Seitentypen zur Verfügung:
+
+\begin{ospdescription}
+\label{staticpage-columns}%
+\ospitem{\cmd{\{\$staticpage\_*\}} (Mixed)}
+Zu jeder statischen Seite werden mehrere Felder ausgefüllt, die allesamt
+in eigenen Datenbankspalten gespeichert werden. Diese Felder umfassen den
+Titel der Seite, den Autor, den Inhalt und alles Weitere.
+
+Jedes dieser Felder enthält eine Template-Variable, die Sie in einer
+Template-Datei ansprechen können. Der Teil nach
+\cmd{staticpage\_\ldots} entspricht dabei dem Namen des Datenbankfeldes.
+
+Diese Variablen beziehen sich jeweils auf die aktuell im Template
+dargestellte Seite:
+
+
+\label{staticpage-values}%
+\begin{ospdescription}
+\index{Template-Variablen!\$staticpage\_headline}%
+\ospitem{\cmd{\{\$staticpage\_headline\}} (String)} enthält die
+    \menu{Kopfzeile}.
+
+\index{Template-Variablen!\$staticpage\_permalink}%
+\ospitem{\cmd{\{\$staticpage\_permalink\}} (String)} enthält den
+    \menu{Permalink}.
+
+\index{Template-Variablen!\$staticpage\_pagetitle}%
+\ospitem{\cmd{\{\$staticpage\_pagetitle\}} (String)} enthält den
+    \menu{URL-Titel der Seite}.
+
+\index{Template-Variablen!\$staticpage\_articletype}%
+\ospitem{\cmd{\{\$staticpage\_articletype\}} (String)} enthält den Namen
+    des zugeordneten Seitentyps.
+
+\index{Template-Variablen!\$staticpage\_publishstatus}%
+\ospitem{\cmd{\{\$staticpage\_publishstatus\}} (Bool)} ist auf \cmd{true}
+    gesetzt, wenn die Seite veröffentlicht wurde.
+
+\index{Template-Variablen!\$staticpage\_language}%
+\ospitem{\cmd{\{\$staticpage\_language\}} (String)} enthält das Kürzel
+    der \menu{Sprache}.
+
+\index{Template-Variablen!\$staticpage\_content}%
+\ospitem{\cmd{\{\$staticpage\_content\}} (String)} enthält den
+    Inhaltstext.
+
+\index{Template-Variablen!\$staticpage\_markup}%
+\ospitem{\cmd{\{\$staticpage\_markup\}} (Bool)} ist auf \cmd{true}
+    gesetzt, wenn \menu{Textformatierungen} für diese Seite
+    durchgeführt werden sollen.
+
+\index{Template-Variablen!\$staticpage\_headline}%
+\ospitem{\cmd{\{\$staticpage\_articleformat\}} (Bool)} ist auf \cmd{true}
+    gesetzt, wenn eine statische Seite \menu{als Artikel formatiert}
+    wird.
+
+\index{Template-Variablen!\$staticpage\_articleformattitle}%
+\ospitem{\cmd{\{\$staticpage\_articleformattitle\}} (String)} enthält den
+    \menu{Seitentitel für "`Als Artikel formatieren"'-Ansicht}.
+
+\index{Template-Variablen!\$staticpage\_authorid}%
+\ospitem{\cmd{\{\$staticpage\_authorid\}} (Int)} enthält die ID des
+    Autors.
+
+\index{Template-Variablen!\$staticpage\_parent\_id}%
+\ospitem{\cmd{\{\$staticpage\_parent\_id\}} (Int)} enthält die ID einer
+    übergeordneten statischen Seite. Bei Elternseiten ist dieser Wert
+    auf \cmd{0} gesetzt.
+
+\index{Template-Variablen!\$staticpage\_category\_id}%
+\ospitem{\cmd{\{\$staticpage\_related\_category\_id\}} (Int)} enthält die
+    ID einer zugeordneten Kategorie.
+
+\index{Template-Variablen!\$staticpage\_show\_childpages}%
+\ospitem{\cmd{\{\$staticpage\_show\_childpages\}} (Bool)} ist auf
+    \cmd{true} gesetzt, wenn Unterseiten angezeigt werden sollen.
+
+\index{Template-Variablen!\$staticpage\_pre\_content}%
+\index{Template-Variablen!\$staticpage\_precontent}%
+\ospitem{\cmd{\{\$staticpage\_pre\_content,}}
+\ospadditem{\cmd{\$staticpage\_precontent\}} (String)} enthält die \menu{Einleitung}, die bei Elternseiten
+    eingetragen werden kann.
+
+\index{Template-Variablen!\$staticpage\_pass}%
+\ospitem{\cmd{\{\$staticpage\_pass\}} (String)} enthält das Passwort (als
+    Klartext) zum Aufruf der Seite.
+
+\index{Template-Variablen!\$staticpage\_is\_startpage}%
+\ospitem{\cmd{\{\$staticpage\_is\_startpage\}} (Bool)} ist auf \cmd{true}
+    gesetzt, wenn die statische Seite die Startseite des Blogs
+    darstellen soll.
+
+\index{Template-Variablen!\$staticpage\_pageorder}%
+\ospitem{\cmd{\{\$staticpage\_pageorder\}} (Int)} enthält eine Zahl, die
+    für die Sortierungsreihenfolge einer statischen Seite benutzt
+    wird. Je höher die Zahl, desto weiter am Ende einer Liste
+    (beispielsweie in der Seitenleiste oder Navigation) wird die
+    Seite ausgegeben.
+
+\index{Template-Variablen!\$staticpage\_shownavi}%
+\ospitem{\cmd{\{\$staticpage\_shownavi\}} (Bool)} ist auf \cmd{true}
+    gesetzt, wenn die Navigation in einer statischen Seite
+    eingebunden werden soll.
+
+\index{Template-Variablen!\$staticpage\_showonnavi}%
+\ospitem{\cmd{\{\$staticpage\_showonnavi\}} (Bool)} ist auf \cmd{true}
+    gesetzt, wenn eine statische Seite in der Ausgabe der
+    Seitenleiste enthalten sein soll.
+
+\index{Template-Variablen!\$staticpage\_timestamp}%
+\ospitem{\cmd{\{\$staticpage\_timestamp\}} (Int)} enthält den
+    UNIX-Zeitstempel (vergangene Sekunden seit dem 01.01.1970) für
+    den Zeitpunkt, an dem die statische Seite erzeugt wurde.
+
+\index{Template-Variablen!\$staticpage\_last\_modified}%
+\ospitem{\cmd{\{\$staticpage\_last\_modified\}} (Int)} enthält den
+    UNIX-Zeitstempel für den Zeitpunkt, an dem die statische Seite zuletzt bearbeitet
+    wurde.
+
+\end{ospdescription}
+
+\index{Template-Variablen!\$serendipityArchiveURL}%
+\ospitem{\cmd{\{\$serendipityArchiveURL\}} (String)}
+Diese Variable enthält die URL zu dem Artikelarchiv Ihres Blogs,
+standardmäßig \cmd{/serendipity/archives/}.
+
+\index{Template-Variablen!\$staticpage\_form\_pass}%
+\ospitem{\cmd{\{\$staticpage\_form\_pass\}} (String)}
+Enthält das Passwort, das ein Besucher übermittelt hat. Dies kann zum
+Vergleich mit dem für die statische Seite eingetragenen Passwort
+herangezogen werden.
+
+\index{Template-Variablen!\$staticpage\_form\_url}%
+\ospitem{\cmd{\{\$staticpage\_form\_url\}} (String)}
+Enthält die URL, die als Formularziel für die Passworteingabe verwendet
+werden muss, um zur gewünschten statischen Seite zu gelangen.
+
+\index{Template-Variablen!\$staticpage\_childpages}%
+\ospitem{\cmd{\{\$staticpage\_childpages\}} (Array)}
+Dieses verschachtelte Array enthält eine Liste aller Seiten, die der
+aktuellen statischen Seite untergeordnet sind. Als Array-Schlüssel stehen
+der URL-Titel der Seite (\cmd{\{\$staticpage\_childpages.X.page\-title\}})
+sowie der Permalink (\cmd{\{\$staticpage\_childpages.X.per\-malink\}}) zur
+Verfügung.
+
+\index{Template-Variablen!\$staticpage\_extchildpages}%
+\ospitem{\cmd{\{\$staticpage\_extchildpages\}} (Array)}
+Die Variable \cmd{\{\$staticpage\_childpages\}} enthält lediglich eine
+kurze Übersicht der Unterseiten einer statischen Seite, die zu
+Navigationszwecken benutzt werden.
+
+Die Variable \cmd{\{\$staticpage\_extchildpages\}} enthält jedoch eine
+ausführlichere Liste dieser Seiten (\emph{ext} entspricht \emph{extended}
+= erweitert). Dieses Array enthält folgende Array-Schlüssel:
+
+
+\begin{ospdescription}
+\ospitem{\cmd{\{\$staticpage\_extchildpages.X.image\}} (String)} enthält
+    den Wert, den Sie bei dem zugehörigen Seitentyp der statischen
+    Seite unter \menu{Bildpfad} (siehe Seite
+    \pageref{staticpage-bildpfad}) eingetragen haben. Dieser Wert
+    kann beispielsweise eine Grafik für die jeweilige Unterseite
+    repräsentieren, die in der Navigation für grafische Zuordnungen
+    dienen kann.
+
+\ospitem{\cmd{\{\$staticpage\_extchildpages.X.precontent\}} (String)}
+    enthält eine (optionale) Einleitung, die für weitere Unterseiten
+    einer Unterseite dienen kann.
+
+\ospitem{\cmd{\{\$staticpage\_extchildpages.X.permalink\}} (String)}
+    enthält die URL zu der Unterseite.
+
+\ospitem{\cmd{\{\$staticpage\_extchildpages.X.pagetitle\}} (Int)} enthält
+    den \cmd{URL-Titel der Seite}.
+
+\ospitem{\cmd{\{\$staticpage\_extchildpages.X.headline\} (Int)}} enthält
+    die Überschrift der Unterseite.
+\end{ospdescription}
+
+\index{Template-Variablen!\$staticpage\_adminlink}%}
+\ospitem{\cmd{\{\$staticpage\_adminlink\}} (String)}
+Enthält eine URL, über die ein Administrator die jeweilige
+statische Seite im Backend bearbeiten kann.
+
+\index{Template-Variablen!\$staticpage\_navigation}%
+\ospitem{\cmd{\{\$staticpage\_navigation\}} (Array)}
+Dieses verschachtelte Array enthält die notwendigen Daten zur
+Einbindung einer Navigation. Folgende Array-Schlüssel stehen zur
+Verfügung:
+
+
+\begin{ospdescription}
+\ospitem{\cmd{\{\$staticpage\_navigation.prev.name\}}} enthält den
+    Linktitel der vorigen statischen Seite (abhängig von der
+    Konfigurationsoption \menu{Überschriften oder
+    Vor/Zurück"=Navigation anzeigen} des Ereignis-Plugins).
+\ospitem{\cmd{\{\$staticpage\_navigation.prev.link\}}} enthält die URL
+    der vorigen statischen Seite.
+\ospitem{\cmd{\{\$staticpage\_navigation.next.name\}}} enthält den
+    Linktitel der nächsten statischen Seite.
+\ospitem{\cmd{\{\$staticpage\_navigation.next.link\}}} enthält die URL
+    der nächsten statischen Seite.
+\ospitem{\cmd{\{\$staticpage\_navigation.top.name\}}} enthält den
+    Linktitel der übergeordneten statischen Seite.
+\ospitem{\cmd{\{\$staticpage\_navigation.top.link\}}} enthält die URL der
+    übergeordneten statischen Seite.
+\ospitem{\cmd{\{\$staticpage\_navigation.crumbs\}}} enthält ein
+    durchnummeriertes Array, das von vorne nach hinten die Auflistung
+    der übergeordneten statischen Seiten enthält. Jedem
+    Array-Schlüssel ist hierbei ebenfalls \cmd{.name} und \cmd{.link}
+    zugeordnet. Bei einer Unterseite der dritten Ebene enthielte
+    dieses Array also zwei Elemente mit den URLs und Linknamen der
+    Oberseite der ersten und zweiten Ebene.
+\end{ospdescription}
+
+\index{Template-Variablen!\$staticpage\_author}%
+\ospitem{\cmd{\{\$staticpage\_author\}} (String)}
+Enthält den Autorennamen (im Gegensatz zur ID mittels
+\cmd{\{\$static\-page\_authorid\}}) der statischen Seite.
+
+\index{Template-Variablen!\$staticpage\_created\_on}%
+\ospitem{\cmd{\{\$staticpage\_created\_on\}} (Int)}
+Enthält den UNIX-Zeitstempel (vergangene Sekunden seit dem 01.01.""1970)
+für den Zeitpunkt, an dem die statische Seite erzeugt wurde. Identisch zu
+\cmd{\{\$staticpage\_timestamp\}}.
+
+\index{Template-Variablen!\$staticpage\_lastchange}%
+\ospitem{\cmd{\{\$staticpage\_lastchange\}} (Int)}
+Enthält den UNIX-Zeitstempel für den Zeitpunkt, an dem die statische
+Seite zuletzt bearbeitet wurde. Identisch zu
+\cmd{\{\$staticpage\_last""\_modified\}}.
+
+\index{Template-Variablen!\$staticpage\_categorypage}%
+\ospitem{\cmd{\{\$staticpage\_categorypage\}} (Array)}
+Das Plugin \emph{Statische Seiten} ist auch aktiv, während Sie keine
+statische Seite anzeigen. Dadurch kann das Plugin auch Smarty-Variablen
+zuweisen, die Verweise zu statischen Seiten enthalten, während ein
+Beusucher die Übersichtsseite der Einträge pro Kategorie anschaut.
+
+Wenn Sie einer Kategorie eine Kategorieseite zugewiesen haben (siehe Seite
+\pageref{staticpage-Kategorie}), dann wird die Smarty-Variable
+\cmd{\{\$staticpage\_catego\-rypage\}} mit den Werten für diese statische Seite
+belegt. Daher können Sie mithilfe dieser Variable die statische Seite in eine
+zentrale Template-Datei wie \cmd{index.tpl} oder \cmd{entries.tpl} einbinden.
+
+Als Array-Schlüssel sind alle Werte der Datenbanktabelle verfügbar, wie
+auf Seite \pageref{staticpage-columns} aufgeführt (\cmd{id}, \cmd{pagetitle},
+\cmd{permalink}, \cmd{content} etc.).
+
+\end{ospdescription}
+
+\label{staticpage-suche}%
+\index{Statische Seiten!Suche}%
+\index{Volltextsuche}%
+\subsubsection{Volltextsuche}
+
+Wenn Sie in der Konfiguration des Ereignis-Plugins die Option \menu{Suche}
+aktiviert haben, kann ein Besucher nicht nur Blog-Artikel, sondern auch
+statische Seiten durchsuchen.
+Die Suchergebnisse der statischen Seiten werden dabei separat ausgegeben,
+da sie nicht in die Formatierung der Suchergebnisse von Blog-Artikeln
+eingebunden werden können.
+
+Standardmäßig wird für jedes Suchergebnis ein Link zu der jeweiligen
+Seite sowie die Überschrift, der Autorenname und die ersten 200 Zeichen des
+Inhalts ausgegeben.
+Die Formatierung der Suchergebnisse können Sie über die
+Smarty-Template-Datei \cmd{plugin\_staticpage\_searchresults.tpl}
+anpassen. Folgende Variablen stehen dabei zur Verfügung:
+
+\begin{ospdescription}
+\index{Template-Variablen!\$staticpage\_searchresults}%
+\ospitem{\cmd{\{\$staticpage\_searchresults\}} (Int)} enthält die Anzahl
+der Suchergebnisse
+
+\index{Template-Variablen!\$staticpage\_results}%
+\ospitem{\cmd{\{\$staticpage\_results\}}
+(Array)} enthält ein verschachteltes Array mit allen Suchergebnissen. Jedem
+Array-Eintrag sind jeweils die Schlüsselnamen der Datenbank"=Spaltennamen zugewiesen, also
+beispielsweise \cmd{\{\$staticpage\_results.""X.headline\}}. Die Liste
+aller Spaltennamen finden Sie auf Seite \pageref{staticpage-db}.
+
+\end{ospdescription}
+\label{staticpage-Kategorie}%
+\index{Statische Seiten!Kategoriezuordnung}%
+\subsubsection{Kategoriezuordnung}
+
+Zwischen Blog-Artikeln und statischen Seiten besteht üblicherweise kein
+Bezug. Beide werden unabhängig voneinander im System verwaltet. Wenn
+statische Seiten angezeigt werden, ignoriert das Plugin die Einbindung
+von Artikeln. Andersherum ignoriert Serendipity statische Seiten beim
+Darstellen von Artikeln.
+
+Grundsätzlich ist dies gewollt, da man mit statischen Seiten ja exakt
+eine solche Trennung von redaktionellen Inhalten und \emph{Nebeninhalten}
+erreichen möchte.
+Wenn Sie Serendipity benutzen, um eine CMS-Seite zu pflegen, möchten Sie
+jedoch gerade eine Verflechtung von Artikeln und statischen Seiten
+erreichen.
+
+Dies können Sie mit Hilfe des Kategoriesystems von Serendipity und des
+Plugins \emph{Statische Seiten} erreichen. Die Verflechtung besteht dabei
+aus zwei Komponenten: die Einbindung von Kategorien in eine statische
+Seite und umgekehrt die Einbindung von statischen Seiten in eine
+Kategorie.
+
+Mithilfe eines Beispiels sollte dies etwas verständlicher werden: Sie
+betreuen den Webauftritt einer Kirchengemeinde. Auf der Webseite wollen
+Sie über mehrere Themenbereiche berichten: \emph{Unternehmungen,
+Kirchenleben} und \emph{Mitarbeiter}. In jedem dieser Bereiche möchten
+Sie gerne sowohl aktuelle Artikel als auch feste Informationen anbieten.
+
+Dazu richten Sie zuerst einmal die drei Kategorien im Blog ein. So
+können Sie bereits einfach aktuelle Artikel schreiben. Es fehlt Ihnen
+jedoch die Möglichkeit, auch eine statische Seite mit grundlegenden
+Informationstexten einzupflegen. Beispielsweise möchten Sie im
+Themenbereich \emph{Mitarbeiter} stets eine vollständige Liste aller
+Mitarbeiter darstellen und Neuigkeiten erst darunter einbinden.
+Eine solche Seite dient später dem Besucher als optimale Verbindung: Er
+sieht immer aktuelle und statische Informationen.
+
+Als Einstiegspunkte zu so einer Seite gibt es nun zwei Möglichkeiten: Der
+Besucher kann entweder die Artikelübersicht der Kategorie aufrufen
+(\cmd{http:""//www.example.com/serendipity/categories/1-Mitarbeiter/}, oder
+er kann gezielt zu einer statischen Seite springen, die der Kategorie
+zugeordnet ist
+(\cmd{http://www.example.com/serendipity/seiten/Mitarbei\-ter.html}).
+
+Diese beiden Verknüpfungsoptionen sind in zwei unterschiedlichen Menüs
+untergebracht. Das erste Menü befindet sich beim Bearbeiten einer
+statischen Seite über \menu{Einträge\sm Statische Seiten\sm Seiten
+bearbeiten} im Ausklappfeld \menu{Zugeordnete Kategorie}. Wichtig ist,
+dass Sie einer statischen Seite, die einer Kategorie zugeordnet ist, als
+Seitentyp \menu{Staticpage with related category} zuweisen. Nur diese
+Formatierungsansicht enthält die spezielle Kopplung, die auf einer
+statischen Seite die Blog-Artikel einer gewählten Kategorie anzeigt.
+
+Als zweite Verknüpfungsmöglichkeit kann ein Redakteur einer Kategorie
+eine beliebige statische Seite zuordnen, indem er im Menü \menu{Einträge\sm Kategorien} die betreffende Kategorie bearbeitet und im Ausklappfeld
+\menu{Zugeordnete statische Seite} die jeweilige Seite auswählt. Damit
+nun eine verbundene statische Seite angezeigt werden kann, wenn ein
+Besucher die betreffende Kategorie aufruft, müssen Sie Änderungen an Ihrem
+gewählten Blog-Template vornehmen. Andernfalls ist eine Verknüpfung nur
+konfiguriert, wird aber nicht ausgewertet.
+
+Beide Verknüpfungsoptionen sind für erfahrenere Template-Bauer gedacht.
+Die folgenden Detailbeschreibungen sollten Sie daher möglichst erst dann
+umsetzen, wenn Sie sich mit Templates (siehe Beschreibung ab Seite
+\pageref{Smarty-Templates}) bereits eingehender beschäftigt haben.
+
+\begin{ospdescription}
+\ospitem{Zuordnung Kategorie zu statischer Seite}
+Einer statischen Seite können Sie eine Kategorie zuordnen. Beim Ansehen
+der statischen Seite werden dann z.\,B.\ die aktuellsten fünf Einträge einer
+Kategorie unterhalb des regulären Inhalts eingebunden.
+
+Diese Einbindung erfolgt mittels eines speziellen Seitentyps namens
+\menu{Staticpage with related category}. Dieser Seitentyp verwendet die
+Template"=Datei \cmd{plugin\_staticpage\_related\_category.tpl}, in der\osplinebreak{}
+Smarty-Funktionsaufrufe vorhanden sind, die die zugeordnete Kategorie
+auswerten und darstellen.
+
+Sie können unterschiedlichen statischen Seiten dieselbe Kategorie
+zuordnen, d.\,h., Sie können sowohl der statischen Seite \cmd{Impressum} als
+auch \cmd{Mitarbeiter} die Blog-Kategorie \cmd{Mitarbeiter} zuweisen.
+Dann werden die aktuellsten Artikel dieser Blog-Kategorie auf beiden
+statischen Seiten eingebunden.
+
+Die Anzeige dieser Funktionalität erfolgt, wenn ein Besucher gezielt eine
+statische Seite aufruft
+(\cmd{http://www.example.com/serendipi\-ty/seiten/Mitarbeiter.html}).
+
+In der Datei \cmd{plugin\_staticpage\_related\_category.""tpl}
+befindet sich der bereits aus der Datei \cmd{plugin\_staticpage.tpl}
+bekannte Code zur gewöhnlichen Darstellung einer statischen Seite.
+Abweichend von der gewöhnlichen Darstellung enthält die Template-Datei
+keine Navigationselemente und zusätzlich den besonderen
+Smarty-Funktionsaufruf zur Einbindung der Blog-Artikel:
+
+\begin{ospcode}
+<div class="{}staticpage_related_category_entry_list"{}>
+\{serendipity_fetchPrintEntries
+category=\$staticpage\_related\_category\_id
+template="{}../../plugins/serendipity\_event\_staticpage/staticpage-ent
+ries-listing.tpl"{}
+limit=5 noSticky="{}true"{}\} </div>
+\end{ospcode}
+
+Die Beschreibung der Smarty-Funktion
+\cmd{\{serendipity\_fetchPrint\-Entries\}} finden Sie auf
+Seite \pageref{fetchprintentries}.
+Im vorliegenden Fall weist die Funktion Serendipity dazu an, die
+letzten fünf Artikel darzustellen, die der aktuellen statischen Seite
+zugeordnet sind. Die Kategorie-ID wird dabei über die Smarty-Variable
+\cmd{\{\$staticpage\_related\_cate\-gory\_id\}} übermittelt.
+
+Damit die Ausgabe der Artikel nur als Übersicht erfolgt, benutzt der Smarty-Aufruf ein eigenständiges
+Template namens \cmd{staticpage-en\-tries-listing.tpl}, das mit dem Plugin
+ausgeliefert wird. Sie können die genannte Datei zur Anpassung in
+Ihr eigenes Template"=Verzeichnis kopieren und sich dadurch die
+Angabe des vollständigen Pfades sparen.
+
+Die Datei \cmd{staticpage-entries-listing.tpl} entspricht einem\osplinebreak{} stark
+reduzierten \cmd{entries.tpl}-Template (siehe Seite \pageref{entries.tpl}).
+Es gibt lediglich die Überschrift und den Link zu den jeweiligen Artikeln
+aus. Sie können jedoch auch alle verfügbaren Smarty-Variablen anwenden,
+um die Blog-Artikelliste individuell zu formatieren. Dazu können Sie auch
+eine eigene Template-Datei wie \cmd{staticpage-entries-lis\-ting-detail.tpl}
+erstellen. Auf diese müssen Sie dann in der Datei
+\cmd{plugin\_staticpage\_related\_category.tpl} verweisen oder
+alternativ auch einen eigenständigen Seitentyp mit eigener Template"=Datei
+verwenden.
+
+Grundsätzlich können Sie sämtliche Parameter des Smarty"=Funktionsaufrufs
+auch durch zentrale Template-Optionen abstrahieren. Dabei könnten Sie in
+Ihrem Template beispielsweise eine konfigurierbare Option für die Anzahl
+der Blog-Artikel in einer statischen Seite hinterlegen. Eine Beschreibung
+der Template-Optionen finden Sie auf Seite \pageref{templateoptionen}.
+
+\ospitem{Zuordnung statische Seite zu Kategorie}
+Diese Verknüpfung kümmert sich um die Einbindung einer statischen Seite
+in eine Artikelübersicht einer Kategorie. Diese statische Seite wird
+einer Kategorie im Bereich \menu{Einträge\sm Kategorien} zugewiesen.
+
+Einer Kategorie können Sie lediglich eine einzelne statische Seite
+zuordnen, genauso wie Sie einer statischen Seite nur eine einzelne
+Kategorie zuordnen können. Das bedeutet daher auch, dass Sie mehreren
+unterschiedlichen Kategorien dieselbe statische Seite zuordnen können,
+und mehreren unterschiedlichen statischen Seiten dieselbe Kategorie.
+
+Angezeigt wird die zugewiesene statische Seite, wenn ein Besucher die
+Artikelübersicht über eine URL wie
+\cmd{http://www.example.com/""serendipity/categories/1-Mitarbeiter}
+aufruft.
+
+Serendipity stellt eine Kategorieübersicht über die 
+\cmd{entries.tpl} Ihres aktivierten Templates dar. Dort ist eine
+statische Seite üblicherweise nicht vorgesehen, daher müssen Sie die
+Einbindung dieser statischen Seite selbständig vornehmen.
+
+Das Grundprinzip ist dabei analog der Zuordnung einer Kategorie
+zu einer statischen Seite. Sie ändern dabei die \cmd{entries.tpl} so ab,
+dass sie den Aufruf der zugeordneten statischen Seite enthält.
+
+Das Plugin \emph{Statische Seiten} kann selbständig erkennen, ob der
+Kategorie, die ein Besucher gerade anschaut, eine statische Seite
+zugeordnet ist. Ist dies der Fall, setzt das Plugin die Smarty-Variable
+\cmd{\{\$staticpage\_categorypage\}}. Diese Variable enthält alle Werte
+\cmd{id}, \cmd{pagetitle}, \cmd{permalink}, \cmd{content} etc. der zugewiesenen statischen
+Seite (siehe Seite \pageref{staticpage-values}).
+
+Um also bei der Betrachtung einer Artikelübersicht zu einer Kategorie die
+zugewiesene statische Seite zu verlinken, könnten Sie am Anfang Ihrer
+Datei \cmd{entries.tpl} Folgendes einfügen:
+
+\input{snippets/staticpage-entries}
+
+Dieser Code gibt einen Hinweistext und einen Link zu der zugehörigen
+statischen Seite aus. Diesen Block Code können Sie selbstverständlich
+auch in andere Dateien Ihres Templates, wie \cmd{index.tpl}, einbauen.
+
+\end{ospdescription}
+
+\index{Statische Seiten!Datenbanktabellen}%
+\index{Datenbank-Tabellen!Statische Seiten}%
+\subsubsection{Datenbanktabellen}
+
+Das Plugin richtet folgende Datenbanktabellen und -felder ein:
+
+\index{Datenbank-Tabellen!serendipity\_staticpages}%
+
+\begin{ospdescription}
+  
+\label{staticpage-db}%
+\ospitem{\cmd{serendipity\_staticpages}}
+In dieser Tabelle werden die Inhalte der statischen Seiten gespeichert. Folgende
+Felder werden benutzt:
+
+\begin{ospdescription}
+\ospitem{\cmd{id}} enthält den fortlaufenden Primärschlüssel zur Identifikation einer
+statischen Seite.
+\ospitem{\cmd{parent\_id}} enthält eine etwaige zugeordnete Oberseite.
+\ospitem{\cmd{articleformattitle}} enthält den \menu{Seitentitel für "`Als Artikel formatieren"'-Ansicht}.
+\ospitem{\cmd{articleformat}} gibt an, ob eine statische
+Seite in der Darstellung wie ein Artikel formatiert werden soll.
+\ospitem{\cmd{markup}} gibt an, ob Textformatierungs-Plugins angewendet werden sollen.
+\ospitem{\cmd{pagetitle}} enthält den \menu{URL-Titel der Seite}.
+\ospitem{\cmd{permalink}} enthält den \menu{Permalink}.
+\ospitem{\cmd{is\_startpage}} gibt an, ob die Seite als Startseite des Blogs
+angezeigt wird.
+\ospitem{\cmd{show\_childpages}} gibt an, ob etwaige Unterseiten angezeigt werden sollen. 
+\ospitem{\cmd{content}} enthält den Inhalt der statischen Seite.
+\ospitem{\cmd{pre\_content}} enthält den einleitenden Inhalt für Kinderseiten der
+statischen Seite.
+\ospitem{\cmd{headline}} enthält die Überschrift des Artikels.
+\ospitem{\cmd{filename}} enthält den Dateinamen des Templates, der für die
+Formatierung der Seite verwendet werden soll.
+\ospitem{\cmd{pass}} enthält ein Passwort, falls die Seite geschützt werden soll.
+\ospitem{\cmd{timestamp}} enthält die Erstellungszeit des Artikels.
+\ospitem{\cmd{last\_modified}} enthält die Zeit der letzten Aktualisierung des Artikels.
+\ospitem{\cmd{authorid}} enthält die ID des Autors, der die Seite erstellt hat.
+\ospitem{\cmd{pageorder}} enthält ein Ordnungskriterium zur Sortierung der
+statischen Seite.
+\ospitem{\cmd{articletype}} gibt an, welchem Seitentyp die Seite entspricht. 
+\ospitem{\cmd{related\_category\_id}} enthält eine möglicherweise festgelegte
+Kategoriezuordnung der statischen Seite.
+\ospitem{\cmd{shownavi}} gibt an, ob Navigationsmöglichkeiten im Template der
+statischen Seite angezeigt werden sollen.
+\ospitem{\cmd{showonnavi}} gibt an, ob die statische Seite in der Liste der
+verfügbaren Seiten eingebunden werden soll.
+\ospitem{\cmd{publishstatus}} legt den Status des Artikels fest (veröffentlicht/Entwurf).
+\ospitem{\cmd{language}} legt die Sprache des Artikels fest.
+\end{ospdescription}
+
+\index{Datenbank-Tabellen!serendipity\_staticpages\_types}%
+\ospitem{\cmd{serendipity\_staticpages\_types}}
+Enthält die möglichen Seitentypen der statischen Seiten.
+
+\begin{ospdescription}
+\ospitem{\cmd{id}} enthält den fortlaufenden Primärschlüssel zur Identifikation des
+Seitentyps.
+\ospitem{\cmd{description}} enthält die Beschreibung des Seitentyps.
+\ospitem{\cmd{template}} enthält die verwendete Smarty-Template-Datei zur Formatierung von
+Artikeln dieses Typs.
+\ospitem{\cmd{image}} enthält eine Bild-URL, die zur Identifizierung von Artikeln
+dieses Typs im Frontend dargestellt werden kann.
+\end{ospdescription}
+
+\index{Datenbank-Tabellen!serendipity\_staticpages\_categorypage}%
+\ospitem{\cmd{serendipity\_staticpages\_categorypage}}
+Enthält die Zuordnungen einer Blog-Kategorie zu einer statischen Seite.
+
+\begin{ospdescription}
+\ospitem{\cmd{categoryid}} enthält die ID der Blog-Kategorie.
+\ospitem{\cmd{staticpage\_categorypage}} enthält die ID der statischen Seite.
+\end{ospdescription}
+
+
+\end{ospdescription}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "serendipity"
+%%% End: 

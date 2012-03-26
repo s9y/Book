@@ -1,0 +1,737 @@
+%revised
+\chapter{Frontend}
+\index{Frontend!Uebersicht@Übersicht}
+
+Nach der Installation können Sie unter
+\cmd{http://www.example.com/seren\-dipity/} das Frontend aufrufen.
+Hier spielt sich alles ab, was jeder Besucher sehen kann:
+Man kann Einträge lesen und kommentieren, in älteren
+Archiven stöbern, eine Suche durchführen und auch etliche
+Plugin-Funktionalitäten (Umfrage, Flickr-Fotos \ldots) ansehen.
+
+Im Folgenden gehen wir von dem standardmäßig genutzten Theme (siehe 
+Seite \pageref{theme}) \emph{Serendipity 3.0} von Carl Galloway aus. Die 
+meisten anderen Themes richten sich in der Darstellung der Seitenelemente nach 
+demselben Schema, können aber in Details davon abweichen. Wie man die 
+Darstellung anpassen kann, werden Sie in späteren Kapiteln ab Seite 
+\pageref{Anpassungen} lernen.
+
+
+\section{Übersicht}
+\index{Frontend!Startseite}
+
+Die Startseite eines Serendipity-Blogs zeigt üblicherweise die
+chronologisch letzten 15 Artikel in allen Kategorien untereinander an,
+wobei der erste Artikel der aktuellste ist. Je nach Template ist dieser
+Inhaltsbereich von ein bis zwei sogenannten Seitenleisten umgeben. In den
+Seitenleisten können sich Seitenleisten-Plugins ansiedeln, die beliebige
+Inhalte darstellen können. Ebenfalls abhängig vom Template sehen Sie
+meist eine zentrale Seitenüberschrift (Kopf- oder auch Banner-Bereich
+genannt) und eine weitere Überschrift vor der Artikelübersicht.
+
+
+\ospfigure{0.95}{img/startseite_leer.eps}{Frontend nach der Installation}{fig:img/startseite2.eps}%
+
+
+Die Standard-Installation von Serendipity richtet eine rechte
+Seitenleiste ein, in der folgende Elemente dargestellt werden:
+
+\index{Frontend!vorinstallierte Seitenleisten-Plugins}
+\begin{ospdescription}
+
+\ospitem{\menu{Kalender}}
+Der Kalender stellt den aktuellen Monat in einer grafischen Übersicht dar.
+Der aktuelle Tag wird hervorgehoben, und jeder Tag, an dem ein Artikel
+verfasst wurde, ist ebenfalls hervorgehoben. Bei einem Klick auf einen Tag
+oder auf die Navigationspfeile in der Kopfzeile des Kalenders kann man
+sich die Artikel anzeigen lassen, die im gewählten Zeitraum verfasst
+wurden.
+
+\ospitem{\menu{Suche}} 
+In die Eingabebox der Schnellsuche kann man einen Suchbegriff eingeben und den 
+Suchvorgang mittels \taste{Enter}-Taste ausführen. Die Suche umfasst dabei 
+sowohl Artikelüberschrift als auch den Artikelinhalt und zeigt in der 
+Ergebnisseite die gefundenen Artikel genauso an wie in einer normalen 
+Artikelübersicht eines Zeitraumes.
+
+Details zur Suche sind am Ende des Kapitels (Seite \pageref{Suche})
+erwähnt.
+
+\ospitem{\menu{Archive}}
+Die Links dieses Plugins zeigen unterschiedliche chronologische
+Abschnitte der Blogeinträge an. Standardmäßig werden die letzten drei Monate
+mit Link angezeigt, und ein Klick darauf ruft die übliche Artikelansicht
+auf, bei der jedoch nur der gewünschte Zeitraum berücksichtigt wird.
+
+Der Link \menu{Das neueste} führt zur üblichen Startseite und der Link
+\menu{Älteres} zu einer besonderen Übersichtsseite (siehe Abschnitt
+\emph{Archive} auf Seite \pageref{Permalinks-Frontend}).
+
+\ospitem{\menu{Kategorien}}
+In dem Seitenleisten-Block \emph{Kategorien} wird eine Liste aller
+eingerichteten Kategorien des Blogs dargestellt. Ein Klick auf eine
+Kategorie wird daraufhin ausschließlich Artikel anzeigen, die dieser
+Kategorie zugeordnet sind. Neben jedem Kategorienamen befindet sich zudem
+ein kleines Symbol, das auf den RSS-Feed dieser Kategorie zeigt.
+
+Außerdem besteht für den Besucher die Möglichkeit, mehrere Kategorien
+zur Ansicht zu kombinieren. So könnte man sich alle Beiträge mehrerer
+Kategorien anzeigen lassen, indem man die Auswahlboxen neben mehreren
+Kategorien ankreuzt und danach auf den Button \menu{Los!} darunter klickt.
+
+\menu{Alle Kategorien} führt zurück auf die Übersichtsseite des
+Blogs, in der wieder alle Beiträge aller Kategorien gezeigt werden.
+
+\ospitem{\menu{Blog abonnieren}} 
+Alle Feed-Formate (siehe Terminologie, Seite \pageref{RSS}), die das Blog 
+anbietet, werden in dieser Box dargestellt. Die 
+unterstützten Formate sind \emph{RSS 0.91, RSS 2.0, Atom 0.3} und \emph{Atom 
+1.0}. Zusätzlich gibt es noch einen speziellen RSS 2.0-Feed, der alle 
+Kommentare zu den Beiträgen enthält. Mit diesem Feed können Besucher des Blogs 
+auch auf dem Laufenden über neue Kommentare bleiben.
+
+\ospitem{\menu{Verwaltung des Blogs}} 
+Damit ein Redakteur sich leicht in das Backend des Blogs einloggen kann, wird 
+ein Link dorthin angeboten. Je nachdem, ob der Benutzer bereits eingeloggt ist, 
+steht hier entweder \menu{Zum Login} oder \menu{Administrationsbereich}.
+
+\ospitem{\menu{Powered by}} 
+\index{Werbung!für Serendipity}%
+Zuletzt befindet sich in diesem Block eine kleine Werbung für Serendipity. 
+Besucher Ihres Blogs finden die Technik dahinter womöglich faszinierend, 
+so dass sie dieser Hinweis über das eingesetzte System interessiert. 
+Da ein Open-Source-System von seinen Benutzern und seiner Verbreitung 
+lebt, freuen sich die Entwickler immer sehr, wenn diese Werbung
+nicht entfernt wird.
+
+\end{ospdescription}
+
+\section{Beiträge}
+\index{Frontend!Beiträge}
+
+Da nach der Installation noch keine Einträge verfasst wurden, wird im
+Inhaltsbereich nur die Meldung "`Keine Einträge vorhanden"' angezeigt.
+
+\index{Fußbereich}%
+\index{Frontend!Fußbereich}%
+Unterhalb des Inhaltsbereichs befindet sich der Fußbereich, in dem man
+je nach dargestellter Seite vor- und zurückblättern kann. Viele
+Archivansichten können so chronologisch von vorne nach hinten
+durchblättert werden.
+
+Sobald sich in dem Blog ein Artikel befindet, wird dessen Titel und der
+einfache Eintragstext angezeigt. Zusätzlich werden Meta-Angaben über
+einen Artikel eingeblendet: die Erstellungszeit, die Kategorie, in der
+sich ein Artikel befindet, der Name des Autors und die Anzahl der
+Kommentare zu diesem Artikel.
+
+\ospfigure{0.98}{img/startseite.eps}{Frontend mit einem eingetragenen Artikel}{fig:img/startseite.eps}%
+
+\index{Detailseite}%
+\index{Erweiterter Eintrag}%
+Jeder Beitrag kann zudem einen sogenannten \emph{Erweiterten Eintrag}
+aufweisen. Dieser Zusatztext wird in der Übersichtsseite nicht angezeigt,
+sondern erst bei der Detailansicht eines Artikels. Sobald ein Artikel
+solchen Zusatztext enthält, führt der Link \menu{"`Artikeltitel"'
+vollständig lesen} oder ein Klick auf den Titel des Beitrags zu dieser
+Detailseite.
+
+Auf dieser Detailseite befinden sich außerdem alle Kommentare und
+Trackbacks zu einem Artikel. Auch in der Seitenüberschrift verändert sich
+der Kopfbereich und stellt durch die Aufnahme des Artikeltitels dar, dass
+man sich auf einer einzelnen Artikelseite befindet.
+
+Sollte man sich bereits in das Backend eingeloggt haben, erscheint bei
+den Meta-Angaben zu einem Artikel auch ein Link \menu{Eintrag bearbeiten},
+mittels dessen man den entsprechenden Artikel direkt bearbeiten kann.
+
+\label{Permalinks-Frontend}
+\section{Archive}
+\index{Frontend!Archive} \index{Permalinks!Archive}
+
+Wie bereits erwähnt, verfügt Serendipity über einige besondere
+chronologische Artikelübersichten, abhängig von der gewählten Kategorie,
+dem Zeitraum (nach Jahr, Monat, Woche oder Tag), einem Autor und einer
+Seitenzahl.
+
+Diese Seiten sind alle vom Inhalt her gleich aufgebaut, da alle Ansichten
+die Artikel gleichartig auflisten. Lediglich die dargestellten Inhalte
+sind nach dem gewünschten Kriterium gefiltert, und der Kopfbereich sowie
+der Fußbereich geben die Art der Übersichtsseite an.
+
+Alle Seiten haben zudem einen Stamm-Permalink (siehe Kapitel \ref{Terminologie}
+auf Seite \pageref{terminologie-permalinks}) gemeinsam:
+\cmd{http://www.example.com/serendipity/archives/""\cmdvar{XXX}}. Alle
+Archivseiten sind so einem virtuellen Verzeichnis zugeordnet, die
+Darstellung richtet sich nach dem dahinterstehenden \cmd{\cmdvar{XXX}}.
+Unterschiedliche Pfadkomponenten legen dabei fest, was genau
+angezeigt wird:
+
+\begin{ospdescription}
+\ospitem{\cmd{/archives/\cmdvar{2007}.html}} stellt alle Artikel des Jahres
+    2007 dar.
+
+\ospitem{\cmd{/archives/\cmdvar{2007}/\cmdvar{12}.html}} stellt alle Artikel
+    aus Dezember 2007 dar.
+
+\ospitem{\cmd{/archives/\cmdvar{2007}/\cmdvar{12}/\cmdvar{01}.html}} stellt
+    alle Artikel vom ersten Dezember 2007 dar.
+
+\ospitem{\cmd{/archives/\cmdvar{1}-\cmdvar{Beispiel}.html}} stellt eine
+    einzelne Artikelseite dar.
+
+\ospitem{\cmd{/archives/C\cmdvar{1}.html}} stellt alle Artikel der Kategorie
+    mit der Nummer 1 dar. Die Pfadkomponente \cmd{C} (für \emph{Category}) wird
+    dabei gefolgt von einer Zahl.
+
+\ospitem{\cmd{/archives/P\cmdvar{2}.html}} stellt die zweite Seite einer
+    Übersicht dar. Die Pfadkomponente \cmd{P} (für \emph{Page}) wird gefolgt von
+    einer Seitennummer.
+
+\ospitem{\cmd{/archives/A\cmdvar{1}.html}} stellt alle Artikel des Autors
+    mit der Nummer 1 dar. Die Pfadkomponente \cmd{A} (für \emph{Author}) wird
+    gefolgt von einer Zahl, die den Autor angibt.
+
+\ospitem{\cmd{/archives/W\cmdvar{52}.html}} stellt alle Artikel der
+    Kalenderwoche 52 dar. Die Pfadkomponente \cmd{W} (für \emph{Week}) wird
+    gefolgt von der Wochennummer.
+
+\ospitem{\cmd{/archives/summary.html}} legt fest, dass die Artikelübersicht
+    ausschließlich Datum und Artikeltitel (also ohne jeglichen Inhalt)
+    darstellt.
+\end{ospdescription}
+
+Wichtig ist dabei, dass die Pfadkomponenten (bis auf die für eine
+einzelne Artikelseite) hierbei beliebig miteinander kombinierbar sind.
+Dabei ist nur zu beachten, dass die Angabe des Datums (Jahr, Monat, Tag)
+immer direkt am Anfang des Permalinks stehen muss. Hier einige
+Beispiele für die Kombinationsmöglichkeiten:
+
+\begin{ospdescription}
+\ospitem{\cmd{/archives/2007/C1/A2.html}} stellt alle Artikel des Jahres 2007
+    dar, die in Kategorie 1 vom Autor 2 geschrieben wurden.
+
+\ospitem{\cmd{/archives/2007/12/P2/summary.html}} stellt die zweite Seite der
+    Artikelübersicht (nur Datum und Titel) aller Artikel im Dezember 2007 dar.
+
+\ospitem{\cmd{/archives/W52/A1.html}} stellt alle Artikel des ersten Autors
+    der 52. Kalenderwoche des aktuellen Jahres dar.
+\end{ospdescription}
+
+Die URL muss immer auf \cmd{.html} enden, die letzte
+Pfadkomponente darf somit keinen abschließenden \emph{/} enthalten.
+
+Da für die Ansicht der Artikel nach Autoren oder nach Kategorie
+eigenständige Permalinks wünschenswert sind, bietet Serendipity dieselben
+Artikelübersichten auch bei Aufruf folgender URLs an:
+
+\index{Permalinks!Autoren}
+\begin{ospdescription}
+\ospitem{\cmd{/authors/\cmdvar{1}-\cmdvar{AutorenName}.html}} stellt die
+    Artikelübersicht nach Autor dar, wobei in diesem Fall der Name des
+    Autors zu Suchmaschinenzwecken in
+    der URL stehen kann. Mehrere Autoren können hierbei mittels \cmd{;} nach
+    der Nummer des Autors kombiniert werden:
+    \cmd{authors/\cmdvar{1};\cmdvar{2};\cmdvar{3}-\cmdvar{Autorenuebersicht}.""html}. Der Parameter \emph{P} für die
+    gewünschte Seite kann angehängt werden.
+
+\label{Permalinks-Kategorien}%
+\index{Permalinks!Kategorien}%
+\ospitem{\cmd{/categories/\cmdvar{1}-\cmdvar{KategorieName.html}}} stellt die
+    Artikelübersicht nach Kategorie dar, wobei in diesem Fall der Name der
+    Kategorie zu Suchmaschinenzwecken in der URL stehen kann. Mehrere
+    Kategorien können hierbei mittels \cmd{;} nach der Nummer der
+    Kategorie kombiniert werden:
+    \cmd{categories/\cmdvar{1};\cmdvar{2};\cmdvar{3}-\cmdvar{Katego\-rieName}.html}. Die Parameter
+    \emph{P} für die gewünschte Seite sowie \emph{A} für die
+    Einschränkung nach Autoren können zusätzlich angehängt werden.
+\end{ospdescription}
+
+Über  \cmd{http://www.example.com/serendipity/archive/} gelangt
+man zu einer Übersichtsseite mit einer speziellen chronologischen Übersicht.
+
+\ospfigure{0.98}{img/startseite_archiv.eps}{Archiv-Übersicht}{fig:img/startseite_archiv.eps}%
+
+Dort werden für alle Jahre, in denen Artikel verfasst wurden, die Monate
+dargestellt. Eine Balkengrafik visualisiert hier zusätzlich die Menge der
+Artikel, die in dem jeweiligen Zeitraum verfasst wurden. Die Links
+\menu{ganz anzeigen} und \menu{Überschriften anzeigen} führen hierbei
+wieder zu den eingangs erwähnten Archiv-Übersichtsseiten.
+
+Auch die URL für die spezielle chronologische Übersicht kann mit
+speziellen Pfadkomponenten eingeschränkt werden -- eine Einschränkung
+nach Zeitraum erfolgt dabei jedoch nicht, da die Übersicht immer den
+ganzen Zeitraum berücksichtigt.
+
+\begin{ospdescription}
+\ospitem{\cmd{/archive/C\cmdvar{1}.html}} stellt die Übersicht aller Artikel
+    der Kategorie mit der Nummer 1 dar. Die Pfadkomponente \cmd{C} (für
+    \emph{Category}) wird dabei gefolgt von einer Zahl.
+
+\ospitem{\cmd{/archive/A\cmdvar{1}.html}} stellt die Übersicht aller Artikel
+    des Autors mit der Nummer 1 dar. Die Pfadkomponente \cmd{A} (für
+    \emph{Author}) wird gefolgt von einer Zahl, die den Autor angibt.
+\end{ospdescription}
+
+\index{Frontend!Kommentare}%
+\index{Frontend!Trackbacks}%
+\index{Kommentare}%
+\index{Trackbacks}%
+\section{Kommentare und Trackbacks}
+
+Artikel des Blogs können von Besuchern kommentiert oder referenziert
+werden. Diese Kommentare werden von Serendipity auf unterschiedliche
+Weise im Frontend eingebunden und können in weiteren Übersichtsseiten
+speziell gefiltert werden.
+
+\subsection{Kommentare zu einzelnen Artikeln}
+
+Die Ansicht der Kommentare (und Trackbacks) zu einem Beitrag erreicht man
+entweder durch einen Klick auf die Detailseite eines Beitrags oder
+indem man auf den Link \menu{Kommentare (x)} klickt. Je nach Einstellung
+des Blogs (siehe Seite \pageref{config-popups}) öffnet sich dann ebenfalls die
+Detailseite des Beitrags oder ein Popup-Fenster mit den Kommentaren.
+
+Trackbacks zu einem Artikel werden unterhalb eines Beitrags vor den
+Kommentaren chronologisch geordnet angezeigt. Ein Trackback ist ein
+Artikel eines fremden Blogs, der sich auf Ihren geschriebenen Beitrag
+bezieht. Dabei führt der Link des Trackbacks zu diesem fremden Beitrag,
+und zur Orientierung werden die ersten Absätze des fremden Beitrags mit
+angezeigt. Damit ein fremdes Blog sich auf Ihren Artikel beziehen kann,
+ist der Link \menu{Trackback für spezifische URI dieses Eintrags}
+vorgesehen. Ein Klick darauf verrät Ihnen, dass dieser Link nicht für die
+Ansicht im Browser gedacht ist, sondern für fremde Blogsysteme übernommen
+werden muss. Besucher sollten diesen Link also verwenden, um ein
+Trackback zu Ihnen zu senden.
+
+Nach den Trackbacks folgt die Auflistung der Kommentare. Standardmäßig
+werden diese \emph{thread-basiert} aufgelistet. Dabei startet die
+Auflistung mit dem chronologisch ersten Kommentar, und mögliche andere
+Kommentare, die sich auf diesen beziehen, werden eingerückt darunter
+dargestellt. Daher nennt sich diese Ansicht \emph{Verschachtelt}. Falls
+Sie eine chronologisch sortierte Ansicht bevorzugen, kann man diese über
+den Link \menu{Linear} aufrufen.
+
+\index{Kommentare!sperren}%
+\index{Trackbacks!sperren}%
+Als Redakteur des Blogs sehen Sie zudem noch den Link \menu{Kommentare
+für diesen Eintrag nicht mehr zulassen}, mit dem Sie die
+Kommentarfunktionalität eines Beitrags (auch übergangsweise) sperren
+können. An derselben Stelle erscheint danach auch wieder ein Link zum
+Entsperren.
+
+\ospfigure{0.85}{img/artikelseite.eps}{Artikel-Ansicht mit Kommentardarstellung}{fig:img/artikelseite.eps}%
+
+Zu jedem Kommentar wird der Name des Kommentatoren dargestellt, sowie
+(falls von ihm angegeben) seine E-Mail-Adresse und Homepage.
+
+Nach der Auflistung der vorhandenen Kommentare kann ein eigener, neuer
+Kommentar eingefügt werden. In das Eingabeformular trägt man dazu seine
+Daten (Name, E-Mail, Homepage, Bezug) sowie den gewünschten Kommentartext
+ein. Unterhalb der Eingabebox befindet sich ein Hinweis, welche
+Textformatierungsmöglichkeiten es gibt, um gewisse Dinge hervorzuheben.
+
+Die Auswahlbox \menu{Daten merken?} kann genutzt werden, damit der
+eingetragene Name in Zukunft vom Browser vorausgefüllt wird. Die Box
+\menu{Bei Aktualisierung dieser Kommentare benachrichtigen} bestimmt, ob
+man bei einem neuen Kommentar zu dem Beitrag per E-Mail informiert
+werden soll.
+
+Um einen Kommentar vor Übermittlung zu überprüfen, kann man den Button
+\menu{Vorschau} benutzen. Die Folgeseite zeigt den eigenen Kommentar dann
+so innerhalb der Webseite, wie er danach für alle Besucher erscheinen
+sollte. Gerade wenn Sie Sonderzeichen oder HTML-Code in Ihrem
+Kommen\-tar\-text benutzen, dient die Vorschau der Kontrolle, ob später auch
+wirklich alles angezeigt werden kann.
+
+Nach Abschicken eines Kommentars kann es je nach Einstellung des
+Artikels zu einer Moderation kommen -- in diesem Fall muss ein Redakteur
+einen Kommentar erst autorisieren, bevor er angezeigt wird (siehe Seite
+\pageref{Kommentare}).
+
+\label{Kommentaruebersicht}%
+\index{Frontend!Kommentarübersicht}%
+\subsection{Kommentarübersichten}
+
+Neben der gezielten Ansicht von Kommentaren zu einem Artikel gibt es auch
+eine Übersichtsseite, auf der alle Kommentare unabhängig vom Artikel
+dargestellt werden.
+
+\ospfigure{0.98}{img/startseite_kommentar.eps}{Kommentarübersicht}{fig:img/startseite_kommentar.eps}%
+
+Dies eignet sich besonders, um zu sehen, zu welchen Einträgen bestimmte
+Personen kommentiert haben. Die Seite zeigt dabei wie üblich seitenweise
+blätterbar die Überschrift eines Artikels an, und darunter die getätigten
+Kommentare.
+
+Diese Übersichtsseite ist bisher in wenigen Templates eingebaut und wird
+daher von Besuchern auch seltener genutzt.
+
+Das Permalink-Schema sieht dabei wie folgt aus:
+
+\index{Permalinks!Kommentare}
+\begin{ospdescription}
+\ospitem{\cmd{/comments/\cmdvar{kommentator}/}} stellt die Übersicht
+    aller Kommentare dar, die vom Benutzer \cmd{kommen\-tator} stammen.
+    Die Kommentatoren werden dabei in der Datenbank nach exaktem
+    Übereinstimmen mit dem Namen in der URL herausgesucht. Ohne Angabe
+    eines solchen Wertes werden die Kommentare aller Benutzer angezeigt.
+
+\ospitem{\cmd{/comments/last\_\cmdvar{5}/}} stellt die letzten fünf
+    Kommentare zu allen Artikeln dar. Ohne Angabe eines solchen Wertes
+    werden alle Kommentare angezeigt.
+
+\ospitem{\cmd{/comments/from\_\cmdvar{2007-12-01}/}} stellt alle Kommentare
+    seit dem 01.12.2007 dar. Das Datum muss hierbei der
+    \emph{GNU DATE}-Syntax entsprechen, siehe
+    \cmd{http://www.gnu.""org/software/tar/manual/html\_node/tar\_109.html}.
+    Ohne Angabe dieses Wertes wird keine minimale Zeitbeschränkung gesetzt.
+
+\ospitem{\cmd{/comments/to\_\cmdvar{2007-12-31}/}} stellt alle Kommentare
+    dar,
+    die bis zum 31.12.2007 gemacht wurden. Das Datum muss ebenfalls der
+    \emph{GNU DATE}-Syntax entsprechen. Ohne Angabe dieses Wertes wird
+    keine maximale Zeitbeschränkung gesetzt.
+
+\ospitem{\cmd{/comments/trackbacks/}} stellt anstelle einer Übersicht zu
+    Kommentaren die Übersicht der Trackbacks dar.
+
+\ospitem{\cmd{/comments/comments\_and\_trackbacks/}} stellt sowohl
+    Kommentare als auch Trackbacks dar.
+
+\ospitem{\cmd{/comments/comments/}} stellt nur Kommentare dar. Da die
+    Variable dem Standard entspricht, kann man sie üblicherweise
+    weglassen.
+
+\ospitem{\cmd{/comments/P\cmdvar{2}.html}} stellt die zweite Seite einer
+    Übersicht dar. Die Pfadkomponente \cmd{P} (für \emph{Page}) wird gefolgt von einer
+    Seitennummer.
+
+\end{ospdescription}
+
+Auch bei diesem Schema lassen sich die Pfadkomponenten miteinander
+kombinieren, um besondere Ansichten zu erhalten:
+
+\begin{ospdescription}
+\ospitem{\cmd{/comments/garvin/last\_5}} stellt die Übersicht der letzten fünf
+    Kommentare des Benutzers \cmd{gar\-vin} dar.
+
+\ospitem{\cmd{/comments/from\_2007-01-01/to\_2007-12-31/}} stellt die
+    Übersicht
+    aller Kommentare vom 01.01. bis zu 31.12.2007 dar.
+
+\ospitem{\cmd{/comments/comments\_and\_trackbacks/from\_2007-01-01/P2/}}
+    stellt die zweite Übersichtsseite aller Kommentare und Trackbacks seit
+    dem 01.01.2007 dar.
+
+\end{ospdescription}
+
+\section{Seite nicht gefunden (404)}
+\index{Seite nicht gefunden (404)}%
+\index{Fehler!Seite nicht gefunden}%
+
+Immer wenn man eine URL des Serendipity-Blogs aufruft, die zu einer 
+ungültigen Seite führt, wird statt einer Fehlerseite die Standard-Übersicht 
+angezeigt. Selbstverständlich wird für Suchroboter und Ähnliches dennoch eine 
+HTTP-404-Statusmeldung ausgegeben, um die Ungültigkeit der angeforderten Seite 
+herauszustellen.
+
+Die Standard-Übersicht wird dargestellt, damit Besucher des Blogs dazu
+motiviert werden, sich über die restlichen Inhalte des Blogs schnell
+einen Überblick zu verschaffen, anstatt nur eine leere, nichtssagende
+Fehlermeldung zu sehen.
+
+\section{RSS-Feeds}
+\index{Feeds|see{Frontend, RSS-Feeds}}%
+\index{RSS-Feeds|see{Frontend, RSS-Feeds}}%
+\index{Frontend!RSS-Feeds}%
+
+Streng genommen zählen RSS-Feeds nicht zum eigentlichen Frontend, da ein
+RSS-Feed außerhalb von Serendipity angezeigt wird. Ein RSS-Feed enthält,
+wie eingangs im Zusammenhang der Terminologie erwähnt (siehe Seite \pageref{RSS}),
+einige XML-Elemente, die die aktuellsten Einträge des Blogs mit einigen
+zusätzlichen Metadaten aufführen.
+
+Folgende RSS-Versionen sind verfügbar:
+
+\index{Permalinks!RSS-Feeds}
+\begin{ospdescription}
+
+\ospitem{\cmd{/feeds/index.rss2}}  Aktuelle Beiträge in RSS-Version 2.0.
+    Diese Version wird aufgrund ihrer Vollständigheit bevorzugt, da sie
+    die meisten Möglichkeiten bietet und den höchsten Verbreitungsgrad
+    besitzt.
+
+\ospitem{\cmd{/feeds/index.rss}}  Aktuelle Beiträge in RSS-Version 0.91.
+
+\ospitem{\cmd{/feeds/index.rss1}} Aktuelle Beiträge in RSS-Version 1.0.
+
+\ospitem{\cmd{/feeds/atom03.xml}} Aktuelle Beiträge in Atom-Version 0.3
+    (veraltet).
+
+\ospitem{\cmd{/feeds/atom10.xml}} Aktuelle Beiträge in Atom-Version 1.0.
+    Diese Version liegt in ihren Möglichkeiten ungefähr gleichauf mit RSS
+    2.0 und wird in Zukunft sicherlich noch an Bedeutung gewinnen, da
+    dieser Atom-Standard vom \index{W3C} W3C-Gremium\footnote{Das W3C-Gremium
+    entscheidet in einer großen Arbeitsgruppe über die Standardisierung von Internet-Formaten wie HTML
+    und anderem.} empfohlen wird.
+
+\ospitem{\cmd{/feeds/index.opml}} Aktuelle Beiträge im OPML-Format. Dies
+    beinhaltet nur Artikelübersichten und dient mehr der Übersicht als einem tatsächlichen Feed-Format.
+
+\end{ospdescription}
+
+Es gilt zu beachten, dass die URLs für die RSS-Feeds von Besuchern immer
+aufgerufen werden können, selbst wenn Sie das Seitenleisten-Plugin nicht
+aktiviert haben. Daher ist es auch grundsätzlich irrelevant, welche
+Versionen Sie persönlich bevorzugen, da Ihre Besucher die notwendige
+Version eigenständig beziehen können.
+
+Neben den Einträgen können auch aktuelle Kommentare und
+Trackbacks zu einem Blog bezogen werden:
+
+\begin{ospdescription}
+\ospitem{\cmd{/feeds/comments.rss2}}  Kommentare im RSS-2.0-Format.
+
+\ospitem{\cmd{/feeds/trackbacks.rss2}}  Trackbacks im RSS-2.0-Format.
+
+\ospitem{\cmd{/feeds/comments\_and\_trackbacks.rss2}}  Kommentare und
+    Trackbacks im RSS-2.0-Format.
+\end{ospdescription}
+
+Diese Feeds können auch durch Änderung der Dateiendung in einem anderen
+Format ausgegeben werden: \cmd{.rss2} für RSS 2.0, \cmd{.rss1} für RSS
+1.0, \cmd{.rss} für RSS 0.91 und \cmd{.atom} für Atom 1.0.
+
+Um nur einen Feed von einer speziellen Kategorie oder einem Autor
+abzurufen, sind folgende URLs möglich (jeweils auch mit oben genannten
+Dateiendungen):
+
+\begin{ospdescription}
+\ospitem{\cmd{/feeds/categories/\cmdvar{Kategoriename.rss2}}} Aktuelle
+    Beiträge der Kategorie \cmd{\cmdvar{Kategoriename}}.
+
+\ospitem{\cmd{/feeds/authors/\cmdvar{Autorname.rss2}}}  Aktuelle
+    Beiträge des Autors \cmd{\cmdvar{Autorname}}.
+\end{ospdescription}
+
+\index{rss-php@rss.php}%
+RSS-Feeds liegen von Serendipity in mehreren Versionen vor und werden allesamt
+auf die Ausgabedatei \cmd{rss.php} umgeleitet. Diese Datei stellt den Feed dar
+und kann einige optionale Parameter aufnehmen. Ein kleiner Teil dieser Optionen
+wird durch Einstellungen des Seitenleisten-Plugins "`Blog abonnieren"'
+beeinflusst, die ab Seite \pageref{syndication} aufgeführt sind.
+
+\cmd{rss.php} kann somit auch direkt von einem Browser
+aufgerufen werden, da sie übersichtlichere Paramter ermöglicht. Diese
+Parameter können jeweils miteinander verbunden werden. Um mehrere
+Parameter anzugeben, ruft man die URL mittels
+\cmd{rss.php?parameter1=wert1\&parameter2=parame\-ter3\&\ldots} auf. Bitte
+beachten Sie, dass Sie aus technischen Gründen die folgenden Parameter
+ausschließlich beim Aufruf der \cmd{rss.php}-Datei anhängen können, nicht
+aber beim Aufruf der sprechenden Feed-URLs wie \cmd{/feeds/index.rss2}.
+
+\index{Frontend!RSSFeedVariablen@RSS-Feed-Variablen}
+\label{rss-urlvariablen}%
+\begin{ospdescription}
+
+\ospitem{\cmd{rss.php?version=\cmdvar{version}}} wobei \emph{version}
+    folgende Werte haben kann: \emph{0.91}, \emph{1.0}, \emph{2.0},
+    \emph{atom0.3}, \emph{atom1.0} und \emph{opml1.0}. Individuelle
+    Feeds, die von Ihnen erstellt werden können (siehe Seite
+    \pageref{customfeeds}), werden ebenfalls einer eindeutigen Version zugeteilt und können
+    durch diesen Parameter später aufgerufen werden. Ohne Angabe der
+    Version wird das RSS-2.0-Format gewählt.
+
+\ospitem{\cmd{rss.php?category=\cmdvar{1}}} wobei die Zahl der
+    jeweiligen Nummer einer Kategorie des Blogs entspricht. Um einen
+    RSS-Feed für Einträge mehrerer Kategorien zu bündeln, können die Kategorie-Nummern
+    mittels Semikolon (\emph{;}) hintereinander aufgeführt werden. Ohne
+    Angabe werden Artikel aller Kategorien dargestellt.
+
+\ospitem{\cmd{rss.php?viewAuthor=\cmdvar{1}}} wobei die Zahl der
+    jeweiligen Nummer eines Autors des Blogs entspricht. Um einen
+    RSS-Feed für Einträge mehrerer Autoren zu bündeln, können die Autor-Nummern
+    mittels Semikolon (\emph{;}) hintereinander aufgeführt werden. Ohne
+    Angabe werden Artikel aller Autoren dargestellt.
+
+\ospitem{\cmd{rss.php?type=\cmdvar{typ}}} Anstelle von \emph{typ} kann
+    \emph{comments} (Kommentare), \emph{content} (Beiträge), \emph{trackbacks}
+    (Trackbacks) und \emph{comments\_and\_trackbacks} (Kommentare und
+    Trackbacks) eingetragen werden, was dafür sorgt, dass nur Artikel des
+    gewünschten Typs im RSS-Feed eingebunden werden. Ohne Angabe werden
+    nur Artikel angezeigt.
+
+\label{syndication-nocache}%
+\index{Conditional GET}%
+\ospitem{\cmd{rss.php?nocache=true}} Diese Variable sorgt
+    dafür, dass \emph{Conditional GET} für RSS-Feeds deaktiviert wird
+    (siehe \ref{Caching von RSS-Feeds} auf Seite \pageref{Caching von
+    RSS-Feeds}).
+
+\ospitem{\cmd{rss.php?cid=\cmdvar{Artikel-ID}}} Falls als Inhaltstyp eines
+    RSS-Feeds ein anderer als \emph{content} gewählt wurde, kann man die
+    Anzeige der Kommentare und Trackbacks auf einen bestimmten Artikel
+    einschränken. Die Nummer (\emph{ID}) dieses Artikels wird als Wert
+    des Parameters angegeben. Solche RSS-Feeds werden oft verwendet,
+    damit Besucher die Kommentare zu einem Artikel verfolgen können, an
+    dessen Diskussion sie teilgenommen haben.
+
+\ospitem{\cmd{rss.php?all=true}} Falls dieser Parameter gesetzt wird,
+    enthält der RSS-Feed nicht nur die letzten 15 aktuellen Artikel,
+    sondern alle verfügbaren. Der RSS-Feed kann dadurch sehr groß werden,
+    daher ist die Verwendung dieses Parameters nur für den Export der
+    Artikeldatenbank gedacht.
+
+\index{FullFeed}%
+\label{FullFeed}
+\ospitem{\cmd{rss.php?fullFeed=true}} Falls dieser Parameter gesetzt ist,
+    enthält der RSS-Feed den vollständigen Artikel (anstelle nur des
+    Teasers). Diese Option muss vom Betreiber des Blogs jedoch gezielt
+    aktiviert werden, da durch die Aktivierung der "`Diebstahl"' von
+    Artikeln stark vereinfacht wird (siehe Seite
+    \pageref{syndication-fullfeed}).
+
+\ospitem{\cmd{rss.php?forceLocal=true}} Das Plugin "`Blog abonnieren"'
+    unterstützt die Möglichkeit, dass RSS-Feeds zu einem Dienstleister
+    namens \emph{Feedburner} weitergeleitet werden. In so einem Fall
+    würde der Aufruf der eigenen RSS-URLs immer direkt zu der Seite des
+    Dienstleisters führen und man hätte keine Möglichkeit mehr, den
+    \emph{echten} RSS-Feed aufzurufen. Sollte diese Umleitungsoption also
+    gesetzt sein, können Sie mittels des Parameters \emph{forceLocal}
+    dafür sorgen, dass Sie \emph{nicht} umgeleitet werden. Der Parameter zeigt
+    jedoch nur Wirkung, wenn Sie als Redakteur am Blog angemeldet sind.
+
+\end{ospdescription}
+
+\label{Caching von RSS-Feeds}
+\subsection{Caching von RSS-Feeds}
+\index{Caching}%
+\index{Conditional GET}%
+\index{Fehler!RSS-Feeds}%
+
+Da RSS-Feeds von den RSS-Readern Ihrer Besucher relativ häufig aufgerufen
+werden (meist halbstündlich), ist es wichtig, dort so wenig wie möglich
+Redundanz für die Datenübertragung zu verursachen.
+
+Bei 200 Abonnenten Ihres RSS-Feeds und einem größeren Artikelbestand
+kommt es durchaus vor, dass die XML-Datei des Feeds 100kb und größer ist.
+Bei dieser Benutzerzahl würden Sie pro Stunde 4MB (das sind im Monat gut
+3GB!) an Daten übertragen. Wenn Sie durchschnittlich nur alle drei Tage
+einen neuen Artikel schreiben, wäre ein Großteil dieser Datenmenge
+unnötig übertragen worden.
+
+Um dieses Problem zu lösen, wurde im HTTP-Standard ein Caching\footnote{Ein 
+Cache ist ein Zwischenspeicher oder Puffer, der einmal erstellte Daten erneut 
+ausgeben kann, anstatt sie neu zusammenzustellen.}"=Mechanismus vorgesehen. 
+Dabei überträgt der RSS-Reader (und auch jeder Webbrowser) den Zeitpunkt des 
+letzten Abrufs an den Server. Der Server vergleicht, ob sich seit diesem 
+Zeitpunkt etwas am RSS-Feed geändert hat. Falls das nicht der Fall ist, wird 
+eine leere Antwort an die Software zurückgeschickt, und es werden keine Daten übertragen.
+
+Wenn sich etwas verändert hat, kann der Server lediglich die seit dem
+letzten Aufruf erneuerten Daten übermitteln und spart so nochmals an
+Übertragungszeit (und damit auch Server-Performance).
+
+Dieser Vorgang wird als \emph{Conditional GET} bezeichnet und ist in Form einer 
+verbindlichen 
+\index{RFC 2616}%
+\emph{RFC 2616} (Richtlinie des HTT-Protokolls) 
+festgehalten. Dennoch gibt es leider einige Clients, die das Caching nicht 
+vollständig implementieren und mit derartig ausgelieferten RSS-Feeds Probleme 
+haben. Solche Probleme können sich darin äußern, dass ein RSS-Reader ständig 
+bereits bekannte Einträge des RSS-Feeds als neu ansieht oder womöglich gar 
+keine neuen Artikel empfangen kann.
+
+Um bei solchen \emph{kaputten} Clients dennoch einen Serendipity-Feed
+korrekt abrufen zu können, ist der eingangs erwähnte Parameter
+\cmd{nocache=true} an den Aufruf der \cmd{rss.php}-URL anzuhängen.
+
+Im Zusammenhang mit dem globalen Caching unterstützt Serendipity die
+Auslieferung von Artikeln ab einem bestimmten Datum. Da üblicherweise
+RSS-Feeds nur die letzten 15 Artikel enthalten und man möglicherweise
+einmal für eine Weile den RSS-Feed nicht empfangen
+kann\footnote{Vielleicht hat man ja einmal sein Notebook oder die
+UMTS-Karte im Urlaub vergessen \ldots ;{}-{})}, könnte es also passieren, dass
+man Artikel schlichtweg verpasst. Bei der Übermittlung einer Angabe des
+zuletzt gesehenen Artikels wird dies vermieden, und Serendipity würde in
+so einem Fall auch alle weiteren Artikel über dem 15. ausliefern.
+
+Diese Auslegung des RFC-Standards verursacht in manchen RSS-Readern und
+vor allem Aggregatoren wie der Software \emph{Planet} jedoch Probleme. In
+der Konfiguration des Blogs wird daher die Option angeboten, das
+\emph{strikte RFC2616} zu veranlassen (siehe Seite \pageref{rfc2616}). Zwei
+weitere Variablen (siehe Seite \pageref{Caching-Variablen}) dienen darüber hinaus der
+Feineinstellung von Caching-Inhalten.
+
+Sobald diese Option aktiviert ist, wird Serendipity, wie andere Software
+auch, stur nur die letzten 15 Artikel ausliefern und somit das Feature
+der \emph{Urlaubsschaltung} deaktivieren.
+
+\section{Suche}
+\label{Suche}%
+\index{Suche}%
+\index{Volltextsuche|see{Suche}}%
+\index{Frontend!Suche}%
+\index{Fehler!Suche}%
+\index{Permalinks!Suche}%
+
+Der Permalink für die Suche folgt dem Schema
+\cmd{http://www.example.com/""serendipity/search/Suchbegriff1/Suchbegriff2}.
+Mehrere Begriffe\osplinebreak{} werden dabei durch den Pfadtrenner \cmd{/}
+getrennt. Die Pfadkomponente \cmd{P} für die gewünschte Seite der
+Übersicht kann angehängt werden.
+
+\index{MySQL!Fulltext}%
+\index{Fulltext-Index}%
+Volltextsuche wird bei Einsatz der MySQL-Datenbank mit dem
+"`Fulltext"'-Suchmechanismus ausgeführt. Dieser Mechanismus funktioniert
+nur bei MySQL-Versionen ab 4.0, und es ist erforderlich, dass ein
+\cmd{FULLTEXT INDEX} auf die Spalten \cmd{title,body,extended} der
+Tabelle \cmd{serendipity\_entries} erstellt wurde. Dies erledigt die
+Serendipity-Installationsroutine üblicherweise. Bei manchen Providern
+(besonders beim Einsatz von Confixx) kann es jedoch passieren, dass Ihr
+Datenbankbenutzer keine \cmd{INDEX}-Rechte hat. In einem solchen Fall
+würden Sie bei der Suche nach Artikeln eine Fehlermeldung erhalten, die
+Sie dazu anleitet, den Index korrekt zu erstellen. Notfalls müssen Sie
+Ihren Provider bitten, Ihnen die notwendigen Rechte dafür einzuräumen.
+
+\index{Boolean}%
+MySQL unterstützt die Suche mittels \emph{BOOLEAN}-Operatoren. Hier
+können Sie Wörter mit einem Anführungszeichen einschließen und ein
+\emph{+} oder \emph{-} vorstellen, um Teilwörter ein- oder
+auszuschließen. Auch kann das Zeichen \emph{*} als Platzhalter für
+beliebige Zeichen verwendet werden. Details zu der MySQL-Volltextsuche
+schlagen Sie bitte in der MySQL-Dokumentation nach.
+
+\ospfigure{0.95}{img/suche.eps}{Volltextsuche}{fig:img/suche.eps}%
+
+\index{Fehler!falsche Suchergebnisse}%
+Zwei wichtige Besonderheiten beim Einsatz von MySQL gibt es noch zu
+beachten: Die Suche funktioniert nur, wenn die Suchergebnisse nicht einen
+Großteil aller vorhandenen Einträge ausgeben. Damit verhindert MySQL, dass
+eine nutzlose Suche alle Einträge zurückliefern würde. Gerade wenn Sie
+also erst zwei Artikel geschrieben haben und nach einem Begriff suchen,
+wundern Sie sich nicht, wenn Sie keine Ergebnisse erhalten. Sobald die
+Datenbank eine vernünftige Datenbasis enthält, wird die Suche wie
+gewünscht funktionieren.
+
+\index{Stoppwort}% 
+Die zweite Besonderheit ist, dass MySQL nur Wörter mit 
+standardmäßig mindestens drei Buchstaben findet und dass ein Wort kein 
+\emph{Stoppwort} wie \emph{und} enthält. Eine Suche nach \emph{DB} würde also 
+nicht funktionieren. Dies wird durch die MySQL-Option \cmd{ft\_max\_word\_len} 
+(siehe MySQL"=Dokumentation) definiert.
+
+Beim Einsatz von SQLite oder PostgreSQL wird die Suche mittels einer
+Zeichenteilkette durchgeführt. Eine Suche nach \emph{risch} würde also
+sowohl Artikel mit dem Wort \emph{Frischfleisch} als auch
+\emph{betrügerisch} finden. Diese ist zwar langsamer als die erwähnten
+MySQL-Möglichkeiten, benötigt dafür aber weniger Rahmenbedingungen, um zu
+funktionieren.
+
+\ospvacat
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "serendipity"
+%%% End:

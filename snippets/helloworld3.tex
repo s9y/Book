@@ -1,0 +1,34 @@
+\begin{ospcode}
+<?php
+if (IN\textbackslash{}_serendipity !== true) \textbackslash{}\{
+    die ('Don't hack!');
+\textbackslash{}\}
+
+class serendipity\textbackslash{}_event\textbackslash{}_nl2br extends serendipity\textbackslash{}_event \textbackslash{}\{
+    function introspect(\textbackslash{}&\textbackslash{}$propbag) \textbackslash{}\{
+        global \textbackslash{}$serendipity;
+
+     \textbackslash{}$propbag->add('name',          'nl2br');
+     \textbackslash{}$propbag->add('event\textbackslash{}_hooks', array('frontend\textbackslash{}_display' => true));
+    \textbackslash{}\}
+
+    function event\textbackslash{}_hook(\textbackslash{}$event, \textbackslash{}&\textbackslash{}$bag, \textbackslash{}&\textbackslash{}$eventData) \textbackslash{}\{
+        global \textbackslash{}$serendipity;
+
+        \textbackslash{}$hooks = \textbackslash{}&\textbackslash{}$bag->get('event\textbackslash{}_hooks');
+        if (isset(\textbackslash{}$hooks[\textbackslash{}$event])) \textbackslash{}\{
+            switch(\textbackslash{}$event) \textbackslash{}\{
+              case 'frontend\textbackslash{}_display':
+                \textbackslash{}$eventData['body'] = nl2br(\textbackslash{}$eventData['body']);
+                return true;
+                break;
+
+              default:
+                return false;
+            \textbackslash{}\}
+        \textbackslash{}\} else \textbackslash{}\{
+            return false;
+        \textbackslash{}\}
+    \textbackslash{}\}
+\textbackslash{}\}
+\end{ospcode}

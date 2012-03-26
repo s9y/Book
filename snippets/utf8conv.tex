@@ -1,0 +1,13 @@
+\begin{ospcode}
+<?php
+\$input  = file_get_contents('dump-iso.sql');
+\$output = utf8_encode(\$input);
+\$fp     = fopen('dump-utf8.sql', 'wb');
+if (\$fp) \{
+  fwrite(\$fp, \$output);
+  fclose(\$fp);
+\} else \{
+  echo "Keine Schreibrechte, bitte korrigieren.";
+\}
+?>
+\end{ospcode}

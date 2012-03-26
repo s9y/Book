@@ -1,0 +1,132 @@
+%    Aktueller Stand Core:    15.02.2008
+%    Aktueller Stand Plugins: 15.02.2008
+
+\documentclass{book}
+\usepackage{makeidx}
+
+%Passende Style-Vorlage einbinden: opensourcepress.sty -- Arbeitsstyle
+%                                  osp*.sty -- Endlayout
+\IfFileExists{osp-intern/osp_v2-1.sty}{\usepackage{osp-intern/osp_v2-1}}{\usepackage{opensourcepress}}
+
+
+%Projekt-spezifische Styles
+\usepackage{serendipity}
+
+\makeindex
+\include{osp-hyphenation}
+
+\begin{document}
+\include{serendipity_titelei}
+
+\include{vorwort}
+
+\tableofcontents
+\ospvacat
+
+%KAPITEL 1
+\include{einfuehrung}
+%PJ:Die im folgenden auskommentierten Files sind weiterhin aktiv. Damit mir
+%LaTeX aber nicht nach dem Ende jeder Datei einen Seitenumbruch macht, muss
+%ich sie jeweils am Ende des Vorgaengerfiles per input einbinden.
+%\include{kapitel-1-features}
+%\include{kapitel-1-voraussetzungen}
+%\include{kapitel-1-terminologie}
+
+%KAPITEL 2
+\include{einrichtung}
+%
+%KAPITEL 3
+\include{frontend}
+%
+%KAPITEL 4
+\include{backend}
+% Die folgenden Dateien zu Kap.4 sind nun hier zusammengefasst
+% und werden nun Schritt für Schritt verschwinden
+%\include{kapitel-4-betrieb}
+%\include{kapitel-4-einstellungen}
+%
+%\include{kapitel-4-eintraege}
+%\include{kapitel-4-eintraege-bearbeiten}
+%\include{kapitel-4-eintraege-kommentare}
+%\include{kapitel-4-eintraege-kategorien}
+%
+%\include{kapitel-4-mediendatenbank}
+% \include{kapitel-4-mediendatenbank-hinzufuegen}
+%\include{kapitel-4-mediendatenbank-main}
+%\include{kapitel-4-mediendatenbank-verzeichnisse}
+%\include{kapitel-4-mediendatenbank-vorschau}
+%
+%\include{kapitel-4-aussehen}
+%\include{kapitel-4-aussehen-styles}
+%\include{kapitel-4-aussehen-plugins}
+%
+%\include{kapitel-4-administration}
+%\include{kapitel-4-administration-konfiguration}
+%\include{kapitel-4-administration-benutzerverwaltung}
+%\include{kapitel-4-administration-gruppenverwaltung}
+%\include{kapitel-4-administration-import}
+%\include{kapitel-4-administration-export}
+%
+%\include{kapitel-4-bookmarklet}
+
+%KAPITEL 5
+\include{plugins_seitenleisten}
+
+%KAPITEL 6
+\include{plugins_ereignis}
+%\include{kapitel-5-ereignisplugins-standard}
+%\include{kapitel-5-ereignisplugins-standard2}
+%\include{kapitel-5-ereignisplugins-2}
+%\include{kapitel-5-ereignisplugins-bilder}
+%\include{kapitel-5-ereignisplugins-profi}
+
+%KAPITEL 7
+\include{plugins_gekoppelt}
+%\include{kapitel-5-ereignisplugins-gekoppelt}
+%\include{kapitel-5-staticpage}
+
+%KAPITEL 8
+\include{wartung}
+
+%KAPITEL 9
+\include{anpassung}
+%\include{kapitel-7-anpassung}
+%\include{kapitel-7-template}
+%\include{kapitel-7-template2}
+%\include{kapitel-7-global}
+%\include{kapitel-7-dateispez}
+%\include{kapitel-7-entries}
+%\include{kapitel-7-feed}
+%\include{kapitel-7-admin-entries}
+%\include{kapitel-7-sidebar}
+%\include{kapitel-7-admin-media}
+%\include{kapitel-7-comments}
+%\include{kapitel-7-plugin}
+%\include{kapitel-7-preview-iframe}
+%\include{kapitel-7-smarty-func}
+%\include{kapitel-7-smarty-modifier}
+%\include{kapitel-7-template3}
+
+%KAPITEL 10
+\include{kern}
+%\include{kapitel-8-workflow}
+%\include{kapitel-8-db}
+%\include{kapitel-8-sourcecode}
+%\include{kapitel-8-api}
+%\include{kapitel-8-profi}
+%\include{kapitel-8-mdb}
+
+%KAPITEL 9
+%geknickt
+%\include{kapitel-9-faq}
+
+%KAPITEL 11
+\include{ausblick}
+
+%\printindex
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,14 @@
+\begin{ospcode}
+<?php
+include 'serendipity_config.php';
+serendipity_db_query("UPDATE \{$serendipity['dbPrefix']\}authors 
+                         SET userlevel     = 255,
+                             right_publish = 1
+                       WHERE authorid      = \cmdvar{1}");
+
+serendipity_db_query("UPDATE \{$serendipity['dbPrefix']\}config 
+                         SET value = 'false'
+                       WHERE name  = 'no_create'
+                         AND authorid = \cmdvar{1}");
+?>
+\end{ospcode}

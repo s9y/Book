@@ -1,0 +1,2010 @@
+%revised
+\chapter{Seitenleisten-Plugins}
+\index{Plugins}%
+\label{Plugins}
+
+
+Serendipity bietet eine große Menge von Plugins an. Einige davon werden
+direkt bei Serendipity mitgeliefert, andere sind im externen
+Spartacus-Archiv (siehe Seite \pageref{Spartacus})
+verfügbar.
+
+\index{Seitenleisten-Plugins}%
+\index{Ereignis-Plugins}%
+Plugins sind bei Serendipity in \emph{Seitenleisten-} und
+\emph{Ereignis-Plugins} unterteilt. Wie im Kapitel zur Plugin-Verwaltung
+(siehe Seite \pageref{Plugins verwalten})
+erwähnt, binden sich Seitenleisten-Plugins zur Ausgabe in den
+Rahmenbereich Ihres Blogs ein. Ereignis-Plugins hingegen dienen der
+funktionellen Erweiterung Ihres Blogs.
+
+Auf den folgenden Seiten finden Sie eine Übersicht der am häufigsten
+genutzten Plugins und aller mitgelieferten Plugins. Aus Platzmangel können
+wir leider nicht auf jedes Plugin eingehen, verzeihen Sie also bitte,
+falls Ihr Lieblings-Plugin nicht beschrieben wird.
+Die meisten Plugins sind trotz kurzer Beschreibung leicht zu benutzen
+und zu konfigurieren. Sollte es darüber hinaus Fragen zu der Benutzung
+eines Plugins geben, wird man Ihnen im
+Serendipity-Forum\footnote{\cmd{http://board.s9y.org/}} sicherlich
+helfen.
+
+\index{Gekoppelte Plugins}%
+Einige Plugins bestehen aus einer Kombination von Seitenleisten-
+und Ereignis"=Plugins. Sie werden als \emph{Gekoppelte Plugins} bezeichnet 
+und in einem eigenen Kapitel (ab Seite \pageref{Gekoppelte Plugins}) behandelt.
+
+\index{Plugins!mehrfach installieren}%
+Plugins können häufig mehr als einmal installiert werden. Gerade bei
+Seitenleisten"=Plugins wie dem HTML-Klotz macht dies Sinn, damit man
+beliebig viele Inhalte im Blog anzeigen kann. Wenn ein Plugin nicht
+mehrfach installiert werden kann, erscheint es in der Plugin-Liste mit dem
+Hinweis "`bereits installiert"'. Bei Ereignis-Plugins ist es
+hingegen seltener notwendig, mehr als eine Instanz des Plugins zu
+installieren. Jedes mehrfach installierte Plugin kann individuell
+konfiguriert werden, da jede Instanz unabhängig agiert.
+
+Die Konfigurationsoptionen der jeweiligen Plugins sind hier auf die essentiellen 
+Parameter beschränkt und daher nicht vollständig aufgeführt. Im Buch nicht 
+beschriebene Optionen sind jedoch in der Konfigurationsoberfläche eines Plugins 
+aufgeführt und werden dort auch grob beschrieben oder sind meistens 
+selbsterklärend.
+
+Leider sind nicht alle Plugins bisher ins Deutsche übersetzt, daher
+wird bei einigen Beschreibungen und Plugin-Namen im Folgenden auf das
+englische Original zurückgegriffen.
+
+
+\label{Seitenleisten-Plugins}
+\index{Plugins!Seitenleisten}%
+
+
+Damit Sie ein Seitenleisten-Plugin innerhalb der Verzeichnisstruktur besser
+finden, geben wir in der Übersicht neben dessen Namen
+auch den Klassennamen der Datei an.
+
+\section{Standardmäßig aktivierte Plugins}
+
+Seitenleisten-Plugins werden im Frontend Ihres Blogs angezeigt und können
+dort beliebige Inhalte darstellen oder einbinden. Im Gegensatz zu Ereignis"=Plugins 
+kann ein Seitenleisten-Plugin ausschließlich Ausgaben in der Seitenleiste vornehmen 
+und keine weitere Kernfunktionalität zur Verfügung stellen.
+Die folgenden Seitenleisten-Plugins werden bei Serendipity mitgeliefert und sind
+standardmäßig aktiviert. Einige besitzen keine eigene
+Plugin-Datei im Unterverzeichnis \cmd{plugins}, sondern sind aus Performancegründen
+in \cmd{include/plugin\_internal.inc.php} zusammengefasst.
+
+\index{Plugins!Kalender}%
+\index{Plugins!serendipity\_calendar\_plugin}%
+\subsection{Kalender\newline   serendipity\_calendar\_plugin}
+
+Der Kalender zeigt einen blätterbaren Kalender eines Monats in der
+Seitenleiste an. Einzelne Tage des Kalenders können dabei hervorgehoben
+werden und zeigen dem Besucher an, dass an diesem Tag ein Blog-Artikel
+verfasst wurde. Der aktuelle Tag wird ebenfalls hervorgehoben.
+
+In den Konfigurationsoptionen können Sie den Tag des Wochenanfangs
+festlegen und die Anzeige von Artikeln zu einem Tag auf eine spezielle
+Kategorie beschränken.
+
+Die Option \menu{Plugin-Schnittstelle aktivieren} können Sie aktivieren,
+wenn Sie anderen Plugins erlauben wollen, Tage im Kalender
+hervorzuheben. Das Plugin \emph{Mein Kalender} kann diese Option
+beispielsweise benutzen, um Ihre persönlichen Termine anzufügen.
+
+Zuletzt können Sie einstellen, welche Kategorie als Ausgangspunkt 
+der im Kalender angezeigten Blog-Artikel verwendet wird. Standardmäßig werden
+alle Kategorien dafür benutzt, Sie können aber auch eine spezielle Kategorie
+auswählen. Wenn der Besucher die Blog-Artikel selbständig auf eine
+spezielle Kategorie eingrenzt und das Plugin als Ausgangspunkt \menu{Alle
+Kategorien} verwendet, so wird automatisch die aktuelle Kategorie als
+Datenquelle zur Kalenderdarstellung eingesetzt.
+
+Die Darstellung erfolgt mittels der Template-Datei
+\index{Template-Dateien!plugin\_calendar.tpl}%
+\cmd{plugin\_calendar.tpl}, deren
+Variablen auf Seite \pageref{plugin-calendar-tpl} erklärt werden.
+
+\label{quicksearch}%
+\index{Plugins!Suche}%
+\index{Plugins!serendipity\_quicksearch\_plugin}%
+\subsection{Suche\newline serendipity\_quicksearch\_plugin}
+
+Das Plugin \emph{Suche} ist ein simples Seitenleisten-Plugin, das eine
+Sucheingabe-Box anzeigt. Dort können Besucher Suchwörter eintragen, um
+Artikel zu durchsuchen. Weitere Hinweise zur Volltextsuche finden Sie auf
+Seite \pageref{Suche}.
+
+Dieses Plugin bietet keine Konfigurationsmöglichkeiten an.
+
+\index{Plugins!Archive}%
+\index{Plugins!serendipity\_archives\_plugin}%
+\subsection{Archive\newline  serendipity\_archives\_plugin}
+
+Das Plugin \emph{Archive} zeigt eine Übersicht der letzten Monate an. Ein
+Klick auf den jeweiligen Monat öffnet die Artikelübersicht für den
+gewünschten Zeitraum.
+
+In der Konfiguration des Plugins können Sie neben der Überschrift des
+Plugins auch angeben, ob das Plugin Monate, Wochen oder Tage gliedern
+soll. Die \menu{Anzahl der Einträge im Archiv} gibt an, wie viele Ausgaben
+im Plugin erfolgen sollen.
+
+Wenn Sie die Option \menu{Anzahl der Einträge pro Kategorie anzeigen}
+aktivieren, wird hinter jeder Ausgabe des Plugins in der Seitenleiste die
+Anzahl von Einträgen eingeblendet, die Sie in diesem Zeitraum erstellt
+haben. Achten Sie beim Aktivieren dieser Option darauf, dass diese die
+Geschwindigkeit des Plugins stark verringert. Das Auslesen der Anzahl
+aller Artikel pro Zeitraum ist eine komplexe Datenbankabfrage.
+
+Wenn Sie die Option \menu{Hide archives link when no entries were made in that
+timespan (requires counting entries)} aktivieren, können in der Ausgabe der
+Monatsarchive diejenigen Monate übergangen werden, in denen Sie keine
+Blog-Artikel geschrieben haben. Damit dies klappt, müssen Sie die Option
+\menu{Anzahl der Einträge pro Kategorie anzeigen} ebenfalls aktivieren. 
+
+\index{Plugins!Kategorien}%
+\index{Plugins!serendipity\_categories\_plugin}%
+\label{categoriesplugin}%
+\subsection{Kategorien\newline   serendipity\_categories\_plugin}
+
+Dieses Plugin blendet die im Blog verfügbaren Kategorien ein. Wenn Sie
+Ihr Blog als eine Art CMS betreiben, wird dieses Seitenleisten-Plugin daher
+oft als Menü benutzt, um auf die jeweiligen Unterbereiche zu gelangen.
+
+Ein Klick auf die im Plugin dargestellte Kategorie ruft dabei jeweils die
+Artikelübersicht dieser Kategorie auf.
+
+Konfigurationsoptionen sind:
+
+\begin{ospdescription}
+\ospitem{\menu{Quelle der Kategorien}}
+Wie im Kapitel \ref{kategorie-leserechte} auf Seite
+\pageref{kategorie-leserechte} erwähnt, können für Kategorien besondere
+Leserechte gelten, so dass nur eingeloggte Mitglieder einer Benutzergruppe
+Einträge dieser Kategorie lesen können.
+
+Standardmäßig stellt das Kategorien-Plugin alle Kategorien dar, die im
+Blog angelegt sind -- ganz gleich, ob dafür besondere Leserechte gelten,
+oder nicht. Wenn ein Besucher auf eine solche Kategorie klickt, kann es
+daher sein, dass er darin keine Artikel angezeigt bekommt. Deshalb ist es
+möglicherweise wünschenswert, wenn einem Leser auch nur die Kategorien 
+angezeigt werden, zu denen er auch Leserechte besitzt.
+
+Dafür ist das Auswahlfeld \menu{Quelle der Kategorien} vorgesehen. Dort
+wählen Sie eine Benutzergruppe aus, so dass nur Kategorien angezeigt
+werden, die für die gewählte Benutzergruppe sichtbar sind. Standardmäßig
+steht diese Option auf \menu{Alle Autoren}. Sie müssen die Sonderoption
+\menu{Derzeitiger Autor} wählen, wenn die Kategorieliste sich nach den
+Rechten des aktuell eingeloggten Besuchers richten soll.
+
+\ospitem{\menu{Zeige nur Kategorien unterhalb\ldots}}
+Da Kategorien in Serendipity schachtelbar sind, kann es recht komplexe
+Kategorie- bzw. Menüstrukturen abbilden. Möglicherweise soll in der
+Seitenleiste aber nur ein Teil dieser Struktur angezeigt werden. Daher
+können Sie im Auswahlfeld \menu{Zeige nur Kategorien unterhalb\ldots}
+festlegen, ab welcher Oberkategorie die Unterrubriken angezeigt werden.
+
+\osppagebreak
+
+\ospitem{\menu{Die gewählte Oberkategorie verstecken}}
+Wenn Sie im obigen Konfigurationsfeld eine Kategorie ausgewählt haben,
+bestimmt die Option \menu{Die gewählte Oberkategorie verstecken}, ob der
+Name dieser Oberkategorie angezeigt (\menu{Nein}) oder versteckt
+(\menu{Ja}) wird.
+
+\ospitem{\menu{XML-Button}}
+Für die Artikel jeder einzelnen Kategorie kann ein RSS-Feed abonniert
+werden. Dazu wird neben jedem Kategorienamen ein kleines Bild
+eingeblendet, auf das ein Benutzer klicken kann, um den RSS-Feed der
+Kategorie zu abonnieren.
+
+Dieses Bild stellt üblicherweise ein universelles RSS-Icon dar, das von
+zahlreichen Blogsystemen und Browsern einheitlich benutzt wird. Sie
+können aber gerne in dem Konfigurationsfeld \menu{XML-Button} ein
+abweichendes Bild eintragen. Dazu müssen Sie den vollständigen HTTP-Pfad
+(alles hinter \cmd{http://www.example.com/}) eingeben.
+
+Wenn Sie kein Bild einbinden wollen, tragen Sie hier \cmd{none} ein.
+
+\index{Sortierung!Kategorien}%
+\ospitem{\menu{Sortierung}}
+Zwei Auswahlfelder untereinander werden bei der Konfigurationsoption
+\menu{Sortierung} dargestellt. Das obere Auswahlfeld bestimmt, nach
+welchem Kriterium die Liste der Kategorien sortiert werden soll.
+
+Da Kategorien innerhalb Serendipity noch nicht beliebig sortiert werden
+können, entscheidet also ausschließlich diese Sortierungsreihenfolge die
+Reihenfolge der Darstellung in der Seitenleiste. Standardmäßig werden die
+Kategorien nach dem Namen der Kategorie alphabetisch sortiert. Weitere
+Möglichkeiten sind eine Sortierung nach Beschreibung oder der ID einer
+Kategorie. Auch kann eine Sortierung nach \emph{keinem} Kriterium
+ausgewählt werden, in diesem Fall werden die Kategorien nach
+Erstellungszeit in der Datenbank sortiert.
+
+Das zweite Auswahlfeld gibt dabei an, ob die Kategorien absteigend (also
+von A bis Z oder 0 bis 9) oder aufsteigend (von Z bis A bzw. 9 bis 0)
+sortiert werden sollen.
+
+Wenn Sie eine ganz individuelle Auflistung von Kategorien haben möchten,
+gibt es zwei Möglichkeiten. Die erste Möglichkeit wäre, einfach eine
+manuelle HTML-Liste der Kategorien zu erstellen und als \emph{HTML-Klotz
+Seitenleisten-Plugin} (Seite \pageref{htmlnugget}) einzufügen. Dadurch
+verlieren Sie natürlich die anderen dynamischen Möglichkeiten des Plugins.
+
+Die zweite Möglichkeit wäre, das Feld \menu{Beschreibung} einer
+Kategorie zu missbrauchen, indem Sie nicht einen Text, sondern eine Zahl darin
+aufschreiben. Durch die Eingabe einer Zahl für die Reihenfolge der
+Kategorien können Sie in der Sortierung die Reihenfolge beeinflussen. Das
+bedeutet jedoch auch, dass Sie dann keine normale textliche Beschreibung
+der Kategorie mehr nutzen können. Da diese Beschreibung sonst aber nur
+für Redakteure gilt, ist dies möglicherweise zu verkraften.
+
+\index{Mehrere Kategorien!darstellen}%
+\ospitem{\menu{Besuchern erlauben, mehrere Kategorien gleichzeitig
+darzustellen?}}
+Wenn ein Besucher in der Darstellung des Plugins auf eine einzelne
+Kategorie klickt, sieht er alle Einträge dieser Kategorie. In manchen
+Fällen möchte ein Besucher aber gerne Inhalte mehrerer Kategorien auf
+einmal ansehen.
+
+Wenn Sie die Option \menu{Besuchern erlauben, mehrere Kategorien
+gleichzeitig darzustellen} aktivieren, wird neben jeder Kategorie ein
+Ankreuzfeld angezeigt. Der Besucher kann alle gewünschten Kategorien
+markieren und danach auf den Button \menu{Los} klicken, um die Auswahl zu
+setzen.
+
+Ist die Option deaktiviert, wird diese Auswahlbox nicht mehr angezeigt. Dennoch
+kann ein Besucher spezielle URLs aufrufen, in denen er mehrere Kategorien auf
+einmal ansehen kann (siehe Seite \pageref{Permalinks-Kategorien}). Die
+Deaktivierung der Option nimmt dem Benutzer also höchstens die komfortable
+Möglichkeit zu einer solchen Übersicht und beeinflusst die Darstellungsweise des
+Plugins.
+
+\ospitem{\menu{Kategorien verstecken, die nicht Teil des vom Besucher gewählten}}
+\ospadditem{\menu{Kategoriebaums sind}}
+Wenn Sie eine verschachtelte Kategoriestruktur eingerichtet haben, stellt
+diese eine Baumstruktur dar. Dabei sind jeweils einer Oberkategorie eine
+oder mehrere Unterkategorien zugeordnet.
+
+Wenn Sie Serendipity als eine Art CMS einsetzen, bei dem die Kategorien
+Menüpunkten entsprechen, wünschen Sie sich möglicherweise, dass bei einem
+Klick auf eine Unterkategorie die anderen "`parallelen"' Menüpunkte nicht
+mehr angezeigt werden.
+
+Stellen Sie sich folgenden Kategorienbaum vor: Oberkategorien A, B und C.
+Jede Kategorie besitzt zwei Unterkategorien: A1 und A2, B1 und B2 sowie
+C1 und C2. Wenn der Besucher nun auf die Unterkategorie A1 klickt, würden
+Sie gerne nur die Kategorien A und A2 anzeigen. Die Kategorien und
+Unterkategorien von B und C sollen verschwinden. Genau zu diesem Zweck
+dient die Option \menu{Kategorien verstecken\ldots} Wenn diese Option
+aktiviert ist, werden die nicht zum gewählten Kategoriebaum passenden
+restlichen Kategorien nicht mehr in der Ausgabe des Plugins angezeigt.
+Sie müssten dann zuerst wieder auf die Startseite zurück (oder auf andere
+Menüpunkte klicken), um die ausgeblendeten Kategorien wieder zu sehen.
+
+\ospitem{\menu{Anzahl der Einträge pro Kategorie anzeigen}}
+Wenn Sie möchten, dass die Anzahl der Artikel in einer Kategorie in der
+Ausgabe des Plugins neben dem Kategorienamen angezeigt wird, können Sie
+die Option \menu{Anzahl der Einträge pro Kategorie anzeigen} aktivieren.
+
+\index{Performance}%
+Beachten Sie auch hier, dass die Aktivierung die Geschwindigkeit des 
+Plugins stark beeinflusst, da das Zählen aller Artikel der Datenbank
+einige Zeit beansprucht.
+
+Wenn Sie Einträge zu mehr als einer Kategorie zuweisen, wird dieses
+Plugin (leider) für jede zugewiesene Kategorie den Artikel erneut zählen.
+Daher kann es passieren, dass die angezeigte Artikelzahl höher ist als
+die in Wirklichkeit vorhandenen Artikel.
+
+\ospitem{\menu{Smarty-Templating aktivieren}}
+Damit Sie dieses Plugin möglichst komfortabel anpassen können, gibt es
+die Template-Datei
+\index{Template-Dateien!plugin\_categories.tpl}%
+\cmd{plugin\_categories.tpl}. Nur wenige Seitenleisten"=Plugins verfügen
+über ein eigenes Smarty-Template, da meistens Änderungen per CSS bereits 
+vollkommen ausreichen. Aus Performancegründen wird diese Template-Datei 
+daher auch standardmäßig nicht benutzt. Wenn Sie also ein eigenes Template 
+für das Aussehen der Kategorie-Auflistung benutzen wollen, müssen Sie die 
+Konfigurationsoption \menu{Smarty-Templating aktivieren} auf \cmd{Ja} setzen.
+
+Die eingesetzten Variablen dieser Datei werden auf Seite
+\pageref{plugin-categories-tpl} erklärt.
+
+\end{ospdescription}
+
+\index{Plugins!Blog abonnieren}%
+\index{Plugins!serendipity\_syndication\_plugin}%
+\label{syndication}%
+\subsection{Blog abonnieren\newline  serendipity\_syndication\_plugin}
+
+Das Plugin stellt die verschiedenen Optionen zum Abonnieren Ihres
+Blogs mittels RSS-Feed dar. Dabei wird in der Seitenleiste für jedes
+gewünschte Format ein Link eingebunden, den Ihre Besucher in ihr
+RSS-Programm übernehmen können.
+
+Neben dem Titel des Plugins in der Seitenleiste sowie der Aktivierung der
+zahlreichen Feed-Formate bietet das Plugin folgende
+Konfigurationsoptionen:
+
+\begin{ospdescription}
+\index{FullFeed}%
+\label{syndication-fullfeed}%
+\index{Vollständige RSS-Feeds}%
+\ospitem{\menu{Volle Einträge mit erweitertem Text im RSS-Feed einbinden}}
+Ein RSS-Feed enthält üblicherweise nur den Text eines Artikels, den Sie
+im Feld \emph{Eintrag} erfasst haben. Der \emph{Erweiterte Eintrag} ist
+nicht Bestandteil der RSS-Feeds, und somit muss ein Benutzer Ihr Blog
+besuchen, um den vollständigen Artikel lesen zu können. Dies ist häufig
+gewünscht, um mehr Besucher auf die Webseite zu "`locken"'. Um Ihren
+Besuchern mehr Komfort zu bieten, können Sie aber auch den vollständigen
+Artikel im RSS-Feed eintragen.
+
+Mit dieser Konfigurationsoption können Sie dieses Verhalten beeinflussen.
+Wenn Sie die Option \menu{Client} aktivieren, kann, wie im Abschnitt
+\ref{FullFeed} auf Seite \pageref{FullFeed} erwähnt, der Leser selbst
+bestimmen, ob er einen vollständigen RSS-Feed haben will oder nicht. Dazu
+muss er Ihren RSS-Feed über die Datei \cmd{rss.php?fullFeed=true}
+abonnieren. Dies ist natürlich relativ versteckt, so dass Sie Ihre Besucher
+über diese mögliche Variante informieren müssten.
+
+\label{syndication-feedburner}%
+\index{FeedBurner}%
+\ospitem{\menu{FeedBurner Feed}}
+Der Webservice \cmd{http://www.feedburner.com/} ist ein Angebot von
+Google, das Statistiken über die Auslieferung Ihres
+RSS-Feeds und einige weitere Möglichkeiten
+der Einbettung bietet. Bei einem Feed\-Bur\-ner-Feed kann der Aufruf des
+RSS-Feeds im Browser direkt hübsch formatiert sein, statt
+als für den Besucher merkwürdiger XML"=Datensatz zu erscheinen. FeedBurner
+ermöglicht auch die Einbindung von Werbung und verwandten Tags.
+
+Bei FeedBurner müssen Sie sich separat anmelden und dem Service die URL
+Ihres RSS-Feeds mitteilen. FeedBurner wird dann regelmäßig diese URL
+aufrufen, Ihren RSS-Feed einlesen, ihn konvertieren und danach unter
+einer eigenen FeedBurner-URL (die Sie konfigurieren können) anbieten.
+
+Damit die Statistikzählung aktiviert wird, müssen Ihre Besucher künftig
+diesen FeedBurner-Feed abonnieren und nicht den üblichen
+Serendipity"=Feed. Dazu dient die Einstellung \menu{Feedburner Feed} im
+Plugin. Wenn diese Variable auf \menu{Ja} steht, wird der Link zum
+Feedburner-Feed in Ihrer Seitenleiste angezeigt. In diesem Fall sollten
+Sie alle anderen Feed-Formate deaktivieren, da die Besucher ja nur noch
+den FeedBurner-Feed aufrufen sollen.
+
+Wenn Sie die FeedBurner-Option lediglich auf \menu{Ja} gestellt haben,
+bleiben die URLs zu Ihren alten RSS-Feeds weiterhin intakt, sie werden
+lediglich versteckt. Wenn Sie Ihre Besucher aber in Zukunft auch von
+diesen verstecken URLs fernhalten wollen, stellen Sie die
+FeedBurner-Option auf \menu{Erzwingen}. Dadurch wird jeder Aufruf des
+Serendipity-RSS-Feeds automatisch auf die FeedBurner-Feeds umgeleitet.
+
+Zu welchem FeedBurner-Feed Serendipity verweist, stellen Sie am Ende der
+Konfigurationsoptionen ein.
+
+\ospitem{\menu{E-Mail-Adresse einbinden?}}
+Standardmäßig muss ein RSS-Feed zu jedem Autor eine E-Mail"=Adresse
+anzeigen. Dies wird leider gegenwärtig häufig von SPAM-Robotern
+missbraucht, um E-Mail-Adressen im Internet zu sammeln. Daher können Sie
+über die Option \menu{E-Mail-Adresse einbinden} einstellen, ob Ihre
+echte E-Mail-Adresse oder eine vorgetäuschte E-Mail-Adresse (\cmd{nospam@example.com})
+eingebunden wird.
+
+Beachten Sie, dass, wenn Sie im Anti-Spam-Plugin (Seite \pageref{spamblock})
+die gleichnamige Option aktiviert haben, diese ebenfalls die Darstellung der
+E-Mail-Adressen beeinflusst.
+
+In abgegrenzten Blogs (im Intranet zum Beispiel) macht die Aktivierung
+dieser Option noch Sinn, beim Einsatz im Internet ist es jedoch
+empfehlenswert, die Option auf \menu{Nein} zu setzen.
+
+\ospitem{\menu{Feld "`managingEditor"'}}
+Der RSS 2.0-Feed ermöglicht die Einbindung eines optionalen Feldes, das
+die E-Mail-Adresse des leitenden Redakteurs eines Blogs enthalten kann.
+Abonnenten des RSS-Feeds können sich so leicht an den inhaltlich
+Verantwortlichen wenden. Auch hier gelten die obigen Bedenken,
+dass enthaltene E-Mail-Adressen oft Spammern zum Opfer fallen könnten.
+
+\ospitem{\menu{Feld "`webMaster"'}}
+Analog zu einem inhaltlich Verantwortlichen kann diese Option eine
+E-Mail-Adresse des technisch Verantwortlichen enthalten.
+
+\ospitem{\menu{Feld "`ttl"' (time-to-live)}}
+RSS-Feeds müssen von RSS-Readern regelmäßig abgerufen werden, damit neue
+Artikel gefunden werden können. Üblicherweise wird ein solcher RSS-Reader
+alle 30 oder 60 Minuten (je nach Einstellung Ihrer Besucher) Ihre
+RSS-Feeds abrufen. Sie können über das Feld \menu{ttl} (\emph{Gültigkeitsdauer}) innerhalb des RSS-Feeds für RSS-Reader vorschlagen,
+wie lange Ihr Feed üblicherweise gültig ist. Diesen eingestellten Wert
+können RSS-Programme dann als Richtlinie für die
+Aktualisierungshäufigkeit benutzen.
+
+\index{Traffic}%
+Der \menu{ttl}-Wert wird in Minuten angegeben, wenn Sie also
+üblicherweise nur einen Artikel pro Tag online stellen, können Sie ihn auf 1440
+stellen (entspricht 24 Stunden). Damit können Sie dann möglicherweise einiges an
+Traffic auf Ihrem Webserver sparen, wenn sich die RSS-Reader daran
+halten.
+
+\ospitem{\menu{Feld "`pubDate"'}}
+Ein RSS-Feed kann ein optionales \menu{pubDate}-Feld enthalten, das
+Auskunft über den Erstellungszeitpunkt des letzten Artikels gibt. Dieser
+Wert wird von vielen RSS-Readern benutzt, um Aktualisierungen
+festzustellen, daher raten wir von der Deaktivierung dieser Option ab.
+
+\ospitem{\menu{XML-Button}}
+Neben jedem RSS-Feed wird in der Seitenleiste eine kleine Grafik
+angezeigt, die standardmäßig dem Standardsymbol für RSS-Feeds
+entspricht. Wenn Sie eine eigene Grafik benutzen wollen, können Sie den
+Pfad zu der Grafik in dem Feld \menu{XML-Button} eintragen. Die Grafik
+muss sich dabei in Ihrem Template-Verzeichnis befinden, und der hier
+eingetragene Pfad muss relativ zu Ihrem Template-Verzeichnis sein. Wenn
+die Datei also in
+\cmd{/var/www/example.com/serendipity/""templates/meinTemplate/bilder/MeinRSS.gif}
+liegt, tragen Sie\osplinebreak{} im Konfigurationsfeld \cmd{bilder/MeinRSS.gif} ein.
+
+\ospitem{\menu{Bild für den RSS-Feed}}
+Das RSS 2.0-Format ermöglicht es, ein eigenes Logo für den Feed
+einzutragen. Diese Grafik kann dann von RSS-Readern in der Titelzeile
+oder an anderen Stellen angezeigt werden. Wenn Sie hier nichts eintragen,
+wird standardmäßig das Serendipity-Logo eingebunden.
+
+Tragen Sie in diesem Feld die vollständige URL zu einem Bild ein, also
+etwa \cmd{http://www.example.com/MeinLogo.jpg}. Diese Grafikdatei darf
+maximal 144 Pixel breit und 400 Pixel hoch sein. Die genauen
+Maße 
+des Bildes müssen Sie in den beiden darunterliegenden Feldern
+\menu{Breite des Bildes} und \menu{Höhe des Bildes} eintragen.
+
+\ospitem{\menu{FeedBurner-ID, Titel, Bildunterschrift und Bild}}
+Die letzten vier Konfigurationsoptionen betreffen Sie nur, wenn Sie den
+oben erwähnten FeedBurner-Service benutzen. Als \menu{ID} müssen Sie die
+im FeedBurner dargestellte ID Ihres Feeds eintragen, sie entspricht dem
+Namen, den Sie in der URL \cmd{http://feeds.feedburner.""com/\cmdvar{ID}}
+sehen.
+
+Wenn Sie den Feedburner-Feed aktiviert haben, wird ein Link dorthin im
+Seitenleisten-Plugin angezeigt. Dieser Link wird begleitet von einem Bild
+und einem Linktitel. Im Feld \menu{FeedBurner Titel} können Sie 
+diesen Titel vergeben, der neben der Grafik dargestellt wird. Die Grafikdatei
+müssen Sie mit einer vollständigen URL wie
+\cmd{http://www.ex\-ample.com/feedburner.jpg} eintragen. Wenn Sie dieses
+Feld leer lassen, sehen Sie eine Standardgrafik, die den Besucherzähler
+darstellt. Im Feld \menu{FeedBurner Bild-Unterschrift} können Sie einen
+Text hinterlegen, der angezeigt wird, wenn Sie mit der Maus über die
+Feed\-Burner-Grafik fahren. Dort können Sie beispielsweise eine kurze
+Beschreibung eintragen, warum Sie FeedBurner benutzen.
+
+\end{ospdescription}
+
+\index{Plugins!Verwaltung des Blogs}%
+\index{Plugins!serendipity\_superuser\_plugin}%
+\subsection{Verwaltung des Blogs\newline   serendipity\_superuser\_plugin}
+
+Mit dem Plugin \emph{Verwaltung des Blogs} binden Sie einen einfachen
+Link im Frontend ein, auf den Sie als Redakteur klicken können, um ins
+Backend zu gelangen. Das Plugin erkennt dabei automatisch, ob Sie schon
+eingeloggt sind, und gibt dementsprechend entweder einen Link zum Login oder direkt
+zum Backend aus.
+
+\index{HTTPS}%
+Die einzige Konfigurationsoption des Plugins gibt an, ob Sie
+das \menu{HTTPS} zum Login benutzen möchten. Ihr Server muss HTTPS (siehe
+Terminologie auf Seite \pageref{https}) unterstützen und ein gültiges Zertifikat
+für den Server besitzen, auf dem Serendipity installiert ist. Nur bei der
+Benutzung von HTTPS ist gewährleistet, dass Ihr Benutzername und Passwort
+nicht im Klartext (sondern verschlüsselt) an den Server übertragen werden
+und niemand Ihre Logindaten abfangen kann.
+
+\index{Plugins!Powered by}%
+\index{Plugins!serendipity\_plug\_plugin}%
+\label{plugplugin}%
+\subsection{Powered by\newline   serendipity\_plug\_plugin}
+
+Ein ebenfalls recht simples Plugin ist \emph{Powered by}. Es gibt das
+Logo von Serendipity mit einem Link zur Webseite
+\cmd{http://www.s9y.org/} aus und erlaubt es Ihren Besuchern, zu sehen,
+welche großartige Software hinter Ihrem Blog steckt.
+
+Die Konfigurationsoptionen des Plugins ermöglichen eine Feineinstellung,
+ob man nur das Logo oder nur den Text anzeigen möchte.
+
+\section{Weitere  mitgelieferte Plugins}
+
+Neben den standardmäßig aktivierten Plugins können Sie natürlich auch
+weitere Seitenleisten-Plugins installieren. Es folgt eine Liste der
+Seitenleisten"=Plugins, die bei Serendipity standardmäßig mitgeliefert
+werden.
+
+\subsection{Fremder RSS/OPML-Blogroll Feed\newline  
+serendipity\_plugin\_remoterss}
+\index{Plugins!Fremder RSS/OPML-Blogroll Feed}%
+\index{Plugins!serendipity\_plugin\_remoterss}%
+\index{Syndication}%
+\label{remoterss}%
+Dieses leicht kryptisch klingende Plugin bietet eine recht einfache
+Möglichkeit, die RSS-Feeds fremder Seiten einzubinden.
+
+So können Sie in Ihrer Seitenleiste beispielsweise RSS-Feeds von
+Newstickern einbinden oder auch die RSS-Feeds von diversen Webservices
+wie del.icio.us oder last.fm einbinden, die Daten von diesem Webserver
+anzeigen können.
+
+Das Plugin lässt sich auch mehrfach installieren, so dass Sie beliebig
+viele RSS-Feeds einbinden können.
+
+\index{OPML}%
+\index{Blogroll}%
+Abgesehen von RSS-Feeds sind auch sogenannte OPML-Blogrolls möglich.
+OPML-Dateien werden von vielen RSS-Readern erstellt und können Linklisten
+enthalten, welche Blogs Sie lesen. Wenn diese OPML-Datei dann in Ihrer
+Seitenleiste eingebunden wird, können Sie so relativ leicht automatisch
+Ihre Lieblingsblogs auflisten.
+
+Das RSS-Seitenleisten-Plugin agiert grundsätzlich wie ein eigenständiger
+RSS-Reader: Ihr Blog wird in einem definierten Zeitraum die RSS-Feeds
+selbständig abholen, einbinden und für einen gewissen Zeitraum
+zwischenspeichern, um Bandbreite zu sparen. Damit das Plugin
+funktionieren kann, gelten dieselben Rahmenbedingungen wie für Spartacus
+(siehe Seite \pageref{Spartacus}): Ihr Server darf nicht von einer Firewall
+für ausgehende Verbindungen blockiert werden.
+
+Pro installiertem RSS-Feed-Plugin kann eine Vielzahl an Optionen
+eingestellt werden:
+
+\begin{ospdescription}
+
+\ospitem{\menu{Feed-Titel}}
+Im Feld \menu{Feed-Titel} stellen Sie ein, wie die Überschrift des
+RSS-Feeds innerhalb der Seitenleiste lauten soll.
+
+\ospitem{\menu{Typ des Feeds}}
+In diesem Auswahlfeld legen Sie das Format des fremden Feeds fest. Sie
+können zwischen RSS und OPML wählen, wobei für RSS-Feeds alle Versionen
+von 0.91 bis 2.0 unterstützt werden, und von OPML die (einzig
+existierende) Version 1.0.
+
+\ospitem{\menu{RSS/OPML-URI}}
+Die Quell-URL des RSS-Feeds (oder des OPML-Feeds) müssen Sie in das Feld
+\menu{RSS-OPML-URI} eintragen. Geben Sie dort eine vollständige URL an,
+also beispielsweise \cmd{http://www.example.com/serendipi\-ty/rss.php?version=2.0}.
+
+\ospitem{\menu{RSS-Zielelement}}
+In einem RSS-Feed stehen mehrere Felder zur Verfügung, die das
+Seitenleisten-Plugin darstellen kann. Im Feld \cmd{title} wird
+beispielsweise der Titel eingebunden, das Feld \cmd{content} enthält den
+Artikelinhalt. Manchmal kann es jedoch sein, dass die Felder für den
+Inhalt \cmd{content:encoded} oder \cmd{body} lauten.
+
+Damit das Seitenleisten-Plugin flexibel eingesetzt werden kann, müssen Sie den
+Namen des Feldes angeben, das Serendipity in der Seitenleiste darstellen
+soll. Die Liste der verfügbaren Felder können Sie in der Spezifikation
+des jeweiligen RSS-Formats nachlesen\footnote{\cmd{http://www.rssboard.org/rss-2-0} für RSS 2.0; weitere Links finden
+Sie auf \cmd{http://de.wikipedia.org/wiki/RSS}}. Sie können beliebig
+viele Feldinhalte anzeigen lassen, indem Sie mehrere Felder mittels
+\cmd{,} voneinander trennen.
+
+Damit nicht zu viel Platz verschwendet wird, gibt Serendipity
+üblicherweise nur den Titel (\cmd{title}) eines RSS-Feeds an.
+
+\ospitem{\menu{Smarty-Templating aktivieren}}
+Die Darstellung des Feeds in der Seitenleiste kann über die
+Smarty-Template-Datei
+\index{Template-Dateien!plugin\_remoterss.tpl}%
+\cmd{plugin\_remoterss.tpl} gesteuert werden, wenn die Option 
+\menu{Smarty-Templating aktivieren} gewählt wurde. Andernfalls 
+benutzt das Plugin für seine Ausgaben die integrierte HTML"=Darstellung.
+
+Ein Beispiel für eine Template-Datei liegt im Verzeichnis
+\cmd{plugins/""serendipity\_plugin\_remoterss/plugin\_remoterss.tpl}. Die\osplinebreak{} dort
+verfügbaren Variablen sind auf Seite \pageref{plugin-remoterss.tpl}
+dokumentiert.
+
+Grundsätzlich sollten Sie die Templating-Option nur dann benutzen, wenn Sie an
+der Standardausgabe Anpassungen vornehmen wollen, die Sie nicht bereits mittels
+CSS-Anpassung oder Konfiguration des Plugins beeinflussen können.
+
+\ospitem{\menu{Anzahl der Einträge}}
+Standardmäßig zeigt das Seitenleisten-Plugin alle Einträge/Artikel eines
+RSS-Feeds. Wenn Sie aber die Anzahl auf eine gewisse Zahl begrenzen
+möchten, können Sie diese hier eintragen.
+
+\ospitem{\menu{RSS-Link verwenden}}
+Jeder Artikel eines RSS-Feeds besitzt üblicherweise einen Link, der zu
+der Quellseite des Artikels im Original-Blog (oder Webservice) führt.
+Falls die Option \menu{RSS-Link verwenden} aktiviert ist, wird dieser
+Link in der Ausgabe des Plugins dargestellt.
+
+\index{Sicherheit!fremde RSS-Feeds}%
+\index{Sicherheit!XSS}%
+\ospitem{\menu{HTML-Ausgabe escapen}}
+Es ist möglich (und erlaubt), dass ein Artikel eines (fremden) RSS-Feeds
+HTML-Code enthält. Dies ermöglicht z.\,B.\ Fettungen und eigene HTML-Links
+in den dargestellten Artikeln.
+
+Bei der Darstellung fremder RSS-Feeds könnte dies jedoch zu
+Sicherheitsproblemen führen, denn immerhin kann so auch möglicherweise
+bösartiges JavaScript in Ihrem Blog ausgeführt werden, das bei Ihren
+Besuchern Logindaten oder anderes ausspäht (dies nennt man
+\emph{XSS-Angriff}).
+
+Bei RSS-Feeds, deren Quelle Sie nicht absolut vertrauen, sollten Sie die
+Option \menu{HTML-Ausgabe escapen} unbedingt aktivieren. Wenn Sie jedoch
+RSS-Feeds von vertrauenswürdigen Webservices einbinden (wie etwa Ihre
+Bilderliste von Flickr), dann werden Sie diese Option deaktivieren
+müssen, weil sonst keine Bilder angezeigt würden.
+
+\ospitem{\menu{Display Date, Datumsformat}}
+Jeder Artikel eines RSS-Feeds besitzt üblicherweise ein
+Veröffentlichungsdatum. Wenn Sie dieses zusätzlich unterhalb des
+RSS-Artikels anzeigen wollen, stellen Sie die Option \menu{Display Date}
+auf \menu{Ja}.
+
+Die Option \menu{Datumsformat} bezieht sich auf die Formatierung des
+Veröffentlichungsdatums. Die Variablen, die Sie hier benutzen können,
+sind auf \cmd{http://de3.php.net/strftime} zusammengefasst.
+
+\osppagebreak
+
+\ospitem{\menu{Zeichensatz}}
+Jeder RSS-Feed enthält Artikel in einem speziellen Zeichensatz. Ein
+Großteil der RSS-Feeds ist im \menu{UTF-8}-Zeichensatz verfasst, aber
+einige Feeds (gerade deutsche) enthalten die Artikel im
+\menu{ISO-8859-1}-Zeichensatz.
+
+Damit Serendipity fremde Artikel später im Blog mit korrekten
+Sonderzeichen darstellen kann, müssen Sie Serendipity über die Option
+\menu{Zeichensatz} mitteilen, welchen Zeichensatz der RSS/OPML-Feed
+benutzt. Sie können dies manuell relativ leicht herausfinden, indem Sie die fremde
+URL aufrufen und in der XML-Ausgabe nach einer Angabe mit dem Titel
+\menu{charset} in der ersten Zeile der Datei suchen.
+
+Leider benutzt Serendipity eine ältere RSS-Bibliothek zum Einlesen der
+RSS-Feeds, daher wird Ihnen diese Aufgabe derzeit noch nicht vom System
+abgenommen.
+
+\label{remoterss-linktarget}%
+\ospitem{\menu{Link-Target}}
+Wenn Sie bei einem Artikel Hyperlinks zulassen (Option \menu{RSS-Link
+verwenden}), wird ein Link standardmäßig im selben Browser-Fenster wie
+Ihr Blog geöffnet. Über das HTML-Attribut namens \cmd{target} kann man
+jedoch auch ein neues Browser-Fenster öffnen, wenn man bei der Option
+\menu{Link-Target} ein \cmd{\_blank} einträgt.
+
+\index{Popups}%
+Bitte beachten Sie, dass ein solches \cmd{target=\_blank} dazu
+führt, dass ein Besucher einen Link nicht so einfach \emph{nicht} in einem neuen
+Fenster öffnen kann und dass ihn dies möglicherweise stört. Neue
+XHTML-Standards empfehlen daher, auf die Benutzung von \cmd{target} im
+Optimalfall zu verzichten und dem Besucher die volle Kontrolle zu
+überlassen, wie er einen Link in seinem Browser öffnen möchte.
+
+\ospitem{\menu{Wann wird der Feed aktualisiert}}
+Theoretisch würde bei jedem Besuch Ihres Blogs der fremde RSS-Feed neu
+aufgerufen und angezeigt. Da dies viel Bandbreite und auch viel Zeit
+kosten würde, speichert das Plugin die Ausgaben des fremden Feeds für
+einen gewissen Zeitraum. Diesen Zeitraum können Sie über die
+Option \menu{Wann wird der Feed aktualisiert} selber vorgeben, indem Sie
+hier eine Dauer (in Sekunden) eintragen. Standardmäßig wird ein Feed für
+drei Stunden gecached, bevor ein neuer Besucher Ihrer Webseite ihn neu
+erzeugt.
+
+Bei besonders häufig aktualisierenden RSS-Feeds können Sie dieses Limit
+natürlich heruntersetzen.
+
+\ospitem{\menu{Bullet Image}}
+Falls Sie gerne die einzelnen Artikel eines fremden RSS-Feeds voneinander
+trennen wollen, können Sie in dem Feld \menu{Bullet Image} eine beliebige
+vollständige URL einer Grafikdatei eintragen. Diese Grafik wird dann nach
+jedem Artikel angezeigt.
+
+\ospitem{\menu{Textformatierung(en) durchführen}}
+Wenn die Option \menu{Textformatierung(en) durchführen} aktiviert ist,
+wird die Ausgabe des RSS-Feeds an alle bei Ihnen installierten
+Textformatierungs"=Plugins weitergereicht (siehe Seite
+\pageref{Textformatierungs-Plugins}). Diese können beliebige Umwandlungen
+vornehmen, die dann auch die Darstellung des RSS-Feeds beeinflussen.
+
+\end{ospdescription}
+
+\label{ausgabewrapper}%
+\index{Plugins!Event-Ausgabe Wrapper}%
+\index{Plugins!serendipity\_plugin\_eventwrapper}%
+\index{Plugins!Unterschied Seitenleisten- und Ereignis-Plugins}%
+\subsection{Event-Ausgabe Wrapper\newline
+serendipity\_plugin\_eventwrapper}
+
+Das Plugin \menu{Event-Ausgabe Wrapper} ist ein recht spezielles Plugin,
+da es die Grenze zwischen Seitenleisten-Plugin und Ereignis-Plugin etwas
+aufweicht.
+
+Eigentlich ist es ausschließlich Seitenleisten-Plugins möglich, eine
+Ausgabe in der Seitenleiste vorzunehmen. Ereignis-Plugins können nur auf
+andere Bereiche und Funktionalitäten Serendipitys Einfluss nehmen, was
+wiederum Seitenleisten-Plugins nicht erlaubt ist.
+
+\index{Plugins!gekoppelt}%
+\index{Gekoppelte Plugins}%
+Seltene Fälle von Ereignis-Plugins bieten jedoch auch
+die Möglichkeit an, eine spezielle Ausgabe in der Seitenleiste vorzunehmen. Diese Möglichkeit
+wurde eher in frühen Versionen Serendipitys benutzt (z.\,B.\ vom Plugin
+"`Link List"' oder "`Worte ersetzen"'). Inzwischen nutzen fast alle
+Plugins die einfachere Möglichkeit, ein zugehöriges Seitenleisten-Plugin
+(siehe \ref{Gekoppelte Plugins} ab Seite \pageref{Gekoppelte Plugins}) zu
+bestimmen und dieses konzeptionelle Problem für Sie als Benutzer
+einfacher zu lösen.
+
+Wenn dieses Ausgabe-Wrapper-Plugin von einem anderen benötigt wird, finden Sie
+einen Hinweis dazu in dem jeweiligen Plugin.
+
+In der Konfiguration dieses Plugins können Sie das
+\menu{Quell-Ereignis-Plugin}, das eingebunden werden soll, über ein
+Auswahlfeld bestimmen. Den Titel des Plugins in der Seitenleiste können
+Sie ebenfalls in einem Eingabefeld eintragen.
+
+Wenn Sie im Frontend keine Ausgaben zu dem gewählten Ereignis-Plugin
+auffinden, bedeutet das lediglich, dass das gewählte Plugin keine
+Ausgaben anbietet. Sie können also z.\,B.\ zwar das Plugin
+\emph{Textformatierung: Smilies} auswählen, da dieses aber den
+\emph{Event-Ausgabe Wrapper} nicht unterstützt, werden Sie keine Ausgabe
+sehen.
+
+Für Techniker ist erwähnenswert, dass alles, was dieses Plugin tut, darin
+besteht, die \cmd{generate\_content()}-Methode eines Ereignis-Plugins
+aufzurufen und die Ausgaben dieser Funktion an die für
+Seitenleisten-Plugins übliche (gleichbenannte) Methode
+\cmd{generate\_content()} weiterzureichen. Aus Performance-Gründen (und
+Separierungsgründen) gibt es keinen Event-Hook, um ein
+Seitenleisten-Plugin zu \emph{emulieren}.
+
+\index{Plugins!aktuelle Einträge}%
+\index{Plugins!serendipity\_plugin\_recententries}%
+\label{serendipity-plugin-recententries}%
+\subsection{Aktuelle Einträge\newline 
+serendipity\_plugin\_recententries}
+
+Das Plugin \emph{Aktuelle Einträge} zeigt in der Seitenleiste eine kurze
+Übersicht der neuesten Artikel in Ihrem Blog an. Dies ermöglicht eine
+konzentrierte Übersicht der Artikel an zentraler Stelle, die ein Besucher
+auch dann sieht, wenn er gerade die Detailseite eines Artikels anschaut.
+
+Neben dem üblichen Seitenleisten-Titel und der Anzahl
+an Artikeln, die eingebettet werden sollen, bietet das Plugin folgende besonderen
+Optionen:
+
+\begin{ospdescription}
+\ospitem{\menu{Angezeigte Einträge überspringen}}
+Wenn Sie die Option \menu{Angezeigte Einträge überspringen} auf
+\menu{Alle Anzeigen} stellen, zeigt die Seitenleiste stets die letzten
+aktuellen Einträge. Dies kann jedoch zu einer Dopplung führen, da Sie ja
+auf der Startseite des Frontends bereits die letzten 15 Artikel anzeigen.
+
+Wenn Sie also nur die aktuellsten Artikel anzeigen wollen und dabei die
+auf der Startseite bereits angezeigten Einträge überspringen wollen,
+wählen Sie die Option \menu{Einträge auf der Hauptseite überspringen}.
+
+\ospitem{\menu{Datumsformat}}
+Zu jedem Artikel wird das Erstellungsdatum angezeigt. Wie dieses
+formatiert wird, tragen Sie im Feld \menu{Datumsformat} ein. Die zur
+Verfügung stehenden Variablen finden Sie auf
+\cmd{http://de3.php.net/strftime}.
+
+\ospitem{\menu{Kategorie}}
+Standardmäßig zeigt das Plugin die Artikel aller Kategorien chronologisch
+sortiert an. Wenn Sie jedoch in der Seitenleiste nur die letzten Einträge
+in einer speziellen Kategorie darstellen wollen, können Sie diese
+spezielle Kategorie in dem Mehrfach-Auswahlfeld angeben. Mehrere
+Kategorien können Sie hier auch wählen, indem Sie mit gedrückter
+\taste{Strg/Apfel}-Taste auf die Kategorien klicken.
+
+Die Sonderoption \menu{Übergeordnete Kategorie} bedeutet, dass als Quelle für
+die Liste der aktuellen Einträge die Kategorie verwendet wird, die der Besucher
+im Blog gerade aufgerufen hat.
+
+\ospitem{\menu{Show Random Articles}}
+Wenn Sie eine zufällige Auswahl von Artikeln darstellen wollen, können Sie
+die Option \menu{Show Random Articles} aktivieren. Bei jedem Seitenaufruf
+werden dann zufällig andere Artikel in der Seitenleiste angezeigt.
+\end{ospdescription}
+
+\index{Plugins!Autoren}%
+\index{Plugins!serendipity\_authors\_plugin}%
+\subsection{Autoren\newline  serendipity\_authors\_plugin}
+
+Das Plugin \emph{Autoren} stellt in der Seitenleiste eine Liste aller im
+Blog eingetragenen Redakteure dar. Ein Klick auf einen Autor führt dann
+zu der Übersicht der von ihm geschriebenen Artikel.
+
+Die Konfigurationsoptionen des Plugins sind:
+
+\begin{ospdescription}
+\ospitem{\menu{XML-Button}}
+Für jeden Autor steht ein eigener RSS-Feed-Link zur Verfügung, über den
+Einträge dieses Autors abonniert werden können. Die Grafik muss sich
+dabei in Ihrem Template-Verzeichnis befinden, und der hier eingetragene
+Pfad muss relativ zu Ihrem Template-Verzeichnis sein.\osplinebreak{} Wenn die Datei also
+in \cmd{/var/www/example.com/serendipity/tem\-plates/meinTemplate/bilder/MeinRSS.gif}
+liegt, tragen Sie im\osplinebreak{} Konfigurationsfeld \cmd{bilder/MeinRSS.gif} ein.
+
+\ospitem{\menu{Ermöglicht Besuchern, Einträge mehrerer Autoren gleichzeitig
+darzustellen}}
+Ähnlich wie bei der Liste aller Kategorien, kann in der Liste aller
+Autoren vom Besucher eine Auswahl getroffen werden, welche Artikel er
+dargestellt sehen will. Üblicherweise kann er mit dem Klick auf den Link
+eines Redakteurs nur die Einträge eines einzelnen Redakteurs sehen.
+
+Ist die Option \menu{Ermöglicht Besuchern, Einträge mehrerer Autoren
+gleichzeitig darzustellen} aktiviert, wird neben jedem Redakteur ein
+Ankreuzfeld angezeigt, das der Besucher für alle gewünschten Redakteure
+markieren kann, um so die Übersicht der Artikel dieser Redakteursgruppe
+lesen zu können.
+
+\ospitem{\menu{Anzahl der Artikel neben dem Autor-Namen anzeigen}}
+Wenn Sie diese Option aktivieren, wird in Klammern hinter dem
+Redakteursnamen die Anzahl der von ihm verfassten Artikel angezeigt.
+Bitte beachten Sie, dass die Aktivierung dieser Zählung relativ
+datenbankintensive Abfragen durchführen muss und daher möglicherweise zu
+Geschwindigkeitseinbußen führen kann.
+
+\ospitem{\menu{Nur Autoren mit mindestens X Beiträgen anzeigen}}
+Möglicherweise möchten Sie nur aktive Redakteure des Blogs aufführen.
+Daher können Sie in dem Eingabefeld eine Mindestzahl an Beiträgen eintragen, die ein
+Redakteur geschrieben haben muss, um in der Seitenleiste angezeigt zu
+werden. Für diese Option gelten dieselben Performance-Bedenken wie bei
+der vorherigen. Sollten Sie eine von beiden aktivieren, wird die
+Aktivierung der anderen Option jedoch darüber hinaus keine 
+weiteren Einbußen zur Folge haben.
+
+\end{ospdescription}
+
+\subsection{HTML-Klotz\newline  serendipity\_html\_nugget\_plugin}
+\index{HTMLKlotz@HTML-Klotz}%
+\index{Plugins!HTML-Klotz}%
+\index{Plugins!serendipity\_html\_nugget\_plugin}%
+\label{htmlnugget}%
+
+Das Plugin namens \emph{HTML-Klotz} ist wohl das meistunterschätzte
+Plugin -- sobald man es einmal einzusetzen weiß, ist es aus einem
+Blog nicht mehr wegzudenken. Denn mit diesem Plugin können Sie
+beliebiges HTML und beliebiges JavaScript in Ihre Seitenleiste einfügen.
+
+Dieses Plugin lässt sich beliebig oft installieren und kann daher
+flexibel positioniert werden. Der Einsatz eines HTML-Klotzes macht zudem
+Dateiänderungen auf dem Server unnötig, denn alles kann über die
+Plugin-Verwaltung eingestellt werden.
+
+Pro HTML-Klotz gelten folgende Konfigurationsoptionen:
+
+\begin{ospdescription}
+\ospitem{\menu{Titel}}
+Die Überschrift des HTML-Klotzes, die in der Seitenleiste angezeigt wird.
+Wenn Sie den Titel leer lassen, wird kein Titel angezeigt. Dies ist
+besonders dann hilfreich, wenn Sie ein JavaScript einfügen wollen, das
+keine Ausgabe besitzt und sonst nur zur Anzeige eines leeren Klotzes
+führen würde.
+Der Titel eines Plugins wird zusätzlich in der Plugin-Verwaltung mit
+ausgegeben, damit Sie mehrere HTML-Klötze voneinander unterscheiden
+können.
+
+\ospitem{\menu{Zusätzlicher Informationstext, der auf der Plugin-Oberfläche}}
+\ospadditem{\menu{dargestellt wird}}
+In diesem Eingabefeld können Sie eine kleine Beschreibung angeben, die in
+der Plugin-Verwaltung neben jedem HTML-Klotz angezeigt wird. Dies ist
+besonders hilfreich in Fällen, bei denen ein HTML-Klotz ohne Titel
+angelegt wurde.
+
+\index{JavaScript!in der Seitenleiste}%
+\index{HTML!in der Seitenleiste}%
+\ospitem{\menu{Inhalt}}
+In diesem großen Eingabefeld tragen Sie den HTML-Code oder das JavaScript
+ein, das Sie in der Seitenleiste darstellen wollen. Wenn Sie den
+WYSIWYG-Editor in den \menu{Eigenen Einstellungen} aktiviert haben, wird 
+hier die vom Eintrags-Editor bekannte Oberfläche angezeigt.
+
+Beachten Sie, dass der WYSIWYG-Editor intern bereits HTML-Code speichert.
+Würden Sie in ein WYSIWYG-Editor-Fenster HTML-Code eintragen, würde dies
+später im Frontend "`gedoppelt"' angezeigt werden. Für eigenes HTML oder
+JavaScript gilt daher, entweder den WY\-SIWYG-Editor vorübergehend zu
+deaktivieren oder im Quelltext"=Modus des Editors zu arbeiten.
+
+\index{Fehler!falsche Darstellung in HTML-Klötzen}%
+\ospitem{\menu{Textformatierung(en) durchführen}}
+Die Ausgabe des Seitenleisten-Plugins wird auch stark von der Option
+\menu{Textformatierung(en) durchführen} beeinflusst. Ist diese Option
+aktiviert, wird alles, was Sie im HTML-Klotz eingetragen haben, mit
+denselben Textformatierungs-Plugins (siehe Seite
+\pageref{Textformatierungs-Plugins}) verarbeitet, wie Sie es von ihren Artikeln kennen.
+
+Besonders wenn Sie JavaScript oder eigenen HTML-Code in einem HTML-Klotz
+einbinden wollen, müssen Sie unbedingt darauf achten, diese Option auf
+\cmd{Nein} zu setzen. Andernfalls könnten destruktive Textformatierungen
+auf Ihren Code angewendet werden, was dann zu einer Fehldarstellung
+führen würde.
+
+\ospitem{\menu{Wo soll dieses Plugin angezeigt werden}}
+Mit diesem Auswahlfeld legen Sie fest, an welcher Stelle ein HTML-Klotz
+angezeigt werden soll: \menu{Überall}, \menu{Nur Artikelübersicht} oder
+\menu{Nur Artikel-Detailansicht}.
+
+Speziellere Möglichkeiten, ein Seitenleisten-Plugin vor bestimmten
+Benutzern zu verstecken, bietet das Plugin \emph{Seitenleisten
+verstecken} (siehe Seite \pageref{sidebarhider}).
+\end{ospdescription}
+
+\index{Plugins!Kommentare}%
+\index{Plugins!serendipity\_plugin\_comments}%
+\label{Plugin-Kommentare}%
+\subsection{Kommentare\newline  serendipity\_plugin\_comments}
+
+Wenn Ihre Besucher Kommentare zu einem Beitrag hinterlassen, können Sie
+als Redakteur diese relativ leicht über den Backend-Menüpunkt
+\menu{Kommentare} einsehen oder werden sogar per E-Mail darüber
+benachrichtigt. Normale Besucher haben diese Möglichkeit nicht und
+können daher entweder den RSS-Feed der letzten Kommentare abonnieren oder
+müssten jeden Blog-Artikel individuell aufrufen, um sich über neue
+Kommentare zu informieren.
+
+Daher bietet das Seitenleisten-Plugin \emph{Kommentare} eine einfache
+Möglichkeit, die letzten Kommentare aller Artikel anzuzeigen und so für
+den Besucher übersichtlich einzubinden.
+
+Folgende Konfigurationsoptionen bietet das Plugin, abgesehen vom
+Seitenleisten"=typischen Titel:
+
+\begin{ospdescription}
+\ospitem{\menu{Zeilenumbruch}}
+In der Seitenleiste steht meist nur begrenzt Platz zur Darstellung von
+Text zur Verfügung. Gerade Kommentare können jedoch die zur Verfügung
+stehende Breite übermäßig strapazieren. Daher bietet die Option
+\menu{Zeilenumbruch} die Möglichkeit, den Platzbedarf einzuschränken,
+indem nach einer festgelegten Anzahl von Buchstaben ein harter Zeilenumbruch
+eingefügt wird.
+
+Der Zeilenumbruch wird dabei auch Wörter mittendrin trennen, um das Limit
+nicht zu überschreiten. Dies ist notwendig, damit überlange Wörter
+Ihrer Besucher (wie z.\,B.\ "`Coooooooooooooooooooool!"') nicht das
+Layout Ihrer Seite sprengen.
+
+Leider bereitet der Zeilenumbruch gerade dann Probleme, wenn Besucher
+lange Links posten, die dann auseinandergebrochen werden. Sollte dies bei
+Ihnen häufig vorkommen, können Sie die Buchstabenanzahl des Zeilenumbruchs
+auf eine hohe Zahl wie 999 setzen und dann den Zeilenumbruch dem Browser
+überlassen. Dabei empfiehlt es sich dann, mittels CSS mögliche
+Layoutprobleme zu verhindern. Fügen Sie dazu die Zeile
+
+\begin{ospcode}
+.plugin_comment_body \{ overflow: scroll \}
+\end{ospcode}
+
+am Ende der Datei \cmd{style.css} Ihres gewählten Templates hinzu (siehe Kapitel
+\pageref{template-css}). Dies wird den Browser dazu anweisen, überlange Wörter
+durch Scrollbalken innerhalb der Seitenleiste anzuzeigen und nicht die ganze
+Seitenleiste an die Wortbreite anzupassen.
+
+\ospitem{\menu{Zeichen pro Kommentar}}
+Um nicht zu viel Platz zu beanspruchen, werden immer nur die ersten 120
+Zeichen eines Kommentars in der Seitenleiste angezeigt. Dies reicht
+meistens, um sich als Besucher einen Überblick zu verschaffen und bei
+Interesse den vollständigen Kommentar in der Artikel-Detailseite zu
+lesen. Im Eingabefeld \menu{Zeichen pro Kommentar} können Sie diese
+Zeichenanzahl vorgeben.
+
+\ospitem{\menu{Anzahl an Kommentaren}}
+Üblicherweise zeigt das Plugin die letzten 15 Kommentare. Diese Anzahl
+können Sie mit dem Eingabefeld \menu{Anzahl an Kommentaren} verändern.
+
+\ospitem{\menu{Datumsformat}}
+Zu jedem Kommentar wird das Erstellungsdatum mit angezeigt. Wie dieses
+formatiert wird, tragen Sie im Feld \menu{Datumsformat} ein. Die zur
+Verfügung stehenden Variablen finden Sie auf
+\cmd{http://de3.php.net/""strftime}.
+
+\ospitem{\menu{Typ}}
+Das Seitenleisten-Plugin kann sowohl Kommentare als auch Trackbacks
+anzeigen. Über das Auswahlfeld \menu{Typ} bestimmen Sie diese Art der
+Anzeige. So können Sie beispielsweise auch zwei
+Kommentar-Seitenleisten-Plugins installieren: eines, das die Trackbacks
+anzeigt, und eines, das die Kommentare anzeigt.
+
+\ospitem{\menu{Kommentatoren URL anzeigen bei\ldots}}
+Über dieses Auswahlfeld können Sie bestimmen, ob die Homepage der Person, die
+den Kommentar hinterlassen hat, in der Seitenleiste angezeigt werden soll. Sie
+können wählen, ob die Homepage niemals, nur bei Kommentaren, nur bei Trackbacks
+oder bei beidem angezeigt wird.
+
+\end{ospdescription}
+
+\index{Plugins!Top Exits}%
+\index{Plugins!serendipity\_topexits\_plugin}%
+\subsection{Top Exits\newline serendipity\_topexits\_plugin}
+
+Mittels des Ereignis-Plugins \emph{Links verfolgen} (siehe Seite
+\pageref{trackexits}) können Sie dafür sorgen, dass alle Links in Beiträgen
+speziell maskiert werden. Wenn ein Besucher dann auf einen solchen Link klickt,
+kann Serendipity dies statistisch erfassen.
+
+\index{Exit-Link}%
+Einen Link, der auf eine fremde Seite führt und damit das Blog verlässt,
+nennt man \emph{Exit-Link}. Diese formatiert
+Serendipity dann wie
+\cmd{http://""www.""example.com/serendipity/exit.php?url\_id=17\&entry\_id=18}.
+
+\index{Statistik}%
+Anhand der Statistik können Sie also leicht herausfinden,
+welche Links besonders beliebt bei Ihren Besuchern sind. Eben diese Statistik der
+beliebtesten Links kann das Seitenleisten-Plugin \emph{Top Exits}
+anzeigen.
+
+Bitte beachten Sie, dass, falls Sie das oben genannte Ereignis-Plugin
+nicht installiert haben, Serendipity keine Statistik führt und
+daher das Plugin auch keine Daten anzeigen kann.
+
+Die Konfigurationsoptionen sind:
+
+\begin{ospdescription}
+\ospitem{\menu{Wie viele Elemente sollen angezeigt werden}}
+Üblicherweise werden nur die zehn beliebtesten Links in der Seitenleiste
+angezeigt. Mit dieser Option können Sie die Vorgabe verändern.
+
+\ospitem{\menu{Top Exits/Referrers als Link anzeigen}}
+Wenn Sie diese Option auf \menu{Ja} setzen, werden die beliebtesten Links
+in der Seitenleiste so angezeigt, dass die Besucher direkt darauf klicken
+können, um zu der jeweiligen genannten Seite zu gelangen. Ist die Option
+auf \menu{Nein} gestellt, werden die Seiten nur textlich aufgeführt, und
+ein Besucher müsste die URL manuell eingeben.
+
+Auch in der globalen Serendipity-Konfiguration (siehe Seite
+\pageref{trackreferrer}) können Sie dieses Verhalten beeinflussen -- wenn diese
+Vorauswahl genutzt werden soll, müssen Sie \menu{Standard} als Option einstellen.
+
+Diese Option ist sehr hilfreich, weil Top-Exits seltener von
+Spammern genutzt werden können -- denn schließlich sind die hinterlegten
+Links meist nur von Redakteuren in das System eingetragen. Trickreiche
+Spammer können jedoch die Statistik-Routine von Serendipity 
+missbrauchen, so dass ihre Seiten auch in die Statistik aufgenommen werden, ohne dass Sie in einem Ihrer Artikel darauf verweisen.
+
+\ospitem{\menu{Kalenderintervall}}
+Meist macht die Statistik der beliebtesten Links nur Sinn, wenn sie sich
+auf einen gewissen Zeitraum beschränkt. Besucher interessiert womöglich
+nicht, welche Seiten seit Eröffnung Ihres Blogs am häufigsten besucht
+wurden, sondern eher, welche Links der letzten Zeit interessant waren.
+Dafür dient die Option \menu{Kalenderintervall}. Hier tragen Sie den
+Zeitraum (in Tagen) ein, der vom aktuellen Besuchsdatum aus gerechnet für
+die Datenbasis der Links herangezogen wird.
+
+\end{ospdescription}
+
+\index{Plugins!Top Referrer}%
+\index{Plugins!serendipity\_topreferrers\_plugin}%
+\subsection{Top Referrer\newline  serendipity\_topreferrers\_plugin}
+
+Ähnlich wie das \emph{Top Exits}-Plugin zeigt Ihnen das \emph{Top
+Referrer}-Plugin eine Liste an URLs an. Diesmal sind es jedoch nicht die
+Links, die Ihre Besucher angeklickt haben, sondern die Webseiten, von
+denen aus Besucher zu Ihrem Blog gekommen sind.
+
+\index{Referrer}%
+Um dies auszuwerten, bietet jeder Browser die Möglichkeit, die
+zuletzt besuchte Seite im Webseitenaufruf mit zu übertragen. Manche Browser oder
+auch Proxies Ihrer Besucher verschleiern oder entfernen diese Angabe aus
+Datenschutzgründen. Genauso ist es für Spammer möglich, beliebige URLs
+als Quellseite vorzutäuschen, daher hat in heutigen Zeiten diese
+Statistik oft nur noch ideellen Wert.
+
+Für die Darstellung der Referrer gelten dieselben Optionen wie für das
+Top-Exits-Plugin, beziehen sich dabei jedoch auf die Ausgabe der
+verweisenden URLs und nicht der beliebtesten Links.
+
+\index{Plugins!Shoutbox}%
+\index{Plugins!serendipity\_plugin\_shoutbox}%
+\subsection{Shoutbox\newline serendipity\_plugin\_shoutbox}
+
+Besucher können zu Artikeln Ihres Blogs relativ leicht kommentieren. Wenn
+sie aber eher abstrakt und Artikel-ungebunden ihre Meinung über Ihr Blog
+äußern wollen, ist dies meist nur über ein Kontaktformular oder
+Gästebuch möglich.
+
+\index{Shoutbox}% 
+\index{Chat}%
+Eine einfache Alternative dazu bietet das
+\emph{Shoutbox}\footnote{Eine Shoutbox ist die
+sprichwörtliche Seifenkiste, auf die man sich gerne einmal stellt, wenn man seine Meinung in die
+Welt hinausposaunen möchte.}-Seitenleisten-Plugin. Es zeigt in der Seitenleiste
+eine Eingabebox an, in der Besucher direkt Text eingeben können, der danach
+unterhalb der Shoutbox für alle Besucher angezeigt wird.
+
+Als Administrator können Sie direkt im Frontend unpassende Kommentare
+löschen. Die Shoutbox zeigt kein Archiv von vergangenen Einträgen an,
+sondern immer nur eine konfigurierbare Anzahl von Kommentaren Ihrer
+Benutzer. Daher kann dies auch oft als eine Art Echtzeit-Chatbox
+zweckentfremdet werden.
+
+Beachten Sie, dass dieses Plugin keinen besonderen Schutz gegen Spam
+bietet.
+
+Für die Konfigurationsoptionen gelten dieselben Möglichkeiten wie bei
+dem \emph{Kommentar}-Plugin (Seite \pageref{Plugin-Kommentare}).
+
+Das Plugin erstellt die Datenbanktabelle \cmd{serendipity\_shoutbox} mit den
+Feldern \cmd{id} (fortlaufender Primärschlüssel), \cmd{timestamp} (Datum des
+Kommentars), \cmd{ip} (IP des Kommentators) und \cmd{body} (Text).
+
+\index{Plugins!Links des Artikels}%
+\index{Plugins!serendipity\_plugin\_entrylinks}%
+\subsection{Links des Artikels\newline 
+serendipity\_plugin\_entrylinks}
+
+Das Plugin \emph{Links des Artikels} wird nur auf Artikel-Detailseiten
+angezeigt und bleibt in der Übersichtsseite unsichtbar. Ruft man eine
+Detailseite auf, wird in dieser Box eine Übersicht aller im Artikel
+enthaltenen Links angezeigt.
+
+Die relevanten Konfigurationsoptionen sind:
+
+\begin{ospdescription}
+\ospitem{\menu{Top Exits}}
+Ist diese Option aktiviert, werden in dem Seitenleisten-Plugin alle Links
+des Beitrags angezeigt.
+
+\ospitem{\menu{Top Referrer}}
+Wenn Sie diese Option aktivieren, werden alle auf die Artikel"=Detailseite
+verweisenden Webseiten aufgeführt.
+
+\ospitem{\menu{Anzahl eingehender Links}}
+Mit dieser Option bestimmen Sie, wie viele Links der beiden
+Darstellungsmöglichkeiten (Exits, Referrer) jeweils angezeigt werden sollen.
+
+\ospitem{\menu{Reihenfolge eingehender Links}}
+Die verwendeten Links (Exits, Referrer) können entweder nach
+\menu{Häufigkeit} oder \menu{Datum} sortiert werden. Dies zeigt also
+entweder die neuesten oder die populärsten Links am Anfang.
+
+\end{ospdescription}
+
+\index{Plugins!Geschichte}%
+\index{Plugins!serendipity\_plugin\_history}%
+\label{serendipity-plugin-history}%
+\subsection{Geschichte\newline serendipity\_plugin\_history}
+
+Mit dem Seitenleisten-Plugin \emph{Geschichte} können Sie im Frontend auf
+ältere Artikel Ihres Blogs hinweisen, indem Sie eine (von mehreren
+Optionen abhängige) Liste darstellen.
+
+\begin{ospdescription}
+\ospitem{\menu{Intro, Outro}}
+Sie können vor (\emph{Intro}, Einführung) und nach (\emph{Outro},
+Nachwort) der Auflistung der älteren Artikel einen beliebigen Text in die
+Ausgabe des Seitenleisten-Plugins aufnehmen, um Ihren Besuchern zu
+erklären, warum Sie eine Liste älterer Einträge aufführen. So könnten Sie
+als Intro z.\,B.\ den Text \emph{"`In einer Galaxie, weit weit entfernt \ldots"'}
+den Artikeln voranstellen. Obwohl hierfür nur eine kleine
+Eingabezeile vorgesehen ist, können Sie hier beliebig langen Text (auch
+mit HTML-Formatierung) eintragen.
+
+\ospitem{\menu{Überschriftenlänge}}
+Wenn Ihre Artikel öfter besonders lange Überschriften enthalten, würden diese
+den Rahmen möglicherweise sprengen. Für diesen Fall können Sie die
+Zeichenlänge eines Artikeltitels einschränken.
+
+\ospitem{\menu{Vorgefertigter Zeitrahmen}}
+Standardmäßig zeigt das Plugin Einträge an, die genau vor einem Jahr
+geschrieben wurden. Ist kein solcher Artikel vorhanden, zeigt das Plugin
+keinen Artikel an.
+
+Wenn Sie einen anderen Zeitraum wünschen, können Sie das Auswahlfeld
+\menu{Vorgefertigter Zeitrahmen} auf \menu{Anderer} stellen und die
+darunterliegenden Optionsfelder anpassen.
+
+\ospitem{\menu{Mindestalter}}
+Wenn Sie einen eigenen vorgefertigten Zeitrahmen eingestellt haben,
+tragen Sie in dieses Feld ein, wie alt ein Artikel mindestens sein muss
+(in Tagen gemessen), um in der Ausgabe des Plugins berücksichtigt zu
+werden.
+
+\ospitem{\menu{Höchstalter}}
+Analog zu dem Mindestalter eines Artikels können Sie hier das maximale
+Alter eines Eintrages angeben.
+
+Wenn Sie als Mindestalter beispielsweise \cmd{12} eintragen und als
+Höchst\-alter \cmd{20}, würden Sie am 30.06.2007 alle Artikel sehen, die
+zwischen dem 18.06.2007 und dem 10.06.2007 verfasst wurden.
+
+\ospitem{\menu{Anzahl}}
+Beschränkt die Anzahl der Einträge, die in der Seitenleiste angegeben
+werden. Wenn Sie mehr als die hier festgelegte Anzahl an Einträgen im
+definierten Zeitraum erstellt haben, werden also nur die ersten Artikel
+davon angezeigt.
+
+\ospitem{\menu{Ganze Einträge}}
+Standardmäßig zeigt das Plugin nur die Überschriften der Artikel des
+gewählten Zeitraums an. Wenn Sie diese Option auf \menu{true} stellen,
+wird auch der Beitragstext mit angezeigt.
+
+\ospitem{\menu{Datum anzeigen}}
+Wenn Sie diese Option auf \menu{true} stellen, wird auch das Datum eines
+Artikels angezeigt.
+
+\ospitem{\menu{Show author's name}}
+Den Autorennamen eines Artikels können Sie anzeigen, indem Sie die
+Option \menu{Show author's name} auf \menu{true} stellen.
+
+\ospitem{\menu{Datumsformat}}
+Sofern Sie die Option \menu{Datum anzeigen} aktiviert haben, können Sie
+hier das Datumsformat einstellen. Die zur Verfügung stehenden Variablen
+finden Sie auf \cmd{http://de3.php.net/strftime}.
+
+\end{ospdescription}
+
+\index{Plugins!Externe Plugins}%
+\section{Auswahl externer Plugins}
+
+Über die mitgelieferten Plugins hinaus finden Sie auch eine große Auswahl
+an Plugins über \cmd{http://spartacus.s9y.org/}. Eine Auswahl an häufig
+genutzten Seitenleisten-Plugins finden Sie auf den folgenden Seiten.
+
+\index{Plugins!Externe PHP-Anwendung}%
+\index{Sicherheitsrisiko}%
+\index{Include}%
+\index{Plugins!serendipity\_plugin\_externalphp}%
+\index{Eigenen PHP-Code darstellen}%
+\index{PHPCode@PHP-Code!in der Seitenleiste}%
+\subsection{Externe PHP-Anwendung\newline serendipity\_plugin\_externalphp}
+
+Oft kann es vorkommen, dass Sie eine bestehende kleine PHP-Anwendung in
+Ihrer Seitenleiste einbinden wollen, also beispielsweise einen
+Shoutbox-Ersatz, ein Zufallszitat oder auch eigenen Counter-Code.
+
+Grundsätzlich ist es empfehlenswert, solche Anwendungen mit einem eigenen
+Seitenleisten-Plugin einzubinden (siehe Seite \pageref{pluginapi} ff.).
+
+Für Fälle, in denen Ihnen das zu kompliziert erscheint, können Sie das
+Plugin \emph{Externe PHP-Anwendung} installieren. Dieses ermöglicht
+Ihnen, mit einem PHP-\cmd{include}-Befehl ein anderes PHP-Script auf
+Ihrem Server aufzurufen.
+
+Bitte beachten Sie, dass dieses Plugin ein großes Sicherheitsrisiko
+darstellt. Daher dürfen nur Administratoren (entsprechend dem
+Benutzerrang eines Redakteurs) ein derartiges Plugin einbinden und
+konfigurieren.
+
+Eine Einbindung mittels dieses Plugins muss nicht unbedingt bei jedem
+beliebigen PHP-Script funktionieren. Wenn das fremde PHP-Script z.\,B.\
+Datenbankverbindungen kappt, globale Namensräume überschreibt oder mit
+von Serendipity genutzten Funktionsnamen kollidiert, kann es zu Problemen
+kommen. In einem solchen Fall müssen Sie sich leider an den Autor des
+fremden Scripts wenden.
+
+Für Programmierer gilt: Das Plugin setzt den \cmd{include}-Befehl
+innerhalb einer Klassenmethode (\cmd{generate\_content()}) ein. Globale
+Variablen können daher nicht auf die übliche Weise angesprochen werden,
+sondern müssen entweder vorher mittels \cmd{global \$variable} in den
+Namensraum importiert oder zentral via \cmd{\$GLOBALS['variable']}
+angesprochen werden.
+
+In der Konfiguration des Plugins tragen Sie den vollständigen Pfad zu
+einer Datei ein. Benutzen Sie dafür die Verzeichnisstruktur der Datei auf
+dem Server, also beispielsweise
+\cmd{/var/www/example.com/andereScripts/mein\-Script.php}. Wenn Ihr Server
+die PHP-Option \cmd{allow\_url\_fopen} aktiviert hat, können Sie anstelle
+eines Dateisystem-Pfades auch eine URL eintragen. Wenn Sie eine
+URL einbinden, wird lediglich die Ausgabe dieser URL im Plugin
+dargestellt -- das Script muss also für eine derartige Verwendung
+vorgesehen sein.
+
+Die Konfigurationsoption \menu{Textformatierung(en) durchführen} gibt an,
+ob die Ausgabe des fremden PHP-Scripts an Textformatierungs-Plugins von
+Serendipity weitergereicht werden soll, um die Ausgabe genauso zu
+formatieren wie einen redaktionellen Artikel. Die Textformatierungen
+richten sich dabei nach den von Ihnen installierten Plugins, also z.\,B.\
+der Umwandlung von Smiley-Zeichen in echte Grafiken und weitere (siehe
+Seite \pageref{Textformatierungs-Plugins}).
+
+\index{Flickr}%
+\index{Plugins!Flickr badge}%
+\index{Plugins!serendipity\_plugin\_flickrbadge}%
+\index{Plugins!Flickr Sidebar-Plugin}%
+\index{Plugins!serendipity\_plugin\_flickr}%
+
+\subsection{Flickr badge, FLICKR Sidebar-Plugin\newline serendipity\_plugin\_flickrbadge,\newline
+serendipity\_plugin\_flickr}
+
+Der Webservice \cmd{http://www.flickr.com/} ermöglicht es seinen
+Benutzern, eigene Bildergalerien komfortabel zu verwalten. Zudem bietet
+Flickr dabei zahlreiche Einbindungsmöglichkeiten über eine Schnittstelle
+an.
+
+Serendipity besitzt zwei Seitenleisten-Plugins, mit denen man seine
+eigenen Bilder bei Flickr in der Seitenleiste anzeigen kann. Dafür muss
+Ihr Webserver natürlich ausgehende Verbindungen zum Flickr-Webserver
+erlauben, darf also nicht durch eine Firewall blockiert werden.
+
+\emph{Flickr badge} ist ein aktuelleres Plugin, das PHP5 auf Ihrem
+Webserver benötigt und sonst keine weiteren Voraussetzungen besitzt.
+
+Das \emph{FLICKR Sidebar-Plugin} ist auch auf PHP4-Webservern benutzbar,
+dafür müssen Sie aber selbständig eine fremde Bibliothek herunterladen.
+Diese Bibliothek nennt sich \cmd{PEAR::Flickr\_API}\footnote{\cmd{http://code.iamcal.com/php/flickr/readme.htm}}. Laden
+Sie sich das ZIP-Paket der Bibliothek herunter, entpacken Sie die Datei
+\cmd{API.php} aus dem Unterverzeichnis \cmd{pear/Flickr/} und laden Sie sie in
+Ihr Serendipity-Verzeichnis \cmd{bundled-libs} hoch. Danach muss sich
+also auf Ihrem Server eine Datei \cmd{bundled-libs/Flickr/API.php} in
+Ihrem Serendipity-Stammverzeichnis befinden. Diese wird dann von Ihrem
+Plugin später eingebunden und verwendet, um mit Flickr zusammenzuarbeiten.
+Wenn Ihnen diese Datei fehlt oder Sie sie in ein falsches Verzeichnis
+hochgeladen haben, erhalten Sie eine Fehlermeldung in der Seitenleiste,
+und das Plugin wird nicht funktionieren.
+
+\osppagebreak
+
+\index{Flickr!API-Schlüssel}%
+In den Konfigurationsoptionen beider Plugins müssen Sie den
+Flickr-API-Schlüssel eintragen. Wenn Sie bei Flickr eingeloggt sind,
+können Sie diesen unter \cmd{http://www.flickr.com/services/api/keys/}
+einfach beantragen und später in der Konfigurationsoberfläche eintragen.
+
+Das \emph{Flickr badge}-Plugin ermöglicht weiterhin, die Anzahl der
+Bilder insgesamt und die Anzahl der dargestellten Bilder pro Zeile
+festzulegen. 
+Dabei werden die chronologisch aktuellsten Bilder
+ausgewählt. Das Plugin erstellt selbständig einen Zwischenspeicher
+(\emph{Cache}) der letzten Bilder, der stündlich aktualisiert wird.
+
+Im \emph{FLICKR Sidebar}-Plugin können Sie einige weiterreichende
+Optionen einstellen, die die Größe und das Format der Vorschaubilder
+regeln sowie die Möglichkeit geben, die Dauer der Zwischenspeicherung selbst zu
+bestimmen.
+
+Welches Plugin Sie wählen, ist hauptsächlich von den Rahmenbedingungen
+Ihres Webservers abhängig: Wer über PHP5 verfügt und keine externen
+Bibliotheken herunterladen möchte, sollte das \emph{Flickr badge}-Plugin
+verwenden. Wer etwas mehr Flexibilität bei der Bildgröße benötigt, über
+kein PHP5 verfügt oder den höheren Installationsaufwand nicht scheut, dem
+sei das \emph{FLICKR Sidebar}-Plugin ans Herz gelegt.
+
+Zuletzt bietet Flickr aber auch noch einen RSS-Feed oder einen
+JavaScript-Schnipsel an, die Sie auch mittels des Plugins \emph{Fremder
+RSS/OPML-Blogroll Feed} (Seite \pageref{remoterss}) oder des HTML-Klotzes
+(Seite \pageref{htmlnugget}) anzeigen können. Weitere Hinweise zu den
+Einbindungsmöglichkeiten finden Sie auf der Flickr-Seite unter
+\cmd{http://www.flickr.com/services/feeds/}.
+
+\index{del.icio.us}%
+\index{magnolia@ma.gnolia}%
+\index{Webservices}%
+\index{furl.net}%
+\index{linkroll}%
+\index{Mister Wong}%
+\index{Plugins!Social Bookmarks plugin}%
+\index{Lesezeichen}%
+\index{Favoriten}%
+\index{Plugins!serendipity\_plugin\_socialbookmarks}%
+\subsection{Social Bookmarks-Plugin\newline
+serendipity\_plugin\_socialbookmarks}
+
+Das \emph{Social Bookmarks}-Plugin ermöglicht es Ihnen, Ihre bei externen
+Anbietern geführten Lesezeichen in Ihrem Blog darzustellen. Es gibt zahlreiche
+Webservices (del.icio.us, ma.gnolia, furl.net, linkroll, Mister Wong),
+bei denen eine Community untereinander ihre
+Lieblings-Internetseiten oder Neuigkeiten tauschen und veröffentlichen
+kann. Häufig gibt es für Ihren Browser eigenständige Symbolleisten oder
+Extensions, mit denen Sie komfortabel einen Link zu Ihrem Profil bei einem
+derartigen Dienstleister hinzufügen können. Der Vorteil (abgesehen von der
+Community) dabei ist, dass Sie Ihre Lesezeichen so einfach von einem
+beliebigen Rechner im Internet aufrufen können.
+
+Wenn Sie die Lesezeichen in Ihrem Blog einbinden, können Sie Ihre
+Besucher darüber informieren, welche Seiten Sie gerade interessant
+finden.
+
+Die meisten Webservices bieten eigenständige JavaScripts an, die Sie auf
+Ihrer Webseite einbinden können. Da dies bei der Benutzung mehrerer
+Services leicht unübersichtlich werden kann, nimmt Ihnen das
+Serendipity-Plugin einiges an Arbeit ab.
+
+Das Plugin können Sie beliebig oft installieren, und es muss jeweils immer
+für einen gewünschten Webservice konfiguriert werden. Damit das Plugin
+die Daten der Webservices per RSS-Feed einlesen kann, darf Ihr Webserver
+nicht von einer Firewall bei ausgehenden Verbindungen blockiert werden.
+
+Folgende Konfigurationsoptionen stehen zur Auswahl:
+
+\begin{ospdescription}
+\ospitem{\menu{Service}}
+In dem Auswahlfeld \emph{Service} müssen Sie auswählen, welchen
+Webservice Sie ansprechen wollen. Vom gewählten Service sind einige der
+weiteren Konfigurationsoptionen abhängig.
+
+\ospitem{\menu{Benutzername}}
+Bei jedem der verfügbaren Webservices haben Sie einen eindeutigen
+Benutzernamen ausgewählt oder zugewiesen bekommen. Diesen müssen Sie im
+Feld \menu{Benutzername} eintragen, um die Links des gewählten Benutzers
+anzuzeigen.
+
+Selbstverständlich müssen Sie hier nicht unbedingt Ihren eigenen Benutzernamen
+eintragen. Wenn Sie die Links einer anderen Person besonders wertvoll
+finden, können Sie auch deren Lesezeichen anzeigen.
+
+\ospitem{\menu{Anzahl der darzustellenden Links}}
+Das Plugin kann höchstens die Anzahl der Lesezeichen einbinden, die im
+RSS-Feed des jeweiligen Benutzers vorhanden sind. Abhängig vom Service
+sind dies meist die letzten 30 Links. Im Feld \menu{Anzahl der
+darzustellenden Links} können Sie die Anzahl der ausgegebenen Links daher
+weiter einschränken. Ein höherer Wert ist prinzipiell nutzlos und kann nicht 
+mehr Links als die verfügbare Anzahl anzeigen.
+
+\ospitem{\menu{Wann soll der Feed aktualisiert werden}}
+Damit das Plugin nicht bei jedem Seitenaufruf des Besuchers neu
+ausgeführt werden muss, können die Ausgaben zwischengespeichert werden.
+Im Feld \emph{Wann soll der Feed aktualisiert werden} tragen Sie die
+Anzahl der Stunden ein, für die ein Feed zwischengespeichert werden kann.
+Erst nach Ablauf dieser Zeit wird der Webservice erneut angefragt.
+
+\ospitem{\menu{Zeig "`mehr"'-Verknüpfung}}
+Da der RSS-Feed meistens nicht alle verfügbaren Links beinhaltet, können
+Sie Ihren Besuchern einen Link zu den weiteren Lesezeichen des
+dargestellten Profils anbieten. Wenn Sie diese Option aktivieren, wird
+dieser "`mehr"'-Link eingebettet.
+
+\index{Tags}%
+\ospitem{\menu{Tags anzeigen}}
+Jedem Lesezeichen können Sie bei der Erfassung auf den Seiten des
+Webservices eine Liste von Stichwörtern zuweisen, die das Lesezeichen
+identifizieren. Mit Hilfe dieser \emph{Tags} ist es leicht
+möglich, andere Lesezeichen weiterer Benutzer anzuzeigen, die ähnliche
+Stichwörter benutzt haben.
+
+Wenn Sie die Option \menu{Tags anzeigen} aktivieren, werden Ihnen die
+zugewiesenen Schlüsselwörter jedes Lesezeichens mit angezeigt.
+Andernfalls würden Sie nur den Link selbst sehen.
+
+\ospitem{\menu{Feed-Einstellungen}}
+Üblicherweise wertet das Plugin den RSS-Feed aus, der die aktuellsten
+Lesezeichen enthält. Sie können aber auch eine andere Quelle
+benutzen. \menu{Neueste Lesezeichen aller Benutzer} zeigt die aktuellsten
+Lesezeichen des Webservices an, die unabhängig vom Benutzer gerade
+erfasst werden. Bei fast allen Webservices werden mehrere hundert
+Lesezeichen pro Minute erfasst, daher hat diese Option eher wenig
+Informationswert.
+
+\menu{Populärste Lesezeichen der letzten 24 Stunden} ist daher meist
+sinnvoller, wenn Sie neue, beliebte Lesezeichen aller
+Benutzer des Webservices anzeigen wollen.
+
+Speziell für den del.icio.us-Webservice gibt es die Option \menu{Meine
+Tagcloud}. Dabei wird anstelle der Liste der Lesezeichen nur eine Liste
+aller vergebenen Schlagwörter angezeigt. Die Schlagwörter sind dabei in
+ihrer Schriftgröße proportional zur Häufigkeit, mit der Sie sie
+eingesetzt haben. Besonders groß formatierte Schlagwörter
+vergeben Sie also sehr häufig, die sehr klein geschriebenen Schlagwörter
+nur selten.
+
+\ospitem{\menu{Vorschaugrafiken anzeigen (ma.gnolia)}}
+Der Webservice ma.gnolia bietet eine kleine Vorschaugrafik der Webseite
+an, die Sie als Lesezeichen gespeichert haben. Wenn Sie die Option
+\menu{Vorschaugrafiken anzeigen} aktivieren, wird diese Grafik anstelle
+des Lesezeichen-Texts angezeigt, um dem Besucher bereits einen optischen
+Vorgeschmack auf die Seite geben zu können.
+
+\ospitem{\menu{Zusätzliche Parameter für die Einstellung "`Meine Tagcloud"'}}
+Wenn Sie für die \menu{Feed-Einstellungen} die Option \menu{Meine
+Tagcloud} gewählt haben, können Sie einige Parameter für die Formatierung
+der Schlagwortliste vornehmen. Eine Auflistung aller verfügbaren
+Parameter finden Sie unter \cmd{http://del.icio.us/help/tagrolls}.
+\end{ospdescription}
+
+\index{Google AdSense}%
+\index{Plugins!AdSense}%
+\index{Geld verdienen}%
+\index{Werbung}%
+\index{Plugins!AdSense}%
+\index{Plugins!serendipity\_plugin\_google\_adsense}%
+\subsection{AdSense\newline
+serendipity\_plugin\_google\_adsense}
+
+\emph{Google AdSense}\footnote{\cmd{http://www.google.com/adsense}} ist ein
+Angebot von Google, mit dem Sie Werbeanzeigen von Googles Werbepartnern
+auf Ihrer eigenen Seite einbinden können.
+
+Dabei ruft der Besucher (also NICHT Ihr Server selbst!) ein JavaScript
+auf, das eine Liste von Werbeanzeigen (meist abhängig vom Inhalt Ihres
+Blogs) darstellt.
+
+Für jeden Klick Ihrer Besucher auf eine solche Werbung erhalten Sie von
+Google etwas Geld, das Ihnen ab Erreichen eines Mindestbetrags
+überwiesen wird.
+
+Google wählt dabei die Anzeigen der Werbepartner nach meist seriösen
+Kriterien aus. Sie sollten sich jedoch gut überlegen, ob Sie auf Ihrem
+Blog tatsächlich Werbung einbinden wollen. Bei deutschen Blogs führt dies
+zum einen oft dazu, dass Ihr Blog dadurch als \emph{kommerzielles
+Angebot} eingestuft wird und Sie unter diesem Gesichtspunkt für die
+Inhalte Ihres Blogs verantwortlich sind. Etwaige Verstöße gegen das
+Urheberrecht werden bei kommerziellen Angeboten weitaus härter geahndet,
+als es bei privaten Blogs der Fall ist.
+
+Wenn Ihr Blog tatsächlich kommerzieller Natur ist, ist auch hier der
+Einsatz von Werbung mit Vorsicht zu genießen. Da Sie nur eingeschränkte Kontrolle
+über die angezeigte Werbung haben, könnte es leicht passieren, dass
+Werbung der Konkurrenz auf Ihren Seiten eingebunden wird.
+
+Für die Einbindung von Werbung spricht natürlich die finanzielle
+Verdienstmöglichkeit -- wägen Sie jedoch stets die Nachteile ab und
+informieren Sie sich am besten vorher ausführlich über Google AdSense.
+
+Um das JavaScript von Google AdSense einzubinden, bietet Google selbst
+bereits ein Tool zur Erzeugung des Codes an. Diesen Code könnten Sie dann
+per Kopieren \& Einfügen in einen HTML-Klotz (siehe Seite
+\pageref{htmlnugget}) übernehmen. Der Vorteil des Google-Tools ist, dass
+Sie dort die Farbe und andere Optionen zum Aussehen der Werbung
+einstellen können.
+
+Das \emph{Google AdSense}-Seitenleisten-Plugin vereinfacht die Einbindung
+etwas, indem Sie keinen Code selbst einfügen müssen. Stattdessen tragen
+Sie bei der Konfiguration des Plugins lediglich Ihre AdSense-ID ein und
+wählen das grobe Anzeigenformat sowie die Anzahl der gewünschten
+Werbeanzeigen. Leider ist es aufgrund der Lizenzbedingungen von Google
+nicht erlaubt, dass das Plugin Ihnen dieselben Formatierungsmöglichkeiten
+wie das Google-Tool anbietet.
+
+Auch vom \emph{Google AdSense}-Plugin können Sie mehrere verschiedenartig
+konfigurierte Plugins installieren und frei in der Seitenleiste
+verteilen. Bei der Verwendung mehrerer Werbeblöcke können Sie die
+Konfigurationsoption \menu{Kanal (Channel)} dafür benutzen, 
+unterschiedlich bei Google konfigurierte Werbe-Themenkanäle anzuzeigen.
+So könnten Sie in der linken Seitenleiste nur Werbung zu
+Lifestyle-Produkten anzeigen und in der rechten Seitenleiste ein anders
+konfiguriertes Plugin nur mit Technikprodukten. Gehen Sie jedoch sparsam
+mit Werbeblöcken um, da Sie sonst Ihre Besucher vergraulen.
+
+\index{Plugins!Show entries in sidebar}%
+\index{Plugins!serendipity\_plugin\_showentries}%
+\index{Blog-Artikel!in der Seitenleiste einbinden}%
+\label{showentries}%
+\subsection{Show Entries in sidebar\newline serendipity\_plugin\_showentries}
+
+Bereits mittels der Plugins \emph{Geschichte} (Seite
+\pageref{serendipity-plugin-history}) und \emph{Aktuelle Einträge} (Seite
+\pageref{serendipity-plugin-recententries}) können Sie in der
+Seitenleiste auf ältere Artikel verweisen.
+
+Mit beiden Plugins ist es jedoch nicht möglich, individuelle
+Formatierungen durchzuführen oder die Artikel komplett anzuzeigen. Hier
+schafft das Plugin \emph{Show Entries in sidebar} Abhilfe.
+
+Es ist besonders dann sinnvoll, wenn Sie eine Artikelliste nach eigenen
+Vorgaben gestalten wollen oder wenn Sie kurze Einträge einer speziellen
+Kategorie anzeigen wollen. Stellen Sie sich vor, Sie schreiben Artikel in
+der Kategorie \emph{Meine Einkäufe} und fassen dort in kurzen Sätzen
+zusammen, welche Lebensmittel Sie heute gekauft haben. In der normalen
+Artikelübersicht würden solche Einträge womöglich ziemlich leicht
+übersehen werden, daher möchten Sie diese Einkäufe in der Seitenleiste
+einbinden.
+
+\index{Moblogging}%
+Ein weiterer Einsatzzweck des Plugins wird in der Plugin-Beschreibung
+erwähnt: \emph{Good for Sidebar Moblogging}. Moblogging bezeichnet dabei
+die Möglichkeit, einen Blog-Artikel via E-Mail zu verfassen und
+unterwegs an das eigene Blog zu schicken. Das Blog kann dann mittels
+Popfetcher-Plugin (siehe Seite \pageref{serendipity-event-popfetcher}) die E-Mails von
+einem Server abrufen und automatisch importieren und erspart es Ihnen dadurch,
+einen Artikel mittels eines Browsers erstellen zu müssen. Derart erstellte
+Artikel könnten Sie mit dem hier beschriebenen Plugin \menu{Show Entries in sidebar}
+komfortabel und abgesetzt in der Seitenleiste anzeigen.
+
+Auch dieses Plugin ist beliebig oft installierbar und kann daher
+für mehrere Seitenleisten-Positionen eingebunden werden.
+
+Das Plugin formatiert die Ausgabe mittels Smarty-Template-Datei \cmd{plugin\_""showentries.tpl}.
+\index{Template-Dateien!plugin\_showentries.tpl}%
+In dieser Datei können Sie auf alle Eintrags-Variablen
+(\cmd{array \$entries} \sm \cmd{array \$entry.*}) zugreifen und so mit 
+HTML beliebige Layouts umsetzen. Details zu Smarty-Templates finden Sie 
+ab Seite \pageref{Smarty-Templates}.
+
+Das Plugin bietet folgende Konfigurationsoptionen:
+
+\begin{ospdescription}
+\ospitem{\menu{Show how many entries}}
+Diese Einstellung legt fest, wie viele Artikel in der Seitenleiste
+angezeigt werden sollen.
+
+\ospitem{\menu{Hide entries already displayed on frontpage}}
+Je nachdem, welche Einträge das Plugin darstellt, kann es passieren, dass
+diese Einträge auch bereits in der Artikel-Übersichtsseite aufgeführt
+sind.
+
+Wenn Sie die Option \menu{Hide entries already displayed on frontpage}
+aktivieren, werden solche Einträge nicht nochmal in der Seitenleiste
+angezeigt.
+
+\ospitem{\menu{Enter category ID to show}}
+Im Gegensatz zu vielen anderen Plugins können Sie die Quellkategorie für
+die darzustellenden Einträge nicht aus einem Auswahlfeld wählen, sondern
+müssen die ID/Nummer einer Kategorie manuell in ein Feld eingeben. Für
+das Plugin ist diese Eingabemethode um einiges flexibler, da Sie mehrere
+Kategorie-IDs einfach mittels Semikolon trennen können, um so die
+Einträge mehrerer Kategorien einzubinden.
+
+Die ID einer Kategorie können Sie über die Administrationsoberfläche
+\menu{Kategorien} ermitteln (siehe Seite \pageref{Kategorie-ID
+ermitteln}).
+
+\ospitem{\menu{Show entry title, Show extended entry}}
+Mit diesen beiden Optionen stellen Sie ein, ob der Titel und/oder der
+erweiterte Eintrag eines Artikels in der Seitenleiste angezeigt werden
+sollen. Das Smarty-Template \cmd{plugin\_showentries.tpl} wertet diese
+Optionen (\cmd{bool \$showext}, \cmd{bool \$showtitle}) aus, daher können
+Sie eine Einstellung auch direkt in der Smarty-Template-Datei vornehmen.
+
+\end{ospdescription}
+
+\index{Gallery}%
+\index{Menalto Gallery}%
+\index{Coppermine Gallery}%
+\index{Zooomr}%
+\index{Mediendatenbank}
+\index{Plugins!Unified Sidebar Image Display}%
+\index{Plugins!serendipity\_plugin\_imagesidebar}%
+\subsection{Unified Sidebar Image Display\newline
+serendipity\_plugin\_imagesidebar}
+
+Zahlreiche Plugins im Serendipity-Plugin-Archiv ermöglichen die Einbindung
+von Bildern in der Seitenleiste.
+
+Das Plugin \emph{Unified Sidebar Image Display} versucht diese
+verschiedenen Plugins unter einem Dach zu vereinen. Anstatt für jede
+einzelne Galerie-Software ein eigenständiges Plugin zu installieren,
+können Sie mit diesem Plugin direkt mehrere mögliche Bildquellen
+auswählen: \emph{Menalto Gallery}\footnote{\cmd{http://gallery.menalto.com}},
+\emph{Coppermine Gallery}\footnote{\cmd{http://coppermine-gallery.net}},
+\emph{Zooomr}\footnote{\cmd{http://www.zooomr.com}}, aber auch die integrierte
+\emph{Serendipity"=Mediendatenbank}.
+
+Bitte beachten Sie, dass für die gerade genannten Galerie-Anwendungen
+auch, wie erwähnt, eigenständige Plugins bestehen. Diese sind jedoch älter
+und nur noch aus historischen Gründen in der Plugin-Datenbank. Ein
+Umstieg auf das einheitliche \emph{Unified Sidebar Image Display}-Plugin
+ist daher immer zu empfehlen.
+
+Nachdem das Plugin installiert wurde, müssen Sie in der Konfiguration
+erst festlegen, welche Software als Quelle für Ihre Bilder herangezogen
+werden soll. Abhängig von der gewählten Option werden dann weitere
+Konfigurationsmöglichkeiten angezeigt, sobald Sie auf den Button
+\menu{Speichern} klicken.
+
+\subsubsection{Menalto Gallery Url}
+
+Die \emph{Menalto Gallery} bietet in ihrer Installation bereits ein
+kleines PHP-Script namens \cmd{block-random.php} an, mit dem Sie ein Bild
+der Galerie anzeigen können. Je nach Version der Menalto Gallery (1.x
+oder 2.x) heißt dieses Script anders, daher müssen Sie vor allem darauf
+achten, dem Serendipity"=Plugin die richtige Gallery-Version mitzuteilen.
+
+Wenn Sie die Menalto Gallery in ein Unterverzeichnis von Serendipity
+installiert haben, kann es möglicherweise zu Problemen mit der
+URL"=Umformung von Serendipity kommen. Wenn Sie die Option
+\cmd{mod\_rewrite} in der Serendipity-Konfiguration gewählt haben,
+sollten Sie eine \cmd{.htaccess}-Datei im Gallery-Unterverzeichnis
+erstellen. Diese sollte den Inhalt 
+
+\begin{ospcode}
+RewriteEngine Off
+\end{ospcode}
+
+haben. Mit
+einer solchen Datei können Sie Serendipity dazu bringen, seine eigene
+URL-Formung im Gallery-Unterverzeichnis nicht anzuwenden. Sicherlich
+sinnvoller ist in den meisten Fällen jedoch, wenn Sie Gallery in ein
+eigenständiges Verzeichnis oberhalb des Serendipity-Verzeichnisses
+installieren.
+
+\begin{ospdescription}
+\ospitem{\menu{URL oder Pfad zur Gallery-Installation}}
+Hier müssen Sie die vollständige URL eintragen, die zu Ihrer
+Gallery-Installation führt. Das Plugin fügt hier standardmäßig eine URL
+zum Blog ein, die Ihnen aber nur als Anhaltspunkt dienen soll.
+
+\ospitem{\menu{Anzahl der Zufallsfotos}}
+Mit der Option \menu{Anzahl der Zufallsfotos} legen Sie fest, wie viele
+Bilder Ihrer Galerie angezeigt werden sollen. Die Bilder werden dabei vom
+Gallery-Script zufällig ausgewählt.
+
+\ospitem{\menu{Rotate image time}}
+Jede Darstellung eines Zufallsbildes aus der Galerie wird für einen
+gewissen Zeitraum zwischengespeichert, damit in diesem Zeitraum alle
+Besucher dasselbe Zufallsbild angezeigt bekommen. Wie lange dieser
+Zeitraum (in Minuten) ist, stellen Sie über die Option \menu{Rotate
+image time} ein. Die Zahl \cmd{30} würde also bewirken, dass jeweils eine
+halbe Stunde lang dasselbe Zufallsbild angezeigt wird.
+
+\ospitem{\menu{Welche Version der Gallery-Software benutzen Sie?}}
+In diesem Auswahlfeld müssen Sie die Versionsnummer der installierten
+Gallery-Anwendung eintragen, da sich die Art der Einbindung danach
+richtet.
+
+Wenn Sie über eine Version höher als 2.0 verfügen, können Sie die
+folgenden Konfigurationsoptionen nutzen:
+
+\ospitem{\menu{Picture to display}}
+Gallery 2.x ermöglicht es Ihnen, nicht nur ein Zufallsbild anzuzeigen,
+sondern auch ein Bild der zuletzt hochge  yladenen Dateien (\menu{Recent}),
+der meistangesehenen Bilder (\menu{Most viewed}) oder auch eines
+gezielten Bildes (\menu{Specific}).
+
+\ospitem{\menu{Album ID to show}}
+Standardmäßig zeigt das Plugin die Bilder egal welcher Unteralben an.
+Wenn Sie in dieses Eingabefeld die ID eines Albums eintragen, wird nur
+dieses Unteralbum berücksichtigt. Die ID eines Albums können Sie in der
+Gallery-Oberfläche herausfinden.
+
+\ospitem{\menu{Maximum Width of Image}}
+Das Plugin zeigt das gewünschte Bild als Vorschaugrafik direkt so an, wie
+es die Gallery-Software ausgibt. Wenn Sie eine andere Bildgröße
+benötigen, können Sie die maximale Breite dieses Bildes im Feld
+\menu{Maximum Width of Image} eintragen. Dies bewirkt, dass das jeweilige
+Bild von Ihrem Browser auf diese Größe umgerechnet wird. Der Browser lädt
+dabei das große Bild herunter, daher kann diese Option dazu führen, dass
+das Bild zum einen vom Browser qualitativ minderwertig verkleinert wird
+und zum anderen auch mehr Bandbreite verbraucht.
+
+Kurzum: Sie sollten lieber mit der Standardgröße der
+Gallery"=Vorschaubilder vorlieb nehmen.
+
+\ospitem{\menu{Link Target}}
+Ein Klick auf das dargestellte Bild führt direkt in die Gallery"=Anwendung
+und öffnet sie im gleichen Browser-Fenster wie Ihr Blog. Wenn Sie dafür
+gerne ein neues Browser-Fenster öffnen wollen, können Sie im Feld
+\menu{Link Target} das Schlüsselwort \cmd{\_blank} eintragen.
+
+\ospitem{\menu{Which details should be displayed}}
+Zu jedem dargestellten Bild kann Gallery von sich aus Meta"=Informationen
+anzeigen. Welche dieser Felder dargestellt werden, können Sie über das
+Eingabefeld \menu{Which details should be displayed} regeln. Tragen Sie
+dort eine Liste aller gewünschten Schlüsselwörter ein, mit einem Komma
+voneinander getrennt. Alle verfügbaren Felder werden neben dem
+Eingabefeld erwähnt: \cmd{title} (Bildtitel), \cmd{date}
+(Veröffentlichungsdatum), \cmd{views} (Anzahl der Besucher des Bildes),
+\cmd{owner} (Eigentümer des Bildes), \cmd{heading} (Bildüberschrift).
+\end{ospdescription}
+
+\subsubsection{Coppermine Database}
+
+Wenn Sie als \menu{Image Source} die Quelle \menu{Coppermine Database}
+auswählen, kann das Plugin direkt auf die MySQL-Datenbank der
+Coppermine-Gallery zugreifen und deren Bilder anzeigen.
+
+Die Konfigurationsoptionen sind:
+
+\begin{ospdescription}
+
+\ospitem{\menu{Server, Prefix, Database, Username, Password}}
+Diese Optionen müssen die Datenbank-Zugangsdaten zu der
+Coppermine"=Datenbank enthalten.
+
+\ospitem{\menu{URL}}
+In der Variable \menu{URL} müssen Sie die volle URL zu Ihrer
+Coppermine-Installation eintragen.
+
+\ospitem{\menu{Gallery Name}}
+Das Seitenleisten-Plugin bindet einen Link zu Ihrer
+Coppermine"=Installation ein. Die Beschreibung dieses Links geben Sie über
+die Option \menu{Gallery Name} ein.
+
+\ospitem{\menu{Usergroup}}
+Die Coppermine-Galerie kann Zugriffsrechte zu Bildern abhängig von
+Benutzergruppen setzen. So können Sie private und öffentliche Bilder
+voneinander abgrenzen.
+
+Das Coppermine-Plugin muss sich also einer bestehenden
+Copper\-mine-Benutzergruppe zuordnen, damit es weiß, welche Bilder es
+darstellen darf. Wenn Sie im Feld \menu{Usergroup} den Namen einer
+Gruppe eintragen, die Sie bei Coppermine für Mitglieder Ihrer Familie
+vergeben haben, dann könnte das Plugin auch solche Bilder anzeigen. Wenn
+Sie dem Plugin den Namen einer Gastgruppe mitgeben, würden diese Bilder
+fehlen.
+
+Standardmäßig gibt das Plugin einfach alle Bilder aus, daher ist die
+Benutzergruppe \menu{Everybody} voreingestellt.
+
+\ospitem{\menu{Size}}
+Die Konfigurationsoption \menu{Size} legt fest, wie groß das Vorschaubild
+(in Pixel, egal ob Höhe oder Breite) sein soll, das vom Plugin in der
+Seitenleiste angezeigt wird.
+
+\ospitem{\menu{Thumbnails}}
+Diese Option gibt an, wie viele Bilder angezeigt werden sollen.
+
+\ospitem{\menu{Type}}
+Standardmäßig zeigt das Plugin die aktuellsten Bilder (\menu{Most
+Recent}). Über die Auswahlfelder der Konfigurationsoption \menu{Type}
+können Sie jedoch auch die beliebtesten Bilder (\menu{Most Viewed}) oder
+zufällige Bilder (\menu{Random Images}) anzeigen.
+
+\ospitem{\menu{Album Link}}
+Wenn Sie diese Option aktivieren, wird unter jedem Bild ein Link zur
+Coppermine-Galerie eingebunden.
+
+\ospitem{\menu{Gallery Link URL}}
+Am Ende der Bilderübersicht können Sie einen Link einfügen, den Sie mit
+diesem Parameter angeben. Der Link zeigt üblicherweise direkt zu Ihrer
+Galerie, jedoch können Sie auch zu anderen Stellen verweisen.
+
+\ospitem{\menu{Resolve Non-Images}}
+Coppermine ermöglicht es Ihnen, auch Videos oder andere Dateien anstelle
+von Bildern zu verwalten. Wenn Sie die Option \menu{Resolve Non-Images}
+aktiviert haben, versucht das Plugin solche Dateien ebenfalls in der
+Seitenleiste anzuzeigen.
+
+\end{ospdescription}
+
+\subsubsection{Zooomr Plugin}
+
+Im Gegensatz zu den beiden eingangs erwähnten Mediendatenbanken werden
+die Bilder bei dieser Datenquelle nicht von Ihrem eigenen Server bezogen,
+sondern vom zentralen Zooomr-Server aus eingebunden.
+
+Zooomr stellt dabei einen RSS-Feed zur Verfügung, der Ihre aktuellen
+Bilder enthält. Diesem RSS-Feed können Sie eine Reihe von Optionen
+mitgeben, die Sie auf der Zooomr-Homepage erfahren können.
+
+In den Konfigurationsoptionen dieses Plugin-Bereichs können Sie ebenfalls
+die Größe der Vorschaubilder, die Anzahl der gezeigten Bilder und die
+Verlinkungs-Art verändern.
+
+\subsubsection{Media Library (Serendipity)}
+
+Natürlich ist es auch möglich, Bilder Ihrer
+Serendipity-Mediendatenbank in der Seitenleiste anzuzeigen. Hierfür dient
+die Option \menu{Media Library} in den Einstellungen des Plugins.
+Folgende Konfigurationsoptionen sind dabei möglich:
+
+\begin{ospdescription}
+\ospitem{\menu{Limit output to only hotlinked images}}
+Wenn Sie diese Option aktivieren, werden nur die Bilder der
+Mediendatenbank angezeigt, die von fremden Servern stammen.
+
+Zur Erinnerung: Serendipity kann Dateien auf Ihren Server
+hochladen, aber auch auf Dateien fremder Server verweisen und diese
+Grafiken oder Dateien trotzdem in der Datenbank vorhalten (\emph{Hotlinking}).
+
+\ospitem{\menu{Hotlink limiting keyword}}
+Wenn Sie die Option \menu{Limit output to only hotlinked images}
+aktivieren, können Sie über das Eingabefeld \menu{Hotlink limiting
+keyword} ein spezielles Schlüsselwort vergeben. Daraufhin zeigt das
+Plugin nur die Bilder, bei denen das Schlüsselwort in der URL der
+Datei vorkommt.
+
+Wenn Sie also einen Hotlink auf die Dateien
+\cmd{http://google.com/""logo.jpg} und \cmd{http://yahoo.com/logo.jpg} in
+der Mediendatenbank gespeichert haben und als Schlüsselwort
+\menu{google.com} eintragen, werden nur Bilder vom Google.com-Server
+angezeigt. Würden Sie\osplinebreak{} stattdessen \cmd{logo.jpg} eintragen, könnten Sie beide
+Bilder sehen.
+
+\ospitem{\menu{Pick a default directory}}
+Mit diesem Auswahlfeld können Sie ein Stammverzeichnis der
+Mediendatenbank auswählen, von dem Sie Bilder darstellen wollen.
+
+\ospitem{\menu{Output images strictly}}
+Wenn Sie diese Option aktivieren, zeigt das Plugin nur die Bilder an, die
+in dem oben konfigurierten Verzeichnis abgespeichert worden sind. Nur
+wenn Sie die Option \menu{Output images strictly} deaktiviert haben, werden
+auch die Bilder in möglichen Unterverzeichnissen des gewählten
+Verzeichnisses dargestellt.
+
+\ospitem{\menu{Rotate image time}}
+Jede Darstellung eines Zufallsbildes aus der Mediendatenkbank wird für
+einen gewissen Zeitraum zwischengespeichert, damit in diesem Zeitraum
+alle Besucher dasselbe Zufallsbild angezeigt bekommen. Über die Option
+\menu{Rotate image time} stellen Sie diesen Zeitraum (in Minuten) ein.
+Die Zahl \cmd{30} würde also bewirken, dass jeweils eine halbe Stunde
+lang dasselbe Zufallsbild angezeigt wird.
+
+\ospitem{\menu{Number of images to display}}
+Hiermit steuern Sie die Anzahl der angezeigten Bilder.
+
+\ospitem{\menu{Image width}}
+Serendipity erzeugt Vorschaubilder in der konfigurierten Breite/Höhe
+(siehe Serendipity-Konfiguration auf Seite \pageref{Thumbnailgroesse}). Daher
+zeigt auch das Seitenleisten-Plugin standardmäßig die Bilder in genau dieser Breite an.
+
+Wenn Sie größere Vorschaubilder in der Seitenleiste sehen wollen, können
+Sie den Browser anweisen, die Bilder selbständig zu vergrößern (oder zu
+verkleinern). Dies führt jedoch immer zu einem Qualitätsverlust, da die
+Datei nicht aufgrund der Originalgröße reduziert wird, sondern immer nur
+das Vorschaubild gestaucht oder gestreckt werden kann. Wenn Sie hier die
+Zahl \cmd{0} eintragen, zeigt das Plugin ein Bild mit der vollen zur
+Verfügung stehenden Breite in der Seitenleiste an.
+
+\ospitem{\menu{Behavior of image link}}
+Mit der Option \menu{Behavior of image link} könenn Sie einstellen, was
+bei einem Klick des Besuchers auf ein Bild passieren soll. Entweder kann
+dann das große Bild auf derselben Seite angezeigt werden (\menu{In Page}),
+oder das Bild kann in einem Popup-Fenster erscheinen (\menu{Pop Up}).
+
+Eine weitere Möglichkeit ist, bei einem Klick auf ein Bild eine fest
+vorgegebene URL aufzurufen (die beispielsweise zu einer statischen Seite
+oder anderem führt). Wenn Sie die Option \menu{URL} auswählen, müssen Sie
+erst die Plugin-Konfiguration speichern (über den Button \menu{Speichern})
+und können dann im Eingabefeld unter diesem Auswahlfeld die URL
+eintragen.
+
+Eine besondere Option stellt die Variante \menu{Try to link to related
+entry} dar. Wenn Sie diese Variante wählen, versucht das Plugin, zu jedem
+Bild einen Blog-Artikel zu finden, in dem das Bild eingesetzt wurde. Wenn
+ein Blog-Artikel gefunden wird, führt der Link dann zu diesem Beitrag.
+
+Eine weitere Option namens \menu{User-Galerie} steht hier zur Verfügung,
+wenn Sie das Serendipity-Plugin \emph{serendipity\_event\_usergallery} (siehe
+Seite \pageref{usergallery}) installiert haben. Bei der Auswahl dieser Variante
+können Sie nach dem Speichern des Plugins den Permalink der User-Galerie eintragen.
+
+\ospitem{\menu{Enter any text (or html) you would like
+placed before/after the picture}}
+Am Ende der Konfigurationsoptionen finden Sie zwei große
+Texteingabebereiche. Hier können Sie einen Text eintragen, der vor und
+nach der Bilderübersicht in der Seitenleiste angezeigt wird.
+
+\end{ospdescription}
+
+
+\index{Plugins!Category Tree Menu}%
+\index{Kategoriebaum darstellen}%
+\index{Plugins!serendipity\_plugin\_category\_dhtml\_menu}%
+\subsection{Category Tree Menu\newline
+serendipity\_plugin\_category\_dhtml\_menu}
+
+Das Standard-Seitenleisten-Plugin zur Darstellung von Kategorien zeigt
+diese einfach untereinander aufgelistet an.
+Da vielfach die Kategorie-Übersicht als eine Art Menüstruktur des Blogs
+benutzt wird, ist diese Darstellung möglicherweise nicht immer die beste.
+
+Das Plugin \emph{Category Tree Menu} bietet daher eine dynamische
+Kategorieansicht an. Auf oberster Ebene werden nur alle Hauptkategorien
+angezeigt, alle Unterkategorien werden ausgeblendet und nur durch Klick
+auf eine Hauptkategorie wieder angezeigt. So kann man, wie von
+Dateimanagern gewohnt, Kategorien platzsparend ein- und ausklappen.
+
+Dieses Plugin benötigt die externe \emph{PEAR::HTML\_TreeMenu}-Bibliothek. 
+Diese müssen Sie entweder als zentrale PEAR-Bibliothek über
+den Server"=Provider installieren oder manuell installieren. Dazu
+müssen Sie das PEAR-Paket herunterladen\footnote{\cmd{http://pear.php.net/package/HTML\_TreeMenu}} und
+entpacken. Laden Sie die Datei \cmd{HTML\_TreeMenu-""1.2.0/TreeMenu.php}
+anschließend ins Serendipity-Verzeichnis \cmd{bundled"=libs/HTML/} hoch.
+Kopieren Sie dann noch die Datei \cmd{TreeMenu.js} und das ganze
+Verzeichnis \cmd{images} in Ihr Plugin-Verzeichnis
+\cmd{plugins/serendipity""\_plugin\_category\_dhtml\_menu}.
+
+In den Konfigurationsoptionen des Plugins müssen Sie nun den
+vollständigen Pfad zu \cmd{TreeMenu.js} wie auch zum 
+\cmd{images}-Unterverzeichnis eintragen. Bei der Standardkonfiguration im Beispiel
+dieses Buches wäre das also
+
+\begin{ospcode}
+/serendipity/plugins/serendipity_plugin_dategory_dhtml_menu/images/  
+\end{ospcode}
+
+und
+
+\begin{ospcode}
+/serendipity/plugins/serendipity_plugin_dategory_dhtml_menu/TreeMenu.js  
+\end{ospcode}
+
+Nur wenn diese beiden Pfade korrekt eingetragen sind, werden Sie später
+im Frontend eine Darstellung der Kategorien sehen. Bei einer
+Fehlkonfiguration ist das Seitenleisten-Plugin leer, und Ihr Browser zeigt
+möglicherweise eine JavaScript-Fehlermeldung an.
+
+Die Verwendung des \emph{Category Tree Menu} hat einen großen Nachteil
+gegenüber dem vorhandenen \emph{Kategorien}-Plugin: Es zeigt immer pauschal alle
+Kategorien und Unterkategorien an und kann auch keine Leserechte zu
+einer Kategorie auswerten. Auch die Darstellung mehrerer Kategorien ist
+mit dem Plugin nicht möglich. Daher müssen Sie sich entscheiden, ob diese
+Möglichkeiten für Sie kritisch sind. Vielleicht findet sich in zukünftigen 
+Versionen dieses Plugins ein Entwickler, der beide Plugins miteinander kombiniert?
+
+\ospvacat
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "serendipity"
+%%% End:

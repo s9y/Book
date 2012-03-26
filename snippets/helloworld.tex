@@ -1,0 +1,59 @@
+\begin{ospcode}
+<?php
+if (IN\textbackslash{}_serendipity !== true) \textbackslash{}\{
+    die ('Don't hack!');
+\textbackslash{}\}
+
+class serendipity\textbackslash{}_plugin\textbackslash{}_helloworld extends serendipity\textbackslash{}_plugin \textbackslash{}\{
+    var \textbackslash{}$title = 'Beispiel-Plugin: Hello world!';
+
+    function introspect(\textbackslash{}&\textbackslash{}$propbag) \textbackslash{}\{
+        global \textbackslash{}$serendipity;
+
+        \textbackslash{}$this->title = \textbackslash{}$this->get\textbackslash{}_config('title', \textbackslash{}$this->title);
+
+        \textbackslash{}$propbag->add('name',          'Beispiel-Plugin: Hello world!');
+        \textbackslash{}$propbag->add('description',   'Beschreibung des Plugins');
+        \textbackslash{}$propbag->add('stackable',     true);
+        \textbackslash{}$propbag->add('author',        'Garvin Hicking');
+        \textbackslash{}$propbag->add('version',       '47.11');
+        \textbackslash{}$propbag->add('requirements',  array(
+            'serendipity' => '0.8',
+            'smarty'      => '2.6.7',
+            'php'         => '4.1.0'
+        ));
+        \textbackslash{}$propbag->add('groups', array('FRONTEND\textbackslash{}_VIEWS'));
+        \textbackslash{}$propbag->add('configuration', array('title', 'intro'));
+    \textbackslash{}\}
+
+    function introspect\textbackslash{}_config\textbackslash{}_item(\textbackslash{}$name, \textbackslash{}&\textbackslash{}$propbag) \textbackslash{}\{
+        switch(\textbackslash{}$name) \textbackslash{}\{
+            case 'title':
+                \textbackslash{}$propbag->add('type', 'string');
+                \textbackslash{}$propbag->add('name', TITLE);
+                \textbackslash{}$propbag->add('description', '');
+                \textbackslash{}$propbag->add('default', \textbackslash{}$this->title);
+                break;
+
+            case 'intro':
+                \textbackslash{}$propbag->add('type', 'string');
+                \textbackslash{}$propbag->add('name', 'Ihr Text');
+                \textbackslash{}$propbag->add('description', '');
+                \textbackslash{}$propbag->add('default', 'Hallo welt!');
+                break;
+
+            default:
+                return false;
+        \textbackslash{}\}
+        return true;
+    \textbackslash{}\}
+
+    function generate\textbackslash{}_content(\textbackslash{}&\textbackslash{}$title) \textbackslash{}\{
+        global \textbackslash{}$serendipity;
+        \textbackslash{}$title       = \textbackslash{}$this->get\textbackslash{}_config('title', \textbackslash{}$this->title);
+        \textbackslash{}$intro       = \textbackslash{}$this->get\textbackslash{}_config('intro');
+
+        echo \textbackslash{}$intro . '<br />\textbackslash{}n';
+    \textbackslash{}\}
+\textbackslash{}\}
+\end{ospcode}

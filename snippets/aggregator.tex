@@ -1,0 +1,15 @@
+
+\begin{ospcode}
+<div class="serendipity\_entry\_body">
+  \{$entry.body\}
+
+  \{if $entry.properties.ep\_aggregator\_feedurl\}
+  <p>Dieser Artikel wurde ursprünglich von 
+     \{$entry.properties.ep\_aggregator\_author\} 
+     im Blog <a href="\{$entry.properties.ep\_aggregator\_articleurl\}">
+     \{$entry.properties.ep\_aggregator\_feedname\}</a>
+     verfasst und hier aggregiert.
+  </p>
+  {/if}
+</div>
+\end{ospcode}

@@ -1,0 +1,18 @@
+\begin{ospcode}
+// Ist der ausführende Server der Quellserver?
+if (\$_SERVER['HTTP_HOST'] == '\cmdvar{example.com}') \{
+    // Ersetze böse Sonderzeichen
+    \$ziel = str_replace(
+      array("{\textbackslash}n", "{\textbackslash}r"), 
+      array('', ''),
+      \$_SERVER['REQUEST_URI']
+    );
+    
+    // Entferne Quell-Pfad zur Weiterleitung
+    \$ziel = preg_replace('@^\cmdvar{/serendipity/}@i', '/', \$ziel);
+
+    // Leite zu Ziel-Server weiter
+    header('Location: \cmdvar{http://serendipity.example.com}' .\$ziel);
+    exit;
+\}
+\end{ospcode}
