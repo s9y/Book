@@ -41,7 +41,8 @@ PICFILES=img/chmod.eps\
 		 img/logo.eps\
 		 img/quicknotes.eps\
 		 img/startseite_leer.eps\
-		 img/dbrel.eps
+		 img/dbrel.eps\
+		 img/bulletproof.eps
 
 help:
 	@(echo -e "make help\t zeigt diese Hilfe an.")
