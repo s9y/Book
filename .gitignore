@@ -14,3 +14,5 @@
 *.toc
 *.ps
 *.eps
+# Lokale Backups
+.DS_Store
