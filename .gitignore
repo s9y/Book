@@ -1,2 +1,18 @@
-
+# Backup-Dateien
+*~
+# Temporaerdateien
+*.dvi
+*.aeb
+*.aux
+*.idx
+*.ilg
+*.ind
+*.ivz
+*.ivz.xml
+*.log
+*.pic.xml
+*.toc
+*.ps
+*.eps
+# Lokale Backups
 .DS_Store
