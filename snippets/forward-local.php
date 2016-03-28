@@ -1,0 +1,16 @@
+//&nbsp;Ist&nbsp;der&nbsp;ausführende&nbsp;Server&nbsp;der&nbsp;Quellserver?<br />
+if&nbsp;($_SERVER['HTTP_HOST']&nbsp;==&nbsp;'example.com')&nbsp;{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Ersetze&nbsp;böse&nbsp;Sonderzeichen<br />
+&nbsp;&nbsp;&nbsp;&nbsp;$ziel&nbsp;=&nbsp;str_replace(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array("\n",&nbsp;"\r"),&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array('',&nbsp;''),<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$_SERVER['REQUEST_URI']<br />
+&nbsp;&nbsp;&nbsp;&nbsp;);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Entferne&nbsp;Quell-Pfad&nbsp;zur&nbsp;Weiterleitung<br />
+&nbsp;&nbsp;&nbsp;&nbsp;$ziel&nbsp;=&nbsp;preg_replace('@^/serendipity/@i',&nbsp;'/',&nbsp;$ziel);<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Leite&nbsp;zu&nbsp;Ziel-Server&nbsp;weiter<br />
+&nbsp;&nbsp;&nbsp;&nbsp;header('Location:&nbsp;http://serendipity.example.com'&nbsp;.$ziel);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />
+}<br />

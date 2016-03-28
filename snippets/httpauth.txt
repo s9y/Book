@@ -1,0 +1,4 @@
+AuthType&nbsp;Basic<br />
+AuthName&nbsp;"Authorisation:&nbsp;User&nbsp;erforderlich"<br />
+AuthUserFile&nbsp;/etc/passwd<br />
+require&nbsp;valid-user

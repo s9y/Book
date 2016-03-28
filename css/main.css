@@ -1,0 +1,821 @@
+/*! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+    /*html { font-family: "PT Sans"Fira Sans;; }*/
+    body {
+        background: #CCC;
+    }
+    video, img {
+        height: auto;
+    }
+    #top > div,
+    main {
+        margin: 0 auto;
+        max-width: 80em;
+        width: 96%;
+    }
+    #banner h2 {
+        float: right;
+    }
+    #workspace {
+        background: #FFF;
+        padding: 2em 1em;
+    }
+    #content {
+        margin: 1.5em 2em;
+        width: 100%;
+        display: block;
+    }
+    #book_header .title-block {
+        display: inline-block;
+        margin: 0 0 2em 10em;
+    }
+
+    section.chapter {
+        border: 1px solid #800060;
+        margin-bottom: 2em;
+        padding: 1%;
+        width: 95%; }
+        .chapter h2 { margin-bottom: 2rem; }
+
+    section.index {
+        border: 1px solid #eee;
+        margin: 1%;
+        padding: 1%;
+        width: 98%; }
+        h3.index {}
+        h3.section { margin-bottom: 1.5em; }
+
+    section.sub {
+        border: 1px dashed;
+        margin: 2%;
+        padding: 1em;
+        width: 96%; }
+        h3.subsection { margin-bottom: 1.5em; }
+
+    article.subsub {
+        border: 1px dashed #80d480;
+        background: #fafcfa;
+        margin: 1%;
+        padding: .5em;
+        width: 98%; }
+        h4.subarticle { font-weight: 600; }
+
+    article > header:first-of-type,
+    article > :last-of-type
+        .artlaset {
+        margin-bottom: 1.5em;
+    }
+
+    figure { /*margin: inherit inherit; width: 100%;*/ }
+    figcaption { text-align: center; }
+    .asfigcaption {
+        display: block;
+        text-align: center;
+    }
+
+    /* index and tags */
+    .tagging {}
+    .tag {}
+    .inline-tag { background: lightpink; border: 1px dashed; padding .5em; }
+    .tag-box { border: 1px solid red; padding .5em; }
+
+    /* label and tags are not visible, but an anchor! */
+    .tagging, .tag-box, .inline-tag, .tag, .label  {
+        border: 0 none;
+        clip: rect(0 0 0 0);
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        position: absolute;
+        width: 0;
+        height: 0;
+    }
+
+    .pageref a {
+        text-decoration: underline;
+        color: #006fff;
+        border: 1px dashed;
+        padding: 0 .25em;
+    }
+
+    .s-toc, .u-toc {
+        margin: auto;
+        color: #A0A0A0;
+        float: right;
+    }
+    .s-toc {}
+    .u-toc {}
+
+    p {
+        display: inline-block;
+        width: 100%;
+        z-index: 1;
+        position: relative;
+    }
+    /* close and clear */
+    p:not(.in)::after {
+        content: ".";
+        display: inline-block;
+        height: 0px;
+        clear: both;
+        visibility: hidden;
+    }
+    p, ul {
+        line-height: 1.6;
+    }
+    ul li {
+        width: 90%;
+    }
+    ul.detail {
+        display: inline-block;
+        with: auto;
+    }
+
+    @counter-style star {
+        background-color: black;
+        system: cyclic;
+        symbols: \2606;
+        suffix: " ";
+    } ul.star li {
+        list-style: star;
+        position:relative;
+        } .star li:before {
+        background-color: black;
+        color: #000; }
+
+    p:not(.desc) br, .nobr br {
+        white-space: nowrap;
+        content:" ";
+        display: none;
+    }
+    p:not(.desc) br:after, .nobr br:after {content:" ";}
+
+    .nobr .allowbr br {
+        white-space: initial;
+        content: initial;
+        display: initial;
+    } .nobr .allowbr br:after {content: initial;}
+
+    /* overrule poole */
+    code {
+        padding: .1em;
+        background-color: initial;
+        font-size: 14px;/*.875em; 85% variable sizes are shit when we dive into multifunctional arrays */
+        border-radius: initial;
+    }
+    #pre-style code { color: #222; }
+    #pre-style,
+    pre {
+        display: inline-table;
+        width: 100%;
+        border: 1px solid #AAA;
+        background: #EEE;
+    }
+    pre.snippet {
+        width: 100%;
+        display: flex; }
+        .snippet code {
+            width: 97%;
+            display: inline-flex;
+            white-space: nowrap;
+        }
+    #pre-style code,
+    p > code,
+    .item-list code.item {
+        background: #FAFAFA;
+        border: 1px solid #DFDFDF;
+        padding: .1em;
+    }
+    span.item.select  {
+        background: #FBFAA6; /* jeaune */
+        border: 1px solid #DFDFDF;
+        padding: .1em;
+    }
+    #pre-style code,
+    pre > code {
+        display: inline-table;
+        background: #FFF;
+        width: 97%;
+        margin: 1em;
+        padding: .5em 1em;
+        white-space: normal;
+    }
+    .item-list code.sub-file {
+        color: #468847; }
+    }
+
+    /* c&p next theme messages */
+    .msg-warning, .msg-success, .msg-notice, .msg-question, .msg-info, .desc, .footnote  {
+        font-size: 13px;
+        font-size: 0.8125rem;
+        margin: 16px 0;
+        margin: 1rem 0;
+        padding: 8px;
+        padding: 0.5rem;
+        border: 1px solid;
+        border-radius: 4px; }
+        .msg-warning p, .msg-success p, .msg-notice p, .msg-question p, .msg-info p, .desc p {
+            margin: 0; }
+
+    .inner-note {
+        margin: 0px 0px 1rem;
+        padding: .5rem 0; }
+
+    /* c&p next theme messages */
+    .msg-warning {
+        background: #f2dede;
+        border-color: #eed3d7;
+        color: #b94a2b; }
+    .desc > .file,
+    .msg-success {
+        background: #dff0d8;
+        border-color: #d6e9c6;
+        color: #468847; }
+    .desc,
+    .msg-notice {
+        background: #d9edf7;
+        border-color: #bce8f1;
+        color: #3a87ad; }
+    .citem-desc,
+    .fct-desc,
+    .msg-desc,
+    .msg-question {
+        background: #fcf8e3;
+        border-color: #fbeed5;
+        color: #c09853; }
+    .desc > .dir,
+    .footnote,
+    .msg-info {
+        background: #FCF2E3;
+        border-color: #FBD5D5;
+        color: #C05353; }
+    .msg-xhint {
+        margin: 1.5em 0;
+        padding: .5em;
+    }
+    .installer .msg-hint {
+        display: inline-block;
+        margin: .5em 0;
+        padding: 0 .5em;
+    }
+    .msg-hint {
+        background: #eee;
+        border: 1px solid #aaa;
+        color: #777;
+    } .msg-hint code { vertical-align: text-top; }
+
+    p.desc  {
+        width: 100%;
+        font-size: initial;
+    } p .subdesc {/* fakes ul ident in p .desc environments */
+            border: 1px dashed #DADADA;
+            color: #666;
+            display: block;
+            margin: .25em 4em;
+            padding: 0 1em; }
+
+    .desc > code.item, .item.select, .item-list code.item { font-weight: 600; }
+    /*.desc > code.item.file { background: transparent; color: #468847; } see success */
+
+    /* database related */
+    .sql-field-group {
+        display: inline-block;
+        padding: .5em 1em;
+        width: 80%;
+    }
+    .sql-field-group code.item  { background: #d3fefc; color: #0000ff; }
+    .sql-field-group code.sql-field {
+        border: 1px solid #ccc;
+        display: block;
+        padding: 0 .1em;
+        margin-left: -1em;
+        width: 12rem;
+    }
+    .sql-field-group > .subdesc,
+    .box.group-box > .subdesc {
+        border: 0 none;
+        margin: .25em 0em;
+        color: inherit;
+    }
+    .sql-field-group > code { background: inherit; border: inherit; }
+
+    /* revision 2.1 related */
+    div.text, p.text {
+        border: 1px dashed;
+        padding: .5em;
+    }
+    .revision {
+        background: rgba(64, 224, 208, 0.39);
+    }
+    div.shadow, p.shadow {
+        position: relative;
+        border-radius: 100px / 10px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    }
+    .mark { color: red; }
+
+    p.fct-desc {/*see msg-question*/}
+
+    .desc-info {
+        display: block;/* block wg 7.2.3 last is more like a sub-tree desc-info - before, inline-block; used to work */
+        margin: 0 1em; }
+        .desc-info img {
+            display: inline-block;
+            width: 100%; }
+        /* this is a p{aragraph} like "sub"-box inside <span class="desc-info nobr">...</span> */
+        li .box, p .box {
+            display: block;
+            padding: 0 .1em; /* to not hit mda-box dashed border */
+        } p .box:not(:first-child) {
+            /* not first, but all others */
+            margin: 1em 0; }
+            p .box.first { margin-top: 0; }
+            .sub-box {
+                margin: 0 1em 1em 2em;
+                display: block;
+            }
+            .mda-box {
+                border: 1px dashed; }
+                .mda-box > .box {
+                    margin: 1em 0; }
+
+    .b,
+    .menu { font-weight: 600; }
+
+    .recommended {
+        font-family: Menlo, Monaco, "Courier New", monospace;
+        font-weight: normal;
+        text-decoration: underline;
+    }
+    .sub-item {
+        color: #222;
+        background: #F0F0F0;
+        border: 1px solid #FAFAFA;
+    }
+    .sub-item .file {}
+    .sub-item .dir {}
+    .sub-item .smarty {} /* only in sub-items ??? */
+
+    .item-list { display: block; margin: 1em; }
+
+    code.class {}
+    code.classvar {}
+    code.command {}
+    code.constructor{}
+    code.css {}
+    code.dir {/*see above*/}
+    code.event {
+        background: #3e5f81;
+        border: 1px solid #FDFDFD;
+        color: #FDFDFD;
+        padding: .1em .25em;
+    }
+    code.file {/*see above*/}
+    code.function {}
+    code.key {}
+    code.method {}
+    code.name { color: #666; padding: .1em .25em; }
+    code.param {}
+    code.property {}
+    code.smarty_method {}
+    code.smarty_var {}
+    code.type {}
+    code.uri_param { color: #0000ff; }
+    code.var {}
+
+    .item.menu {
+        background: #FAFAFA;
+        border: 1px dashed #EAEAEA;
+        padding: 0 .2em;
+    }
+    .fct-item {
+        background: #d9edf7;
+        border: 1px solid #b0dce6;
+        color: #3a87ad;
+        padding: 0 .2em .1em .2em;
+    }
+
+    .footnote {
+        clear: right;
+        display: inline-block;
+        float: right;
+        width: 16rem;
+        position: sticky;
+        z-index: 999;
+        overflow: visible;
+        color: #5F5F5F;
+        font-size: .85em;
+        margin-bottom: .5em;
+        padding: .25em;
+    } .footnote em {
+            color: #222;
+            text-shadow: 1px 2px 3px #7a7a7a;
+        }
+
+    .error-msg { color: #FF0033;}
+
+    /* mark old text */
+    div.reminiscence, .box.reminiscence {
+        border: 1px solid #DDD;
+        padding: 1em;
+        opacity: .5;
+        color: #666;
+        overflow: hidden;
+    } .reminiscence { color: #666; }
+      .reminiscence:before {
+        color: black;
+        content: attr(data-text); }
+        .reminiscence, .reminiscence p {
+            text-decoration: line-through;
+            text-decoration-color: rgba(255, 0, 0, 0.5);
+        }
+
+    /* fake realList in p{aragraph}s */
+    .list {
+        margin-left: 2em;
+        display: block; }
+        .list .li-item { display: list-item; }
+
+    /* Lists */
+    .numList li,
+    .realList li,
+    .simpleList li {
+        margin-top: .5em;
+    }
+    .siLi,
+    .simpleList li {
+        list-style: none;
+    }
+    .numList li {
+        list-style-type: decimal;
+    }
+
+    /* the sidebar */
+    .sidebar {
+        left: -16rem;
+        width: auto;
+        min-width: 16rem;
+        max-width: 26rem;
+        white-space: normal;
+        overflow-x: hidden;
+        overflow-y: auto;
+    } .sidebar-nav p {
+            line-height: 1.8;
+            margin: .5em 0 0 1em;
+            padding: 0;
+        }
+
+    #sidebar-checkbox:checked ~ .sidebar, #sidebar-checkbox:checked ~ .wrap, #sidebar-checkbox:checked ~ .sidebar-toggle {
+        -webkit-transform: translateX(16rem);
+        -ms-transform: translateX(16rem);
+        transform: translateX(16rem);
+    }
+    .sidebar-nav-item {
+        padding-left: 1.5rem;
+        padding-right: 0;
+    }
+    .sidebar-nav-item {
+        width: auto;
+        max-width: 20rem;
+        display: inline-flex;
+        padding: .5rem 0 .5rem 1rem;
+        border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .sidebar .sct a {
+        font-weight: 600;
+        color: #FFF;
+        white-space: pre-line;
+    }
+    .sidebar .sct-sub a {
+        font-weight: normal;
+        color: #C9C9C9;
+        white-space: normal;
+        width: 92%; /* as well as padding-right: 2em; - to better break within navigation with scrollbar */
+    }
+    #sidebar h1, #sidebar h2 {
+        color: #FFF;
+    }
+    #sidebar ul {
+        list-style: none;
+        margin: 1em 0;
+    }
+    #sidebar ul li {
+        width: auto;
+    }
+    #sidebar li.sct {
+        font-size: .875rem;
+        line-height: 1;
+        margin: .3em;
+        padding: .1em;
+        width: 98%;
+        white-space: pre;
+    }
+    #sidebar li.head-sct {
+        font-size: 1rem;
+        line-height: 1;
+        margin: 0;
+        padding: 0;
+    }
+
+    p.head-sct {
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+    }
+    p.head-sct a {
+        font-weight: 600;
+    }
+    #sidebar .head-toc {
+        width: 1.5em;
+        display: inherit;
+    }
+    #sidebar .head-toc.level0 {
+        opacity: 0;
+    }
+
+    #sidebar .sct a {
+        font-weight: normal;
+    }
+    #sidebar li.sct-sub {
+        font-family: Menlo, Monaco, "Courier New", monospace;
+        font-weight: normal;
+        font-size: .75rem;
+        line-height: 1;
+        margin-left: 2em;
+        width: 88%;
+        white-space: pre;
+    }
+    #sidebar .toc {
+        font-weight: 600;
+    }
+    #sidebar .sct a .fa.fa-caret-down,
+    #sidebar .sct a .fa.fa-caret-up {
+        vertical-align: bottom;
+        margin-bottom: .5em;
+    }
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after,
+    *:first-letter,
+    *:first-line {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

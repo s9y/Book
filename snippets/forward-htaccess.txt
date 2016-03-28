@@ -1,0 +1,3 @@
+RewriteEngine&nbsp;On<br />
+RewriteCond&nbsp;%{HTTP_HOST}&nbsp;^example.com&nbsp;[NC]<br />
+RewriteRule&nbsp;^serendipity/(.*)$&nbsp;http://serendipity.example.com/$1&nbsp;[QSA]

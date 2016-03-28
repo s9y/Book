@@ -1,0 +1,19 @@
+&lt;?php<br />
+&nbsp;&nbsp;&nbsp;&nbsp;/*<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Serendipity&nbsp;configuration&nbsp;file<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Written&nbsp;on&nbsp;Wed,&nbsp;06&nbsp;Jun&nbsp;2007&nbsp;11:22:27&nbsp;+0200<br />
+&nbsp;&nbsp;&nbsp;&nbsp;*/<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;$serendipity['versionInstalled']&nbsp;&nbsp;=&nbsp;'1.3';<br />
+&nbsp;&nbsp;&nbsp;&nbsp;$serendipity['dbName']&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'serendipity';<br />
+&nbsp;&nbsp;&nbsp;&nbsp;$serendipity['dbPrefix']&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'serendipity10_';<br />
+&nbsp;&nbsp;&nbsp;&nbsp;$serendipity['dbHost']&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'127.0.0.1';<br />
+&nbsp;&nbsp;&nbsp;&nbsp;$serendipity['dbUser']&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'root';<br />
+&nbsp;&nbsp;&nbsp;&nbsp;$serendipity['dbPass']&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'root';<br />
+&nbsp;&nbsp;&nbsp;&nbsp;$serendipity['dbType']&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'mysql';<br />
+&nbsp;&nbsp;&nbsp;&nbsp;$serendipity['dbPersistent']&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;false;<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;End&nbsp;of&nbsp;Serendipity&nbsp;configuration&nbsp;file<br />
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;You&nbsp;can&nbsp;place&nbsp;your&nbsp;own&nbsp;special&nbsp;variables&nbsp;after&nbsp;here:<br />
+<br />
+?&gt;
