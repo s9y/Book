@@ -497,7 +497,7 @@ textarea {
         width: 16rem;
         position: sticky;
         z-index: 999;
-        overflow: visible;
+        overflow: hidden; /* since webkit does not auto break long link urls */
         color: #5F5F5F;
         font-size: .85em;
         margin-bottom: .5em;
