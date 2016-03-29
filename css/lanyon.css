@@ -588,11 +588,11 @@ em.fork-and-edit {
   height:51px;
   border:none;
   text-indent:-999px;
-  background:url(../images/ui.totop.png) no-repeat left top;
+  background:url(images/ui.totop.png) no-repeat left top;
 }
 
 #toTopHover {
-  background:url(../images/ui.totop.png) no-repeat left -51px;
+  background:url(images/ui.totop.png) no-repeat left -51px;
   width:51px;
   height:51px;
   display:block;
@@ -699,15 +699,15 @@ a.anchor-link:hover {
 }
 
 .social-links .github {
-  background: transparent url(../images/github.png) no-repeat;
+  background: transparent url(images/github.png) no-repeat;
 }
 
 .social-links .linkedin {
-  background: transparent url(../images/linkedin.png) no-repeat;
+  background: transparent url(images/linkedin.png) no-repeat;
 }
 
 .social-links .twitter {
-  background: transparent url(../images/twitter.png) no-repeat;
+  background: transparent url(images/twitter.png) no-repeat;
 }
 
 .post-comments {
@@ -723,7 +723,7 @@ a.anchor-link:hover {
   width: 200px;
   top: 3em;
   left: 4em;
-  background: url(../images/arrow-menu.png) no-repeat;
+  background: url(images/arrow-menu.png) no-repeat;
   opacity: 0.3;
 }
 
