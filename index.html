@@ -376,7 +376,7 @@
  <li class="sct-sub"><span class="toc-sub">10.6.4</span> <a class="sidebar-nav-item" href="#U632">Zentraltabellen</a></li>
  <li class="sct"><span class="toc">10.7</span> <a class="sidebar-nav-item" href="#S637">Sourcecode-Verwaltung</a>&nbsp;<a data-toggle="collapse" data-target="#collapse_S-10.7" href="#collapse_S-10.7"><i class="fa fa-caret-down"></i></a></li>
  <li class="sct-sub"><span class="toc-sub">10.7.1</span> <a class="sidebar-nav-item" href="#U638">Freier Zugriff</a></li>
- <li class="sct-sub"><span class="toc-sub">10.7.2</span> <a class="sidebar-nav-item" href="#U639">Aktualisierung über CVS/SVN</a></li>
+ <li class="sct-sub"><span class="toc-sub">10.7.2</span> <a class="sidebar-nav-item" href="#U639">Aktualisierung über GIT/CVS/SVN</a></li>
  <li class="sct-sub"><span class="toc-sub">10.7.3</span> <a class="sidebar-nav-item" href="#U641">Spartacus</a></li>
  <li class="sct"><span class="toc">10.8</span> <a class="sidebar-nav-item" href="#S642">Plugin-API</a>&nbsp;<a data-toggle="collapse" data-target="#collapse_S-10.8" href="#collapse_S-10.8"><i class="fa fa-caret-down"></i></a></li>
  <li class="sct-sub"><span class="toc-sub">10.8.1</span> <a class="sidebar-nav-item" href="#U643">Seitenleisten-API</a></li>
@@ -414,9 +414,6 @@
                     <li>
                         <i class="fa fa-github"></i>&nbsp;<a href="https://github.com/s9y/">GitHub</a>
                     </li>
-<!--                    <li>
-                        <i class="fa fa-linkedin"></i>&nbsp;<a href="http://linkedin.com/in/serendipity">LinkedIn</a>
-                    </li>-->
                     <li>
                         <i class="fa fa-twitter"></i>&nbsp;<a href="http://www.twitter.com/s9y">Twitter</a>
                     </li>
@@ -9453,7 +9450,7 @@ Bugfixes oder kleinere neue Features. Da Plugin-Entwickler oft faule<br />
 Leute sind, ist die Dokumentation der Updates jedoch meist dürftig,<br />
 und Sie müssen sich die Aktualisierungen manuell in der<br />
 Spartacus-Versionsverwaltung ansehen.[*]
-<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{http://php-blog.cvs.sourceforge.net/php-blog/additional_plugins/}</span><!-- footnote --><br />
+<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{https://github.com/s9y/additional_plugins}</span><!-- footnote --><br />
 Details zu dieser Webseite finden Sie im Kapitel<br />
 <span class="reference">sourcecodeverwaltung</span> ab Seite <span class="pageref">sourcecodeverwaltung</span>.</p>
 
@@ -49335,8 +49332,11 @@ Protokolleintrag stets mit einem Blog-Artikel und einem Kommentar verbunden.</p>
     <span class="inline-tag">SVN</span>
     <span class="inline-tag">CVS</span>
     <span class="inline-tag">Sourcecode-Verwaltung</span>
+    <span class="inline-tag">Versionsverwaltung</span>
     <span class="inline-tag">Sourceforge</span>
     <span class="inline-tag">BerliOS</span>
+    <span class="inline-tag">Git</span>
+    <span class="inline-tag">GitHub</span>
 </span>
 <span class="label invisible">sourcecodeverwaltung</span>
 </p>
@@ -49344,6 +49344,8 @@ Protokolleintrag stets mit einem Blog-Artikel und einem Kommentar verbunden.</p>
 <p>Serendipity ist letztlich nur eine Ansammlung von PHP-Dateien. In allen<br />
 OpenSource-Projekten ist es üblich, den Quellcode für Interessierte vollständig<br />
 offen und transparent zu verwalten.</p>
+
+<div class="reminiscence">
 
 <p>Dazu hat sich seit langer Zeit der Service von<br />
 SourceForge [*]
@@ -49409,23 +49411,128 @@ separat die erweiterten Plugins (<em>Spartacus</em>) gepflegt. Die Aufteilung in
 SVN und CVS hat somit noch den Vorteil, dass das verbreitetere (und<br />
 einfachere) CVS so für freiwillige Plugin-Entwickler leichter verfügbar ist.</p>
 
+</div>
+
+<div class="revision">
+
+<p>Dazu hat sich seit geraumer Zeit der Service von<br />
+GitHub [*]
+<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{https://github.com/}</span><!-- footnote --> als Standard in der Open Source Welt fest etabliert,<br />
+der OpenSource-Projekten und praktisch Jedermann kostenlos Verwaltungsdienste und Speicherplatz anbietet.<br />
+Finanziert wird dieses Erfolgsmodell vom Verkauf der Enterprise Lösungen.<br />
+Inzwischen sind viele der ganz großen Fische und mehr oder weniger "alle" bekannten Projekte hier vertreten.<br />
+Beispiele sind, der Linux Kernel, Google, Microsoft, JQuery, PHP, Ruby on Rails und so weiter.<br />
+Mit einer Gemeinschaft von mehr als 14 Millionen Menschen und mehr als 35 Millionen Projekten<br />
+können Entwickler immer wieder Neues entdecken, nutzen, und werden von einem leistungsstarken<br />
+kollaborativen Entwicklungs-Workflow getragen, das als Git Versions-Verteilungssystem vom Mr. Linux himself<br />
+Linus Torvalds vor 11 Jahren im April 2005 <em>mal eben so</em> in zwei Wochen niedergeschrieben wurde.</p>
+
+<p>Die Projektseite von Serendipity befindet sich unter<br />
+<code>https://github.com/s9y</code>. Dort gibt es die Projekte von S9y,<br />
+wie die Serendipity Blog Software, die Dokumentation, Serendipity Plugins und Themes, das Buch und weiteres.<br />
+Und natürlich vor allem den Download der offiziellen<br />
+Serendipity-Releases unter <code>https://github.com/s9y/Serendipity/releases</code>.</p>
+
+<p><span class="item menu">Development/Entwicklung</span></p>
+
+<p>When Sie zu Serendipity beitragen möchtem, finden sie hier was Sie dazu benötigen:</p>
+
+<ul class="nobr">
+  <li>Kreieren Sie einen GitHub Zugang, klonen Sie unser Repository, entwickeln sie Code und tragen Sie<br />
+      mit einem pull request zur Entwicklung bei. Wenn sie regelömäßig beitragen wollen, wären wir erfreut<br />
+      Ihnen bei Interesse eventuell ein Membership Zugang zu geben.</li>
+  <li>Lesen Sie unsere <a href="http://docs.s9y.org/docs/developers/code-primer.html">Code Dokumentations Leitfaden</a>,<br />
+      um eine Idee davon zu bekommen, was WAS ist in der Serendipity API.</li>
+  <li>Sie wollen zu <strong>einem Theme oder Plugin beitragen</strong>?<br />
+      Dazu benutzen Sie entweder GitHub pull requests, oder auch immer noch den alten Weg,<br />
+      in dem Sie ihren Vorschlag im Forum niederschreiben.<br />
+      Unsere Developer werden Ihnen hilfreich zur Hand gehen, soweit es die Zeit zulässt.</li>
+</ul>
+
+<p><span class="item menu">Schnellzugriff:</span></p>
+
+<ul class="nobr">
+  <li>Unsere Plugins und der Serendipity-Kern <a href="https://github.com/s9y/">Code wird auf GitHub</a> verwaltet.</li>
+  <li>Die Dokumentation wird mittlerweile auch über GitHub <a href="http://docs.s9y.org">docs.s9y.org</a> erstellt und verwaltet.</li>
+  <li>Benutzer Hilfe und Diskussionen finden Sie in unserem <a href="http://board.s9y.org">Forum</a>.</li>
+  <li>Unser eigener <a href="http://blog.s9y.org">Blog</a> beinhaltet Serendipity Neuigkeiten, Release Ankündungen und insbeondere Security Announcements.</li>
+  <li><em>Additional Plugins</em> and <em>Additional Themes</em> sind unter <a href="http://spartacus.s9y.org">spartacus.s9y.org</a>erreichbar;<br />
+      Sie können von dort auch direkt heruntergeladen werden.</li>
+  <li>Unsere alte <a href="http://sf.net/projects/php-blog">SourceForge Projekt Seite</a> wird nur noch als erweiterter Download-Service<br />
+      für Serendipity Releases geführt und verwaltet eine zentrale <em>read-only Mailingliste</em>, über die die <em>commits</em> und <em>comments</em><br />
+      unseres GitHub Repositories laufen.</li>
+  <li>Das (ältere) Serendipity-Handbuch steht als <a href="https://github.com/s9y/Book/blob/master/serendipity.pdf?raw=true">PDF zur Verfügung</a><br />
+      und kann auch über <a href="https://github.com/s9y/Book">GitHub/s9y/Book</a> von Helfern bearbeitet werden.</li>
+  <li>Das neuere HTML-Buch in der Revision 2.1 lesen Sie hier ja bereits selbst.<br >/
+      Es ist als branch <code>gh-pages</code> unter <code>https://github.com/s9y/Book/</code> verfügbar.</li>
+</ul>
+
+<p><span class="item menu">Diskussion / Feature Requests</span></p>
+
+<p><span class="menu">Wollen</span> Sie über Serendipity diskutieren? <span class="menu">Endlich</span> einmal Ihr (persönliches) Lieblingsärgernis zu Gehör bringen?<br />
+Einen <span class="menu">Vorschlag</span> für ein bestimmtes <em>feature</em> machen wollen, selbst ohne die Vorkenntnisse wie es eventuell zu gestalten wäre?<br />
+<span class="menu">Dann</span> ist unser <a href="http://board.s9y.org">Forum</a> genau der richtige Platz für Sie!<br />
+Unsere Entwickler sind dort zu finden und können Ihnen wertvolle Innenansichten geben, insbesondere dann,<br />
+wenn Sie sich die Zeit genommen haben detailliert zu beschreiben, was Sie wollen oder mit Serendipity für Probleme haben.<br />
+Natürlich sollten Sie <span class="menu">immer zuerst die <a href="http://docs.s9y.org/docs/faq/index.html">FAQ (Frequently Asked Questions)</a></span> durchgelesen<br />
+und vielleicht schon selbst das Forum durchstöbert haben, bevor Sie andere danach suchen lassen.</p>
+
+<p><em>Feature requests</em> sollten möglichst nicht in den <em>issue tracker</em> auf Github gestellt werden;<br />
+Wir diskutieren solches meist zuerst im Forum, und erst wenn wir übereinstimmen und die Spezifika klargestellt haben,<br />
+wird daraus ein Issue im GitHub <em>tracker</em>.</p>
+
+<p>Es gibt einen eigenständigen deutschen Bereich im Forum, wo man auch ohne englische Sprachbarriere gut mit uns kommunizieren kann.<br />
+Viele unserer Entwickler sprechen Deutsch. Der englische Bereich ist jedoch für alle, die Englisch sprechen,<br />
+immer der bessere Platz zur Diskussion, damit keine internationalen Benutzer ausgegrenzt werden.</p>
+
+<p>Haben Sie ein <span class="menu">Bug</span> gefunden? Das kann passieren!<br />
+Wenn Sie uns beschreiben was passiert, eventuell ein wiederholbares Beispiel zeigen können, springen Sie gleich auf unseren<br />
+<a href="https://github.com/s9y/Serendipity/Issues">GitHub issue tracker</a> and füllen Sie einen <em>bug report</em> aus.<br />
+Wenn unsere Developer diesen Bug gefixt haben, welches meist sehr schnell passiert, werden Sie sofort darüber informiert.<br />
+Wenn der GitHub <em>issue tracker</em> für Sie zu kompliziert daherkommt, schreiben Sie ihren <em>Request</em> in das Forum.<br />
+Wir danken für Ihre Mithilfe!</p>
+
+<p>Bei mehreren Bug sollten Sie versuchen ein Issue per Bug aufzumachen. GitHub Issues sollten in der englischen Sprache abgehalten und gestaltet werden.</p>
+
+<p>Nicht-englisch sprechende Benutzer können Bugs gerne im Forum melden, unsere Entwickler werden dies dann selbständig als Bug-Issues im System eintragen.</p>
+
+<p><span class="item menu">Security Reports, Exploits</span></p>
+
+<p>Ein <span class="menu">Security Issue</span> ist in unserem Code? Das ist schlimm, aber passiert nur alle Jahre einmal.<br />
+Wir bitten Sie darum, Ihre <span class="menu">security reports</span> via E-mail an unseren Maintainer <a href="blog@garv.in">Garvin Hicking</a> zu schicken,<br />
+damit dieser das Issue zuweisen und die Koordination eines verantwortlichen <em>Disclosures</em> zusammen mit Ihnen abstimmen kann.<br />
+Das Team gibt immer den Dank an die Person zurück, die uns solch einen Bug oder ein solches Sicherheitsloch meldet.<br />
+Wir reagieren meist innerhalb von 24 Stunden nachdem Sie mit uns in Kontakt getreten sind und sprechen mit Ihnen detailliert den weiteren Vorgang ab.</p>
+
+<p>Wenn Sie es voziehen, können Sie ein GitHub Security Issue aufmachen, in dem sie uns Informationen hinterlassen, wie wir Sie erreichen können, um Näheres zu erfahren.<br />
+Bitte halten Sie eventuelle Informationen über das "<em>Loch</em>" nur sehr allgemein, da dies ein öffentlich zugänglicher Bereich ist.</p>
+
+</div>
+
 <section id="U638" class="sub">
 <span class="u-toc">10.7.1 - Freier Zugriff</span>
 
 <h3 class="subsection">Freier Zugriff</h3>
 
-<p>Die SVN- und CVS-Quellen sind für Besucher mit vollem Lesezugriff frei<br />
+<p class="reminiscence">Die SVN- und CVS-Quellen sind für Besucher mit vollem Lesezugriff frei<br />
 zugänglich. Um darauf zuzugreifen, benötigen Sie eine CVS- oder SVN-Software.<br />
 Weitere Anweisungen, wie Sie auf ein <em>Repository</em> zugreifen können, sind<br />
 auf den Projektseiten <code>http://sourceforge.net/cvs/?group_id=75065</code> (CVS)<br />
 und <code>http://developer.berlios.de/svn/?group_id=2573</code> (SVN) ausführlich<br />
 dokumentiert.</p>
 
+<p class="reviews">Die GIT-Quellen sind für Besucher mit vollem Lesezugriff frei<br />
+zugänglich. Um darauf zuzugreifen, benötigen Sie eine lokal installierte GIT-Software.<br />
+Weitere Anweisungen, wie Sie auf ein <em>Repository</em> zugreifen können, sind<br />
+auf den Projekt- und Hilfs-Seiten <code>https://help.github.com/</code> (GIT)<br />
+ausführlich dokumentiert.</p>
+
 <p>Schreibzugriff können Sie erlangen, indem Sie im Serendipity-Entwicklerforum<br />
 danach fragen und einige Beispiele dafür geben, was Sie beisteuern wollen. Wie<br />
-dieser Prozess vonstatten geht, ist auf Seite <span class="pageref">community</span> näher erläutert.</p>
+dieser Prozess vonstatten geht, ist auf Seite <span class="pageref">community</span> näher erläutert.<br />
+Stichworte sind zB. <code>clone</code>, <code>pull-requests</code> und <code>membership</code>.</p>
 
-<p>Wenn Sie über kein CVS-Programm verfügen, können Sie auch über webbasierte<br />
+<p class="reminiscence">Wenn Sie über kein CVS-Programm verfügen, können Sie auch über webbasierte<br />
 CVS-Clients Einblick in das <em>Repository</em> erhalten. Den Quellcode von<br />
 Serendipity finden Sie unter<br />
 <code>http://svn.berlios.de/viewcvs/serendipity/trunk/</code> und alle<br />
@@ -49434,20 +49541,26 @@ Spartacus-Plugins unter<br />
 aus können Sie sogar einzelne Dateien direkt herunterladen oder neue<br />
 Dateiversionen miteinander vergleichen.</p>
 
+<p class="revision">Den Quellcode von Serendipity finden Sie unter<br />
+<code>https://github.com/s9y/Serendipity</code> und alle<br />
+Spartacus-Plugins unter<br />
+<code>https://github.com/s9y/additional_plugins/</code>. Von dort<br />
+aus können Sie sogar einzelne Dateien direkt herunterladen oder neue<br />
+Dateiversionen miteinander vergleichen.</p>
+
 </section><!-- section.sub end -->
 
 <section id="U639" class="sub">
-<span class="u-toc">10.7.2 - Aktualisierung über CVS/SVN</span>
+<span class="u-toc">10.7.2 - Aktualisierung über GIT/CVS/SVN</span>
 
-<h3 class="subsection">Aktualisierung über CVS/SVN</h3>
+<h3 class="subsection">Aktualisierung über GIT/CVS/SVN</h3>
 
-<p>CVS ist nicht nur für Entwickler von Interesse. Wenn Sie SSH-Zugriff zu Ihrem<br />
-Server besitzen, kann CVS sehr hilfreich dabei sein, Serendipity auf dem<br />
+<p>GIT/CVS ist nicht nur für Entwickler von Interesse. Wenn Sie SSH-Zugriff zu Ihrem<br />
+Server besitzen, kann GIT/CVS sehr hilfreich dabei sein, Serendipity auf dem<br />
 aktuellsten Stand zu halten.</p>
 
-
 <p>Anstatt erst ein ZIP-Archiv mit der neuen Serendipity-Version herunterzuladen,<br />
-könnten Sie Ihren Server auch direkt über einen <em>CVS/SVN checkout</em> laufen<br />
+könnten Sie Ihren Server auch direkt über einen <em>GIT/CVS/SVN checkout</em> laufen<br />
 lassen. Sobald Sie Serendipity zB. mittels</p>
 
 <pre><code class="bash">
@@ -49477,11 +49590,73 @@ Serendipity mittels</p>
     user@server:~# svn diff
 </code></pre>
 
-<p>&nbsp;</p><!-- separator -->
-
 <p>in einem maschinenlesbaren Format auszuwerten. Wenn Sie beispielsweise<br />
 sinnvollen Code zur Community beisteuern wollen, hilft dieses<br />
 <em>DIFF-Format</em>, Ihre Änderungen allen zur Verfügung zu stellen.</p>
+
+<div class="revision">
+
+<p>Mit <span class="menu">GitHub</span> [*]
+<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{https://pages.github.com/}</span><!-- footnote --><br />
+<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{https://git-scm.com/doc}</span><!-- footnote --><br />
+sähe das Ganze so aus:</p>
+
+<p><span class="item menu">Klonen</span> des Serendipity Repositories:</p>
+
+<pre><code class="bash">
+    user@server:~# git clone https://github.com/s9y/Serendipity.git
+</code></pre>
+
+<p>Erstellen einer einfachen Beispiel Datei mit Inhalt in einem beispielhaften <em>XXX.io</em> Web-Verzeichnisses:</p>
+
+<pre><code class="bash">
+    user@server:~# cd username.github.io<br />
+    user@server:~# echo "Hello World" > index.html
+</code></pre>
+
+<p><span class="item menu">Push</span> - Hinzufügen, veröffentlichen, und die Änderungen hinaufladen:</p>
+
+<pre><code class="bash">
+    user@server:~# git add --all<br />
+    user@server:~# git commit -m "Initial commit"<br />
+    user@server:~# git push -u origin master
+</code></pre>
+
+<p>Nun hat man einen <span class="menu"><em>master</em></span> Branch. Der wäre normalerweise zuständig für die laufende Weiterentwicklung.<br />
+In Serendipity ist dies zur Zeit der 2.1 Developer Zweig (hier kurz <span class="menu">branch</span> genannt).<br />
+Weitere Zweige sind abgetrennt und dienen als Archive und Repositories für ältere Versionen, und sind besonders dann notwendig,<br />
+wenn einem Zweig später ein gesondertes Bugfix Release eingearbeitet werden muss.<br />
+Dies sind zur Zeit, der 1.6 Series branch, der 1.7 Series branch und der 2.0 Series branch.<br />
+Branches dienen aber auch dem Development eines bestimmten vielleicht aufwendigeren Umgestaltung.<br />
+Diese werden dann später, sollten sich die Änderungen als gut herausstellen, wieder in den Master-Zweig eingepflegt.</p>
+
+<p>Der Wechsel eines branch-Zweiges gestaltet sich einfach durch ein:</p>
+
+<pre><code class="bash">
+    user@server:~# git checkout &lt;Name des Branch&gt;
+</code></pre>
+
+<p>Später wäre dann die einfachste und immerwährende Commit Abfolge: holen, setzen, geben (pull, commit, push): </p>
+
+<pre><code class="bash">
+    user@server:~# git pull origin master
+</code></pre>
+
+<p>Mittels einer GUI oder der Konsole können nun die mit einem geignetem Editor[*]
+<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{http://www.vim.org/}</span><!-- footnote --><br />
+<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{http://www.scintilla.org/}</span><!-- footnote --><br />
+<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{https://notepad-plus-plus.org/}</span><!-- footnote --><br />
+<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{http://itsfoss.com/best-modern-open-source-code-editors-for-linux/}</span><!-- footnote --><br />
+<img src="http://imgs.xkcd.com/comics/real_programmers.png" />
+gemachten Änderungen lokal commited und mit:</p>
+
+<pre><code class="bash">
+    user@server:~# git push origin master
+</code></pre>
+
+<p>in das Github (remote) Repository herauf geladen werden.</p>
+
+</div>
 
 <p>Auch die Spartacus-Plugins können Sie komfortabel über einen <em>CVS checkout</em><br />
 verwalten. Dabei kommt Ihnen zugute, dass Serendipity beliebig verschachtelte<br />
@@ -49509,6 +49684,23 @@ ebenfalls per <code>cvs update</code> eingespielt werden.</p>
     &nbsp;checkout additional_themes
 </code></pre>
 
+<div class="revision">
+
+<p>Analog natürlich für die heute verwendeten <span class="menu">Git</span>Hub S9y Repositories:</p>
+
+<pre><code class="bash">
+    user@server:~# cd /home/GIT/s9y/additional_plugins<br />
+    user@server:~# git pull origin master<br />
+    ... commit and push
+</code></pre>
+
+<pre><code class="bash">
+    user@server:~# cd /home/GIT/s9y/additional_themes<br />
+    user@server:~# git pull origin master<br />
+    ... commit and push
+</code></pre>
+
+</div>
 
 </section><!-- section.sub end -->
 
@@ -54441,20 +54633,25 @@ Dinge beachten:</p>
     <h4 class="subarticle">Sourcecode-Verwaltung nutzen</h4>
 </header>
 
-<p>Serendipity wird über öffentlich zugängliche Server gewartet. Der<br />
+<p>Serendipity wird über öffentlich zugängliche Server gewartet. <span class="reminiscence">Der<br />
 Hauptteil des Quellcodes liegt auf<br />
 <code>http://developer.berlios.de/projects/serendipity</code> und wird mittels<br />
 Subversion [*]
-<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{http://subversion.tigris.org/}</span><!-- footnote -->
+<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{http://subversion.tigris.org/}</span><!-- footnote --><br />
 gepflegt. Die zusätzlichen Plugins und Templates werden mittels CVS über den<br />
-Server <code>http://www.sf.net/projects/php-blog</code> gewartet<br />
-(siehe Seite <span class="pageref">sourcecodeverwaltung</span>).</p>
+Server <code>http://www.sf.net/projects/php-blog</code> gewartet</span>
+<span class="revision">Der gesamte Code liegt seit Herbst 2011 auf Github [*]
+<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{https://github.com/s9y}</span><!-- footnote --><br />
+und wird zentral dort verwaltet. Sourceforce dient nur noch aus Kompatibilitätsgründen<br />
+als SVN/CSV Verteiler und die Mirrors sind auch nur noch für eventuelle Ausfälle von GitHub relevant.
+</span>.<br />
+(Siehe <span class="reference">sourcecodeverwaltung</span> auf Seite <span class="pageref">sourcecodeverwaltung</span>).</p>
 
 <p>Wenn Sie Code-Änderungen veröffentlichen wollen, sollten Sie Ihre Änderungen<br />
 immer anhand der aktuellsten Sourcecode-Version aus der jeweiligen Quelle<br />
 durchführen. Anstatt alle geänderten Dateien an die Entwickler zu schicken,<br />
 sollten Sie nur Ihre geänderten Codezeilen mitschicken; dies erledigt man<br />
-mittels eines sogenannten <code>diff</code>-Formates, das gängige SVN- und CVS-Programme<br />
+mittels eines sogenannten <code>diff</code>-Formates, das gängige GIT, SVN- und CVS-Programme<br />
 erstellen können.</p>
 
 <p>Wenn Sie erst einmal einige kleine Patches an die Entwickler geschickt haben,<br />
