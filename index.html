@@ -49402,8 +49402,8 @@ vollständig symbolisch erzeugte <em>Branches</em>.</p>
 <p>Damals bot SourceForge noch keinen SVN-Zugriff an, daher migrierten die<br />
 Entwickler von Serendipity auf einen anderen Dienstleister namens<br />
 <em>BerliOS</em> [*]
-<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{http://developer.berlios.de}</span><!-- footnote -->. Bis heute wird dort<br />
-das Serendipity-Sourcecode-Repository mittels SVN gepflegt.</p>
+<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{http://developer.berlios.de}</span><!-- footnote -->.<br />
+Bis heute wird dort das Serendipity-Sourcecode-Repository mittels SVN gepflegt.</p>
 
 <p>Dennoch ist das alte CVS-Repository bei SourceForge noch vorhanden. Dort werden<br />
 separat die erweiterten Plugins (<em>Spartacus</em>) gepflegt. Die Aufteilung in<br />
@@ -49416,7 +49416,8 @@ einfachere) CVS so für freiwillige Plugin-Entwickler leichter verfügbar ist.</
 
 <p>Dazu hat sich seit geraumer Zeit der Service von<br />
 GitHub [*]
-<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{https://github.com/}</span><!-- footnote --> als Standard in der Open Source Welt fest etabliert,<br />
+<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{https://github.com/}</span><!-- footnote --><br />
+als Standard in der Open Source Welt fest etabliert,<br />
 der OpenSource-Projekten und praktisch Jedermann kostenlos Verwaltungsdienste und Speicherplatz anbietet.<br />
 Finanziert wird dieses Erfolgsmodell vom Verkauf der Enterprise und Privat Repository Lösungen.<br />
 Inzwischen sind viele der ganz großen Fische und mehr oder weniger "alle" bekannten Projekte hier vertreten.<br />
@@ -49558,6 +49559,13 @@ Dateiversionen miteinander vergleichen. Gleiches gilt für Themes.</p>
 <p>GIT/CVS ist nicht nur für Entwickler von Interesse. Wenn Sie SSH-Zugriff zu Ihrem<br />
 Server besitzen, kann GIT/CVS sehr hilfreich dabei sein, Serendipity auf dem<br />
 aktuellsten Stand zu halten.</p>
+
+<p class="revision">Es wird auch vorerst weiterhin nach CVS gesynct,<br />
+damit Spartacus die Packages von dort auch laden kann, und S9y Nutzer,<br />
+die seit jeher CVS/SF nutzen, auch weiterhin mit Paketen versorgt werden können.<br />
+Aus diesem Grund können bei manuellen Downloads über Spartacus auch noch<br />
+für den Nutzer unrelevante <code>CVS</code>-Verzeichnisse in den einzelnen Plugins<br />
+oder Themes zu finden sein.</p>
 
 <p>Anstatt erst ein ZIP-Archiv mit der neuen Serendipity-Version herunterzuladen,<br />
 könnten Sie Ihren Server auch direkt über einen <em>GIT/CVS/SVN checkout</em> laufen<br />
