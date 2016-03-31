@@ -510,17 +510,17 @@ textarea {
     .error-msg { color: #FF0033;}
 
     /* mark old text */
-    div.reminiscence, .box.reminiscence {
+    div.recall, .box.recall {
         border: 1px solid #DDD;
         padding: 1em;
         opacity: .5;
         color: #666;
         overflow: hidden;
-    } .reminiscence { color: #666; }
-      .reminiscence:before {
+    } .recall { color: #666; }
+      .recall:before {
         color: black;
         content: attr(data-text); }
-        .reminiscence, .reminiscence p {
+        .recall, .recall p {
             text-decoration: line-through;
             text-decoration-color: rgba(255, 0, 0, 0.5);
         }
