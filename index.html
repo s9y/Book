@@ -40175,7 +40175,7 @@ der Oberfläche zum Erstellen eines Blog-Artikels.</p>
 		    </span>
             <span class="sub-box">
                 Ist auf <code>true</code> gesetzt, wenn der Redakteur einen Browser einsetzt, der einen<br />
-                WYSIWYG-Editor darstellen kann (Microsoft Internet Explorer, Mozilla Firefox, Opera).
+                WYSIWYG-Editor darstellen kann (Googles Chrome, Microsoft Internet Explorer, Mozilla Firefox, Opera).
 			</span>
         </span>
 
@@ -49418,7 +49418,7 @@ einfachere) CVS so für freiwillige Plugin-Entwickler leichter verfügbar ist.</
 GitHub [*]
 <span class="footnote"><i class="fa fa-info-circle"></i> \cmd{https://github.com/}</span><!-- footnote --> als Standard in der Open Source Welt fest etabliert,<br />
 der OpenSource-Projekten und praktisch Jedermann kostenlos Verwaltungsdienste und Speicherplatz anbietet.<br />
-Finanziert wird dieses Erfolgsmodell vom Verkauf der Enterprise Lösungen.<br />
+Finanziert wird dieses Erfolgsmodell vom Verkauf der Enterprise und Privat Repository Lösungen.<br />
 Inzwischen sind viele der ganz großen Fische und mehr oder weniger "alle" bekannten Projekte hier vertreten.<br />
 Beispiele sind, der Linux Kernel, Google, Microsoft, JQuery, PHP, Ruby on Rails und so weiter.<br />
 Mit einer Gemeinschaft von mehr als 14 Millionen Menschen und mehr als 35 Millionen Projekten<br />
@@ -49434,12 +49434,12 @@ Serendipity-Releases unter <code>https://github.com/s9y/Serendipity/releases</co
 
 <p><span class="item menu">Development/Entwicklung</span></p>
 
-<p>When Sie zu Serendipity beitragen möchtem, finden sie hier was Sie dazu benötigen:</p>
+<p>Wenn Sie zu Serendipity beitragen möchten, finden Sie hier was Sie dazu benötigen:</p>
 
 <ul class="nobr">
   <li>Kreieren Sie einen GitHub Zugang, klonen Sie unser Repository, entwickeln sie Code und tragen Sie<br />
       mit einem <em>pull request</em> zur Entwicklung bei. Wenn sie regelmäßig beitragen wollen, wären wir erfreut<br />
-      Ihnen bei Interesse eventuell ein Membership Zugang zu geben.</li>
+      Ihnen bei Interesse eventuell ein <em>Membership</em> Zugang zu geben.</li>
   <li>Lesen Sie unseren kurzen englischsprachigen <a href="http://docs.s9y.org/docs/developers/code-primer.html">Code Dokumentations Leitfaden</a>,<br />
       um eine Idee davon zu bekommen, was in der Serendipity Welt und API WAS ist. Natürlich ist dies hier in diesem Buch<br />
       an verschiedenen Stellen sehr ausführlich dokumentiert.</li>
@@ -54724,7 +54724,7 @@ dass diese so wenig wie möglich PHP-Code ausführt. Je größer und komplexer d
 Datei wird, desto länger dauert der Serendipity-Seitenaufruf.</p>
 
 <p>HTML-Code sollte nach XHTML-1.1-Standard entwickelt werden. Zudem sollte ein<br />
-Template in allen gängigen Browsern funktionieren, zumindest in Mozilla Firefox<br />
+Template in allen gängigen Browsern funktionieren, zumindest in Mozilla Firefox, Google Chrome<br />
 und Microsoft Internet Explorer.</p>
 
 <p>Wenn Ihr Template eigene Sprachkonstanten verwendet, lagern Sie diese bitte in<br />
@@ -54740,8 +54740,9 @@ korrespondierende Version der Datei im UTF-8-Zeichensatz mit.</p>
 </header>
 
 <p>Plugins sollten möglichst objektorientiert (wie es die API vorgibt) entwickelt<br />
-werden. PHP4-Syntax, wo möglich, ist bevorzugt. Wenn gute Gründe dafür sprechen,<br />
-sind PHP5-Plugins selbstverständlich auch kein Problem.</p>
+werden. <span class="reminiscence">PHP4-Syntax, wo möglich, ist bevorzugt. Wenn gute Gründe dafür sprechen,<br />
+sind PHP5-Plugins selbstverständlich auch kein Problem.</span><br />
+<span class="revision">PHP5-Syntax ist Voraussetzung und bevorzugt.</span></p>
 
 <p>Plugins sollten nur die Ereignis-Hooks benutzen, die auch absolut notwendig<br />
 sind. Je weniger Hooks benutzt werden, desto performanter ist ein Plugin.</p>
@@ -54751,7 +54752,7 @@ möglichst für einen konfigurierbaren Zeitraum gecached werden. Behalten Sie st
 Netzwerkprobleme im Hinterkopf, die nicht dazu führen sollten, dass ein Plugin<br />
 inoperabel wird.</p>
 
-<p>Setzen Sie referenzierte Variablen ein, wo möglich.</p>
+<p>Setzen Sie referenzierte Variablen ein, wo möglich<span class="revision"> und mit PHP5.3+ noch notwendig.</span>.</p>
 
 <p>Wenn Sie ein bestehendes Plugin überarbeiten, fügen Sie bitte in dessen Datei<br />
 <code>ChangeLog</code> eine Information über die vorgenommene<br />
@@ -54806,7 +54807,7 @@ benötigt, sollte diese vom Plugin automatisch mithilfe der Funktion<br />
 oder XSS-Injections zulassen oder gar beliebigen PHP-Code von fremden Servern<br />
 ausführen. Achten Sie darauf, Werte aus GET/POST-Variablen vor dem<br />
 Einfügen in die Datenbank mit <code>serendipity_db_escape_string()</code> zu<br />
-behandeln und bei der Ausgabe mit <code>htmlspecialchars()</code> zu umgeben.</p>
+behandeln und bei der Ausgabe mit <code>htmlspecialchars()</code><span class="revision"> bzw. besser <code>serendipity_specialchars()</code></span> zu umgeben.</p>
 
 <p>Wenn ein Plugin administrative Aktionen im Backend ausführt, sollten die<br />
 HTML-Formulare zum Ausführen der Funktion mittels <code>serendipityFormToken()</code><br />
@@ -54830,6 +54831,15 @@ ist: Fragen Sie ruhig. Niemand beißt die Hand, die uns füttern soll!</p>
 </section><!-- section.index end -->
 
 </section><!-- chapter 11 Community end -->
+
+<section id="C12" class="chapter revision">
+<span class="label invisible">index</span>
+
+<h2 id="I700">Index</h2>
+
+<p>ToDo: Index aus hidden tags - wahrscheinlich mittels Javascript; Vielleicht sogar mit Suche...(?).</p>
+
+</section><!-- chapter 12 Index end -->
 
                     </div><!-- #index -->
 
