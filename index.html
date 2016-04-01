@@ -45992,8 +45992,7 @@ PHP-Kernfunktionen Serendipitys geladen werden. Dazu werden weitere Dateien wie<
 <code>include/functions_config.inc.php</code> eingebunden, die diese Funktionen<br />
 jeweils themenspezifisch bündeln (siehe auch Seite <span class="pageref">s9yfiles</span>).</p>
 
-<p>\longpage<br />
-Nun wird das <code>$serendipity</code>-Array mit allen Konfigurationswerten der<br />
+<p>Nun wird das <code>$serendipity</code>-Array mit allen Konfigurationswerten der<br />
 Datenbank befüllt. Der Redakteur kann so mit der Benutzerdatenbank abgeglichen<br />
 werden, um einen gültigen Login zu erkennen und ggf. die persönliche<br />
 Konfiguration des Besuchers zu laden.</p>
@@ -46008,8 +46007,8 @@ gesendet.</p>
 
 <p>Da nun der vollständige Zugriff auf die Datenbank möglich ist, kann Serendipity<br />
 abhängig von der Konfiguration der Permalinks prüfen, welche Seite der<br />
-Besucher angefordert hat. Dazu dienen zahlreiche <code>IF-Abfragen</code>, die den<br />
-Großteil dieser Datei ausmachen.</p>
+Besucher angefordert hat. Dazu dienen zahlreiche <code>IF-Abfragen</code>,<br />
+die den Großteil dieser Datei ausmachen.</p>
 
 <p>Jeder mögliche Ausgabefall (Archiv-Übersicht, Kategorie-Übersicht,<br />
 Einzelartikel, Volltextsuche ...) wird hier mit der aktuellen URL<br />
@@ -46867,6 +46866,26 @@ die Sie bei der Entwicklung von Plugins und Ähnlichem häufig einsetzen werden.
 <span class="desc-info nobr">
     <span class="box">
         Öffnet eine Socket-Verbindung zu einem fremden Server und sendet Daten (meist Trackbacks/Pingbacks).
+    </span>
+</span>
+</p>
+
+<p class="desc revision">
+<code class="item function">serendipity_specialchars()</code>, 
+(<code class="item file">include/compat.inc.php</code>)
+<span class="desc-info nobr">
+    <span class="box">
+        Seit PHP 5.4 reagiert die wichtige <code>PHP</code>-Funktion <code>htmlspecialchars()</code><br />
+        auf das <em>default-encoding</em> und kann unter Umständen einen leeren String zurückgeben,<br />
+        wenn ein nativ-kodierter String <code>Umlaute</code> enthält. Verwenden Sie deshalb sicherheitshalber<br />
+        immer diese zentrale Serendipity Funktion:
+        <span id="pre-style"><code class="php">
+            serendipity_specialchars($string);
+        </code></span><br />
+        bzw. in Plugins/Themes die möglicherweise auf ältere Serendipity Versionen stoßen dürfen, diesen <em>Ternary</em>-Operator:
+        <span id="pre-style"><code class="php">
+            (function_exists('serendipity_specialchars') ? serendipity_specialchars($string) : htmlspecialchars($string, ENT_COMPAT, LANG_CHARSET))
+        </code></span>
     </span>
 </span>
 </p>
@@ -49732,16 +49751,15 @@ ebenfalls per <code>cvs update</code> eingespielt werden.</p>
 
 <p><em>Spartacus</em> ist Serendipitys zentrales Plugin-Archiv. Es besteht aus zwei<br />
 Komponenten: einem Server und einem Client. Der Server (SourceForge) bietet die<br />
-Plugins an, der Client (das Spartacus-Plugin Ihres Blogs) lädt ein Plugin<br />
-herunter.</p>
+Plugins an, der Client (das Spartacus-Plugin Ihres Blogs) lädt ein Plugin herunter.</p>
 
 <p>Im Hintergrund passiert Folgendes: Auf dem SourceForge-Server wird das<br />
 CVS-Repository <code>additional_plugins</code> verwaltet. Dort werden regelmäßig einmal<br />
 am Tag durch einen automatisierten Vorgang [*]
 <span class="footnote"><i class="fa fa-info-circle"></i> Für Interessierte: Das<br />
 automatische Script zur Erstellung ist in diesem Repository als Datei<br />
-<code class="item file">emerge_spartacus.php</code> hinterlegt.</span><!-- footnote --> zahlreiche<br />
-XML-Dateien erstellt, die alle notwendigen Informationen der Plugins enthalten.</p>
+<code class="item file">emerge_spartacus.php</code> hinterlegt.</span><!-- footnote --><br />
+zahlreiche XML-Dateien erstellt, die alle notwendigen Informationen der Plugins enthalten.</p>
 
 <p>Daraufhin werden anhand dieser XML-Informationen automatisch HTML-Dateien<br />
 erzeugt, die auf <code>http://spartacus.s9y.org</code> dargestellt werden. Jedes Plugin<br />
@@ -49754,8 +49772,11 @@ Verfügung gestellt.</p>
 </span>
 Die Sammlung an XML-Dateien sowie der Quellcode der Plugins werden zusätzlich<br />
 automatisch an den Mirror <code>netmirror.org</code> ausgeliefert. Sollte einmal ein<br />
-Server nicht erreichbar sein, gibt es somit immer noch einen weiteren<br />
-Notfallserver.</p>
+Server nicht erreichbar sein, gibt es somit immer noch einen weiteren Notfallserver.</p>
+
+<p class="revision">Seit dem Umzug auf GitHub kann Spartacus die Dateien auch gleich<br />
+von dort abholen. Sie müssen in den Spartacus-Plugin-Konfigurationsoptionen dazu nur<br />
+den <em>Datei/Mirror Speicherort (Downloads)</em> auf <em>GitHub</em> stellen.</p>
 
 <p>Nun ist der serverseitige Vorgang abgeschlossen, und der Client (Ihr Blog) muss<br />
 lediglich darauf zugreifen. Beim Aufruf der Plugin-Verwaltungsoberfläche Ihres<br />
@@ -49853,10 +49874,9 @@ in einem umfangreichen PHP-Array vor. Bevor diese Daten des Artikels nun in der<
 Datenbank gespeichert werden, wird das Ereignis namens <code>backend_save</code><br />
 ausgeführt. Wenn ein Plugin auf dieses Ereignis <em>lauscht</em>, kann es die<br />
 Artikeldaten verändern. Beispielsweise kann das Plugin <em>Google Sitemap</em><br />
-dafür sorgen, dass Google über den gerade erstellten Artikel informiert<br />
-(<em>gepingt</em>) wird.<br />
-<br />
-Ein Plugin kann nur entweder als Ereignis- oder als Seitenleisten-Plugin<br />
+dafür sorgen, dass Google über den gerade erstellten Artikel informiert (<em>gepingt</em>) wird.</p>
+
+<p>Ein Plugin kann nur entweder als Ereignis- oder als Seitenleisten-Plugin<br />
 vorliegen. Seitenleisten-Plugins können lediglich Ausgaben in der Seitenleiste<br />
 einbinden und auf keine Ereignisse reagieren. Ereignis-Plugins wiederum können<br />
 ohne Weiteres keine Ausgaben in der Seitenleiste vornehmen. Sie können jedoch<br />
@@ -49908,6 +49928,24 @@ Sprachdatei dann mit folgendem Code am Anfang der PHP-Datei:</p>
     include dirname(__FILE__) . '/lang_en.inc.php';
 </code></pre>
 
+<div class="revision">
+
+<p>beziehungsweise:</p>
+
+<pre><code class="php">
+    // Load possible language files<br />
+    @serendipity_plugin_api::load_language(dirname(__FILE__));
+</code></pre>
+
+<p>Es wird bei Plugins und Themes folgende Methodik angewendet:<br />
+Zuerst wird die <code>lang</code>-Datei der gesuchten Sprache, mit der in der<br />
+<code>LANG_CHARSET</code> definierten Sprache, vorzugsweise <code>UTF-8 kodiert</code><br />
+gesucht, dann wird die englische Sprachdatei geladen, die immer im "<em>Root</em>"<br />
+des Plugins/Themes liegt. Seit Serendipity 1.6 kann und sollte hier die verbesserte,<br />
+auch weil kürzere<em>API</em>-Schreibweise genutzt werden.</p>
+
+</div>
+
 <p>Die Variable <code>$probelang</code> enthält den Dateinamen der lokalen Sprachdatei,<br />
 die eingebunden wird. Zusätzlich bindet das Plugin zur Sicherheit die englische Sprachdatei ein,<br />
 da diese Datei manchmal einige noch nicht übersetzte Konstanten enthalten kann.</p>
@@ -49927,8 +49965,7 @@ beliebiges Array mit Daten wie dem Namen des Plugins, der Beschreibung, etwaigen
 Copyrights, Voraussetzungen und Liste von Konfigurationsoptionen enthalten kann.</p>
 
 <p>Die Methode <code>introspect_config_item()</code> wird verwendet, damit das<br />
-Plugin beliebige Konfigurationsoptionen im Plugin-Manager darstellen und<br />
-auswerten kann.</p>
+Plugin beliebige Konfigurationsoptionen im Plugin-Manager darstellen und auswerten kann.</p>
 
 <p>Zuletzt wird die Methode <code>generate_content()</code> deklariert, die später die<br />
 eigentliche Ausgabe des Plugins mit beliebigem PHP-Code enthält.</p>
@@ -54658,8 +54695,7 @@ Server <code>http://www.sf.net/projects/php-blog</code> gewartet</span>
 <span class="revision">Der gesamte Code liegt seit Herbst 2011 auf Github [*]
 <span class="footnote"><i class="fa fa-info-circle"></i> \cmd{https://github.com/s9y}</span><!-- footnote --><br />
 und wird zentral dort verwaltet. Sourceforce dient nur noch aus Kompatibilitätsgründen<br />
-als SVN/CSV Verteiler und die Mirrors sind auch nur noch für eventuelle Ausfälle von GitHub relevant.
-</span>.<br />
+als SVN/CSV Verteiler und die Mirrors sind auch nur noch für eventuelle Ausfälle von GitHub relevant</span>.<br />
 (Siehe <span class="reference">sourcecodeverwaltung</span> auf Seite <span class="pageref">sourcecodeverwaltung</span>).</p>
 
 <p>Wenn Sie Code-Änderungen veröffentlichen wollen, sollten Sie Ihre Änderungen<br />
@@ -54767,7 +54803,7 @@ möglichst für einen konfigurierbaren Zeitraum gecached werden. Behalten Sie st
 Netzwerkprobleme im Hinterkopf, die nicht dazu führen sollten, dass ein Plugin<br />
 inoperabel wird.</p>
 
-<p>Setzen Sie referenzierte Variablen ein, wo möglich<span class="revision"> und mit PHP5.3+ noch notwendig.</span>.</p>
+<p>Setzen Sie referenzierte Variablen ein, wo möglich<span class="revision"> und mit PHP5.3+ heute noch notwendig.</span>.</p>
 
 <p>Wenn Sie ein bestehendes Plugin überarbeiten, fügen Sie bitte in dessen Datei<br />
 <code>ChangeLog</code> eine Information über die vorgenommene<br />
@@ -54850,9 +54886,9 @@ ist: Fragen Sie ruhig. Niemand beißt die Hand, die uns füttern soll!</p>
 <section id="C12" class="chapter revision">
 <span class="label invisible">index</span>
 
-<h2 id="I700">Index</h2>
+<h2 id="I700">Index/Register</h2>
 
-<p>ToDo: Index aus hidden tags - wahrscheinlich mittels Javascript; Vielleicht sogar mit Suche...(?).</p>
+<p>ToDo: Index/Register aus hidden tags - wahrscheinlich mittels Javascript; Vielleicht sogar mit Suche...(?).</p>
 
 </section><!-- chapter 12 Index end -->
 
@@ -54869,13 +54905,18 @@ ist: Fragen Sie ruhig. Niemand beißt die Hand, die uns füttern soll!</p>
         <script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.2.min.js"><\/script>')</script>
         <script src="js/vendor/jquery.ui.totop.js" type="text/javascript"></script>
-        <script src="js/vendor/anchorify.min.js" type="text/javascript"></script>
+        <script src="js/vendor/anchor.min.js" type="text/javascript"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
         <script>
             $(document).ready(function() {
                 $().UItoTop();
-                $('section h2, section h3, header h4').anchorify();
+                //$('section h2, section h3, header h4').anchorify();
+                anchors.options = {
+                    placement: 'right',
+                    visible: 'always'
+                };
+                anchors.add('section h2, section h3, header h4');
             });
 
             function logArrayElements(element, index, array) {

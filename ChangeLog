@@ -1,4 +1,15 @@
 
+2016-04-01:
+-----------
+
+ * remove (tex) \longpage
+ * add serendipity_specialchars() to central functions
+ * add gitHub as spartacus download "mirror" text
+ * add plugins/themes include lang API method and example
+ * remove too long "fun" version num in helloworld2,
+   since now being a copyable example
+ * replace anchorify.js with anchor.js
+
 2016-03-31:
 -----------
 

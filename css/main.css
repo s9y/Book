@@ -168,6 +168,14 @@ textarea {
         text-align: center;
     }
 
+    .anchorjs-link {
+        color: #FF5231;
+    }
+    .anchorjs-link {
+        opacity: 0;
+        text-decoration: none;
+    }
+
     /* index and tags */
     .tagging {}
     .tag {}
