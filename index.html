@@ -1623,7 +1623,7 @@ spätere Probleme.</p>
 angegebenen Verzeichnis gespeichert. Der ausführende PHP-Prozess muss<br />
 darauf Schreibrechte besitzen. Stellen Sie bei<br />
 Windows-Servern sicher, dass hier ein gültiger<br />
-Verzeichnisname (zB.osplinebreak{} <code>C:/Temp</code>) eingetragen ist. Sollten<br />
+Verzeichnisname (zB. <code>C:/Temp</code>) eingetragen ist. Sollten<br />
 PHP-Sessions nicht schreibbar sein, zeigt Serendipity<br />
 Fehlermeldungen an.</p>
 
@@ -19321,9 +19321,12 @@ wurden mit Serendipity 2.0+ in den Serendipity-Kern übernommen und sind in den<
 
 <p>Bereits seit ein paar Jahren werkelt das Serendipity Autoupdate Plugin still und erfolgreich vor sich.<br />
 Es stellt in Verbindung mit dem (PRE-Serendipity-2.0) Dashboard-Plugin, sowohl als auch mit der neuen eingebauten<br />
-Backend Startseite (Dashboard) einen Upgrade Button für ein automatisches <em>EIN</em>-Klick Serendipity Upgrade bereit,<br />
-solange Sie es installiert haben und die generelle Konfigurationsoption dafür eingestellt haben.<br />
-Selber hat dieses Plugin keine eigenen Konfigurationsoptionen. Es ist ein Beispiel für ein sogenanntes "<em>stilles</em>" Plugin.</p>
+Backend Startseite (Dashboard) in Serendipity 2.0+ einen Upgrade Button für ein automatisches "<em>EIN</em>-Klick"<br />
+Serendipity Upgrade bereit, solange Sie es installiert haben und die generelle Konfigurationsoption "<em>Update-Hinweis</em>"<br />
+dafür eingestellt haben. Selber hat dieses Plugin keine eigenen Konfigurationsoptionen.<br />
+Es ist ein Beispiel für ein sogenanntes "<em>stilles</em>" Plugin.</p>
+
+<p>Der Webserver benötigt Schreibrechte für alle Dateien!</p>
 
 </div><!-- revision end -->
 
@@ -34445,7 +34448,7 @@ meist aufeinander aufbauen und zum Ende hin komplexer werden.</p>
 
 <h3 class="section">Eingebaute Anpassungsmöglichkeiten</h3>
 
-<p>In den vorhergehenden Kapiteln haben Sie bereits gerlernt, wie Sie das Aussehen<br />
+<p>In den vorhergehenden Kapiteln haben Sie bereits gelernt, wie Sie das Aussehen<br />
 Ihres Blogs durch die Wahl eines Templates verändern können.</p>
 
 <p>
@@ -34462,9 +34465,9 @@ ab Seite <span class="pageref">Styles verwalten</span>) beliebig anpassen.</p>
     <span class="inline-tag">Bulletproof</span>
     <span class="inline-tag">Template-S@Templates!Bulletproof</span>
 </span>
-<span class="label invisible">bpdesc</span> Ab Serendipity 1.2 wird standardmäßig ein neues Template<br />
+<span class="label invisible">bpdesc</span> Ab Serendipity 1.2 <span class="recall">wird</span><span class="revision"> wurde</span> standardmäßig ein neues Template<br />
 namens <em>Bulletproof</em> mitgeliefert. Dieses Template unterscheidet sich in<br />
-seiner Zielsetzung wesentlich von normalen Serendipity-Templates. Üblicherweise<br />
+seiner Zielsetzung wesentlich von <span class="recall">normalen</span><span class="revision"> früheren</span> Serendipity-Templates. Üblicherweise<br />
 ist ein Template auf ein spezielles Design ausgelegt. Dabei legt der Designer des<br />
 Templates für Sie fest, wie Artikel dargestellt werden, welche Farben das<br />
 Template benutzt und vor allem, wie das Grundlayout ausgelegt ist. Wenn Sie<br />
@@ -34472,10 +34475,10 @@ etwas an den Farben ändern möchten, müssen Sie meist selbst Hand an der<br />
 Template-Programmierung anlegen, was ohne Detailkenntnisse vielen Benutzern<br />
 schwerfällt.</p>
 
-<p>An genau diese Benutzer richtet sich <em>Bulletproof</em>. Es stellt ein<br />
-Template-Grundgerüst zur Verfügung, das sich an bestmöglicher<br />
-Browser-Kompatibilität orientiert. Dieses Grundgerüst können Sie mittels der<br />
-Template-Optionen nun vielfältig gestalten: Sie können Farbschemas auswählen,<br />
+<p>An genau diese Benutzer richtet<span class="revision">e</span> sich <em>Bulletproof</em>. Es stellt<span class="revision">e</span> ein<br />
+Template-Grundgerüst zur Verfügung, das sich <span class="revision"> zu jener Zeit</span> an bestmöglicher<br />
+Browser-Kompatibilität orientiert<span class="revision">e</span>. Dieses Grundgerüst können Sie mittels der<br />
+Template-Optionen <span class="recall">nun</span> vielfältig gestalten: Sie können Farbschemas auswählen,<br />
 bestimmen, wie viele Spalten das Layout besitzt, welche Navigationsleisten Sie<br />
 einbinden wollen und auch wie die Blog-Artikel selbst gestaltet sind.</p>
 
@@ -34489,11 +34492,25 @@ einbinden wollen und auch wie die Blog-Artikel selbst gestaltet sind.</p>
 Blog-Eigentümer zB. leicht andere Kopfgrafiken einsetzen und sich vor allem<br />
 darauf verlassen, dass die Basis des Frameworks browser-übergreifend annähernd gleich aussieht.</p>
 
-<p>In zukünftigen Serendipity-Versionen wird dieses Template das Standarddesign<br />
+<p class="recall">In zukünftigen Serendipity-Versionen wird dieses Template das Standarddesign<br />
 ersetzen und dem Benutzer direkt von Anfang an diesen gestalterischen Freiraum<br />
-genehmigen. Auch das Bulletproof-Template können Sie später über eigene<br />
+genehmigen.</p>
+
+<p>Auch das Bulletproof-Template können Sie später über eigene<br />
 Programmierung/Anpassungen verändern, wie Abschnitt <span class="reference">templateoptionen</span> ab<br />
 Seite <span class="pageref">templateoptionen</span> zeigen wird.</p>
+
+<p class="revision">
+<span class="tag-box invisible">
+    <span class="inline-tag">2k11</span>
+    <span class="inline-tag">Template-S@Templates!2k11</span>
+</span>
+Nachdem Bulletproof über viele Jahre treu seinen Dienst versehen hatte,<br />
+wurde mit Serendipity 1.7 ein neues Standard Theme/Template namens<br />
+<span class="menu"><em>2k11</em></span> ausgeliefert,<br />
+welches von nun an bis zum heutigen Tag als "<em>Referenz</em>" und "<em>Fallback</em>",<br />
+sprich <span class="menu"><em>Standard</em></span>-Theme<br />
+per default eingestellt und ausgeliefert wurde.</p>
 
 <p>Abgesehen von den Template-Optionen bietet auch die<br />
 Serendipity-Grundkonfiguration (siehe Seite <span class="pageref">Konfiguration</span>)<br />
@@ -34643,7 +34660,7 @@ Containers:</p>
     &nbsp; &lt;div class="fusszeile"&gt;<br />
     &nbsp;&nbsp;&nbsp; &lt;p&gt;Seitenende.&lt;/p&gt;<br />
     &nbsp; &lt;/div&gt;<br />
-    &lt;/div&gt;<br />
+    &lt;/div&gt;
 </code></pre>
 
 <p>Anhand dieser Struktur sieht man, dass die Absätze (<code>p</code>-Tags) zwar in<br />
@@ -34856,6 +34873,11 @@ grün einfärben wollen, könnten Sie dies mit der folgenden CSS-Regel erreichen
 diese Klassen abhängig vom eingesetzten Template und dessen HTML-Ausgabe sind.<br />
 Wenn Sie also eine Anpassung vornehmen wollen, müssen Sie die entsprechenden<br />
 eingesetzten HTML-Klassen im Quelltext des jeweiligen Templates nachschlagen.</p>
+
+<p class="revision">Auch wenn hier nicht alle CSS-Klassen aufgeführt werden können, haben sich mit<br />
+der neuen Referenz des <em>2k11</em>-Standard-Themes doch auch einige Elemente geändert. [...??? Bitte ergänzen ???...]<br />
+(zB. wurde mit Serendipity 2.0 das ehemalige Schema "<em>serendipity_klassenname</em>" für solche Klassen<br />
+nicht immer konsequent durchgehalten, zB mit den neuen <code>msg_*</code>-Klassen.)</p>
 
 <p>
 <span class="tag-box invisible">
@@ -35173,7 +35195,7 @@ indem Sie eine Regel wie:</p>
 </code></pre>
 
 <p>in Ihr Stylesheet übernehmen. Die Anweisung <code>!important</code> sorgt dafür, dass<br />
-diese Zeile immer Vorrang vor anderen Anweisungen haben wird.</p>
+diese Zeile immer Vorrang vor anderen Anweisungen haben wird. [...??? Bitte ergänzen ???...]</p>
 
 </section><!-- section.sub end -->
 
@@ -35202,7 +35224,8 @@ Firefox-Browser ein Modul namens<br />
 andere Browser bzw. JavaScript-basierte Tools sind ebenfalls verfügbar.</span><!-- footnote --> erfunden.<br />
 Dieses Programm ermöglicht es, mit einem einfachen Mausklick das benötigte<br />
 Element ausfindig zu machen und direkt zu sehen, welche CSS-Anweisungen für<br />
-dieses Element bereits belegt sind.</p>
+dieses Element bereits belegt sind.<br />
+<span class="revision">Siehe Anmerkungen zu den Developer-Tools der heutigen Browser unter <span class="pageref">Developer-Tools</span>.</span></p>
 
 </section><!-- section.sub end -->
 
@@ -35253,7 +35276,7 @@ Template unterschiedliche Dinge tun, dies nennt man <em>Darstellungslogik</em>.<
 PHP-Programmieranweisungen könnte man eine derartige Darstellungslogik<br />
 ausdrücken, jedoch ist dies für viele Anwender viel zu kompliziert. Daher<br />
 vertraut Serendipity auf eine Software-Bibliothek namens Smarty [*]
-<span class="footnote"><i class="fa fa-info-circle"></i> <code>http://smarty.php.net/</code></span><!-- footnote -->.</p>
+<span class="footnote"><i class="fa fa-info-circle"></i> \cmd{http://www.smarty.net/}</span><!-- footnote -->.</p>
 
 <p>Smarty ist das Bindeglied zwischen Serendipity und Ihnen als Template-Bauer.<br />
 Eine Smarty-Datei ist eine einfache Ansammlung von HTML-Elementen, Variablen und<br />
@@ -35334,8 +35357,8 @@ kann Parameter entgegennehmen, in diesem Fall die Zahl <code>20</code> zur Angab
 Menge von Zeichen, die ausgegeben werden sollen. Mehrere Parameter können<br />
 mit <code>:</code> voneinander getrennt werden. Die vollständige Dokumentation der<br />
 verfügbaren Parameter einer Funktion können Sie in der Smarty-Dokumentation<br />
-unter <code>http://smarty.php.net/</code> nachschlagen. <code>truncate</code> verfügt<br />
-zB.osplinebreak{} über eine zweite Option, mit der man die Kürzung eines Textes<br />
+unter <code>http://www.smarty.net/</code> nachschlagen. <code>truncate</code> verfügt<br />
+zB. über eine zweite Option, mit der man die Kürzung eines Textes<br />
 durch das Anhängen einer Zeichenkette wie <code>...</code> verdeutlichen kann:</p>
 
 <pre><code class="smarty">
@@ -35650,6 +35673,10 @@ Stattdessen müssen Sie diese Zeichen als <code class="smarty">{ldelim}</code> u
 platzieren. Alternativ können Sie einen Block mit JavaScript aber auch in einen<br />
 <code class="smarty">{literal} ... {/literal}</code>-Funktionsblock setzen.</p>
 
+<p class="revision">Mit Serendipity 1.7+ und Smarty 3+ kam außerdem noch die Möglichkeit hinzu,<br />
+durch ein Leerzeichen hinter der öffnenden Klammer und einem beliebiges Zeichen hinter der schließenden<br />
+Klammer, den gleichen Effekt für solche Javascripts Partien in Smarty Template Dateien zu erzielen.</p>
+
 <p>Kommentare, die später in der HTML-Ausgabe nicht sichtbar sein sollen, können Sie<br />
 mittels <code class="smarty">{* ... Kommentar ... *}</code> in der Smarty-Template-Datei<br />
 einfügen.</p>
@@ -35799,6 +35826,9 @@ wäre folgende CSS-Anweisung korrekt:</p>
 }
 </code></pre>
 
+<p class="revision">Durchgestrichen sind jene, die mit Serendipity 2.0<br />
+im neuen Referenz Theme <em>2k11</em> nicht mehr benötigt und gestrichen wurden.</p>
+
 <p class="desc citem-desc">
 <span class="tag-box invisible">
     <span class="inline-tag">Template-Dateien!style.css</span>
@@ -35816,7 +35846,7 @@ Templates.</span>
 <span class="desc-info nobr">Enthält die CSS-Regeln für den Backend-Bereich eines Templates.</span>
 </p>
 
-<p class="desc citem-desc">
+<p class="desc citem-desc recall">
 <span class="tag-box invisible">
     <span class="inline-tag">Template-Dateien!admin/imgedit.css</span>
 </span>
@@ -35825,7 +35855,7 @@ Templates.</span>
 Mediendatenbank.</span>
 </p>
 
-<p class="desc citem-desc">
+<p class="desc citem-desc recall">
 <span class="tag-box invisible">
     <span class="inline-tag">Template-Dateien!admin/pluginmanager.css</span>
 </span>
@@ -35845,12 +35875,22 @@ eingebunden, das Stylesheet wird nur dann angewendet, wenn ein Besucher den<br /
 Atom-Feed innerhalb eines normalen Browsers anzeigt.</span>
 </p>
 
-<p class="desc citem-desc">
+<p class="desc citem-desc recall">
 <span class="tag-box invisible">
     <span class="inline-tag">Template-Dateien!htmlarea.css</span>
 </span>
 <code class="item file">htmlarea.css</code>
 <span class="desc-info nobr">Enthält CSS-Regeln für Serendipitys integrierten WYSIWYG-Editor.</span>
+</p>
+
+<p class="desc citem-desc">
+<span class="tag-box invisible">
+    <span class="inline-tag">Template-Dateien!wysiwyg-style.css</span>
+</span>
+<code class="item file">wysiwyg-style.css</code>
+<span class="desc-info nobr">Enthält CSS-Regeln für Serendipitys integrierten WYSIWYG-Editor.<br />
+Diese liegt normalerweise in dem <code class="item dir">/htmlarea</code> Ordner, kann aber<br />
+in das Template/Theme kopiert werden (siehe Regeln für ein eigenes Ckeditor-Wysiwyg-Widget).</span>
 </p>
 
 </section><!-- section.sub end -->
@@ -45451,7 +45491,7 @@ gesetzt ist:</p>
 </p>
 
 <p>Smarty ermöglicht es Ihnen nicht nur, auf vorgeschriebene Smarty-Funktionen und<br />
--Modifier zuzugreifen (siehe auch <code>http://smarty.php.net/</code>), sondern auch<br />
+-Modifier zuzugreifen (siehe auch <code>http://www.smarty.net/</code>), sondern auch<br />
 eigene beliebig zu verwenden.</p>
 
 <p>
@@ -45497,6 +45537,7 @@ wie folgt deklarieren:</p>
 </code></pre>
 
 <div  class="text revision shadow">
+
 <p>Mit Smarty 3, besonders mit den Smarty Versionen ab 3.1.28+, sagen wir einfach,<br />
 ab <span class="menu">Serendipity 2.1</span> sollte man nun genauer schreiben:</p>
 
@@ -45512,17 +45553,18 @@ ab <span class="menu">Serendipity 2.1</span> sollte man nun genauer schreiben:</
 <p>da nicht mehr das <code>$smarty</code>-Objekt, sondern das <code>$template</code>-Objekt übergeben wird.<br />
 Explizite Referenzierungen erübrigen sich aus der Serendipitity Vorraussetzung für höhere PHP Versionen ab 5.3+.<br />
 In diesem Beispiel ist dies jedoch ohne Belang, da auf das Objekt gar nicht zugegriffen wird.</p>
+
 </div>
 
 <p>Eine Smarty-Funktion muss demnach mittels <code>register_function</code> einer<br />
 existierenden PHP-Funktion zugewiesen werden.[*]
 <span class="footnote"><i class="fa fa-info-circle"></i> Siehe auch<br />
-\cmd{http://smarty.php.net/register_function}</span><!-- footnote --> Diese PHP-Funktion muss immer<br />
-zwei Funktionsparameter haben: <code>$params</code> und <code>$smarty</code>. Das Array<br />
+\cmd{http://www.smarty.net/docs/en/api.register.plugin.tpl}</span><!-- footnote --> Diese PHP-Funktion muss immer<br />
+zwei Funktionsparameter haben: <code>$params</code> und <code>$smarty</code>.<span class="revision"> (Siehe obige Anmerkung zu Smarty 3.1.28+!)</span> Das Array<br />
 <code>$params</code> enthält alle Funktionsparameter, wie sie in der Template-Datei via<br />
 <code>zeigeFooter parameter=... lang=true  ... </code> aufgerufen wurden. Dabei<br />
 entspricht der Array-Schlüssel von <code>$params</code> immer dem Parameternamen beim<br />
-Smarty-Aufruf. Das <code>$smarty</code>-Objekt kann innerhalb der PHP-Funktion<br />
+Smarty-Aufruf. Das <code>$smarty</code>-Objekt<span class="revision">  (später <code>$template</code>-Objekt)</span> kann innerhalb der PHP-Funktion<br />
 selbstverständlich auch für erweiterte Zugriffe auf das Smarty-Framework<br />
 verwendet werden. Der Rückgabewert der Funktion enthält das, was später im<br />
 Smarty-Template zurückgeliefert wird (üblicherweise HTML-Code).</p>
@@ -49476,7 +49518,7 @@ Serendipity-Releases unter <code>https://github.com/s9y/Serendipity/releases</co
   <li>Die Dokumentation <a href="http://docs.s9y.org">docs.s9y.org</a> wird mittlerweile auch über GitHub <a href="https://github.com/s9y/s9y.github.io">s9y.github.io</a> erstellt und verwaltet.</li>
   <li>Benutzer Hilfe und Diskussionen finden Sie in unserem <a href="http://board.s9y.org">Forum</a>.</li>
   <li>Unser eigenes <a href="http://blog.s9y.org">Blog</a> beinhaltet Serendipity Neuigkeiten, Release Ankündungen und insbesondere Security Announcements.</li>
-  <li><em>Additional Plugins</em> and <em>Additional Themes</em> sind unter <a href="http://spartacus.s9y.org">spartacus.s9y.org</a>erreichbar;<br />
+  <li><em>Additional Plugins</em> and <em>Additional Themes</em> sind unter <a href="http://spartacus.s9y.org">spartacus.s9y.org</a> erreichbar;<br />
       Sie können von dort auch direkt heruntergeladen werden.</li>
   <li>Unsere alte <a href="http://sf.net/projects/php-blog">SourceForge Projekt Seite</a> wird nur noch als erweiterter Download-Service<br />
       für Serendipity Releases geführt und verwaltet eine zentrale <em>read-only Mailingliste</em>, über die die <em>commits</em> und <em>comments</em><br />
