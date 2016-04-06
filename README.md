@@ -17,6 +17,8 @@ Im ChangeLog sind allfällige Änderungen aufgeführt.
 - [ ] Rewrite parts for the new 2.0+ backend (and a: "how to use by template vars/files") ?
 - [ ] Code an Index/Register referring to/with the inlined tags ?
 - [ ] Remove the _br_ line endings - which needs to ident text that hasn't been _boxed_ yet ?
+- [ ] Remove _old_ text parts marked by the `recall` class ?
+- [ ] Remove `revision` marked new text class (with check if it fits in nice!) ?
 - [ ] ...
 - [ ] Break file into parts at the very end ?
 - [ ] Move into `/de/` `/lang/` directory for translating ?
