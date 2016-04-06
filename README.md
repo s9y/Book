@@ -1,6 +1,7 @@
 # Serendipity - Das Buch
 
 Dies ist die Draft-Revision des Serendipity Buches (https://github.com/s9y/Book) für Serendipity 2.1 als HTML.
+Zu finden unter http://docs.s9y.org/Book/ .
 
 Im ChangeLog sind allfällige Änderungen aufgeführt.
 
