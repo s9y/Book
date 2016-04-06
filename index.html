@@ -9724,7 +9724,7 @@ selbständig aus.</span>
         Um etwas Zeit zu sparen, können PHP-Anwendungen sogenannte<br />
         <em>Persistent Connections</em> (<em>Ständige Verbindungen</em>) nutzen.<br />
         Diese Option wird in der PHP-Dokumentation [*]
-        <span class="footnote"><i class="fa fa-info-circle"></i> \cmd{http://de2.php.net/manual/en/features.persistent-connections.php}</span><!-- footnote -->
+        <span class="footnote"><i class="fa fa-info-circle"></i> \cmd{http://php.net/manual/de/features.persistent-connections.php}</span><!-- footnote -->
         ausführlicher beschrieben und bewirkt - kurz gesagt --, dass mehrere<br />
         PHP-Aufrufe dieselbe Datenbankverbindung nutzen können, ohne diese<br />
         ständig neu auf- und abzubauen.
@@ -14179,7 +14179,7 @@ Link in der Ausgabe des Plugins dargestellt.</span>
     <span class="box">
         Die Option <span class="menu">Datumsformat</span> bezieht sich auf die Formatierung des<br />
         Veröffentlichungsdatums. Die Variablen, die Sie hier benutzen können,<br />
-        sind auf <code>http://de3.php.net/strftime</code> zusammengefasst.
+        sind auf <code>http://php.net/manual/de/function.strftime.php</code> zusammengefasst.
     </span>
 </span>
 </p>
@@ -14384,7 +14384,7 @@ Optionen:</p>
 <span class="desc-info nobr">Zu jedem Artikel wird das Erstellungsdatum angezeigt. Wie dieses<br />
 formatiert wird, tragen Sie im Feld <span class="menu">Datumsformat</span> ein. Die zur<br />
 Verfügung stehenden Variablen finden Sie auf<br />
-<code>http://de3.php.net/strftime</code>.</span>
+<code>http://php.net/manual/de/function.strftime.php</code>.</span>
 </p>
 
 <p class="desc">
@@ -14690,7 +14690,7 @@ können Sie mit dem Eingabefeld <span class="menu">Anzahl an Kommentaren</span> 
 <span class="desc-info nobr">Zu jedem Kommentar wird das Erstellungsdatum mit angezeigt. Wie dieses<br />
 formatiert wird, tragen Sie im Feld <span class="menu">Datumsformat</span> ein. Die zur<br />
 Verfügung stehenden Variablen finden Sie auf<br />
-<code>http://de3.php.net/strftime</code>.</span>
+<code>http://php.net/manual/de/function.strftime.php</code>.</span>
 </p>
 
 <p class="desc">
@@ -15034,7 +15034,7 @@ Option <span class="menu">Show author's name</span> auf <span class="menu">true<
 <span class="item menu">Datumsformat</span><!-- menuitem -->
 <span class="desc-info nobr">Sofern Sie die Option <span class="menu">Datum anzeigen</span> aktiviert haben, können Sie<br />
 hier das Datumsformat einstellen. Die zur Verfügung stehenden Variablen<br />
-finden Sie auf <code>http://de3.php.net/strftime</code>.</span>
+finden Sie auf <code>http://php.net/manual/de/function.strftime.php</code>.</span>
 </p>
 
 </section><!-- section.sub end -->
@@ -17938,7 +17938,8 @@ Textile-Bibliothek in Version 1.0 oder 2.0 <span class="revision">oder 3.0</span
 </span>
 </p>
 
-<p class="revision">Hoffnungslos veraltet, unmaintained und nicht zu empfehlen! Dieses Plugin wurde nach Spartacus verschoben und aus dem dem Release Zip entfernt.</p>
+<p class="revision">[<em>...Hoffnungslos veraltet, unmaintained und nicht zu empfehlen...! (Sig)</em>]<br />
+Dieses Plugin wurde nach Spartacus verschoben und aus dem Release Zip entfernt.</p>
 
 <p>Eine sehr verbreitete und beliebte Form der Textauszeichnung stellt das<br />
 sogenannte <em>Wiki markup</em> dar. Diese Formatierungsart hat aufgrund<br />
@@ -18107,7 +18108,7 @@ beseitigen</em> dabei helfen, einige gängige Fehlerquellen auszuräumen:</p>
     verwenden. Ein <code>&lt;p&gt;</code> ist daher nur gültig, wenn auch ein
     schließendes <code>&lt;/p&gt;</code> folgt. Das früher verbreitete HTML-Tag
     <code>&lt;br&gt;</code> musste, da es kein schließendes Element voraussetzt,
-    zu <code>&lt;br /&gt;</code> verändert werden. In den häufigsten Fällen wird
+    zu <code>&lt;br&nbsp;/&gt;</code> verändert werden. In den häufigsten Fällen wird
     das <code>/&gt;</code>-Zeichen bei den Tags <code>&lt;img&gt;</code>, <code>&lt;hr&gt;</code> und
     eben jenem <code>&lt;br&gt;</code> vergessen. Das Plugin kann bei diesen Tags
     das fehlende <code>/</code> nachreichen.</li>
@@ -18161,8 +18162,8 @@ Redakteuren oder Personen, die gerne mit Akronymen um sich werfen.</p>
 
 <p>Jedes Mal, wenn Sie in einem Artikel beispielsweise die Zeichenfolge<br />
 <code>s9y</code> verwenden, kann das Plugin dafür sorgen, dass dies<br />
-umgewandelt wird zu <code>&lt;a href='http://www.s9y.org/'<br />
- title='s9y'&gt;s9y&lt;/a&gt;</code>. Man sieht also bereits, welches<br />
+umgewandelt wird zu <code>&lt;a href="http://www.s9y.org/"<br />
+ title="s9y"&gt;s9y&lt;/a&gt;</code>. Man sieht also bereits, welches<br />
 Einsparungspotenzial das Plugin bietet, solange Sie das zu Grunde<br />
 liegende Wörterbuch gut pflegen.</p>
 
@@ -18191,7 +18192,7 @@ komfortabler, als jedes Mal den vollständigen Zieltext festzulegen.<br />
 Stellen Sie sich vor, Sie würden analog zur Umformung des Wortes<br />
 <code>s9y</code> auch das Wort <code>PHP</code> so umwandeln, dass ein Link darauf<br />
 gesetzt wird. Als Umformungsmaske würde man hier Folgendes festlegen:<br />
-<code>&lt;a href='ziel' title='quelle'&gt;quelle&lt;/a&gt;</code></p>
+<code>&lt;a href="ziel" title="quelle"&gt;quelle&lt;/a&gt;</code></p>
 
 <p>Tragen Sie nun als <span class="menu">Neuer Titel</span> das Wort <code>s9y</code> ein, als<br />
 <span class="menu">Neue Beschreibung</span> geben Sie <code>http://www.s9y.org/</code> ein.<br />
@@ -19390,7 +19391,7 @@ Die Haltbarkeit einer PHP-Session wird in der PHP-Konfigurationsvariable<br />
 <code>session.gc_maxlifetime</code> in Sekunden<br />
 festgelegt. Per Default sind dies 1440 Sekunden, also 24 Minuten. Zwar kann man<br />
 diesen Wert verändern, aber da es einige Besonderheiten zu beachten gilt (siehe<br />
-<code>http://de2.php.net/manual/de/ref.session.php</code>), sollte man dies nicht<br />
+<code>http://php.net/manual/de/ref.session.php</code>), sollte man dies nicht<br />
 unbedingt tun. Zumal die Standardeinstellung einen guten Mittelwert<br />
 zwischen normaler Inaktivität und Sicherheitserwägungen darstellt. Je länger eine<br />
 Session gilt, desto eher kann ein böswilliger Benutzer diese Daten möglicherweise<br />
@@ -23873,7 +23874,7 @@ Da es sich bei dem Filter um einen regulären Ausdruck handelt, müssen Sie<br /
 etwaige Sonderzeichen <em>escapen</em>, also einen Backslash<br />
 (\) voranstellen.[*]
 <span class="footnote"><i class="fa fa-info-circle"></i> Unter<br />
-\cmd{http://de3.php.net/manual/de/reference.pcre.pattern.syntax.php} sind solche Sonderzeichen <br />
+\cmd{http://php.net/manual/de/reference.pcre.pattern.syntax.php} sind solche Sonderzeichen <br />
 aufgeführt.</span><!-- footnote --> Erweiterte Suchmuster wie<br />
 <code>Messe(bericht|report|review)(s|e)?</code> können ebenfalls verwendet<br />
 werden, damit Begriffe wie <em>Messeberichte</em> oder<br />
@@ -27028,7 +27029,7 @@ Kategorienamen) müssen mit URL-Sonderzeichen ersetzt werden. Aus dem<br />
 Kategorienamen <em>Thundercats und Mäuse</em> würde daher der Wert<br />
 <code>Thundercats+und+M%E4use</code>. Die PHP-Funktion <code>urlencode</code><br />
 kann Variablen entsprechend kodieren, siehe<br />
-<code>http://de2.php.net/urlencode</code>.</p>
+<code>http://php.net/manual/de/function.urlencode.php</code>.</p>
 
 <p>Wenn Sie also beispielsweise fünf Artikel der ersten Kategorie, aufsteigend<br />
 sortiert, inklusive Artikeltext mit deutschem Datumsformat anzeigen<br />
@@ -37239,7 +37240,7 @@ gültigen (<em>validen, syntaxfehlerfreien</em>) PHP-Code enthält. Wenn Sie an<
 einer Stelle andere Anführungszeichen verwenden oder ein Komma vergessen, kann<br />
 dies dazu führen, dass Ihr gesamtes Template nicht angezeigt wird.<br />
 Lesen Sie daher, falls nötig, die PHP-Syntax-Anweisungen unter<br />
-<code>http://de2.php.net/types.array</code> und <code>http://de2.php.net/manual/en/language.basic-syntax.php</code>.</p>
+<code>http://php.net/manual/de/language.types.array.php</code> und <code>http://php.net/manual/de/language.basic-syntax.php</code>.</p>
 
 <p>Das Array <code>$template_config</code> kann beliebig viele Konfigurationsoptionen<br />
 deklarieren. Auf diese können Sie später innerhalb jeder Smarty-Template-Datei<br />
