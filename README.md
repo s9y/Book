@@ -10,7 +10,7 @@ Im ChangeLog sind allfällige Änderungen aufgeführt.
 ### ToDo: :arrow_down:
 - [ ] Check all `???` parts in question - (hooks at the very most!)
 - [ ] Check all mentioned database tables and fields if they have changed
-- [ ] Check all mentioned plugin(s) options deeply for changes/additions
+- [ ] Check all mentioned plugin(s) options deeply for changes/additions/names (i18n)
 - [ ] Check for more missing (new) hooks
 - [ ] Check for more changed links
 - [ ] Check all text(s) for parts which still need a change
