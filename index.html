@@ -36365,8 +36365,7 @@ Dies sind der Paginationen, Entries Listen, Filtermöglichkeiten, etc. .</span>
 </span>
 <code class="item file">admin/groups.inc.tpl</code>
 <span class="desc-info nobr">Smarty Pendant zu <code>/include/admin/groups.inc.php</code>.<br />
-Diese Datei definiert und erhält alles Nötige, um den Content der "Backend Einstellungen Seitenleiste: Gruppen" darzustellen.<br />
-??? [...] ???</span>
+Diese Datei definiert und erhält alles Nötige, um die Benutzergruppenliste im Backend darzustellen.</span>
 </p>
 
 <p class="desc citem-desc revision">
@@ -36395,8 +36394,7 @@ Sie fasst die Ausgaben verschiedender bereits erwähnter <code>media_*.tpl</code
 </span>
 <code class="item file">admin/import.inc.tpl</code>
 <span class="desc-info nobr">...<br />
-Diese Datei definiert und erhält alles Nötige, um den Content der "Backend Einstellungen Seitenleiste: Wartung: Importieren" darzustellen.<br />
-??? [...] ???</span>
+Diese Datei definiert und erhält alles Nötige, um die Import-Funktion im Backend "Einstellungen Seitenleiste: Wartung: Importieren" darzustellen.</span>
 </p>
 
 <p class="desc citem-desc revision">
@@ -51334,7 +51332,7 @@ auch selbstgeschriebene Plugins zugreifen können:</p>
 <code class="item event">fetch_images_sql</code>
 <span class="desc-info nobr">
     <span class="box">
-        wird aufgerufen, um die SQL Query der Mediendaten weiter einzuschränken / zu konditionieren ???.
+        wird aufgerufen, um die SQL-Abfrage um Rechtechecks und Metadaten zu ergänzen.
     </span>
 </span>
 </p>
@@ -51582,13 +51580,13 @@ auch selbstgeschriebene Plugins zugreifen können:</p>
 <code class="item event">frontend_saveComment_finish</code>
 <span class="desc-info nobr">
     <span class="box group-box">
-        wird aufgerufen, wenn ein Kommentar zu einem<br />
-        Artikel gespeichert wird. (just a copy of frontend_saveComment). ???
+        wird aufgerufen, nachdem ein Kommentar zu einem<br />
+        Artikel gespeichert wurde. Kann Aktionen beinhalten, die auf die neue ID Bezug nehmen müssen.
         <span class="subdesc">
-            <code>eventData</code>: Array mit den Daten des Artikels, der kommentiert wird.
+            <code>eventData</code>: Array mit den Daten des Artikels, der kommentiert wurde.
         </span>
         <span class="subdesc">
-            <code>addData</code>: Array mit den Daten des Kommentars, der gespeichert werden soll.
+            <code>addData</code>: Array mit den Daten des Kommentars, der gespeichert wurde.
         </span>
     </span>
 </span>
@@ -51619,7 +51617,7 @@ auch selbstgeschriebene Plugins zugreifen können:</p>
 <span class="desc-info nobr">
     <span class="box">
         wird aufgerufen, wenn ein Plugin (zb, <code>serendipity_event_multilingual</code>)<br />
-        den Titel und Content Text des Eintrags in der Seitenleiste neu setzen will. ???
+        die Metainformationen (Inhalt, Überschrift und Ähnliches) für die Ausgabe in der Seitenleiste beeinflussen will.
     </span>
 </span>
 </p>
@@ -51653,7 +51651,7 @@ auch selbstgeschriebene Plugins zugreifen können:</p>
 <code class="item event">frontend_media_showitem_init</code>
 <span class="desc-info nobr">
     <span class="box">
-        wird aufgerufen, wenn das Mediendatenbank Show Item überreicht wird. ???
+        wird aufgerufen, bevor die Medieninformationen aus der Datenbank geholt werden.
     </span>
 </span>
 </p>
@@ -51662,7 +51660,7 @@ auch selbstgeschriebene Plugins zugreifen können:</p>
 <code class="item event">frontend_media_showitem</code>
 <span class="desc-info nobr">
     <span class="box">
-        wird aufgerufen, wenn das Mediendatenbank Show Item übergeben wird. ???
+        wird aufgerufen, wenn alle Medieninformationen kurz vor der Ausgabe vorliegen.
     </span>
 </span>
 </p>
@@ -52240,7 +52238,7 @@ auch selbstgeschriebene Plugins zugreifen können:</p>
 <code class="item event">backend_loginfail</code>
 <span class="desc-info nobr">
     <span class="box group-box">
-        wird beim Login ausgeführt und ??? [...] ???
+        wird aufgerufen, wenn die Autorisation fehlschlug.
         <span class="subdesc">
             <code>eventData</code>: enthält den Wert <code>true</code>, wenn der<br />
             Redakteur bereits von Serendipity identifiziert werden konnte.
@@ -52481,9 +52479,9 @@ auch selbstgeschriebene Plugins zugreifen können:</p>
 <code class="item event">backend_directory_delete</code>
 <span class="desc-info nobr">
     <span class="box group-box">
-        wird aufgerufen, wenn ein Verzeichnis in der Mediendatenbank gelöscht werden soll. ???
+        wird aufgerufen, wenn ein Verzeichnis gelöscht wurde.
         <span class="subdesc">
-            <code>eventData</code>: Neu angelegte Verzeichnisse löschen. ???
+            <code>eventData</code>: Ist das zu löschende Verzeichnis.
         </span>
     </span>
 </span>
@@ -52793,7 +52791,7 @@ auch selbstgeschriebene Plugins zugreifen können:</p>
     <span class="box group-box">
         wird aufgerufen, wenn Serendipity eine E-Mail verschickt.
         <span class="subdesc">
-            <code>eventData</code> enthält ein Array mit den Daten der E-Mail. ???
+            <code>eventData</code> enthält ein Array mit den Metadaten des Kommentars.
         </span>
     </span>
 </span>
@@ -52846,7 +52844,7 @@ auch selbstgeschriebene Plugins zugreifen können:</p>
 <span class="desc-info nobr">
     <span class="box">
         wird oberhalb der Sammlung aller verfügbaren Eintrags-Eigenschaften im Backend aufgerufen,<br />
-        um diese in der Datenbank zu setzen und zu löschen. ???
+        um diese in der Datenbank zu löschen und neu zu setzen.
     </span>
 </span>
 </p>
